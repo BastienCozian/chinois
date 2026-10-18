@@ -1,0 +1,135 @@
+# Paquet de la page Pinyin : contrastes à risque.
+#
+# Format :
+#   ## <id du groupe> | <titre du groupe>
+#   ### <id du contraste> | <libellé>
+#   <cible> : <distracteur> <distracteur> <distracteur>
+#
+# Syllabes en pinyin à chiffres (ü s'écrit v : lv3 = lǚ), comme les fichiers d'audio-cmn.
+# Chaque cible donne deux cartes : production (p-<cible>) et perception (e-<cible>).
+# Les distracteurs ne diffèrent de la cible que par un trait : initiale, finale ou ton.
+# Un id de cible ne change jamais : la progression y est attachée. Ajouter en fin de contraste.
+# Après modification : python -X utf8 construire.py
+
+## initiales | Initiales : j · z · zh et leurs cousines
+
+### j-z-zh | j · z · zh
+zhang1 : zang1 jiang1 zhang3
+zang1 : zhang1 jiang1 zang4
+jiang1 : zhang1 zang1 jiang3
+zhao3 : zao3 jiao3 zhao4
+zao3 : zhao3 jiao3 zao4
+jiao3 : zhao3 zao3 jiao4
+
+### q-c-ch | q · c · ch
+chang2 : cang2 qiang2 chang3
+cang2 : chang2 qiang2 cang1
+qiang2 : chang2 cang2 qiang3
+
+### x-s-sh | x · s · sh
+shao3 : sao3 xiao3 shao4
+sao3 : shao3 xiao3 sao4
+xiao3 : shao3 sao3 xiao4
+shan1 : san1 xian1 shan4
+san1 : shan1 xian1 san3
+xian1 : shan1 san1 xian4
+
+### r-l | r · l
+re4 : le4 she4 re3
+le4 : re4 ne4 lei4
+ru4 : lu4 shu4 ru3
+lu4 : ru4 nu4 lu3
+
+## finales | Finales nasales : ang · eng · ong, -n · -ng
+
+### ang-eng-ong | ang · eng · ong
+dang1 : deng1 dong1 dan1
+deng1 : dang1 dong1 deng3
+dong1 : dang1 deng1 dong4
+tang2 : teng2 tong2 tan2
+teng2 : tang2 tong2 ting2
+tong2 : tang2 teng2 tong3
+
+### an-ang | an · ang
+ban1 : bang1 ben1 ban3
+bang1 : ban1 beng1 bang3
+
+### en-eng | en · eng
+fen1 : feng1 fan1 fen4
+feng1 : fen1 fang1 feng4
+
+### in-ing | in · ing
+xin1 : xing1 xun1 xin4
+xing1 : xin1 xiang1 xing2
+
+### ian-iang | ian · iang
+nian2 : niang2 nin2 nian3
+niang2 : nian2 ning2 niang4
+
+## u-cache | Le ü caché : ju, qu, xu se disent ü
+
+### ju-zhu | ju · zhu
+ju4 : zhu4 qu4 ju3
+zhu4 : ju4 chu4 zhu3
+
+### qu-chu | qu · chu
+qu4 : chu4 cu4 qu3
+chu4 : qu4 cu4 chu3
+
+### xu-shu | xu · shu
+xu1 : shu1 su1 xu3
+shu1 : xu1 su1 shu3
+
+### lv-lu | lü · lu
+lv3 : lu3 nv3 lv4
+lu3 : lv3 nu3 lu4
+
+### nv-nu | nü · nu
+nv3 : nu3 lv3 nv4
+nu3 : nv3 lu3 nu4
+
+## trois-i | Les trois i : zi · zhi · ji
+
+### zi-zhi-ji | zi · zhi · ji
+zi4 : zhi4 ji4 zi3
+zhi4 : zi4 ji4 zhi3
+ji4 : zi4 zhi4 ji3
+
+### si-shi-xi | si · shi · xi
+si1 : shi1 xi1 si4
+shi1 : si1 xi1 shi2
+xi1 : si1 shi1 xi2
+
+## aspiration | L'aspiration : b · p, d · t, g · k, z · c
+
+### b-p | b · p
+ba4 : pa4 ma4 ba3
+pa4 : ba4 pa2 pai4
+
+### d-t | d · t
+da4 : ta4 na4 da3
+ta4 : da4 ta1 te4
+
+### g-k | g · k
+ge1 : ke1 he1 ge4
+ke1 : ge1 he1 ke3
+
+### z-c | z · c
+zai4 : cai4 sai4 zai3
+cai4 : zai4 sai4 cai2
+
+## tons | Les tons : 2ᵉ contre 3ᵉ, 1ᵉʳ contre 4ᵉ
+
+### ton2-ton3 | 2ᵉ ton · 3ᵉ ton
+ma2 : ma3 ma1 ma4
+ma3 : ma2 ma1 ma4
+yu2 : yu3 yu1 yu4
+yu3 : yu2 yu1 yu4
+shi2 : shi3 shi1 shi4
+shi3 : shi2 shi1 shi4
+hu2 : hu3 hu1 hu4
+hu3 : hu2 hu1 hu4
+
+### ton1-ton4 | 1ᵉʳ ton · 4ᵉ ton
+tang1 : tang4 tang2 tang3
+tang4 : tang1 tang2 tang3
