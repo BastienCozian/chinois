@@ -2,7 +2,7 @@
 
 Cartes de prononciation du mandarin pour téléphone : écouter le modèle, s'enregistrer, comparer à l'oreille et sur la courbe de ton, et s'entraîner à distinguer à l'oreille les syllabes qu'on confond.
 
-Page : <https://bastiencozian.github.io/pinyin/>
+Page : <https://bastiencozian.github.io/chinois/>
 
 - Le paquet (`paquet.txt`) cible les contrastes à risque pour un francophone : *j · z · zh*, *ang · eng · ong*, le *ü* caché, les trois *i*, l'aspiration, les tons.
 - Répétition espacée (variante simplifiée de l'algorithme d'Anki). La progression reste dans le navigateur : rien n'est envoyé, aucun enregistrement n'est gardé.
