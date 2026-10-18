@@ -115,13 +115,48 @@ const Ton = (() => {
     return { pts: pts, duree: (fin - debut) * PAS, ref: ref };
   }
 
-  async function depuisUrl(url) {
-    const r = await fetch(url);
-    return courbe(await decoder(await r.arrayBuffer()));
+  // Décode un son, depuis son adresse ou depuis un enregistrement
+  async function charger(source) {
+    const octets = source instanceof Blob ? await source.arrayBuffer() : await (await fetch(source)).arrayBuffer();
+    return decoder(octets);
   }
 
-  async function depuisBlob(blob) {
-    return courbe(await decoder(await blob.arrayBuffer()));
+  // Niveau sonore : moyenne quadratique des trames de 20 ms où la voix est présente
+  // (puissance au-dessus de 1 % du maximum, soit −20 dB) ; les silences avant et après ne comptent pas.
+  function niveau(buffer) {
+    const x = buffer.getChannelData(0), H = Math.round(buffer.sampleRate * 0.02), p = [];
+    for (let i = 0; i + H <= x.length; i += H) {
+      let s = 0;
+      for (let j = 0; j < H; j++) s += x[i + j] * x[i + j];
+      p.push(s / H);
+    }
+    const max = Math.max(...p, 1e-12), actives = p.filter((v) => v > 0.01 * max);
+    return Math.sqrt(actives.reduce((a, b) => a + b, 0) / Math.max(1, actives.length));
+  }
+
+  // Copie de l'enregistrement amenée au niveau du modèle. Au-delà de 0,8, écrêtage doux (tangente hyperbolique)
+  // plutôt qu'une saturation brutale : les quelques crêtes qui dépasseraient restent propres.
+  function aligner(buffer, modele) {
+    const x = buffer.getChannelData(0), y = new Float32Array(x.length);
+    const gain = Math.min(40, Math.max(0.3, niveau(modele) / Math.max(niveau(buffer), 1e-6)));
+    for (let i = 0; i < x.length; i++) {
+      const v = x[i] * gain, a = Math.abs(v);
+      y[i] = a < 0.8 ? v : Math.sign(v) * (0.8 + 0.2 * Math.tanh((a - 0.8) / 0.2));
+    }
+    return { donnees: y, sr: buffer.sampleRate, gain: gain };
+  }
+
+  // Son → fichier WAV (16 bits, mono), rejoué par le même lecteur que le modèle :
+  // sur iPhone, l'audio Web se tait quand le bouton silencieux est mis, pas un élément <audio>.
+  function wav(son) {
+    const n = son.donnees.length, buf = new ArrayBuffer(44 + 2 * n), v = new DataView(buf);
+    const texte = (o, s) => { for (let i = 0; i < s.length; i++) v.setUint8(o + i, s.charCodeAt(i)); };
+    texte(0, "RIFF"); v.setUint32(4, 36 + 2 * n, true); texte(8, "WAVE");
+    texte(12, "fmt "); v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true);
+    v.setUint32(24, son.sr, true); v.setUint32(28, son.sr * 2, true); v.setUint16(32, 2, true); v.setUint16(34, 16, true);
+    texte(36, "data"); v.setUint32(40, 2 * n, true);
+    for (let i = 0; i < n; i++) v.setInt16(44 + 2 * i, Math.max(-1, Math.min(1, son.donnees[i])) * 0x7fff, true);
+    return new Blob([buf], { type: "audio/wav" });
   }
 
   // Tracé : modèle et apprenant superposés, de −8 à +8 demi-tons
@@ -158,5 +193,5 @@ const Ton = (() => {
     ligne(moi, couleur("--warm"), 3);
   }
 
-  return { contexte, depuisUrl, depuisBlob, tracer };
+  return { contexte, charger, courbe, niveau, aligner, wav, tracer };
 })();

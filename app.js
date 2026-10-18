@@ -75,6 +75,7 @@
   /* ---------- Accueil ---------- */
 
   function accueil() {
+    if (aRecharger) { location.reload(); return; }
     Micro.arreter();
     const t = Date.now(), c = SRS.compter(E, ORDRE, t);
     const ios = /iPhone|iPad|iPod/.test(navigator.userAgent) && !navigator.standalone;
@@ -238,7 +239,8 @@
         b.onclick = () => { if (urlMoi) URL.revokeObjectURL(urlMoi); noter(ctx, +b.dataset.note, Micro.dispo() ? null : { sansMicro: true }); };
       });
     };
-    Ton.depuisUrl(son(s)).then((c) => { courbeModele = c; if (!boite.hidden) dessiner(); }).catch(() => {});
+    const pModele = Ton.charger(son(s));
+    pModele.then((b) => { courbeModele = Ton.courbe(b); if (!boite.hidden) dessiner(); }).catch(() => {});
 
     btnModele.onclick = async () => {
       btnModele.textContent = "▶ Modèle";
@@ -265,15 +267,21 @@
       btnRec.textContent = "● Recommencer"; btnRec.classList.remove("enregistre");
       etat.textContent = "";
       if (urlMoi) URL.revokeObjectURL(urlMoi);
-      urlMoi = URL.createObjectURL(blob);
+      urlMoi = null;
       btnMoi.hidden = false;
       btnModele.textContent = "▶ Modèle";
-      Ton.depuisBlob(blob).then((c) => {
-        courbeMoi = c;
-        if (!c) etat.textContent = "Voix trop faible ou trop courte pour tracer la courbe.";
-        dessiner();
-      }).catch(() => { etat.textContent = "Courbe impossible à calculer sur cet enregistrement."; dessiner(); });
       montrerNotes();
+      try {
+        const b = await Ton.charger(blob);
+        courbeMoi = Ton.courbe(b);
+        if (!courbeMoi) etat.textContent = "Voix trop faible ou trop courte pour tracer la courbe.";
+        // Votre voix ramenée au niveau sonore du modèle, pour comparer à volume égal
+        try { urlMoi = URL.createObjectURL(Ton.wav(Ton.aligner(b, await pModele))); } catch (e) { /* son brut, ci-dessous */ }
+      } catch (e) {
+        etat.textContent = "Courbe impossible à calculer sur cet enregistrement.";
+      }
+      if (!urlMoi) urlMoi = URL.createObjectURL(blob);
+      dessiner();
       await jouer(son(s));   // modèle, puis vous, à la suite : la comparaison se fait à l'oreille
       await new Promise((r) => setTimeout(r, 300));
       await jouer(urlMoi);
@@ -363,7 +371,16 @@
   // Une carte laissée en plan (page masquée) : on coupe le micro
   document.addEventListener("visibilitychange", () => { if (document.hidden) Micro.arreter(); });
 
-  if ("serviceWorker" in navigator && location.protocol === "https:") navigator.serviceWorker.register("sw.js").catch(() => {});
+  // Nouvelle version de la page installée en arrière-plan : on recharge, mais jamais au milieu d'une carte
+  let aRecharger = false;
+  if ("serviceWorker" in navigator && location.protocol === "https:") {
+    const avait = !!navigator.serviceWorker.controller;
+    navigator.serviceWorker.addEventListener("controllerchange", () => {
+      if (!avait) return; // première installation : la page est déjà à jour
+      if (zone.querySelector(".tableau")) location.reload(); else aRecharger = true;
+    });
+    navigator.serviceWorker.register("sw.js").catch(() => {});
+  }
 
   accueil();
 })();
