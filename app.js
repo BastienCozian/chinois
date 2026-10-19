@@ -91,6 +91,7 @@
       h += `<p class="info">Rien à réviser pour l'instant.</p>`;
       if (c.restantes) h += `<button class="principal" id="encore">Encore 10 nouvelles cartes</button>`;
     }
+    h += `<button class="large" id="sons">Tableau des consonnes et des voyelles</button>`;
     if (ios) h += `<p class="info">Pour garder votre progression : Partager → « Sur l'écran d'accueil », puis ouvrez la page depuis son icône.</p>`;
 
     h += `<section class="bloc"><h2>Bilan pour l'Agent Teach</h2>
@@ -122,6 +123,7 @@
     zone.innerHTML = h;
 
     on("#go", () => seance());
+    on("#sons", tableauSons);
     on("#encore", () => { SRS.encoreDix(E, Date.now()); sauver(); seance(); });
     on("#bilan", copierBilan);
     on("#export", exporter);
@@ -166,6 +168,32 @@
       if (!v.cartes || !v.journal) throw new Error("format");
       if (confirm("Remplacer la progression actuelle par cette sauvegarde ?")) { E = Object.assign(SRS.etatVide(), v); sauver(); accueil(); }
     }).catch(() => alert("Ce fichier n'est pas une sauvegarde de la page Pinyin."));
+  }
+
+  /* ---------- Tableau des sons : chaque case joue sa syllabe ---------- */
+
+  function tableauSons() {
+    Micro.arreter();
+    let h = `<div class="haut"><button class="lien" id="quitter">← Accueil</button></div>
+      <header><h1>Les sons du pinyin</h1>
+      <p class="sous-titre">Touchez une case pour l'entendre. Tout est au 1<sup>er</sup> ton : le son ne bouge pas, on entend mieux la consonne et la voyelle.</p></header>`;
+    TABLEAU.forEach((b) => {
+      h += `<section class="bloc" id="${b.id}"><h2>${b.titre}</h2><p class="info">${b.intro}</p>
+        <div class="sons" style="--n:${b.colonnes.length}">${b.colonnes.map((c) => `<span class="sons-col">${c}</span>`).join("")}`;
+      b.lignes.forEach((l) => {
+        if (l.titre) h += `<p class="sons-ligne">${l.titre}</p>`;
+        h += l.cases.map((c) => (c
+          ? `<button data-son="${c[1]}" lang="zh-Latn-pinyin"><b>${c[0]}</b><small>${M(c[1])}</small></button>`
+          : `<span class="vide"></span>`)).join("");
+      });
+      h += `</div>${b.notes.length ? `<ul class="info">${b.notes.map((n) => `<li>${n}</li>`).join("")}</ul>` : ""}</section>`;
+    });
+    zone.innerHTML = h;
+    on("#quitter", accueil);
+    zone.querySelectorAll("[data-son]").forEach((b) => {
+      b.onclick = async () => { b.classList.add("joue"); await jouer(son(b.dataset.son)); b.classList.remove("joue"); };
+    });
+    clavier({});
   }
 
   /* ---------- Séance ---------- */
@@ -382,5 +410,6 @@
     navigator.serviceWorker.register("sw.js").catch(() => {});
   }
 
-  accueil();
+  // Lien direct vers le tableau : …/chinois/#sons
+  if (location.hash === "#sons") tableauSons(); else accueil();
 })();

@@ -979,3 +979,429 @@ const PAQUET = {
   "e-tang4"
  ]
 };
+const TABLEAU = [
+ {
+  "id": "consonnes",
+  "titre": "Les consonnes (initiales)",
+  "intro": "Une consonne ne se dit jamais seule : chaque ligne se lit avec sa voyelle d'appel, la même pour toute la ligne.",
+  "colonnes": [
+   "non aspirée",
+   "aspirée",
+   "frottée",
+   "nasale",
+   "l, r"
+  ],
+  "lignes": [
+   {
+    "titre": "Les deux lèvres (f : lèvre et dents) · avec o",
+    "cases": [
+     [
+      "b",
+      "bo1"
+     ],
+     [
+      "p",
+      "po1"
+     ],
+     [
+      "f",
+      "fo1"
+     ],
+     [
+      "m",
+      "mo1"
+     ],
+     null
+    ]
+   },
+   {
+    "titre": "Pointe de la langue derrière les dents du haut · avec e",
+    "cases": [
+     [
+      "d",
+      "de1"
+     ],
+     [
+      "t",
+      "te1"
+     ],
+     null,
+     [
+      "n",
+      "ne1"
+     ],
+     [
+      "l",
+      "le1"
+     ]
+    ]
+   },
+   {
+    "titre": "Fond de la langue contre le palais mou · avec e",
+    "cases": [
+     [
+      "g",
+      "ge1"
+     ],
+     [
+      "k",
+      "ke1"
+     ],
+     [
+      "h",
+      "he1"
+     ],
+     null,
+     null
+    ]
+   },
+   {
+    "titre": "Langue à plat contre le palais, lèvres étirées · avec i",
+    "cases": [
+     [
+      "j",
+      "ji1"
+     ],
+     [
+      "q",
+      "qi1"
+     ],
+     [
+      "x",
+      "xi1"
+     ],
+     null,
+     null
+    ]
+   },
+   {
+    "titre": "Pointe de la langue retroussée · avec i",
+    "cases": [
+     [
+      "zh",
+      "zhi1"
+     ],
+     [
+      "ch",
+      "chi1"
+     ],
+     [
+      "sh",
+      "shi1"
+     ],
+     null,
+     [
+      "r",
+      "ri1"
+     ]
+    ]
+   },
+   {
+    "titre": "Pointe de la langue contre les dents · avec i",
+    "cases": [
+     [
+      "z",
+      "zi1"
+     ],
+     [
+      "c",
+      "ci1"
+     ],
+     [
+      "s",
+      "si1"
+     ],
+     null,
+     null
+    ]
+   }
+  ],
+  "notes": [
+   "Les trois dernières lignes se lisent aussi en colonnes : <b>j · zh · z</b>, <b>q · ch · c</b>, <b>x · sh · s</b>, les confusions travaillées par les cartes.",
+   "Aspirée : un souffle net sort avec la consonne (mettez la main devant la bouche). Non aspirée : pas de souffle, mais pas sonore non plus : b se rapproche d'un p français.",
+   "y et w ne sont pas des consonnes : ils écrivent i, u, ü en début de syllabe (tableau suivant)."
+  ]
+ },
+ {
+  "id": "voyelles",
+  "titre": "Les voyelles (finales)",
+  "intro": "Une ligne par voyelle de base, une colonne par voyelle d'attaque (médiane) : i, u ou ü. Sans consonne, une finale qui commence par i, u ou ü s'écrit avec y ou w : c'est la syllabe entendue.",
+  "colonnes": [
+   "sans médiane",
+   "i…",
+   "u…",
+   "ü…"
+  ],
+  "lignes": [
+   {
+    "titre": null,
+    "cases": [
+     null,
+     [
+      "i",
+      "yi1"
+     ],
+     [
+      "u",
+      "wu1"
+     ],
+     [
+      "ü",
+      "yu1"
+     ]
+    ]
+   },
+   {
+    "titre": null,
+    "cases": [
+     [
+      "a",
+      "a1"
+     ],
+     [
+      "ia",
+      "ya1"
+     ],
+     [
+      "ua",
+      "wa1"
+     ],
+     null
+    ]
+   },
+   {
+    "titre": null,
+    "cases": [
+     [
+      "o",
+      "o1"
+     ],
+     null,
+     [
+      "uo",
+      "wo1"
+     ],
+     null
+    ]
+   },
+   {
+    "titre": null,
+    "cases": [
+     [
+      "e",
+      "e1"
+     ],
+     [
+      "ie",
+      "ye1"
+     ],
+     null,
+     [
+      "üe",
+      "yue1"
+     ]
+    ]
+   },
+   {
+    "titre": null,
+    "cases": [
+     [
+      "ai",
+      "ai1"
+     ],
+     null,
+     [
+      "uai",
+      "wai1"
+     ],
+     null
+    ]
+   },
+   {
+    "titre": null,
+    "cases": [
+     [
+      "ei",
+      "ei1"
+     ],
+     null,
+     [
+      "uei",
+      "wei1"
+     ],
+     null
+    ]
+   },
+   {
+    "titre": null,
+    "cases": [
+     [
+      "ao",
+      "ao1"
+     ],
+     [
+      "iao",
+      "yao1"
+     ],
+     null,
+     null
+    ]
+   },
+   {
+    "titre": null,
+    "cases": [
+     [
+      "ou",
+      "ou1"
+     ],
+     [
+      "iou",
+      "you1"
+     ],
+     null,
+     null
+    ]
+   },
+   {
+    "titre": null,
+    "cases": [
+     [
+      "an",
+      "an1"
+     ],
+     [
+      "ian",
+      "yan1"
+     ],
+     [
+      "uan",
+      "wan1"
+     ],
+     [
+      "üan",
+      "yuan1"
+     ]
+    ]
+   },
+   {
+    "titre": null,
+    "cases": [
+     [
+      "en",
+      "en1"
+     ],
+     [
+      "in",
+      "yin1"
+     ],
+     [
+      "uen",
+      "wen1"
+     ],
+     [
+      "ün",
+      "yun1"
+     ]
+    ]
+   },
+   {
+    "titre": null,
+    "cases": [
+     [
+      "ang",
+      "ang1"
+     ],
+     [
+      "iang",
+      "yang1"
+     ],
+     [
+      "uang",
+      "wang1"
+     ],
+     null
+    ]
+   },
+   {
+    "titre": null,
+    "cases": [
+     [
+      "eng",
+      "eng1"
+     ],
+     [
+      "ing",
+      "ying1"
+     ],
+     [
+      "ueng",
+      "weng1"
+     ],
+     null
+    ]
+   },
+   {
+    "titre": null,
+    "cases": [
+     [
+      "ong",
+      "dong1"
+     ],
+     [
+      "iong",
+      "yong1"
+     ],
+     null,
+     null
+    ]
+   },
+   {
+    "titre": null,
+    "cases": [
+     [
+      "er",
+      "er1"
+     ],
+     null,
+     null,
+     null
+    ]
+   }
+  ],
+  "notes": [
+   "ong ne se dit jamais sans consonne : on l'entend ici dans dōng.",
+   "Après une consonne, iou, uei et uen s'écrivent <b>iu</b>, <b>ui</b>, <b>un</b> (liù, guì, lùn) ; après j, q, x, y, ü s'écrit <b>u</b> (jù, quán, xué, yún).",
+   "Le e de ie et üe, et le a de ian, se disent presque « è »."
+  ]
+ },
+ {
+  "id": "trois-i",
+  "titre": "Trois sons écrits i",
+  "intro": "Après z, c, s et après zh, ch, sh, r, la lettre i ne se dit pas « i » : la voyelle prolonge la consonne.",
+  "colonnes": [
+   "après j, q, x",
+   "après z, c, s",
+   "après zh, ch, sh, r"
+  ],
+  "lignes": [
+   {
+    "titre": null,
+    "cases": [
+     [
+      "i",
+      "ji1"
+     ],
+     [
+      "i",
+      "zi1"
+     ],
+     [
+      "i",
+      "zhi1"
+     ]
+    ]
+   }
+  ],
+  "notes": []
+ }
+];

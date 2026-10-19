@@ -3,10 +3,10 @@
 Usage :
   python -X utf8 construire.py
 
-  1. lit paquet.txt et vérifie chaque syllabe contre la liste d'audio-cmn ;
+  1. lit paquet.txt et TABLEAU, et vérifie chaque syllabe contre la liste d'audio-cmn ;
   2. signale un distracteur qui diffère de sa cible par plus d'un trait ;
   3. télécharge dans audio/ les sons qui manquent (audio-cmn, voix de Chen Wang, CC BY-SA) ;
-  4. écrit paquet.js (données de la page) et sw.js (cache hors ligne, version recalculée) ;
+  4. écrit paquet.js (cartes et tableau des sons) et sw.js (cache hors ligne, version recalculée) ;
   5. dessine les icônes de l'écran d'accueil si elles manquent.
 """
 
@@ -29,6 +29,63 @@ CACHE_LISTE = ICI / ".syllabes-audio-cmn.txt"
 INITIALES = ["zh", "ch", "sh", "b", "p", "m", "f", "d", "t", "n", "l", "g", "k", "h",
              "j", "q", "x", "r", "z", "c", "s", "y", "w"]
 RE_SYLLABE = re.compile(r"^[a-z]+[1-4]$")
+
+
+def ligne(titre: str | None, cases: str) -> dict:
+    """Une ligne du tableau des sons : « b:bo1 p:po1 - » (étiquette:syllabe entendue, - pour une case vide)."""
+    return {"titre": titre, "cases": [None if c == "-" else c.split(":") for c in cases.split()]}
+
+
+# Tableau des sons : toutes les initiales et toutes les finales, chacune jouée dans une syllabe au 1er ton.
+# Une ligne = un même lieu (consonnes) ou une même voyelle de base (finales) ; une colonne = une même manière
+# (consonnes) ou une même médiane (finales). Les cases d'une ligne se lisent donc avec la même voyelle.
+TABLEAU = [
+    {"id": "consonnes", "titre": "Les consonnes (initiales)",
+     "intro": "Une consonne ne se dit jamais seule : chaque ligne se lit avec sa voyelle d'appel, la même pour toute la ligne.",
+     "colonnes": ["non aspirée", "aspirée", "frottée", "nasale", "l, r"],
+     "lignes": [
+         ligne("Les deux lèvres (f : lèvre et dents) · avec o", "b:bo1 p:po1 f:fo1 m:mo1 -"),
+         ligne("Pointe de la langue derrière les dents du haut · avec e", "d:de1 t:te1 - n:ne1 l:le1"),
+         ligne("Fond de la langue contre le palais mou · avec e", "g:ge1 k:ke1 h:he1 - -"),
+         ligne("Langue à plat contre le palais, lèvres étirées · avec i", "j:ji1 q:qi1 x:xi1 - -"),
+         ligne("Pointe de la langue retroussée · avec i", "zh:zhi1 ch:chi1 sh:shi1 - r:ri1"),
+         ligne("Pointe de la langue contre les dents · avec i", "z:zi1 c:ci1 s:si1 - -"),
+     ],
+     "notes": [
+         "Les trois dernières lignes se lisent aussi en colonnes : <b>j · zh · z</b>, <b>q · ch · c</b>, <b>x · sh · s</b>, les confusions travaillées par les cartes.",
+         "Aspirée : un souffle net sort avec la consonne (mettez la main devant la bouche). Non aspirée : pas de souffle, mais pas sonore non plus : b se rapproche d'un p français.",
+         "y et w ne sont pas des consonnes : ils écrivent i, u, ü en début de syllabe (tableau suivant).",
+     ]},
+    {"id": "voyelles", "titre": "Les voyelles (finales)",
+     "intro": "Une ligne par voyelle de base, une colonne par voyelle d'attaque (médiane) : i, u ou ü. Sans consonne, une finale qui commence par i, u ou ü s'écrit avec y ou w : c'est la syllabe entendue.",
+     "colonnes": ["sans médiane", "i…", "u…", "ü…"],
+     "lignes": [
+         ligne(None, "- i:yi1 u:wu1 ü:yu1"),
+         ligne(None, "a:a1 ia:ya1 ua:wa1 -"),
+         ligne(None, "o:o1 - uo:wo1 -"),
+         ligne(None, "e:e1 ie:ye1 - üe:yue1"),
+         ligne(None, "ai:ai1 - uai:wai1 -"),
+         ligne(None, "ei:ei1 - uei:wei1 -"),
+         ligne(None, "ao:ao1 iao:yao1 - -"),
+         ligne(None, "ou:ou1 iou:you1 - -"),
+         ligne(None, "an:an1 ian:yan1 uan:wan1 üan:yuan1"),
+         ligne(None, "en:en1 in:yin1 uen:wen1 ün:yun1"),
+         ligne(None, "ang:ang1 iang:yang1 uang:wang1 -"),
+         ligne(None, "eng:eng1 ing:ying1 ueng:weng1 -"),
+         ligne(None, "ong:dong1 iong:yong1 - -"),
+         ligne(None, "er:er1 - - -"),
+     ],
+     "notes": [
+         "ong ne se dit jamais sans consonne : on l'entend ici dans dōng.",
+         "Après une consonne, iou, uei et uen s'écrivent <b>iu</b>, <b>ui</b>, <b>un</b> (liù, guì, lùn) ; après j, q, x, y, ü s'écrit <b>u</b> (jù, quán, xué, yún).",
+         "Le e de ie et üe, et le a de ian, se disent presque « è ».",
+     ]},
+    {"id": "trois-i", "titre": "Trois sons écrits i",
+     "intro": "Après z, c, s et après zh, ch, sh, r, la lettre i ne se dit pas « i » : la voyelle prolonge la consonne.",
+     "colonnes": ["après j, q, x", "après z, c, s", "après zh, ch, sh, r"],
+     "lignes": [ligne(None, "i:ji1 i:zi1 i:zhi1")],
+     "notes": []},
+]
 
 
 def traits(s: str) -> tuple[str, str, str]:
@@ -162,7 +219,11 @@ self.addEventListener("fetch", e => {{
 def main() -> None:
     paquet = lire_paquet()
     dispo = liste_audio_cmn()
-    syllabes = sorted({s for c, v in paquet["cibles"].items() for s in [c] + v["distracteurs"]})
+    du_tableau = {c[1] for b in TABLEAU for l in b["lignes"] for c in l["cases"] if c}
+    for s in du_tableau:
+        if not RE_SYLLABE.match(s):
+            sys.exit(f"TABLEAU : « {s} » n'est pas une syllabe à chiffres (1 à 4)")
+    syllabes = sorted({s for c, v in paquet["cibles"].items() for s in [c] + v["distracteurs"]} | du_tableau)
     manquantes = [s for s in syllabes if not nom_audio_cmn(s, dispo)]
     if manquantes:
         sys.exit("Absentes d'audio-cmn : " + ", ".join(manquantes))
@@ -190,7 +251,8 @@ def main() -> None:
     paquet["ordre"] = ordre_des_cartes(paquet)
     (ICI / "paquet.js").write_text(
         "// Généré par construire.py à partir de paquet.txt : ne pas modifier à la main.\n"
-        "const PAQUET = " + json.dumps(paquet, ensure_ascii=False, indent=1) + ";\n", encoding="utf-8")
+        "const PAQUET = " + json.dumps(paquet, ensure_ascii=False, indent=1) + ";\n"
+        "const TABLEAU = " + json.dumps(TABLEAU, ensure_ascii=False, indent=1) + ";\n", encoding="utf-8")
 
     for t in (180, 512):
         if not (ICI / f"icone-{t}.png").exists():
