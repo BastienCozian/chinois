@@ -1,6 +1,6 @@
 // Généré par construire.py : ne pas modifier à la main.
 // Cache hors ligne : la page marche sans réseau une fois ouverte.
-const VERSION = "pinyin-33df32e306";
+const VERSION = "pinyin-963426c0dc";
 const FICHIERS = [
  "./",
  "index.html",

@@ -1147,7 +1147,9 @@ const TABLEAU = [
      ],
      [
       "ü",
-      "yu1"
+      "yu1",
+      "-u",
+      "apres-jqx"
      ]
     ]
    },
@@ -1198,7 +1200,9 @@ const TABLEAU = [
      null,
      [
       "üe",
-      "yue1"
+      "yue1",
+      "-ue",
+      "apres-jqx"
      ]
     ]
    },
@@ -1227,7 +1231,9 @@ const TABLEAU = [
      null,
      [
       "uei",
-      "wei1"
+      "wei1",
+      "-ui",
+      "apres-consonne"
      ],
      null
     ]
@@ -1256,7 +1262,9 @@ const TABLEAU = [
      ],
      [
       "iou",
-      "you1"
+      "you1",
+      "-iu",
+      "apres-consonne"
      ],
      null,
      null
@@ -1279,7 +1287,9 @@ const TABLEAU = [
      ],
      [
       "üan",
-      "yuan1"
+      "yuan1",
+      "-uan",
+      "apres-jqx"
      ]
     ]
    },
@@ -1296,11 +1306,15 @@ const TABLEAU = [
      ],
      [
       "uen",
-      "wen1"
+      "wen1",
+      "-un",
+      "apres-consonne"
      ],
      [
       "ün",
-      "yun1"
+      "yun1",
+      "-un",
+      "apres-jqx"
      ]
     ]
    },
@@ -1370,7 +1384,7 @@ const TABLEAU = [
   ],
   "notes": [
    "ong ne se dit jamais sans consonne : on l'entend ici dans dōng.",
-   "Après une consonne, iou, uei et uen s'écrivent <b>iu</b>, <b>ui</b>, <b>un</b> (liù, guì, lùn) ; après j, q, x, y, ü s'écrit <b>u</b> (jù, quán, xué, yún).",
+   "<span class=\"apres-consonne\">Après une consonne</span>, iou, uei et uen s'écrivent <b>iu</b>, <b>ui</b>, <b>un</b> (liù, guì, lùn) ; <span class=\"apres-jqx\">après j, q, x, y</span>, ü s'écrit <b>u</b> (jù, quán, xué, yún). Dans le tableau, ces graphies sont entre parenthèses, de la même couleur.",
    "Le e de ie et üe, et le a de ian, se disent presque « è »."
   ]
  },

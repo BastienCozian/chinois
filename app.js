@@ -91,7 +91,8 @@
       h += `<p class="info">Rien à réviser pour l'instant.</p>`;
       if (c.restantes) h += `<button class="principal" id="encore">Encore 10 nouvelles cartes</button>`;
     }
-    h += `<button class="large" id="sons">Tableau des consonnes et des voyelles</button>`;
+    h += `<button class="large" id="mes-sons">Mes sons : choisir dans le tableau et s'entraîner</button>
+      <button class="large" id="sons">Tableau des consonnes et des voyelles</button>`;
     if (ios) h += `<p class="info">Pour garder votre progression : Partager → « Sur l'écran d'accueil », puis ouvrez la page depuis son icône.</p>`;
 
     h += `<section class="bloc"><h2>Bilan pour l'Agent Teach</h2>
@@ -105,10 +106,12 @@
       Carte déjà vue : dites-la d'abord, sans aide, puis comparez au modèle. Notez-vous honnêtement :
       « À revoir » si un natif aurait compris une autre syllabe.</p>
       <p><b>Perception</b> (un son). Choisissez la syllabe entendue, puis dites si vous étiez sûr. Une erreur commise avec assurance est le signal le plus utile du bilan.</p>
+      <p><b>Mes sons</b>. Touchez dans le tableau les sons que vous voulez travailler, puis passez-les un par un :
+      modèle, enregistrement, votre voix, autant de fois qu'il faut. Rien n'est noté, la sélection est gardée.</p>
       <p><b>La courbe</b> : la hauteur de la voix, en demi-tons autour de votre hauteur moyenne (bleu : modèle, rouge : vous).
       Elle montre la forme du ton, pas sa hauteur absolue, et ne dit rien des consonnes ni des voyelles.</p>
       <p>Vos enregistrements ne sont jamais gardés : chacun disparaît à la carte suivante.</p>
-      <p>Clavier sur PC : espace pour réécouter, R pour s'enregistrer, 1 à 4 pour répondre.</p></details>`;
+      <p>Clavier sur PC : espace pour réécouter, R pour s'enregistrer, 1 à 4 pour répondre, flèches pour passer d'un son à l'autre.</p></details>`;
 
     h += `<details class="bloc"><summary>Réglages et sauvegarde</summary>
       <p><label>Nouvelles cartes par jour <input id="parjour" type="number" min="0" max="130" value="${E.parJour}"></label></p>
@@ -124,6 +127,7 @@
 
     on("#go", () => seance());
     on("#sons", tableauSons);
+    on("#mes-sons", choisirSons);
     on("#encore", () => { SRS.encoreDix(E, Date.now()); sauver(); seance(); });
     on("#bilan", copierBilan);
     on("#export", exporter);
@@ -172,28 +176,180 @@
 
   /* ---------- Tableau des sons : chaque case joue sa syllabe ---------- */
 
-  function tableauSons() {
-    Micro.arreter();
-    let h = `<div class="haut"><button class="lien" id="quitter">← Accueil</button></div>
-      <header><h1>Les sons du pinyin</h1>
-      <p class="sous-titre">Touchez une case pour l'entendre. Tout est au 1<sup>er</sup> ton : le son ne bouge pas, on entend mieux la consonne et la voyelle.</p></header>`;
+  // Cases cochées : classe « choisi » (écran Mes sons)
+  function htmlTableau(choisis) {
+    let h = "";
     TABLEAU.forEach((b) => {
       h += `<section class="bloc" id="${b.id}"><h2>${b.titre}</h2><p class="info">${b.intro}</p>
         <div class="sons" style="--n:${b.colonnes.length}">${b.colonnes.map((c) => `<span class="sons-col">${c}</span>`).join("")}`;
       b.lignes.forEach((l) => {
         if (l.titre) h += `<p class="sons-ligne">${l.titre}</p>`;
         h += l.cases.map((c) => (c
-          ? `<button data-son="${c[1]}" lang="zh-Latn-pinyin"><b>${c[0]}</b><small>${M(c[1])}</small></button>`
+          ? `<button data-son="${c[1]}" lang="zh-Latn-pinyin"${choisis.has(c[1]) ? ' class="choisi"' : ""}><b>${c[0]}</b><small>${M(c[1])}${c[2] ? ` <span class="${c[3]}">(${c[2]})</span>` : ""}</small></button>`
           : `<span class="vide"></span>`)).join("");
       });
       h += `</div>${b.notes.length ? `<ul class="info">${b.notes.map((n) => `<li>${n}</li>`).join("")}</ul>` : ""}</section>`;
     });
-    zone.innerHTML = h;
+    return h;
+  }
+
+  function tableauSons() {
+    Micro.arreter();
+    let h = `<div class="haut"><button class="lien" id="quitter">← Accueil</button></div>
+      <header><h1>Les sons du pinyin</h1>
+      <p class="sous-titre">Touchez une case pour l'entendre. Tout est au 1<sup>er</sup> ton : le son ne bouge pas, on entend mieux la consonne et la voyelle.</p></header>`;
+    zone.innerHTML = h + htmlTableau(new Set());
     on("#quitter", accueil);
     zone.querySelectorAll("[data-son]").forEach((b) => {
       b.onclick = async () => { b.classList.add("joue"); await jouer(son(b.dataset.son)); b.classList.remove("joue"); };
     });
     clavier({});
+  }
+
+  /* ---------- Mes sons : je choisis des cases du tableau, je m'écoute et je compare ---------- */
+
+  // Syllabe → étiquette de sa première case, dans l'ordre du tableau (ji1 a deux cases : j et i)
+  const CASES = {};
+  TABLEAU.forEach((b) => b.lignes.forEach((l) => l.cases.forEach((c) => { if (c && !CASES[c[1]]) CASES[c[1]] = c[0]; })));
+
+  function choisirSons() {
+    Micro.arreter();
+    const choix = new Set((E.choix || []).filter((s) => CASES[s]));
+    zone.innerHTML = `<div class="haut"><button class="lien" id="quitter">← Accueil</button></div>
+      <header><h1>Mes sons</h1>
+      <p class="sous-titre">Touchez les sons à travailler : chacun se fait entendre en entrant dans la sélection. Touchez-le de nouveau pour le retirer.</p></header>`
+      + htmlTableau(choix)
+      + `<div class="barre-choix"><button class="lien" id="vider">Tout retirer</button><button class="principal" id="go"></button></div>`;
+    const go = zone.querySelector("#go"), vider = zone.querySelector("#vider");
+    const maj = () => {
+      E.choix = Object.keys(CASES).filter((s) => choix.has(s));
+      sauver();
+      const n = E.choix.length;
+      go.textContent = n ? `S'entraîner · ${n} son${n > 1 ? "s" : ""}` : "Choisissez des sons";
+      go.disabled = !n;
+      vider.hidden = !n;
+      zone.querySelectorAll("[data-son]").forEach((b) => b.classList.toggle("choisi", choix.has(b.dataset.son)));
+    };
+    zone.querySelectorAll("[data-son]").forEach((b) => {
+      b.onclick = () => {
+        const s = b.dataset.son;
+        if (choix.has(s)) choix.delete(s); else { choix.add(s); jouer(son(s)); }
+        maj();
+      };
+    });
+    on("#quitter", accueil);
+    on("#vider", () => { choix.clear(); maj(); });
+    go.onclick = () => entrainement(E.choix.slice(), 0);
+    maj();
+    clavier({});
+  }
+
+  function entrainement(liste, i) {
+    Ton.contexte(); // créé pendant un geste : Safari l'exige
+    const s = liste[i], n = liste.length;
+    zone.innerHTML = `<div class="haut"><button class="lien" id="quitter">← Mes sons</button><span class="compteur">${i + 1} / ${n}</span></div>
+      <p class="groupe">Entraînement libre · case ${CASES[s]}</p>
+      <section class="carte">
+      <p class="consigne">Écoutez, enregistrez-vous, comparez : autant de fois qu'il faut.</p>
+      <div class="syllabe" lang="zh-Latn-pinyin">${M(s)}</div>
+      ${htmlComparaison("▶ Modèle")}</section>
+      ${n > 1 ? `<div class="actions"><button id="prec">← Précédent</button><button id="suiv">Suivant →</button></div>` : ""}`;
+    const c = comparer(s, () => {}, " et répétez à voix haute.");
+    const aller = (j) => { c.liberer(); entrainement(liste, (j + n) % n); };
+    on("#quitter", () => { c.liberer(); choisirSons(); });
+    on("#prec", () => aller(i - 1));
+    on("#suiv", () => aller(i + 1));
+    jouer(son(s));
+    clavier({
+      " ": c.modele, r: c.rec,
+      arrowleft: () => { if (n > 1) aller(i - 1); }, arrowright: () => { if (n > 1) aller(i + 1); },
+    });
+  }
+
+  /* ---------- Comparaison : modèle, ma voix, courbe de ton (production et Mes sons) ---------- */
+
+  function htmlComparaison(libelleModele) {
+    return `<div class="actions">
+        <button class="principal" id="rec">● M'enregistrer</button>
+        <button id="modele">${libelleModele}</button>
+        <button id="moi" hidden>▶ Moi</button>
+        <button id="deux" hidden>▶ Modèle puis moi</button>
+      </div>
+      <p class="info" id="etat-micro"></p>
+      <div class="courbe-boite" hidden><canvas class="courbe"></canvas>
+        <p class="legende"><span class="l-modele">— modèle</span> <span class="l-moi">— vous</span> <span class="l-info">demi-tons autour de la hauteur moyenne</span></p></div>`;
+  }
+
+  // Branche les boutons de htmlComparaison sur la syllabe s. apres() : appelé quand on peut passer à la suite
+  // (enregistrement fini, ou modèle écouté sans micro). sansMicro : fin de la consigne quand le micro manque.
+  function comparer(s, apres, sansMicro) {
+    let blob = null, urlMoi = null, courbeModele = null, courbeMoi = null, actif = true;
+    const btnRec = zone.querySelector("#rec"), btnMoi = zone.querySelector("#moi"), btnModele = zone.querySelector("#modele");
+    const btnDeux = zone.querySelector("#deux");
+    const etat = zone.querySelector("#etat-micro"), boite = zone.querySelector(".courbe-boite");
+    const canvas = zone.querySelector("canvas");
+
+    const dessiner = () => { boite.hidden = false; Ton.tracer(canvas, courbeModele, courbeMoi); };
+    const lesDeux = async () => {   // modèle, puis vous, à la suite : la comparaison se fait à l'oreille
+      await jouer(son(s));
+      await new Promise((r) => setTimeout(r, 300));
+      if (actif && urlMoi) await jouer(urlMoi);
+    };
+    const pModele = Ton.charger(son(s));
+    pModele.then((b) => { courbeModele = Ton.courbe(b); if (actif && !boite.hidden) dessiner(); }).catch(() => {});
+
+    btnModele.onclick = async () => {
+      btnModele.textContent = "▶ Modèle";
+      await jouer(son(s));
+      if (actif && !Micro.dispo()) { dessiner(); apres(); }
+    };
+    btnMoi.onclick = () => { if (urlMoi) jouer(urlMoi); };
+    btnDeux.onclick = lesDeux;
+
+    btnRec.onclick = async () => {
+      if (Micro.rec) { Micro.arreter(); return; }
+      if (!Micro.dispo()) return;
+      try {
+        if (finLecture) { lecteur.pause(); finLecture(); }
+        blob = await Micro.enregistrer(() => {
+          btnRec.textContent = "■ Arrêter"; btnRec.classList.add("enregistre");
+          etat.textContent = "Parlez…";
+        });
+      } catch (e) {
+        Micro.refuse = true;
+        btnRec.disabled = true;
+        etat.textContent = "Micro refusé ou indisponible : écoutez le modèle" + sansMicro;
+        return;
+      }
+      if (!actif) return; // carte quittée pendant l'enregistrement
+      btnRec.textContent = "● Recommencer"; btnRec.classList.remove("enregistre");
+      etat.textContent = "";
+      if (urlMoi) URL.revokeObjectURL(urlMoi);
+      urlMoi = null;
+      btnMoi.hidden = btnDeux.hidden = false;
+      btnModele.textContent = "▶ Modèle";
+      apres();
+      try {
+        const b = await Ton.charger(blob);
+        courbeMoi = Ton.courbe(b);
+        if (!courbeMoi) etat.textContent = "Voix trop faible ou trop courte pour tracer la courbe.";
+        // Votre voix ramenée au niveau sonore du modèle, pour comparer à volume égal
+        try { urlMoi = URL.createObjectURL(Ton.wav(Ton.aligner(b, await pModele))); } catch (e) { /* son brut, ci-dessous */ }
+      } catch (e) {
+        etat.textContent = "Courbe impossible à calculer sur cet enregistrement.";
+      }
+      if (!urlMoi) urlMoi = URL.createObjectURL(blob);
+      if (!actif) return;
+      dessiner();
+      await lesDeux();
+    };
+
+    if (!Micro.dispo()) etat.textContent = (Micro.refuse ? "Micro refusé : écoutez le modèle" : "Ce navigateur n'enregistre pas le son : écoutez") + sansMicro;
+    return {
+      modele: () => btnModele.click(),
+      rec: () => btnRec.click(),
+      liberer: () => { actif = false; Micro.arreter(); if (urlMoi) URL.revokeObjectURL(urlMoi); },
+    };
   }
 
   /* ---------- Séance ---------- */
@@ -240,84 +396,24 @@
   /* Production : je lis, je dis, je compare */
   function production(ctx) {
     const s = ctx.cible;
-    let blob = null, urlMoi = null, courbeModele = null, courbeMoi = null, noteVisible = false;
+    let noteVisible = false;
     zone.innerHTML = entete(ctx) + `<section class="carte">
       <p class="consigne">${ctx.nouvelle ? "Nouvelle syllabe : écoutez, puis répétez en vous enregistrant." : "Dites-la d'abord, sans aide, puis comparez au modèle."}</p>
       <div class="syllabe" lang="zh-Latn-pinyin">${M(s)}</div>
-      <div class="actions">
-        <button class="principal" id="rec">● M'enregistrer</button>
-        <button id="modele">${ctx.nouvelle ? "▶ Modèle" : "▶ Écouter d'abord"}</button>
-        <button id="moi" hidden>▶ Moi</button>
-      </div>
-      <p class="info" id="etat-micro"></p>
-      <div class="courbe-boite" hidden><canvas class="courbe"></canvas>
-        <p class="legende"><span class="l-modele">— modèle</span> <span class="l-moi">— vous</span> <span class="l-info">demi-tons autour de la hauteur moyenne</span></p></div>
+      ${htmlComparaison(ctx.nouvelle ? "▶ Modèle" : "▶ Écouter d'abord")}
       <div id="notes"></div></section>`;
-    on("#quitter", accueil);
-    const btnRec = zone.querySelector("#rec"), btnMoi = zone.querySelector("#moi"), btnModele = zone.querySelector("#modele");
-    const etat = zone.querySelector("#etat-micro"), boite = zone.querySelector(".courbe-boite");
-    const canvas = zone.querySelector("canvas");
-
-    const dessiner = () => { boite.hidden = false; Ton.tracer(canvas, courbeModele, courbeMoi); };
     const montrerNotes = () => {
       if (noteVisible) return;
       noteVisible = true;
       zone.querySelector("#notes").innerHTML = boutonsNotes(ctx);
       zone.querySelectorAll("[data-note]").forEach((b) => {
-        b.onclick = () => { if (urlMoi) URL.revokeObjectURL(urlMoi); noter(ctx, +b.dataset.note, Micro.dispo() ? null : { sansMicro: true }); };
+        b.onclick = () => { const sansMicro = !Micro.dispo(); c.liberer(); noter(ctx, +b.dataset.note, sansMicro ? { sansMicro: true } : null); };
       });
     };
-    const pModele = Ton.charger(son(s));
-    pModele.then((b) => { courbeModele = Ton.courbe(b); if (!boite.hidden) dessiner(); }).catch(() => {});
-
-    btnModele.onclick = async () => {
-      btnModele.textContent = "▶ Modèle";
-      await jouer(son(s));
-      if (!Micro.dispo()) { dessiner(); montrerNotes(); }
-    };
-    btnMoi.onclick = () => { if (urlMoi) jouer(urlMoi); };
-
-    btnRec.onclick = async () => {
-      if (Micro.rec) { Micro.arreter(); return; }
-      if (!Micro.dispo()) return;
-      try {
-        if (finLecture) { lecteur.pause(); finLecture(); }
-        blob = await Micro.enregistrer(() => {
-          btnRec.textContent = "■ Arrêter"; btnRec.classList.add("enregistre");
-          etat.textContent = "Parlez…";
-        });
-      } catch (e) {
-        Micro.refuse = true;
-        btnRec.disabled = true;
-        etat.textContent = "Micro refusé ou indisponible : écoutez le modèle, répétez à voix haute et notez-vous.";
-        return;
-      }
-      btnRec.textContent = "● Recommencer"; btnRec.classList.remove("enregistre");
-      etat.textContent = "";
-      if (urlMoi) URL.revokeObjectURL(urlMoi);
-      urlMoi = null;
-      btnMoi.hidden = false;
-      btnModele.textContent = "▶ Modèle";
-      montrerNotes();
-      try {
-        const b = await Ton.charger(blob);
-        courbeMoi = Ton.courbe(b);
-        if (!courbeMoi) etat.textContent = "Voix trop faible ou trop courte pour tracer la courbe.";
-        // Votre voix ramenée au niveau sonore du modèle, pour comparer à volume égal
-        try { urlMoi = URL.createObjectURL(Ton.wav(Ton.aligner(b, await pModele))); } catch (e) { /* son brut, ci-dessous */ }
-      } catch (e) {
-        etat.textContent = "Courbe impossible à calculer sur cet enregistrement.";
-      }
-      if (!urlMoi) urlMoi = URL.createObjectURL(blob);
-      dessiner();
-      await jouer(son(s));   // modèle, puis vous, à la suite : la comparaison se fait à l'oreille
-      await new Promise((r) => setTimeout(r, 300));
-      await jouer(urlMoi);
-    };
-
+    const c = comparer(s, montrerNotes, ", répétez à voix haute et notez-vous.");
+    on("#quitter", () => { c.liberer(); accueil(); });
     if (ctx.nouvelle) jouer(son(s));
-    if (!Micro.dispo()) etat.textContent = Micro.refuse ? "Micro refusé : écoutez le modèle, répétez à voix haute et notez-vous." : "Ce navigateur n'enregistre pas le son : écoutez, répétez à voix haute et notez-vous.";
-    clavier({ " ": () => btnModele.click(), r: () => btnRec.click(), note: (n) => { const b = zone.querySelector(`[data-note="${n}"]`); if (b) b.click(); } });
+    clavier({ " ": c.modele, r: c.rec, note: (n) => { const b = zone.querySelector(`[data-note="${n}"]`); if (b) b.click(); } });
   }
 
   /* Perception : j'entends, je choisis, je dis si j'étais sûr */
@@ -410,6 +506,6 @@
     navigator.serviceWorker.register("sw.js").catch(() => {});
   }
 
-  // Lien direct vers le tableau : …/chinois/#sons
-  if (location.hash === "#sons") tableauSons(); else accueil();
+  // Liens directs : …/chinois/#sons (tableau), …/chinois/#mes-sons
+  if (location.hash === "#sons") tableauSons(); else if (location.hash === "#mes-sons") choisirSons(); else accueil();
 })();

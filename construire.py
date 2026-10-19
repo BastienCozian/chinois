@@ -31,9 +31,22 @@ INITIALES = ["zh", "ch", "sh", "b", "p", "m", "f", "d", "t", "n", "l", "g", "k",
 RE_SYLLABE = re.compile(r"^[a-z]+[1-4]$")
 
 
+GRAPHIES = {"c": "apres-consonne", "j": "apres-jqx"}
+
+
 def ligne(titre: str | None, cases: str) -> dict:
-    """Une ligne du tableau des sons : « b:bo1 p:po1 - » (étiquette:syllabe entendue, - pour une case vide)."""
-    return {"titre": titre, "cases": [None if c == "-" else c.split(":") for c in cases.split()]}
+    """Une ligne du tableau des sons : « b:bo1 p:po1 - » (étiquette:syllabe entendue, - pour une case vide).
+    Un troisième champ donne la graphie abrégée et son contexte : « uei:wei1:c=-ui » (après une consonne),
+    « ü:yu1:j=-u » (après j, q, x)."""
+    def case(c: str) -> list[str] | None:
+        if c == "-":
+            return None
+        etiquette, syllabe, *graphie = c.split(":")
+        if not graphie:
+            return [etiquette, syllabe]
+        genre, _, ecrit = graphie[0].partition("=")
+        return [etiquette, syllabe, ecrit, GRAPHIES[genre]]
+    return {"titre": titre, "cases": [case(c) for c in cases.split()]}
 
 
 # Tableau des sons : toutes les initiales et toutes les finales, chacune jouée dans une syllabe au 1er ton.
@@ -60,16 +73,16 @@ TABLEAU = [
      "intro": "Une ligne par voyelle de base, une colonne par voyelle d'attaque (médiane) : i, u ou ü. Sans consonne, une finale qui commence par i, u ou ü s'écrit avec y ou w : c'est la syllabe entendue.",
      "colonnes": ["sans médiane", "i…", "u…", "ü…"],
      "lignes": [
-         ligne(None, "- i:yi1 u:wu1 ü:yu1"),
+         ligne(None, "- i:yi1 u:wu1 ü:yu1:j=-u"),
          ligne(None, "a:a1 ia:ya1 ua:wa1 -"),
          ligne(None, "o:o1 - uo:wo1 -"),
-         ligne(None, "e:e1 ie:ye1 - üe:yue1"),
+         ligne(None, "e:e1 ie:ye1 - üe:yue1:j=-ue"),
          ligne(None, "ai:ai1 - uai:wai1 -"),
-         ligne(None, "ei:ei1 - uei:wei1 -"),
+         ligne(None, "ei:ei1 - uei:wei1:c=-ui -"),
          ligne(None, "ao:ao1 iao:yao1 - -"),
-         ligne(None, "ou:ou1 iou:you1 - -"),
-         ligne(None, "an:an1 ian:yan1 uan:wan1 üan:yuan1"),
-         ligne(None, "en:en1 in:yin1 uen:wen1 ün:yun1"),
+         ligne(None, "ou:ou1 iou:you1:c=-iu - -"),
+         ligne(None, "an:an1 ian:yan1 uan:wan1 üan:yuan1:j=-uan"),
+         ligne(None, "en:en1 in:yin1 uen:wen1:c=-un ün:yun1:j=-un"),
          ligne(None, "ang:ang1 iang:yang1 uang:wang1 -"),
          ligne(None, "eng:eng1 ing:ying1 ueng:weng1 -"),
          ligne(None, "ong:dong1 iong:yong1 - -"),
@@ -77,7 +90,7 @@ TABLEAU = [
      ],
      "notes": [
          "ong ne se dit jamais sans consonne : on l'entend ici dans dōng.",
-         "Après une consonne, iou, uei et uen s'écrivent <b>iu</b>, <b>ui</b>, <b>un</b> (liù, guì, lùn) ; après j, q, x, y, ü s'écrit <b>u</b> (jù, quán, xué, yún).",
+         "<span class=\"apres-consonne\">Après une consonne</span>, iou, uei et uen s'écrivent <b>iu</b>, <b>ui</b>, <b>un</b> (liù, guì, lùn) ; <span class=\"apres-jqx\">après j, q, x, y</span>, ü s'écrit <b>u</b> (jù, quán, xué, yún). Dans le tableau, ces graphies sont entre parenthèses, de la même couleur.",
          "Le e de ie et üe, et le a de ian, se disent presque « è ».",
      ]},
     {"id": "trois-i", "titre": "Trois sons écrits i",
