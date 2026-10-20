@@ -1200,7 +1200,7 @@ const TABLEAU = [
      null,
      [
       "üe",
-      "yue1",
+      "jue1",
       "-ue",
       "apres-jqx"
      ]
@@ -1331,7 +1331,7 @@ const TABLEAU = [
      ],
      [
       "uang",
-      "wang1"
+      "huang1"
      ],
      null
     ]
@@ -1359,7 +1359,7 @@ const TABLEAU = [
     "cases": [
      [
       "ong",
-      "dong1"
+      "tong1"
      ],
      [
       "iong",
@@ -1383,7 +1383,8 @@ const TABLEAU = [
    }
   ],
   "notes": [
-   "ong ne se dit jamais sans consonne : on l'entend ici dans dōng.",
+   "Trois cases s'entendent avec une consonne, faute d'un enregistrement propre sans consonne : üe dans juē, uang dans huāng, ong dans tōng (ong ne se dit d'ailleurs jamais seul).",
+   "uang et ueng : le a de uang s'ouvre grand (huāng), le e de ueng reste mi-fermé (wēng). ueng ne se rencontre que seul ; après une consonne, on trouve ong, un son voisin (hōng).",
    "<span class=\"apres-consonne\">Après une consonne</span>, iou, uei et uen s'écrivent <b>iu</b>, <b>ui</b>, <b>un</b> (liù, guì, lùn) ; <span class=\"apres-jqx\">après j, q, x, y</span>, ü s'écrit <b>u</b> (jù, quán, xué, yún). Dans le tableau, ces graphies sont entre parenthèses, de la même couleur.",
    "Le e de ie et üe, et le a de ian, se disent presque « è »."
   ]

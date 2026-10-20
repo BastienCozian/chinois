@@ -1,6 +1,6 @@
 // Généré par construire.py : ne pas modifier à la main.
 // Cache hors ligne : la page marche sans réseau une fois ouverte.
-const VERSION = "pinyin-963426c0dc";
+const VERSION = "pinyin-3b3a113864";
 const FICHIERS = [
  "./",
  "index.html",
@@ -65,6 +65,7 @@ const FICHIERS = [
  "audio/hu2.mp3",
  "audio/hu3.mp3",
  "audio/hu4.mp3",
+ "audio/huang1.mp3",
  "audio/ji1.mp3",
  "audio/ji3.mp3",
  "audio/ji4.mp3",
@@ -74,6 +75,7 @@ const FICHIERS = [
  "audio/jiao4.mp3",
  "audio/ju3.mp3",
  "audio/ju4.mp3",
+ "audio/jue1.mp3",
  "audio/ke1.mp3",
  "audio/ke3.mp3",
  "audio/le1.mp3",
@@ -148,12 +150,12 @@ const FICHIERS = [
  "audio/te4.mp3",
  "audio/teng2.mp3",
  "audio/ting2.mp3",
+ "audio/tong1.mp3",
  "audio/tong2.mp3",
  "audio/tong3.mp3",
  "audio/wa1.mp3",
  "audio/wai1.mp3",
  "audio/wan1.mp3",
- "audio/wang1.mp3",
  "audio/wei1.mp3",
  "audio/wen1.mp3",
  "audio/weng1.mp3",
@@ -188,7 +190,6 @@ const FICHIERS = [
  "audio/yu3.mp3",
  "audio/yu4.mp3",
  "audio/yuan1.mp3",
- "audio/yue1.mp3",
  "audio/yun1.mp3",
  "audio/zai3.mp3",
  "audio/zai4.mp3",

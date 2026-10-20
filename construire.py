@@ -50,6 +50,8 @@ def ligne(titre: str | None, cases: str) -> dict:
 
 
 # Tableau des sons : toutes les initiales et toutes les finales, chacune jouée dans une syllabe au 1er ton.
+# Certains sons d'audio-cmn sont mal montés (raccord ou fin coupée net : dong1, yue1, wang1) : prendre une autre
+# syllabe au 1er ton, vérifiée à l'oreille ou sur le spectrogramme.
 # Une ligne = un même lieu (consonnes) ou une même voyelle de base (finales) ; une colonne = une même manière
 # (consonnes) ou une même médiane (finales). Les cases d'une ligne se lisent donc avec la même voyelle.
 TABLEAU = [
@@ -76,20 +78,21 @@ TABLEAU = [
          ligne(None, "- i:yi1 u:wu1 ü:yu1:j=-u"),
          ligne(None, "a:a1 ia:ya1 ua:wa1 -"),
          ligne(None, "o:o1 - uo:wo1 -"),
-         ligne(None, "e:e1 ie:ye1 - üe:yue1:j=-ue"),
+         ligne(None, "e:e1 ie:ye1 - üe:jue1:j=-ue"),
          ligne(None, "ai:ai1 - uai:wai1 -"),
          ligne(None, "ei:ei1 - uei:wei1:c=-ui -"),
          ligne(None, "ao:ao1 iao:yao1 - -"),
          ligne(None, "ou:ou1 iou:you1:c=-iu - -"),
          ligne(None, "an:an1 ian:yan1 uan:wan1 üan:yuan1:j=-uan"),
          ligne(None, "en:en1 in:yin1 uen:wen1:c=-un ün:yun1:j=-un"),
-         ligne(None, "ang:ang1 iang:yang1 uang:wang1 -"),
+         ligne(None, "ang:ang1 iang:yang1 uang:huang1 -"),
          ligne(None, "eng:eng1 ing:ying1 ueng:weng1 -"),
-         ligne(None, "ong:dong1 iong:yong1 - -"),
+         ligne(None, "ong:tong1 iong:yong1 - -"),
          ligne(None, "er:er1 - - -"),
      ],
      "notes": [
-         "ong ne se dit jamais sans consonne : on l'entend ici dans dōng.",
+         "Trois cases s'entendent avec une consonne, faute d'un enregistrement propre sans consonne : üe dans juē, uang dans huāng, ong dans tōng (ong ne se dit d'ailleurs jamais seul).",
+         "uang et ueng : le a de uang s'ouvre grand (huāng), le e de ueng reste mi-fermé (wēng). ueng ne se rencontre que seul ; après une consonne, on trouve ong, un son voisin (hōng).",
          "<span class=\"apres-consonne\">Après une consonne</span>, iou, uei et uen s'écrivent <b>iu</b>, <b>ui</b>, <b>un</b> (liù, guì, lùn) ; <span class=\"apres-jqx\">après j, q, x, y</span>, ü s'écrit <b>u</b> (jù, quán, xué, yún). Dans le tableau, ces graphies sont entre parenthèses, de la même couleur.",
          "Le e de ie et üe, et le a de ian, se disent presque « è ».",
      ]},
