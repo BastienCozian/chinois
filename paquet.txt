@@ -43,20 +43,20 @@ lu4 : ru4 nu4 lu3
 ## finales | Finales nasales : ang · eng · ong, -n · -ng
 
 ### ang-eng-ong | ang · eng · ong
-dang1 : deng1 dong1 dan1
-deng1 : dang1 dong1 deng3
-dong1 : dang1 deng1 dong4
+sang1 : seng1 song1 sang4
+seng1 : sang1 song1 seng4
+song1 : sang1 seng1 song4
 tang2 : teng2 tong2 tan2
 teng2 : tang2 tong2 ting2
 tong2 : tang2 teng2 tong3
 
 ### an-ang | an · ang
-ban1 : bang1 ben1 ban3
+ban1 : bang1 pan1 ban3
 bang1 : ban1 beng1 bang3
 
 ### en-eng | en · eng
-fen1 : feng1 fan1 fen4
-feng1 : fen1 fang1 feng4
+pen1 : peng1 pan1 pen4
+peng1 : pen1 pang1 peng4
 
 ### in-ing | in · ing
 xin1 : xing1 xun1 xin4

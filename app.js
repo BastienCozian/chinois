@@ -18,7 +18,12 @@
   function charger() {
     try {
       const v = localStorage.getItem(CLE);
-      if (v) return Object.assign(SRS.etatVide(), JSON.parse(v));
+      if (v) {
+        const e = Object.assign(SRS.etatVide(), JSON.parse(v));
+        // Cartes retirées du paquet : on oublie leur progression
+        for (const id of Object.keys(e.cartes)) if (!ORDRE.includes(id)) delete e.cartes[id];
+        return e;
+      }
     } catch (e) { /* stockage indisponible : on repart d'un état vide */ }
     return SRS.etatVide();
   }

@@ -58,9 +58,9 @@ const PAQUET = {
      "id": "ang-eng-ong",
      "libelle": "ang · eng · ong",
      "cibles": [
-      "dang1",
-      "deng1",
-      "dong1",
+      "sang1",
+      "seng1",
+      "song1",
       "tang2",
       "teng2",
       "tong2"
@@ -78,8 +78,8 @@ const PAQUET = {
      "id": "en-eng",
      "libelle": "en · eng",
      "cibles": [
-      "fen1",
-      "feng1"
+      "pen1",
+      "peng1"
      ]
     },
     {
@@ -409,31 +409,31 @@ const PAQUET = {
     "lu3"
    ]
   },
-  "dang1": {
+  "sang1": {
    "groupe": "finales",
    "contraste": "ang-eng-ong",
    "distracteurs": [
-    "deng1",
-    "dong1",
-    "dan1"
+    "seng1",
+    "song1",
+    "sang4"
    ]
   },
-  "deng1": {
+  "seng1": {
    "groupe": "finales",
    "contraste": "ang-eng-ong",
    "distracteurs": [
-    "dang1",
-    "dong1",
-    "deng3"
+    "sang1",
+    "song1",
+    "seng4"
    ]
   },
-  "dong1": {
+  "song1": {
    "groupe": "finales",
    "contraste": "ang-eng-ong",
    "distracteurs": [
-    "dang1",
-    "deng1",
-    "dong4"
+    "sang1",
+    "seng1",
+    "song4"
    ]
   },
   "tang2": {
@@ -468,7 +468,7 @@ const PAQUET = {
    "contraste": "an-ang",
    "distracteurs": [
     "bang1",
-    "ben1",
+    "pan1",
     "ban3"
    ]
   },
@@ -481,22 +481,22 @@ const PAQUET = {
     "bang3"
    ]
   },
-  "fen1": {
+  "pen1": {
    "groupe": "finales",
    "contraste": "en-eng",
    "distracteurs": [
-    "feng1",
-    "fan1",
-    "fen4"
+    "peng1",
+    "pan1",
+    "pen4"
    ]
   },
-  "feng1": {
+  "peng1": {
    "groupe": "finales",
    "contraste": "en-eng",
    "distracteurs": [
-    "fen1",
-    "fang1",
-    "feng4"
+    "pen1",
+    "pang1",
+    "peng4"
    ]
   },
   "xin1": {
@@ -877,9 +877,9 @@ const PAQUET = {
   "e-shan1",
   "e-san1",
   "e-xian1",
-  "p-dang1",
-  "p-deng1",
-  "p-dong1",
+  "p-sang1",
+  "p-seng1",
+  "p-song1",
   "p-tang2",
   "p-teng2",
   "p-tong2",
@@ -889,20 +889,20 @@ const PAQUET = {
   "e-lu4",
   "p-ban1",
   "p-bang1",
-  "e-dang1",
-  "e-deng1",
-  "e-dong1",
+  "e-sang1",
+  "e-seng1",
+  "e-song1",
   "e-tang2",
   "e-teng2",
   "e-tong2",
-  "p-fen1",
-  "p-feng1",
+  "p-pen1",
+  "p-peng1",
   "e-ban1",
   "e-bang1",
   "p-xin1",
   "p-xing1",
-  "e-fen1",
-  "e-feng1",
+  "e-pen1",
+  "e-peng1",
   "p-nian2",
   "p-niang2",
   "e-xin1",
