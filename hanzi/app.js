@@ -1,4 +1,5 @@
-// Page Sinogrammes : écrans, son, tracé au doigt (Hanzi Writer). La logique est dans hanzi.js et ../srs.js.
+// Page Sinogrammes : écrans, son, tracé au doigt (Hanzi Writer). La logique est dans hanzi.js et ../srs.js ;
+// le micro et la comparaison de ma voix au modèle dans ../voix.js et ../ton.js.
 "use strict";
 
 (() => {
@@ -35,12 +36,25 @@
 
   /* ---------- Son ---------- */
 
-  const lecteur = new Audio();
+  const src = (id) => "sons/" + id + ".mp3";
   function jouer(id) {
-    if (!P.mots[id].son) return;
-    lecteur.src = "sons/" + id + ".mp3";
-    const p = lecteur.play();
-    if (p) p.catch(() => {});
+    if (P.mots[id].son) Voix.jouer(src(id));
+  }
+
+  /* ---------- Ma voix comparée au modèle ---------- */
+
+  const DUREE_MAX = 4000; // un enregistrement s'arrête seul après 4 s : un mot de deux ou trois syllabes
+  let voix = null;        // comparaison de l'écran affiché
+  let silence = false;    // « Je ne peux pas parler ici » : jusqu'à la fermeture de la page
+
+  // Quitte l'écran : coupe le son, le micro, et oublie mon enregistrement
+  function lacher() {
+    Voix.couper();
+    if (voix) { voix.liberer(); voix = null; }
+  }
+  function brancherVoix(id, options) {
+    Ton.contexte(); // créé pendant un geste : Safari l'exige
+    voix = Voix.comparer(zone, src(id), Object.assign({ duree: DUREE_MAX, sansMicro: " et répétez à voix haute." }, options));
   }
 
   /* ---------- Affichage d'un mot ---------- */
@@ -111,7 +125,7 @@
 
   function accueil() {
     if (aRecharger) { location.reload(); return; }
-    lecteur.pause();
+    lacher();
     const t = Date.now(), c = SRS.compter(vue(), ORDRE, t);
     const ios = /iPhone|iPad|iPod/.test(navigator.userAgent) && !navigator.standalone;
     let h = `<header><p class="kicker">Chinois · caractères</p><h1>Sinogrammes</h1>
@@ -143,11 +157,15 @@
       La première fois, le mot se présente : regardez l'ordre des traits, puis repassez sur le modèle.
       La note proposée suit vos fautes ; changez-la si elle vous semble injuste.</p>
       <p><b>Sens</b> (les caractères). Retrouvez le sens, puis vérifiez.</p>
-      <p><b>Lecture</b> (les caractères). Dites le mot à voix haute, puis touchez le ton de chaque syllabe :
-      les tons sont corrigés tout de suite, et la prononciation se compare au modèle.</p>
+      <p><b>Lecture</b> (les caractères). Dites le mot à voix haute en vous enregistrant, puis touchez le ton de chaque syllabe :
+      les tons sont corrigés tout de suite, puis le modèle et votre voix passent à la suite, avec leurs courbes de ton
+      (bleu : modèle, rouge : vous ; la forme du ton, pas sa hauteur). L'enregistrement n'est pas obligatoire.
+      Là où vous ne pouvez pas parler, touchez « Je ne peux pas parler ici » : les cartes de lecture se font alors
+      de tête, jusqu'à ce que vous fermiez la page. Vos enregistrements ne sont jamais gardés.</p>
+      <p><b>Les mots</b>. La fiche de chaque mot permet aussi de s'enregistrer et de se comparer au modèle, sans note.</p>
       <p><b>Écoute</b> (le son seul). Retrouvez le sens, puis vérifiez.</p>
       <p>Tons du dictionnaire : dans 你好, on écrit nǐ hǎo, on dit ní hǎo. La remarque sous le mot le signale.</p>
-      <p>Clavier sur PC : espace pour voir la réponse ou réécouter, 1 à 4 pour noter, 1 à 5 pour les tons (5 : neutre).</p></details>`;
+      <p>Clavier sur PC : espace pour voir la réponse ou réécouter, R pour s'enregistrer, 1 à 4 pour noter, 1 à 5 pour les tons (5 : neutre).</p></details>`;
 
     h += `<details class="bloc"><summary>Réglages et sauvegarde</summary>
       <p>Cartes à travailler :</p><p class="types">${Object.entries(Hanzi.TYPES).map(([t, nom]) =>
@@ -230,7 +248,7 @@
   /* ---------- Les mots : liste, fiche, écriture libre ---------- */
 
   function liste() {
-    lecteur.pause();
+    lacher();
     const point = (id) => {
       const c = E.cartes[id];
       return `<i class="pt ${c ? c.etat : "nouvelle"}" title="${Hanzi.TYPES[id[0]]}"></i>`;
@@ -254,6 +272,7 @@
   }
 
   function fiche(id) {
+    lacher();
     const m = P.mots[id], chars = [...m.hz];
     let k = 0;
     zone.innerHTML = `<div class="haut"><button class="lien" id="quitter">← Les mots</button></div>
@@ -261,7 +280,8 @@
       ${chars.length > 1 ? `<div class="onglets">${chars.map((c, i) => `<button data-k="${i}">${hz(c)}</button>`).join("")}</div>` : ""}
       <div class="ecrire">${GRILLE}<div class="hw"></div></div>
       <div class="actions"><button id="anim">▶ Ordre des traits</button><button class="principal" id="libre">✎ M'entraîner</button></div>
-      <div id="compo"></div></section>`;
+      <div id="compo"></div>
+      ${m.son ? `<div class="prononcer"><h2>Prononcer</h2><p class="info">Dites le mot en vous enregistrant, puis comparez au modèle.</p>${Voix.html("▶ Modèle")}</div>` : ""}</section>`;
     let w = null;
     const montrer = (i) => {
       k = i;
@@ -275,13 +295,15 @@
     on("#libre", () => libre(id, k));
     on("#quitter", liste);
     brancherSons();
+    if (m.son) brancherVoix(id);
     jouer(id);
     montrer(0);
-    clavier({ " ": () => w && w.animateCharacter() });
+    clavier({ " ": () => w && w.animateCharacter(), r: () => voix && voix.rec() });
   }
 
   // Écriture libre, sans note : avec ou sans modèle, autant de fois qu'on veut
   function libre(id, k) {
+    lacher();
     const m = P.mots[id], chars = [...m.hz];
     let modele = true, w = null;
     zone.innerHTML = `<div class="haut"><button class="lien" id="quitter">← Fiche</button><span class="compteur">entraînement libre</span></div>
@@ -321,7 +343,7 @@
   }
 
   function suivante() {
-    lecteur.pause();
+    lacher();
     const t = Date.now(), p = SRS.prochaine(vue(), ORDRE, t, S.derniere, S.rang);
     if (!p) return fin();
     S.derniere = p.id;
@@ -340,6 +362,7 @@
   }
 
   function noter(ctx, note, extra) {
+    if (voix && voix.enregistre()) extra = Object.assign({}, extra, { voix: true });
     SRS.repondre(E, ctx.id, note, Date.now(), extra);
     sauver();
     S.rang++; S.faites++;
@@ -478,13 +501,20 @@
     const m = ctx.m, chars = [...m.hz];
     const choix = chars.map(() => 0);
     const ETIQ = { 1: "ā", 2: "á", 3: "ǎ", 4: "à", 5: "a" };
+    const parle = m.son && !silence; // je m'enregistre, puis je compare au modèle une fois les tons corrigés
     zone.innerHTML = entete(ctx) + `<section class="carte">
-      <p class="consigne">Dites ce mot à voix haute, puis touchez le ton de chaque syllabe, tel que l'écrit le dictionnaire.</p>
+      <p class="consigne">${silence ? "Dites ce mot dans votre tête" : parle ? "Dites ce mot à voix haute en vous enregistrant (si vous voulez)" : "Dites ce mot à voix haute"},
+        puis touchez le ton de chaque syllabe, tel que l'écrit le dictionnaire.</p>
       <div class="question">${hz(m.hz, "grand")}</div>
+      ${parle ? `<div class="prononcer">${Voix.html("▶ Modèle")}</div>` : ""}
+      <p class="centre" id="bascule"><button class="lien" id="silence">${silence ? "🔊 Je peux de nouveau parler à voix haute" : "🔇 Je ne peux pas parler ici"}</button></p>
       <div class="tons">${chars.map((c, i) => `<div class="ligne-ton">${hz(c)}${[1, 2, 3, 4, 5].map((n) =>
         `<button data-s="${i}" data-ton="${n}" aria-label="${Hanzi.TONS[n]}"><b>${ETIQ[n]}</b><small>${n === 5 ? "neutre" : n}</small></button>`).join("")}</div>`).join("")}</div>
       <div id="suite"></div></section>`;
     on("#quitter", accueil);
+    // Bascule valable pour toutes les cartes, jusqu'à la fermeture de la page
+    on("#silence", () => { silence = !silence; lacher(); lecture(ctx); });
+    if (parle) brancherVoix(ctx.mot, { cache: true, sansMicro: " : dites le mot dans votre tête." });
 
     function choisir(i, n) {
       if (choix.every(Boolean)) return;
@@ -503,9 +533,10 @@
         if (n === Hanzi.ton(m.py[i])) b.classList.add("juste");
         else if (n === choix[i]) b.classList.add("faux");
       });
-      const extra = { tons: choix.slice(), ok: ok };
+      const extra = { tons: choix.slice(), ok: ok, silence: silence || undefined };
       zone.querySelector(".question").remove();
-      const notes = (propose) => `<p class="info">${ok ? "Tons justes. Et la prononciation, comparée au modèle ?" : "Notez-vous :"}</p>${htmlNotes(ctx, propose)}`;
+      zone.querySelector("#bascule").remove();
+      const notes = (propose) => `<p class="info">${ok && !silence ? "Tons justes. Et la prononciation, comparée au modèle ?" : "Notez-vous :"}</p>${htmlNotes(ctx, propose)}`;
       zone.querySelector("#suite").innerHTML = htmlMot(ctx.mot, true) + (ok
         ? notes()
         : `<p class="ko">Ton faux : ${m.py.map((s, i) => justes[i] ? null : `${hz(chars[i])} ${SRS.marque(s)}, ${Hanzi.TONS[Hanzi.ton(s)]}`).filter(Boolean).join(" ; ")}.</p>
@@ -520,16 +551,17 @@
         brancherNotes(ctx, Object.assign(extra, { malTouche: true }));
         clavier({ " ": () => jouer(ctx.mot), note: touchesNotes });
       });
-      jouer(ctx.mot);
+      if (voix) voix.reveler(); else jouer(ctx.mot);
       clavier({ " ": () => jouer(ctx.mot), note: ok ? touchesNotes : (n) => { if (n === 1) noter(ctx, 1, extra); } });
     }
 
     // Clavier : 1 à 5 donnent le ton de la première syllabe sans choix
-    clavier({ note: (n) => { const i = choix.indexOf(0); if (i >= 0) choisir(i, n); }, 5: () => { const i = choix.indexOf(0); if (i >= 0) choisir(i, 5); } });
+    clavier({ note: (n) => { const i = choix.indexOf(0); if (i >= 0) choisir(i, n); }, 5: () => { const i = choix.indexOf(0); if (i >= 0) choisir(i, 5); },
+      r: () => voix && voix.rec() });
   }
 
   function fin() {
-    lecteur.pause();
+    lacher();
     const c = SRS.compter(vue(), ORDRE, Date.now());
     let h = `<section class="carte fin"><h2>Séance terminée</h2><p>${S.faites} carte${S.faites > 1 ? "s" : ""} dans cette séance.</p>`;
     if (c.restantes) h += `<button class="principal" id="encore">Encore 10 nouvelles cartes</button>`;

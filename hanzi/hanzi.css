@@ -63,4 +63,7 @@ button.son { min-height: 36px; padding: 0.2rem 0.7rem; font-size: 0.9rem; vertic
 .onglets button { min-width: 3rem; padding: 0.3rem 0.6rem; }
 .onglets .hz { font-size: 1.5rem; }
 .onglets button.actif { border: 2px solid var(--accent); background: var(--accent-soft); }
+/* Prononcer : ma voix comparée au modèle (../voix.js) */
+.prononcer { margin: 0.6rem 0; }
+.prononcer h2 { font-size: 1.1rem; margin: 0.8rem 0 0.2rem; padding-top: 0.6rem; border-top: 1px solid var(--rule); }
 .types label { display: inline-block; margin-right: 1rem; font-family: var(--sans); }

@@ -107,8 +107,11 @@ const Hanzi = (() => {
         L.push("    Confusions : " + trie(conf).map(([k, n]) => `${k} ×${n}`).join(" ; ") + ".");
         L.push("    Détail : " + trie(detail).map(([k, n]) => `${k}` + (n > 1 ? ` ×${n}` : "")).join(" ; ") + ".");
       }
-      const auto = lec.filter((e) => e.ok || e.malTouche);
+      const auto = lec.filter((e) => (e.ok || e.malTouche) && !e.silence);
       if (auto.length) L.push(`    Prononciation, tons justes (auto-évaluée) : ${repartition(auto)}.`);
+      const voix = lec.filter((e) => e.voix).length, muets = lec.filter((e) => e.silence).length;
+      if (voix || muets) L.push(`    Voix : ${voix} mot${voix > 1 ? "s" : ""} enregistré${voix > 1 ? "s" : ""} et comparé${voix > 1 ? "s" : ""} au modèle` +
+        (muets ? ` ; ${muets} lu${muets > 1 ? "s" : ""} de tête (« Je ne peux pas parler ici »)` : "") + ".");
     }
 
     [["s", "Sens (caractères → français, auto-évalué)"], ["o", "Écoute (son → sens, auto-évaluée)"]].forEach(([t, titre]) => {

@@ -276,7 +276,7 @@ def main() -> None:
         if not (ICI / f"icone-{t}.png").exists():
             png(ICI / f"icone-{t}.png", t)
 
-    fichiers = ["./", "index.html", "style.css", "app.js", "srs.js", "ton.js", "paquet.js",
+    fichiers = ["./", "index.html", "style.css", "app.js", "srs.js", "ton.js", "voix.js", "paquet.js",
                 "manifest.json", "icone-180.png", "icone-512.png"] + [f"audio/{s}.mp3" for s in syllabes]
     empreinte = hashlib.sha1()
     for f in fichiers[1:]:

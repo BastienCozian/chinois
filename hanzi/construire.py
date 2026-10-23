@@ -196,7 +196,7 @@ def ecrire(listes: list, mots: dict, infos: dict) -> None:
     (ICI / "paquet.js").write_text("// Généré par construire.py à partir de paquet.txt : ne pas modifier à la main.\n"
                                    "const PAQUET = " + json.dumps(paquet, ensure_ascii=False, indent=1) + ";\n", encoding="utf-8")
     fichiers = ["./", "index.html", "hanzi.css", "app.js", "hanzi.js", "paquet.js", "hanzi-writer.min.js",
-                "manifest.json", "icone-180.png", "icone-512.png", "../style.css", "../srs.js"]
+                "manifest.json", "icone-180.png", "icone-512.png", "../style.css", "../srs.js", "../ton.js", "../voix.js"]
     fichiers += sorted(f"traits/{i['hex']}.json" for i in infos.values())
     fichiers += sorted(f"sons/{p.name}" for p in SONS.glob("*.mp3") if p.stem in mots)
     h = hashlib.sha1()

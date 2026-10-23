@@ -1,4 +1,4 @@
-// Page Pinyin : écrans, son, micro. La logique de révision est dans srs.js, la courbe de ton dans ton.js.
+// Page Pinyin : écrans. La logique de révision est dans srs.js ; le son, le micro et la courbe de ton dans voix.js et ton.js.
 "use strict";
 
 (() => {
@@ -34,48 +34,7 @@
   // Demande au navigateur de ne pas effacer ce stockage (Safari peut l'effacer après 7 jours sans visite)
   if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
 
-  /* ---------- Son ---------- */
-
-  const lecteur = new Audio();
-  let finLecture = null;
-  function jouer(src) {
-    if (finLecture) finLecture();
-    return new Promise((ok) => {
-      finLecture = ok;
-      lecteur.onended = lecteur.onerror = () => { finLecture = null; ok(); };
-      lecteur.src = src;
-      const p = lecteur.play();
-      if (p) p.catch(() => { finLecture = null; ok(); });
-    });
-  }
-
-  /* ---------- Micro : ouvert pour chaque enregistrement, refermé aussitôt
-     (micro ouvert, l'iPhone baisse le son ou le bascule sur l'écouteur) ---------- */
-
-  const Micro = {
-    rec: null, minuteur: null, refuse: false,
-    dispo() { return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder) && !this.refuse; },
-    async enregistrer(surDebut) {
-      const flux = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: false, noiseSuppression: false } });
-      const type = ["audio/mp4", "audio/webm;codecs=opus", "audio/webm"].find((t) => MediaRecorder.isTypeSupported(t));
-      const rec = new MediaRecorder(flux, type ? { mimeType: type } : undefined);
-      const morceaux = [];
-      this.rec = rec;
-      return new Promise((ok) => {
-        rec.ondataavailable = (e) => { if (e.data.size) morceaux.push(e.data); };
-        rec.onstop = () => {
-          clearTimeout(this.minuteur);
-          flux.getTracks().forEach((t) => t.stop());
-          this.rec = null;
-          ok(new Blob(morceaux, { type: rec.mimeType || type || "audio/mp4" }));
-        };
-        rec.start();
-        surDebut();
-        this.minuteur = setTimeout(() => this.arreter(), DUREE_MAX);
-      });
-    },
-    arreter() { if (this.rec && this.rec.state === "recording") this.rec.stop(); },
-  };
+  const { jouer, Micro } = Voix;
 
   /* ---------- Accueil ---------- */
 
@@ -259,9 +218,9 @@
       <section class="carte">
       <p class="consigne">Écoutez, enregistrez-vous, comparez : autant de fois qu'il faut.</p>
       <div class="syllabe" lang="zh-Latn-pinyin">${M(s)}</div>
-      ${htmlComparaison("▶ Modèle")}</section>
+      ${Voix.html("▶ Modèle")}</section>
       ${n > 1 ? `<div class="actions"><button id="prec">← Précédent</button><button id="suiv">Suivant →</button></div>` : ""}`;
-    const c = comparer(s, () => {}, " et répétez à voix haute.");
+    const c = Voix.comparer(zone, son(s), { sansMicro: " et répétez à voix haute.", duree: DUREE_MAX });
     const aller = (j) => { c.liberer(); entrainement(liste, (j + n) % n); };
     on("#quitter", () => { c.liberer(); choisirSons(); });
     on("#prec", () => aller(i - 1));
@@ -271,92 +230,6 @@
       " ": c.modele, r: c.rec,
       arrowleft: () => { if (n > 1) aller(i - 1); }, arrowright: () => { if (n > 1) aller(i + 1); },
     });
-  }
-
-  /* ---------- Comparaison : modèle, ma voix, courbe de ton (production et Mes sons) ---------- */
-
-  function htmlComparaison(libelleModele) {
-    return `<div class="actions">
-        <button class="principal" id="rec">● M'enregistrer</button>
-        <button id="modele">${libelleModele}</button>
-        <button id="moi" hidden>▶ Moi</button>
-        <button id="deux" hidden>▶ Modèle puis moi</button>
-      </div>
-      <p class="info" id="etat-micro"></p>
-      <div class="courbe-boite" hidden><canvas class="courbe"></canvas>
-        <p class="legende"><span class="l-modele">— modèle</span> <span class="l-moi">— vous</span> <span class="l-info">demi-tons autour de la hauteur moyenne</span></p></div>`;
-  }
-
-  // Branche les boutons de htmlComparaison sur la syllabe s. apres() : appelé quand on peut passer à la suite
-  // (enregistrement fini, ou modèle écouté sans micro). sansMicro : fin de la consigne quand le micro manque.
-  function comparer(s, apres, sansMicro) {
-    let blob = null, urlMoi = null, courbeModele = null, courbeMoi = null, actif = true;
-    const btnRec = zone.querySelector("#rec"), btnMoi = zone.querySelector("#moi"), btnModele = zone.querySelector("#modele");
-    const btnDeux = zone.querySelector("#deux");
-    const etat = zone.querySelector("#etat-micro"), boite = zone.querySelector(".courbe-boite");
-    const canvas = zone.querySelector("canvas");
-
-    const dessiner = () => { boite.hidden = false; Ton.tracer(canvas, courbeModele, courbeMoi); };
-    const lesDeux = async () => {   // modèle, puis vous, à la suite : la comparaison se fait à l'oreille
-      await jouer(son(s));
-      await new Promise((r) => setTimeout(r, 300));
-      if (actif && urlMoi) await jouer(urlMoi);
-    };
-    const pModele = Ton.charger(son(s));
-    pModele.then((b) => { courbeModele = Ton.courbe(b); if (actif && !boite.hidden) dessiner(); }).catch(() => {});
-
-    btnModele.onclick = async () => {
-      btnModele.textContent = "▶ Modèle";
-      await jouer(son(s));
-      if (actif && !Micro.dispo()) { dessiner(); apres(); }
-    };
-    btnMoi.onclick = () => { if (urlMoi) jouer(urlMoi); };
-    btnDeux.onclick = lesDeux;
-
-    btnRec.onclick = async () => {
-      if (Micro.rec) { Micro.arreter(); return; }
-      if (!Micro.dispo()) return;
-      try {
-        if (finLecture) { lecteur.pause(); finLecture(); }
-        blob = await Micro.enregistrer(() => {
-          btnRec.textContent = "■ Arrêter"; btnRec.classList.add("enregistre");
-          etat.textContent = "Parlez…";
-        });
-      } catch (e) {
-        Micro.refuse = true;
-        btnRec.disabled = true;
-        etat.textContent = "Micro refusé ou indisponible : écoutez le modèle" + sansMicro;
-        return;
-      }
-      if (!actif) return; // carte quittée pendant l'enregistrement
-      btnRec.textContent = "● Recommencer"; btnRec.classList.remove("enregistre");
-      etat.textContent = "";
-      if (urlMoi) URL.revokeObjectURL(urlMoi);
-      urlMoi = null;
-      btnMoi.hidden = btnDeux.hidden = false;
-      btnModele.textContent = "▶ Modèle";
-      apres();
-      try {
-        const b = await Ton.charger(blob);
-        courbeMoi = Ton.courbe(b);
-        if (!courbeMoi) etat.textContent = "Voix trop faible ou trop courte pour tracer la courbe.";
-        // Votre voix ramenée au niveau sonore du modèle, pour comparer à volume égal
-        try { urlMoi = URL.createObjectURL(Ton.wav(Ton.aligner(b, await pModele))); } catch (e) { /* son brut, ci-dessous */ }
-      } catch (e) {
-        etat.textContent = "Courbe impossible à calculer sur cet enregistrement.";
-      }
-      if (!urlMoi) urlMoi = URL.createObjectURL(blob);
-      if (!actif) return;
-      dessiner();
-      await lesDeux();
-    };
-
-    if (!Micro.dispo()) etat.textContent = (Micro.refuse ? "Micro refusé : écoutez le modèle" : "Ce navigateur n'enregistre pas le son : écoutez") + sansMicro;
-    return {
-      modele: () => btnModele.click(),
-      rec: () => btnRec.click(),
-      liberer: () => { actif = false; Micro.arreter(); if (urlMoi) URL.revokeObjectURL(urlMoi); },
-    };
   }
 
   /* ---------- Séance ---------- */
@@ -407,7 +280,7 @@
     zone.innerHTML = entete(ctx) + `<section class="carte">
       <p class="consigne">${ctx.nouvelle ? "Nouvelle syllabe : écoutez, puis répétez en vous enregistrant." : "Dites-la d'abord, sans aide, puis comparez au modèle."}</p>
       <div class="syllabe" lang="zh-Latn-pinyin">${M(s)}</div>
-      ${htmlComparaison(ctx.nouvelle ? "▶ Modèle" : "▶ Écouter d'abord")}
+      ${Voix.html(ctx.nouvelle ? "▶ Modèle" : "▶ Écouter d'abord")}
       <div id="notes"></div></section>`;
     const montrerNotes = () => {
       if (noteVisible) return;
@@ -417,7 +290,7 @@
         b.onclick = () => { const sansMicro = !Micro.dispo(); c.liberer(); noter(ctx, +b.dataset.note, sansMicro ? { sansMicro: true } : null); };
       });
     };
-    const c = comparer(s, montrerNotes, ", répétez à voix haute et notez-vous.");
+    const c = Voix.comparer(zone, son(s), { apres: montrerNotes, sansMicro: ", répétez à voix haute et notez-vous.", duree: DUREE_MAX });
     on("#quitter", () => { c.liberer(); accueil(); });
     if (ctx.nouvelle) jouer(son(s));
     clavier({ " ": c.modele, r: c.rec, note: (n) => { const b = zone.querySelector(`[data-note="${n}"]`); if (b) b.click(); } });
@@ -498,9 +371,6 @@
     if (toucheActive[k]) { e.preventDefault(); toucheActive[k](); }
     else if (/^[1-4]$/.test(k) && toucheActive.note) { e.preventDefault(); toucheActive.note(+k); }
   });
-
-  // Une carte laissée en plan (page masquée) : on coupe le micro
-  document.addEventListener("visibilitychange", () => { if (document.hidden) Micro.arreter(); });
 
   // Nouvelle version de la page installée en arrière-plan : on recharge, mais jamais au milieu d'une carte
   let aRecharger = false;
