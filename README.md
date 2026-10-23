@@ -10,7 +10,17 @@ Page : <https://bastiencozian.github.io/chinois/>
 
 Reconstruire après avoir modifié le paquet : `python -X utf8 construire.py`.
 
+## Sinogrammes (`hanzi/`)
+
+Les mots du cours, page : <https://bastiencozian.github.io/chinois/hanzi/>. Quatre cartes par mot : **écriture** au doigt, trait par trait, dans l'ordre (tracé vérifié par Hanzi Writer), **sens**, **lecture** (tons corrigés, prononciation comparée au modèle), **écoute**. Pour chaque caractère : l'ordre des traits animé, la clé et les composants.
+
+- Le paquet se modifie dans `hanzi/paquet.txt`, puis `python -X utf8 construire.py` dans `hanzi/` (tracés, sons, composants, cache hors ligne).
+- Même répétition espacée que la page Pinyin (`srs.js`, partagé) : après une modification de `srs.js` ou de `style.css`, relancer les **deux** constructions, pour que chaque page renouvelle son cache.
+- Chaque page n'efface et ne lit que ses propres caches (`pinyin-…`, `hanzi-…`).
+
 ## Crédits et licences
 
 - **Sons** (`audio/`) : syllabes enregistrées par **Chen Wang**, projet [audio-cmn](https://github.com/hugolpz/audio-cmn) (Hugo Lopez, Inalco), licence [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Fichiers repris tels quels, renommés seulement pour `jù` (`jv4` → `ju4`).
+- **Sons des mots** (`hanzi/sons/`) : mots du HSK lus par **Yue Tan** (et quelques syllabes de Chen Wang), même projet audio-cmn, CC BY-SA 4.0.
+- **Ordre des traits** : bibliothèque [Hanzi Writer](https://hanziwriter.org) (David Chanin, licence MIT), `hanzi/hanzi-writer.min.js` ; tracés (`hanzi/traits/`) du paquet hanzi-writer-data, tirés de [Make Me a Hanzi](https://github.com/skishore/makemeahanzi) (Shaunak Kishore), d'après les polices Arphic : licence Arphic Public License (`hanzi/ARPHICPL.TXT`). Décompositions et clés : dictionnaire de Make Me a Hanzi (LGPL).
 - **Code** : licence MIT.

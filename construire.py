@@ -223,11 +223,13 @@ self.addEventListener("install", e => {{
   e.waitUntil(caches.open(VERSION).then(c => c.addAll(FICHIERS)).then(() => self.skipWaiting()));
 }});
 self.addEventListener("activate", e => {{
-  e.waitUntil(caches.keys().then(cles => Promise.all(cles.filter(k => k !== VERSION).map(k => caches.delete(k))))
+  // Ne touche qu'à ses propres caches : la page Sinogrammes (hanzi/) a les siens
+  e.waitUntil(caches.keys().then(cles => Promise.all(cles.filter(k => k.startsWith("pinyin-") && k !== VERSION).map(k => caches.delete(k))))
     .then(() => self.clients.claim()));
 }});
 self.addEventListener("fetch", e => {{
-  e.respondWith(caches.match(e.request, {{ ignoreSearch: true }}).then(r => r || fetch(e.request)));
+  // Son propre cache seulement : la page Sinogrammes garde aussi srs.js et style.css, peut-être dans une autre version
+  e.respondWith(caches.open(VERSION).then(c => c.match(e.request, {{ ignoreSearch: true }})).then(r => r || fetch(e.request)));
 }});
 """
 

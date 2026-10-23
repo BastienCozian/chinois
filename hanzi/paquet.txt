@@ -1,0 +1,101 @@
+# Paquet de la page Sinogrammes : les mots du cours de l'Inalco.
+#
+# Format :
+#   ## <id de la liste> | <titre>
+#   <id> | <caractères> | <pinyin à chiffres> | <sens> | <son> | <remarque>
+#
+# Pinyin : une syllabe par caractère, séparées par des espaces, ton 5 = ton neutre (xie4 xie5).
+#   Tons du dictionnaire ; les changements de ton (ní hǎo, yì zhī) vont dans la remarque.
+#   La liste de l'enseignant fait foi pour le sens et le pinyin.
+# Son : vide = le mot du HSK lu par Yue Tan (audio-cmn, hsk/cmn-<caractères>.mp3) ;
+#   « syllabe zhi1 » = la syllabe lue par Chen Wang (pour un caractère à plusieurs lectures) ;
+#   « aucun » = pas de son (pas de carte d'écoute).
+# Chaque mot donne jusqu'à quatre cartes : écriture (e-<id>), sens (s-<id>), lecture (l-<id>),
+#   écoute (o-<id>, si le mot a un son).
+# Un id ne change jamais : la progression y est attachée. Ajouter les mots en fin de fichier :
+#   l'ordre du fichier est l'ordre des nouvelles cartes.
+#
+# Section « composants » : le sens en français des composants qui apparaissent dans la décomposition
+#   des caractères (données de Make Me a Hanzi). construire.py signale ceux qui manquent.
+#   <composant> | <sens>
+#
+# Après modification : python -X utf8 construire.py
+
+## l1 | Leçon 1 · Les phrases de la classe
+ni | 你 | ni3 | tu | |
+hao | 好 | hao3 | bien, bon | | 你好 « bonjour » se prononce ní hǎo : deux 3ᵉ tons de suite, le premier passe au 2ᵉ.
+nimen | 你们 | ni3 men5 | vous (plusieurs personnes) | | 们 marque le pluriel des personnes.
+wanshang | 晚上 | wan3 shang5 | le soir | | 晚上好 « bonsoir ».
+yi | 一 | yi1 | un | | yī en comptant ; devant un autre mot, yì ou yí (一只 yì zhī).
+er | 二 | er4 | deux (pour compter) | | Devant un classificateur, on dit 两 liǎng.
+san | 三 | san1 | trois | |
+kaishi | 开始 | kai1 shi3 | commencer | | 一二三，开始！« 1, 2, 3, commencez ! »
+xiexie | 谢谢 | xie4 xie5 | merci | |
+you | 有 | you3 | avoir ; il y a | |
+wenti | 问题 | wen4 ti2 | question, problème | | 有问题吗？« Des questions ? »
+ma | 吗 | ma5 | (particule de question) | | En fin de phrase, fait d'une affirmation une question fermée.
+meiyou | 没有 | mei2 you3 | ne pas avoir ; il n'y a pas | | 没 est la négation de 有 (jamais 不有).
+xiake | 下课 | xia4 ke4 | fin du cours | | « quitter · cours ».
+zaijian | 再见 | zai4 jian4 | au revoir | | « de nouveau · voir ».
+
+## l2 | Leçon 2 · Deux tigres (两只老虎)
+liang | 两 | liang3 | deux (devant un classificateur) | | 两只老虎 « deux tigres ». Pour compter : 二 èr.
+zhi | 只 | zhi1 | (classificateur des animaux) | syllabe zhi1 | Lu zhǐ, c'est un autre mot : « seulement ».
+laohu | 老虎 | lao3 hu3 | tigre | | Prononcé láohǔ : deux 3ᵉ tons de suite.
+pao | 跑 | pao3 | courir | |
+de | 得 | de5 | (relie le verbe à sa manière) | aucun | 跑得快 « courir vite ». Lu dé, c'est un autre mot : « obtenir ».
+kuai | 快 | kuai4 | vite, rapide | |
+erduo | 耳朵 | er3 duo5 | oreille | |
+weiba | 尾巴 | wei3 ba5 | queue (d'un animal) | |
+zhen | 真 | zhen1 | vraiment | |
+qiguai | 奇怪 | qi2 guai4 | bizarre | | 真奇怪！« Vraiment bizarre ! »
+
+## composants
+亻 | personne (人 sur le côté)
+尔 | tu (forme ancienne)
+女 | femme
+子 | enfant
+门 | porte
+日 | soleil, jour
+免 | éviter
+⺊ | (forme de 卜)
+卜 | divination
+一 | un, un trait
+二 | deux
+廾 | deux mains
+台 | estrade
+讠 | parole (言 sur le côté)
+射 | tirer à l'arc
+月 | lune ; aussi la chair (肉)
+口 | bouche
+是 | être
+页 | tête ; page
+马 | cheval
+氵 | eau (水 sur le côté)
+殳 | arme, frapper
+果 | fruit
+冉 | (forme de poils qui pendent)
+冂 | enceinte
+儿 | jambes ; enfant
+从 | suivre (deux personnes)
+八 | huit
+耂 | vieux (老 en haut)
+匕 | cuillère
+虍 | tigre (en haut)
+几 | petite table
+足 | pied
+包 | envelopper
+彳 | pas, marcher
+旦 | aube
+寸 | pouce, main
+忄 | cœur (心 sur le côté)
+夬 | trancher
+木 | arbre
+尸 | corps
+毛 | poil
+巳 | (signe cyclique)
+直 | droit
+目 | œil
+大 | grand
+可 | pouvoir
+圣 | (ici, forme simplifiée)

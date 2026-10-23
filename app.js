@@ -97,7 +97,8 @@
       if (c.restantes) h += `<button class="principal" id="encore">Encore 10 nouvelles cartes</button>`;
     }
     h += `<button class="large" id="mes-sons">Mes sons : choisir dans le tableau et s'entraîner</button>
-      <button class="large" id="sons">Tableau des consonnes et des voyelles</button>`;
+      <button class="large" id="sons">Tableau des consonnes et des voyelles</button>
+      <button class="large" id="hanzi">Sinogrammes : écrire, lire et comprendre les mots du cours →</button>`;
     if (ios) h += `<p class="info">Pour garder votre progression : Partager → « Sur l'écran d'accueil », puis ouvrez la page depuis son icône.</p>`;
 
     h += `<section class="bloc"><h2>Bilan pour l'Agent Teach</h2>
@@ -133,6 +134,7 @@
     on("#go", () => seance());
     on("#sons", tableauSons);
     on("#mes-sons", choisirSons);
+    on("#hanzi", () => { location.href = "hanzi/"; });
     on("#encore", () => { SRS.encoreDix(E, Date.now()); sauver(); seance(); });
     on("#bilan", copierBilan);
     on("#export", exporter);
