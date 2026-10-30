@@ -8,8 +8,7 @@ Usage :
      les sons (sons/, audio-cmn), la bibliothèque Hanzi Writer et le dictionnaire de Make Me a Hanzi (.cache/) ;
   3. tire du dictionnaire la clé et les composants de chaque caractère, et signale les composants
      sans sens français dans la section « composants » de paquet.txt ;
-  4. écrit paquet.js et sw.js (cache hors ligne, version recalculée) ;
-  5. dessine les icônes de l'écran d'accueil si elles manquent.
+  4. écrit paquet.js et sw.js (cache hors ligne, version recalculée).
 """
 
 import hashlib
@@ -35,7 +34,6 @@ RE_ID = re.compile(r"^[a-z0-9-]+$")
 RE_SYLLABE = re.compile(r"^[a-zv]+[1-5]$")
 # Description idéographique : opérateurs à deux ou trois composants
 ARITE = {**{c: 2 for c in "⿰⿱⿴⿵⿶⿷⿸⿹⿺⿻"}, "⿲": 3, "⿳": 3}
-ICONE = "字"
 
 
 def telecharger(url: str, cible: Path) -> bool:
@@ -157,46 +155,16 @@ def sons(mots: dict) -> None:
             sys.exit(f"Son introuvable pour {m['hz']} ({url}) : {e}. Mettre « aucun » ou « syllabe … » dans paquet.txt.")
 
 
-def icones() -> None:
-    a_faire = [(n, ICI / f"icone-{n}.png") for n in (180, 512)]
-    if all(p.exists() for _, p in a_faire):
-        return
-    from PIL import Image, ImageDraw
-    telecharger(DONNEES.format(urllib.parse.quote(ICONE)), TRAITS / f"{hexa(ICONE)}.json")
-    traits = json.loads((TRAITS / f"{hexa(ICONE)}.json").read_text(encoding="utf-8"))["strokes"]
-    for n, chemin in a_faire:
-        img = Image.new("RGB", (n, n), (180, 70, 43))
-        dessin = ImageDraw.Draw(img)
-        echelle, marge = n * 0.72 / 1024, n * 0.14
-        # Repère des données : 1024 × 1024, y vers le haut, origine décalée de 124 (Hanzi Writer)
-        point = lambda x, y: (marge + x * echelle, marge + (900 - y) * echelle)
-        for t in traits:
-            jetons, poly, i = re.findall(r"[MQLZ]|-?\d+(?:\.\d+)?", t), [], 0
-            while i < len(jetons):
-                j = jetons[i]
-                if j in "ML":
-                    poly.append(point(float(jetons[i + 1]), float(jetons[i + 2]))); i += 3
-                elif j == "Q":
-                    (x0, y0), c, f = poly[-1], point(float(jetons[i + 1]), float(jetons[i + 2])), point(float(jetons[i + 3]), float(jetons[i + 4]))
-                    for k in range(1, 9):
-                        u = k / 8
-                        poly.append(((1 - u) ** 2 * x0 + 2 * u * (1 - u) * c[0] + u * u * f[0], (1 - u) ** 2 * y0 + 2 * u * (1 - u) * c[1] + u * u * f[1]))
-                    i += 5
-                else:
-                    i += 1
-            dessin.polygon(poly, fill=(255, 255, 248))
-        img.save(chemin)
-        print(f"  {chemin.name} dessinée")
-
-
 def ecrire(listes: list, mots: dict, infos: dict) -> None:
     for m in mots.values():
         m["son"] = m["son"] != "aucun"
     paquet = {"listes": listes, "mots": mots, "caracteres": infos}
     (ICI / "paquet.js").write_text("// Généré par construire.py à partir de paquet.txt : ne pas modifier à la main.\n"
                                    "const PAQUET = " + json.dumps(paquet, ensure_ascii=False, indent=1) + ";\n", encoding="utf-8")
+    # Manifeste et icônes : ceux de la page Pinyin, une seule appli pour les deux pages
     fichiers = ["./", "index.html", "hanzi.css", "app.js", "hanzi.js", "paquet.js", "hanzi-writer.min.js",
-                "manifest.json", "icone-180.png", "icone-512.png", "../style.css", "../srs.js", "../ton.js", "../voix.js"]
+                "../manifest.json", "../icone-180.png", "../icone-512.png",
+                "../style.css", "../srs.js", "../profil.js", "../ton.js", "../voix.js"]
     fichiers += sorted(f"traits/{i['hex']}.json" for i in infos.values())
     fichiers += sorted(f"sons/{p.name}" for p in SONS.glob("*.mp3") if p.stem in mots)
     h = hashlib.sha1()
@@ -218,7 +186,6 @@ def main() -> None:
     telecharger(LICENCE_DONNEES, ICI / "ARPHICPL.TXT")
     infos = caracteres(mots, composants)
     sons(mots)
-    icones()
     ecrire(listes, mots, infos)
     n = sum(4 if m["son"] else 3 for m in mots.values())
     print(f"{len(mots)} mots, {len(infos)} caractères, {n} cartes.")

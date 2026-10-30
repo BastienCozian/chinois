@@ -2,11 +2,13 @@
 "use strict";
 
 (() => {
-  const CLE = "pinyin-v1";
+  const zone = document.getElementById("zone");
+  // Premier passage sur cet appareil : on choisit ou crée son profil, puis la page repart
+  if (!Profil.actif()) { Profil.ecran(zone); return; }
+  const CLE = Profil.cle("pinyin-v1");
   const ORDRE = PAQUET.ordre;
   const REVISIONS_URL = "https://claude.ai/artifact/WLAHNFeXYSz8xzBWGoF7x8";
   const DUREE_MAX = 3000; // un enregistrement s'arrête seul après 3 s
-  const zone = document.getElementById("zone");
   const son = (s) => "audio/" + s + ".mp3";
   const M = SRS.marque;
 
@@ -43,8 +45,8 @@
     Micro.arreter();
     const t = Date.now(), c = SRS.compter(E, ORDRE, t);
     const ios = /iPhone|iPad|iPod/.test(navigator.userAgent) && !navigator.standalone;
-    let h = `<header><p class="kicker">Chinois · prononciation</p><h1>Pinyin</h1>
-      <p class="sous-titre">Les contrastes à risque, avec la voix de Chen Wang.</p></header>`;
+    let h = Profil.barre("pinyin", "") + `<header><h1>Pinyin</h1>
+      <p class="sous-titre">Les sons et les tons qu'on confond, avec la voix de Chen Wang.</p></header>`;
     if (alerteStockage) h += `<p class="alerte">Le navigateur refuse d'enregistrer la progression (navigation privée ?). Elle sera perdue à la fermeture.</p>`;
     h += `<section class="tableau">
       <div><b>${c.dues}</b><span>à réviser</span></div>
@@ -55,12 +57,11 @@
       h += `<p class="info">Rien à réviser pour l'instant.</p>`;
       if (c.restantes) h += `<button class="principal" id="encore">Encore 10 nouvelles cartes</button>`;
     }
-    h += `<button class="large" id="mes-sons">Mes sons : choisir dans le tableau et s'entraîner</button>
-      <button class="large" id="sons">Tableau des consonnes et des voyelles</button>
-      <button class="large" id="hanzi">Sinogrammes : écrire, lire et comprendre les mots du cours →</button>`;
+    h += `<button class="large" id="sons">Tableau des consonnes et des voyelles</button>
+      <button class="large" id="mes-sons">Mes sons : choisir dans le tableau et s'entraîner</button>`;
     if (ios) h += `<p class="info">Pour garder votre progression : Partager → « Sur l'écran d'accueil », puis ouvrez la page depuis son icône.</p>`;
 
-    h += `<section class="bloc"><h2>Bilan pour l'Agent Teach</h2>
+    if (Profil.proprio()) h += `<section class="bloc"><h2>Bilan pour l'Agent Teach</h2>
       <p class="info">Dernier bilan copié : ${E.dernierBilan ? SRS.date(E.dernierBilan, true) : "jamais"}.
       Copiez-le quand vous voulez, puis collez-le dans « ✎ Consigne pour l'Agent Teach » en bas de la
       <a href="${REVISIONS_URL}" target="_blank" rel="noopener">page Révisions</a>, formation Chinois.</p>
@@ -86,19 +87,18 @@
       <p><button class="danger" id="zero">Tout remettre à zéro</button></p></details>`;
 
     h += `<footer><p>Sons : syllabes enregistrées par Chen Wang, projet <a href="https://github.com/hugolpz/audio-cmn" target="_blank" rel="noopener">audio-cmn</a>
-      (Hugo Lopez, Inalco), licence <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr" target="_blank" rel="noopener">CC BY-SA</a>.
-      Une question sur un son, une règle ? Demandez à l'Agent Teach.</p></footer>`;
+      (Hugo Lopez, Inalco), licence <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr" target="_blank" rel="noopener">CC BY-SA</a>.${Profil.proprio() ? " Une question sur un son, une règle ? Demandez à l'Agent Teach." : ""}</p></footer>`;
     zone.innerHTML = h;
 
     on("#go", () => seance());
     on("#sons", tableauSons);
     on("#mes-sons", choisirSons);
-    on("#hanzi", () => { location.href = "hanzi/"; });
+    on("#profil", () => { Micro.arreter(); Profil.ecran(zone, accueil); });
     on("#encore", () => { SRS.encoreDix(E, Date.now()); sauver(); seance(); });
     on("#bilan", copierBilan);
     on("#export", exporter);
     on("#zero", () => {
-      if (confirm("Effacer toute la progression ? Pensez d'abord à copier le bilan.")) { E = SRS.etatVide(); sauver(); accueil(); }
+      if (confirm(`Effacer toute la progression de ${Profil.actif().nom} sur la page Pinyin ?${Profil.proprio() ? " Pensez d'abord à copier le bilan." : ""}`)) { E = SRS.etatVide(); sauver(); accueil(); }
     });
     const pj = zone.querySelector("#parjour");
     pj.onchange = () => { E.parJour = Math.max(0, Math.min(130, Math.round(+pj.value) || 0)); sauver(); accueil(); };
@@ -126,7 +126,7 @@
     const blob = new Blob([JSON.stringify(E)], { type: "application/json" });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
-    a.download = "pinyin-progression-" + SRS.jour(Date.now()) + ".json";
+    a.download = "pinyin-" + Profil.fichier() + "-" + SRS.jour(Date.now()) + ".json";
     document.body.appendChild(a); a.click(); a.remove();
   }
 

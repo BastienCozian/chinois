@@ -3,9 +3,11 @@
 "use strict";
 
 (() => {
-  const CLE = "hanzi-v1";
-  const REVISIONS_URL = "https://claude.ai/artifact/WLAHNFeXYSz8xzBWGoF7x8";
   const zone = document.getElementById("zone");
+  // Premier passage sur cet appareil : on choisit ou crée son profil, puis la page repart
+  if (!Profil.actif()) { Profil.ecran(zone); return; }
+  const CLE = Profil.cle("hanzi-v1");
+  const REVISIONS_URL = "https://claude.ai/artifact/WLAHNFeXYSz8xzBWGoF7x8";
   const P = PAQUET;
   const TOUS = { e: true, s: true, l: true, o: true };
 
@@ -128,7 +130,7 @@
     lacher();
     const t = Date.now(), c = SRS.compter(vue(), ORDRE, t);
     const ios = /iPhone|iPad|iPod/.test(navigator.userAgent) && !navigator.standalone;
-    let h = `<header><p class="kicker">Chinois · caractères</p><h1>Sinogrammes</h1>
+    let h = Profil.barre("hanzi", "../") + `<header><h1>Sinogrammes</h1>
       <p class="sous-titre">Les mots du cours : les écrire trait par trait, les lire, les comprendre.</p></header>`;
     if (alerteStockage) h += `<p class="alerte">Le navigateur refuse d'enregistrer la progression (navigation privée ?). Elle sera perdue à la fermeture.</p>`;
     h += `<section class="tableau">
@@ -143,7 +145,7 @@
     h += `<button class="large" id="liste">Les mots : ordre des traits, composants, écriture libre</button>`;
     if (ios) h += `<p class="info">Pour garder votre progression : Partager → « Sur l'écran d'accueil », puis ouvrez la page depuis son icône.</p>`;
 
-    h += `<section class="bloc"><h2>Bilan pour l'Agent Teach</h2>
+    if (Profil.proprio()) h += `<section class="bloc"><h2>Bilan pour l'Agent Teach</h2>
       <p class="info">Dernier bilan copié : ${E.dernierBilan ? SRS.date(E.dernierBilan, true) : "jamais"}.
       Copiez-le quand vous voulez, puis collez-le dans « ✎ Consigne pour l'Agent Teach » en bas de la
       <a href="${REVISIONS_URL}" target="_blank" rel="noopener">page Révisions</a>, formation Chinois.</p>
@@ -176,8 +178,7 @@
       <label class="bouton">Restaurer une sauvegarde<input id="import" type="file" accept="application/json" hidden></label></p>
       <p><button class="danger" id="zero">Tout remettre à zéro</button></p></details>`;
 
-    h += `<footer><p><a href="../">← Page Pinyin</a> (sons et tons, avec le micro).</p>
-      <p>Ordre des traits : <a href="https://hanziwriter.org" target="_blank" rel="noopener">Hanzi Writer</a> (David Chanin, MIT),
+    h += `<footer><p>Ordre des traits : <a href="https://hanziwriter.org" target="_blank" rel="noopener">Hanzi Writer</a> (David Chanin, MIT),
       données tirées de <a href="https://github.com/skishore/makemeahanzi" target="_blank" rel="noopener">Make Me a Hanzi</a>
       (Shaunak Kishore ; tracés sous licence Arphic Public License, décompositions sous LGPL).
       Sons : mots du HSK lus par Yue Tan et syllabes lues par Chen Wang, projet
@@ -187,11 +188,12 @@
 
     on("#go", seance);
     on("#liste", liste);
+    on("#profil", () => { lacher(); Profil.ecran(zone, accueil); });
     on("#encore", () => { SRS.encoreDix(E, Date.now()); sauver(); seance(); });
     on("#bilan", copierBilan);
     on("#export", exporter);
     on("#zero", () => {
-      if (confirm("Effacer toute la progression ? Pensez d'abord à copier le bilan.")) {
+      if (confirm(`Effacer toute la progression de ${Profil.actif().nom} sur la page Sinogrammes ?${Profil.proprio() ? " Pensez d'abord à copier le bilan." : ""}`)) {
         E = Object.assign(SRS.etatVide(), { types: Object.assign({}, TOUS) }); ORDRE = Hanzi.ordre(P, E.types); sauver(); accueil();
       }
     });
@@ -229,7 +231,7 @@
     const blob = new Blob([JSON.stringify(E)], { type: "application/json" });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
-    a.download = "sinogrammes-progression-" + SRS.jour(Date.now()) + ".json";
+    a.download = "sinogrammes-" + Profil.fichier() + "-" + SRS.jour(Date.now()) + ".json";
     document.body.appendChild(a); a.click(); a.remove();
   }
 

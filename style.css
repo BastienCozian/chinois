@@ -145,3 +145,23 @@ button.large { display: block; width: 100%; margin: 0.5rem 0; }
 .bloc li { margin: 0.25rem 0; }
 .fin { text-align: center; }
 .fin button { display: block; width: 100%; margin-top: 0.6rem; }
+/* Barre du site, commune aux deux pages : le profil, puis les deux sections */
+.profil-ligne { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-family: var(--sans); font-size: 0.85rem; color: var(--muted); }
+.profil-ligne .lien { font-size: inherit; }
+.profil-ligne span { font-weight: 600; color: var(--fg); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+nav.site { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 0.3rem 0 1rem; font-family: var(--sans); }
+nav.site a {
+  display: flex; justify-content: center; align-items: center; gap: 0.4em; min-height: 44px; padding: 0.4rem;
+  border: 1px solid var(--rule); border-radius: 8px; background: var(--card); color: var(--fg); text-decoration: none; font-weight: 500;
+}
+nav.site a.actif { background: var(--accent); border-color: var(--accent); color: var(--bg); font-weight: 600; }
+.badge { min-width: 1.5em; padding: 0 0.4em; border-radius: 999px; background: var(--warm); color: var(--bg); font-size: 0.75rem; font-weight: 600; text-align: center; }
+/* Écran « Qui s'entraîne ? » */
+.profils { display: grid; gap: 8px; margin: 0.5rem 0; }
+.profils button { width: 100%; text-align: left; font-size: 1.1rem; }
+.profils button.actif { border: 2px solid var(--accent); background: var(--accent-soft); }
+.profils button small { display: block; font-size: 0.75rem; font-weight: 400; color: var(--muted); }
+.profils button.danger { font-size: 0.95rem; }
+#nouveau label { display: block; font-family: var(--sans); font-size: 0.9rem; margin-bottom: 0.3rem; }
+.nouveau { display: flex; gap: 8px; }
+.nouveau input { flex: 1; min-width: 0; font: inherit; font-size: 1.05rem; padding: 0.5rem 0.6rem; border: 1px solid var(--rule); border-radius: 8px; background: var(--card); color: var(--fg); }

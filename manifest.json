@@ -1,6 +1,6 @@
 {
-  "name": "Pinyin : prononciation",
-  "short_name": "Pinyin",
+  "name": "Chinois : prononciation et caractères",
+  "short_name": "Chinois",
   "lang": "fr",
   "start_url": "./",
   "scope": "./",
