@@ -35,8 +35,8 @@ you | 有 | you3 | avoir ; il y a | |
 wenti | 问题 | wen4 ti2 | question, problème | | 有问题吗？« Des questions ? »
 ma | 吗 | ma5 | (particule de question) | | En fin de phrase, fait d'une affirmation une question fermée.
 meiyou | 没有 | mei2 you3 | ne pas avoir ; il n'y a pas | | 没 est la négation de 有 (jamais 不有).
-xiake | 下课 | xia4 ke4 | fin du cours | | « quitter · cours ».
-zaijian | 再见 | zai4 jian4 | au revoir | | « de nouveau · voir ».
+xiake | 下课 | xia4 ke4 | fin du cours | |
+zaijian | 再见 | zai4 jian4 | au revoir | |
 
 ## l2 | Leçon 2 · Deux tigres (两只老虎)
 liang | 两 | liang3 | deux (devant un classificateur) | | 两只老虎 « deux tigres ». Pour compter : 二 èr.
@@ -99,3 +99,58 @@ qiguai | 奇怪 | qi2 guai4 | bizarre | | 真奇怪！« Vraiment bizarre ! »
 大 | grand
 可 | pouvoir
 圣 | (ici, forme simplifiée)
+
+# Section « indices » : ce qui aide à retrouver un caractère ou un mot. Tout caractère et tout mot de
+#   plusieurs caractères doit en avoir un : construire.py s'arrête sinon.
+#   <caractère ou mot> | <origine> | <astuce>
+# Origine : seulement ce qui est établi (écriture ancienne, composant de sens ou de son) ; pour un mot, le mot à mot.
+#   Si un composant trompe (老 de 老虎 ne veut pas dire « vieux »), le dire.
+# Astuce : une image inventée pour la mémoire, affichée comme telle. Si l'origine est débattue, astuce seule.
+# L'indice d'un caractère ne le contient pas : il s'affiche pendant qu'on cherche à l'écrire.
+## indices
+你 | 亻 personne + 尔, ancienne façon de dire « tu » : la personne à qui l'on parle. |
+好 | 女 femme + 子 enfant. La lecture courante est « une femme et son enfant : c'est bien » ; d'autres lectures existent. |
+们 | 亻 personne (le sens) + 门 mén (le son). La porte n'a rien à voir avec le sens. |
+晚 | 日 soleil (le sens : un moment du jour) + 免 miǎn (le son, approché). | 免 veut dire « éviter » : le soleil nous évite, c'est le soir.
+上 | Écriture ancienne : un petit trait au-dessus d'une ligne, « au-dessus ». |
+一 | Un trait, un. |
+二 | Deux traits, deux. |
+三 | Trois traits, trois. |
+开 | Simplification de 開 « ouvrir » : on a retiré la porte 門. | 廾 deux mains soulèvent la barre 一 de la porte.
+始 | 女 femme (le sens) + 台 (le son, qui ne s'entend plus guère). | Tout commence par une femme : la naissance.
+谢 | 讠 parole (le sens) + 射 shè (le son, proche). | 射 veut dire « tirer à l'arc » : une parole décochée vers l'autre.
+有 | 又 main (le son, à l'origine) + 月, ici la chair 肉 et non la lune. | L'image traditionnelle, que les plus anciennes écritures ne confirment pas : une main qui tient de la viande, « j'ai ».
+问 | 口 bouche (le sens) + 门 mén (le son, éloigné). | Une bouche à la porte : quelqu'un pose une question.
+题 | 页 tête (le sens : le mot désignait d'abord le front) + 是 shì (le son). Du front, ce qui vient en tête : le titre, le sujet. |
+吗 | 口 bouche (le sens : un mot de la voix) + 马 mǎ (le son). Le cheval n'a rien à voir. |
+没 | 氵 eau (le sens) + une partie droite sans sens utile ici. Lu mò, le caractère veut dire « s'enfoncer, disparaître ». | Ce qui a coulé, on ne l'a plus.
+下 | Écriture ancienne : un petit trait sous une ligne, « en dessous ». Le contraire de 上. |
+课 | 讠 parole (le sens) + 果 guǒ (le son, approché). | 果 veut dire « fruit » : le cours, fruit de la parole.
+再 | | Origine incertaine. Un trait 一 de plus posé sur 冉 : une fois de plus.
+见 | Simplification de 見 : un grand œil 目 sur des jambes 儿, quelqu'un qui voit. Le sens est bien « voir, rencontrer ». |
+两 | | Deux personnes 从 côte à côte dans un enclos 冂 : elles vont par deux.
+只 | Ici, simplification de 隻 : une main qui tient un oiseau, d'où le mot qui compte les animaux. | La forme actuelle ne le montre plus : un animal à la bouche 口 ouverte, sur deux pattes 八.
+老 | Écriture ancienne : une personne âgée aux longs cheveux, appuyée sur une canne. Sens : « vieux ». |
+虎 | Écriture ancienne : le dessin d'un tigre. 虍 en haut est sa tête ; 几 ne veut pas dire « petite table » ici. |
+跑 | 足 pied (le sens) + 包 bāo (le son, proche). |
+得 | Écriture ancienne : une main 寸 qui ramasse un coquillage, une monnaie (devenu 旦), d'où « obtenir ». Comme particule, il a perdu ce sens. |
+快 | 忄 cœur (le sens : le caractère veut aussi dire « content ») + 夬 guài (le son, proche). | Quand on se dépêche, le cœur bat vite.
+耳 | Écriture ancienne : le dessin d'une oreille. |
+朵 | Écriture ancienne : une tige qui ploie. 几 ne veut pas dire « petite table » ici. | Une oreille qui pend, comme une fleur sur sa branche 木.
+尾 | 尸 corps + 毛 poil : les poils au bout du corps. |
+巴 | Dans le mot « queue », simple terminaison, sans sens propre. | Sa dernière ligne se recourbe, comme une queue.
+真 | | Origine débattue. Ce qui tient droit 直 est vrai.
+奇 | 大 grand (le sens) + 可 kě (le son, ancien). |
+怪 | 忄 cœur (le sens) + 圣 (le son, ancien). Ici, sans rapport avec 圣 shèng « saint » d'aujourd'hui. | Le cœur qui s'inquiète de ce qui est bizarre.
+你们 | « tu » + marque du pluriel des personnes. |
+晚上 | « soir » + 上, qui perd ici son sens « au-dessus ». |
+开始 | « ouvrir » + « commencer ». |
+谢谢 | « remercier », redoublé. |
+问题 | « demander » + « sujet ». |
+没有 | « ne pas » + « avoir ». |
+下课 | « descendre, quitter » + « cours ». |
+再见 | « de nouveau » + « voir ». |
+老虎 | 老 n'est ici qu'un préfixe : le tigre n'est pas forcément vieux. Le sens est dans 虎. |
+耳朵 | « oreille » + 朵, qui n'ajoute pas de sens ici (il sert aussi à compter les fleurs). |
+尾巴 | « queue » + terminaison sans sens. |
+奇怪 | « étrange » + « bizarre » : deux mots proches. |

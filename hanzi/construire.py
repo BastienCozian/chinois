@@ -49,8 +49,8 @@ def hexa(c: str) -> str:
     return f"{ord(c):X}"
 
 
-def lire_paquet() -> tuple[list[dict], dict, dict]:
-    listes, mots, composants = [], {}, {}
+def lire_paquet() -> tuple[list[dict], dict, dict, dict]:
+    listes, mots, composants, indices = [], {}, {}, {}
     erreurs, section = [], None
     for n, brute in enumerate((ICI / "paquet.txt").read_text(encoding="utf-8").splitlines(), 1):
         l = brute.strip()
@@ -59,12 +59,20 @@ def lire_paquet() -> tuple[list[dict], dict, dict]:
         if l.startswith("## "):
             ident, _, titre = l[3:].partition("|")
             section = ident.strip()
-            if section != "composants":
+            if section not in ("composants", "indices"):
                 listes.append({"id": section, "titre": titre.strip(), "mots": []})
             continue
         champs = [c.strip() for c in l.split("|")]
         if section == "composants":
             composants[champs[0]] = champs[1]
+            continue
+        if section == "indices":
+            if len(champs) != 3 or not (champs[1] or champs[2]):
+                erreurs.append(f"ligne {n} : indice : « caractère | origine | astuce », l'une au moins remplie")
+            elif len(champs[0]) == 1 and champs[0] in champs[1] + champs[2]:
+                erreurs.append(f"ligne {n} : l'indice de {champs[0]} ne doit pas contenir ce caractère")
+            else:
+                indices[champs[0]] = {"origine": champs[1], "astuce": champs[2]}
             continue
         if section is None or len(champs) != 6:
             erreurs.append(f"ligne {n} : six champs attendus, ou ligne hors liste")
@@ -79,9 +87,13 @@ def lire_paquet() -> tuple[list[dict], dict, dict]:
             erreurs.append(f"ligne {n} : son « {son} » : vide, « aucun » ou « syllabe zhi1 »")
         mots[ident] = {"hz": hz, "py": syllabes, "sens": sens, "son": son, "remarque": remarque, "liste": section}
         listes[-1]["mots"].append(ident)
+    for m in mots.values():
+        for cle in set(m["hz"]) | ({m["hz"]} if len(m["hz"]) > 1 else set()):
+            if cle not in indices:
+                erreurs.append(f"pas d'indice pour {cle} (section « indices »)")
     if erreurs:
         sys.exit("paquet.txt :\n  " + "\n  ".join(erreurs))
-    return listes, mots, composants
+    return listes, mots, composants, indices
 
 
 def feuilles(ids: str) -> list[str]:
@@ -101,7 +113,7 @@ def feuilles(ids: str) -> list[str]:
     return sortie
 
 
-def caracteres(mots: dict, composants: dict) -> dict:
+def caracteres(mots: dict, composants: dict, indices: dict) -> dict:
     telecharger(DICTIONNAIRE, CACHE / "dictionary.txt")
     dico = {}
     for l in (CACHE / "dictionary.txt").read_text(encoding="utf-8").splitlines():
@@ -126,6 +138,7 @@ def caracteres(mots: dict, composants: dict) -> dict:
                 return [p, py[0], composants.get(p, "")]
             infos[c] = {
                 "hex": hexa(c),
+                "indice": indices[c],
                 "cle": d.get("radical", ""),
                 "parties": [decrit(p) for p in parties],
                 "semantique": ety.get("semantic", "") if ety.get("type") == "pictophonetic" else "",
@@ -155,8 +168,10 @@ def sons(mots: dict) -> None:
             sys.exit(f"Son introuvable pour {m['hz']} ({url}) : {e}. Mettre « aucun » ou « syllabe … » dans paquet.txt.")
 
 
-def ecrire(listes: list, mots: dict, infos: dict) -> None:
+def ecrire(listes: list, mots: dict, infos: dict, indices: dict) -> None:
     for m in mots.values():
+        if len(m["hz"]) > 1:
+            m["motAMot"] = indices[m["hz"]]["origine"]
         m["son"] = m["son"] != "aucun"
     paquet = {"listes": listes, "mots": mots, "caracteres": infos}
     (ICI / "paquet.js").write_text("// Généré par construire.py à partir de paquet.txt : ne pas modifier à la main.\n"
@@ -180,13 +195,13 @@ def ecrire(listes: list, mots: dict, infos: dict) -> None:
 
 
 def main() -> None:
-    listes, mots, composants = lire_paquet()
+    listes, mots, composants, indices = lire_paquet()
     if telecharger(HANZI_WRITER, ICI / "hanzi-writer.min.js"):
         print("  Hanzi Writer téléchargé")
     telecharger(LICENCE_DONNEES, ICI / "ARPHICPL.TXT")
-    infos = caracteres(mots, composants)
+    infos = caracteres(mots, composants, indices)
     sons(mots)
-    ecrire(listes, mots, infos)
+    ecrire(listes, mots, infos, indices)
     n = sum(4 if m["son"] else 3 for m in mots.values())
     print(f"{len(mots)} mots, {len(infos)} caractères, {n} cartes.")
 

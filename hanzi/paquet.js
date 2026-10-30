@@ -69,7 +69,8 @@ const PAQUET = {
    "sens": "vous (plusieurs personnes)",
    "son": true,
    "remarque": "们 marque le pluriel des personnes.",
-   "liste": "l1"
+   "liste": "l1",
+   "motAMot": "« tu » + marque du pluriel des personnes."
   },
   "wanshang": {
    "hz": "晚上",
@@ -80,7 +81,8 @@ const PAQUET = {
    "sens": "le soir",
    "son": true,
    "remarque": "晚上好 « bonsoir ».",
-   "liste": "l1"
+   "liste": "l1",
+   "motAMot": "« soir » + 上, qui perd ici son sens « au-dessus »."
   },
   "yi": {
    "hz": "一",
@@ -121,7 +123,8 @@ const PAQUET = {
    "sens": "commencer",
    "son": true,
    "remarque": "一二三，开始！« 1, 2, 3, commencez ! »",
-   "liste": "l1"
+   "liste": "l1",
+   "motAMot": "« ouvrir » + « commencer »."
   },
   "xiexie": {
    "hz": "谢谢",
@@ -132,7 +135,8 @@ const PAQUET = {
    "sens": "merci",
    "son": true,
    "remarque": "",
-   "liste": "l1"
+   "liste": "l1",
+   "motAMot": "« remercier », redoublé."
   },
   "you": {
    "hz": "有",
@@ -153,7 +157,8 @@ const PAQUET = {
    "sens": "question, problème",
    "son": true,
    "remarque": "有问题吗？« Des questions ? »",
-   "liste": "l1"
+   "liste": "l1",
+   "motAMot": "« demander » + « sujet »."
   },
   "ma": {
    "hz": "吗",
@@ -174,7 +179,8 @@ const PAQUET = {
    "sens": "ne pas avoir ; il n'y a pas",
    "son": true,
    "remarque": "没 est la négation de 有 (jamais 不有).",
-   "liste": "l1"
+   "liste": "l1",
+   "motAMot": "« ne pas » + « avoir »."
   },
   "xiake": {
    "hz": "下课",
@@ -184,8 +190,9 @@ const PAQUET = {
    ],
    "sens": "fin du cours",
    "son": true,
-   "remarque": "« quitter · cours ».",
-   "liste": "l1"
+   "remarque": "",
+   "liste": "l1",
+   "motAMot": "« descendre, quitter » + « cours »."
   },
   "zaijian": {
    "hz": "再见",
@@ -195,8 +202,9 @@ const PAQUET = {
    ],
    "sens": "au revoir",
    "son": true,
-   "remarque": "« de nouveau · voir ».",
-   "liste": "l1"
+   "remarque": "",
+   "liste": "l1",
+   "motAMot": "« de nouveau » + « voir »."
   },
   "liang": {
    "hz": "两",
@@ -227,7 +235,8 @@ const PAQUET = {
    "sens": "tigre",
    "son": true,
    "remarque": "Prononcé láohǔ : deux 3ᵉ tons de suite.",
-   "liste": "l2"
+   "liste": "l2",
+   "motAMot": "老 n'est ici qu'un préfixe : le tigre n'est pas forcément vieux. Le sens est dans 虎."
   },
   "pao": {
    "hz": "跑",
@@ -268,7 +277,8 @@ const PAQUET = {
    "sens": "oreille",
    "son": true,
    "remarque": "",
-   "liste": "l2"
+   "liste": "l2",
+   "motAMot": "« oreille » + 朵, qui n'ajoute pas de sens ici (il sert aussi à compter les fleurs)."
   },
   "weiba": {
    "hz": "尾巴",
@@ -279,7 +289,8 @@ const PAQUET = {
    "sens": "queue (d'un animal)",
    "son": true,
    "remarque": "",
-   "liste": "l2"
+   "liste": "l2",
+   "motAMot": "« queue » + terminaison sans sens."
   },
   "zhen": {
    "hz": "真",
@@ -300,12 +311,17 @@ const PAQUET = {
    "sens": "bizarre",
    "son": true,
    "remarque": "真奇怪！« Vraiment bizarre ! »",
-   "liste": "l2"
+   "liste": "l2",
+   "motAMot": "« étrange » + « bizarre » : deux mots proches."
   }
  },
  "caracteres": {
   "你": {
    "hex": "4F60",
+   "indice": {
+    "origine": "亻 personne + 尔, ancienne façon de dire « tu » : la personne à qui l'on parle.",
+    "astuce": ""
+   },
    "cle": "亻",
    "parties": [
     [
@@ -324,6 +340,10 @@ const PAQUET = {
   },
   "好": {
    "hex": "597D",
+   "indice": {
+    "origine": "女 femme + 子 enfant. La lecture courante est « une femme et son enfant : c'est bien » ; d'autres lectures existent.",
+    "astuce": ""
+   },
    "cle": "女",
    "parties": [
     [
@@ -342,6 +362,10 @@ const PAQUET = {
   },
   "们": {
    "hex": "4EEC",
+   "indice": {
+    "origine": "亻 personne (le sens) + 门 mén (le son). La porte n'a rien à voir avec le sens.",
+    "astuce": ""
+   },
    "cle": "亻",
    "parties": [
     [
@@ -360,6 +384,10 @@ const PAQUET = {
   },
   "晚": {
    "hex": "665A",
+   "indice": {
+    "origine": "日 soleil (le sens : un moment du jour) + 免 miǎn (le son, approché).",
+    "astuce": "免 veut dire « éviter » : le soleil nous évite, c'est le soir."
+   },
    "cle": "日",
    "parties": [
     [
@@ -378,6 +406,10 @@ const PAQUET = {
   },
   "上": {
    "hex": "4E0A",
+   "indice": {
+    "origine": "Écriture ancienne : un petit trait au-dessus d'une ligne, « au-dessus ».",
+    "astuce": ""
+   },
    "cle": "一",
    "parties": [
     [
@@ -396,6 +428,10 @@ const PAQUET = {
   },
   "一": {
    "hex": "4E00",
+   "indice": {
+    "origine": "Un trait, un.",
+    "astuce": ""
+   },
    "cle": "一",
    "parties": [],
    "semantique": "",
@@ -403,6 +439,10 @@ const PAQUET = {
   },
   "二": {
    "hex": "4E8C",
+   "indice": {
+    "origine": "Deux traits, deux.",
+    "astuce": ""
+   },
    "cle": "二",
    "parties": [
     [
@@ -421,6 +461,10 @@ const PAQUET = {
   },
   "三": {
    "hex": "4E09",
+   "indice": {
+    "origine": "Trois traits, trois.",
+    "astuce": ""
+   },
    "cle": "一",
    "parties": [
     [
@@ -439,6 +483,10 @@ const PAQUET = {
   },
   "开": {
    "hex": "5F00",
+   "indice": {
+    "origine": "Simplification de 開 « ouvrir » : on a retiré la porte 門.",
+    "astuce": "廾 deux mains soulèvent la barre 一 de la porte."
+   },
    "cle": "廾",
    "parties": [
     [
@@ -457,6 +505,10 @@ const PAQUET = {
   },
   "始": {
    "hex": "59CB",
+   "indice": {
+    "origine": "女 femme (le sens) + 台 (le son, qui ne s'entend plus guère).",
+    "astuce": "Tout commence par une femme : la naissance."
+   },
    "cle": "女",
    "parties": [
     [
@@ -475,6 +527,10 @@ const PAQUET = {
   },
   "谢": {
    "hex": "8C22",
+   "indice": {
+    "origine": "讠 parole (le sens) + 射 shè (le son, proche).",
+    "astuce": "射 veut dire « tirer à l'arc » : une parole décochée vers l'autre."
+   },
    "cle": "讠",
    "parties": [
     [
@@ -493,6 +549,10 @@ const PAQUET = {
   },
   "有": {
    "hex": "6709",
+   "indice": {
+    "origine": "又 main (le son, à l'origine) + 月, ici la chair 肉 et non la lune.",
+    "astuce": "L'image traditionnelle, que les plus anciennes écritures ne confirment pas : une main qui tient de la viande, « j'ai »."
+   },
    "cle": "月",
    "parties": [],
    "semantique": "",
@@ -501,6 +561,10 @@ const PAQUET = {
   },
   "问": {
    "hex": "95EE",
+   "indice": {
+    "origine": "口 bouche (le sens) + 门 mén (le son, éloigné).",
+    "astuce": "Une bouche à la porte : quelqu'un pose une question."
+   },
    "cle": "门",
    "parties": [
     [
@@ -519,6 +583,10 @@ const PAQUET = {
   },
   "题": {
    "hex": "9898",
+   "indice": {
+    "origine": "页 tête (le sens : le mot désignait d'abord le front) + 是 shì (le son). Du front, ce qui vient en tête : le titre, le sujet.",
+    "astuce": ""
+   },
    "cle": "页",
    "parties": [
     [
@@ -537,6 +605,10 @@ const PAQUET = {
   },
   "吗": {
    "hex": "5417",
+   "indice": {
+    "origine": "口 bouche (le sens : un mot de la voix) + 马 mǎ (le son). Le cheval n'a rien à voir.",
+    "astuce": ""
+   },
    "cle": "口",
    "parties": [
     [
@@ -555,6 +627,10 @@ const PAQUET = {
   },
   "没": {
    "hex": "6CA1",
+   "indice": {
+    "origine": "氵 eau (le sens) + une partie droite sans sens utile ici. Lu mò, le caractère veut dire « s'enfoncer, disparaître ».",
+    "astuce": "Ce qui a coulé, on ne l'a plus."
+   },
    "cle": "氵",
    "parties": [
     [
@@ -573,6 +649,10 @@ const PAQUET = {
   },
   "下": {
    "hex": "4E0B",
+   "indice": {
+    "origine": "Écriture ancienne : un petit trait sous une ligne, « en dessous ». Le contraire de 上.",
+    "astuce": ""
+   },
    "cle": "一",
    "parties": [
     [
@@ -591,6 +671,10 @@ const PAQUET = {
   },
   "课": {
    "hex": "8BFE",
+   "indice": {
+    "origine": "讠 parole (le sens) + 果 guǒ (le son, approché).",
+    "astuce": "果 veut dire « fruit » : le cours, fruit de la parole."
+   },
    "cle": "讠",
    "parties": [
     [
@@ -609,6 +693,10 @@ const PAQUET = {
   },
   "再": {
    "hex": "518D",
+   "indice": {
+    "origine": "",
+    "astuce": "Origine incertaine. Un trait 一 de plus posé sur 冉 : une fois de plus."
+   },
    "cle": "冂",
    "parties": [
     [
@@ -628,6 +716,10 @@ const PAQUET = {
   },
   "见": {
    "hex": "89C1",
+   "indice": {
+    "origine": "Simplification de 見 : un grand œil 目 sur des jambes 儿, quelqu'un qui voit. Le sens est bien « voir, rencontrer ».",
+    "astuce": ""
+   },
    "cle": "见",
    "parties": [
     [
@@ -646,6 +738,10 @@ const PAQUET = {
   },
   "两": {
    "hex": "4E24",
+   "indice": {
+    "origine": "",
+    "astuce": "Deux personnes 从 côte à côte dans un enclos 冂 : elles vont par deux."
+   },
    "cle": "一",
    "parties": [
     [
@@ -669,6 +765,10 @@ const PAQUET = {
   },
   "只": {
    "hex": "53EA",
+   "indice": {
+    "origine": "Ici, simplification de 隻 : une main qui tient un oiseau, d'où le mot qui compte les animaux.",
+    "astuce": "La forme actuelle ne le montre plus : un animal à la bouche 口 ouverte, sur deux pattes 八."
+   },
    "cle": "口",
    "parties": [
     [
@@ -687,6 +787,10 @@ const PAQUET = {
   },
   "老": {
    "hex": "8001",
+   "indice": {
+    "origine": "Écriture ancienne : une personne âgée aux longs cheveux, appuyée sur une canne. Sens : « vieux ».",
+    "astuce": ""
+   },
    "cle": "老",
    "parties": [
     [
@@ -705,6 +809,10 @@ const PAQUET = {
   },
   "虎": {
    "hex": "864E",
+   "indice": {
+    "origine": "Écriture ancienne : le dessin d'un tigre. 虍 en haut est sa tête ; 几 ne veut pas dire « petite table » ici.",
+    "astuce": ""
+   },
    "cle": "虎",
    "parties": [
     [
@@ -723,6 +831,10 @@ const PAQUET = {
   },
   "跑": {
    "hex": "8DD1",
+   "indice": {
+    "origine": "足 pied (le sens) + 包 bāo (le son, proche).",
+    "astuce": ""
+   },
    "cle": "足",
    "parties": [
     [
@@ -741,6 +853,10 @@ const PAQUET = {
   },
   "得": {
    "hex": "5F97",
+   "indice": {
+    "origine": "Écriture ancienne : une main 寸 qui ramasse un coquillage, une monnaie (devenu 旦), d'où « obtenir ». Comme particule, il a perdu ce sens.",
+    "astuce": ""
+   },
    "cle": "彳",
    "parties": [
     [
@@ -764,6 +880,10 @@ const PAQUET = {
   },
   "快": {
    "hex": "5FEB",
+   "indice": {
+    "origine": "忄 cœur (le sens : le caractère veut aussi dire « content ») + 夬 guài (le son, proche).",
+    "astuce": "Quand on se dépêche, le cœur bat vite."
+   },
    "cle": "忄",
    "parties": [
     [
@@ -782,6 +902,10 @@ const PAQUET = {
   },
   "耳": {
    "hex": "8033",
+   "indice": {
+    "origine": "Écriture ancienne : le dessin d'une oreille.",
+    "astuce": ""
+   },
    "cle": "耳",
    "parties": [],
    "semantique": "",
@@ -789,6 +913,10 @@ const PAQUET = {
   },
   "朵": {
    "hex": "6735",
+   "indice": {
+    "origine": "Écriture ancienne : une tige qui ploie. 几 ne veut pas dire « petite table » ici.",
+    "astuce": "Une oreille qui pend, comme une fleur sur sa branche 木."
+   },
    "cle": "木",
    "parties": [
     [
@@ -807,6 +935,10 @@ const PAQUET = {
   },
   "尾": {
    "hex": "5C3E",
+   "indice": {
+    "origine": "尸 corps + 毛 poil : les poils au bout du corps.",
+    "astuce": ""
+   },
    "cle": "尸",
    "parties": [
     [
@@ -825,6 +957,10 @@ const PAQUET = {
   },
   "巴": {
    "hex": "5DF4",
+   "indice": {
+    "origine": "Dans le mot « queue », simple terminaison, sans sens propre.",
+    "astuce": "Sa dernière ligne se recourbe, comme une queue."
+   },
    "cle": "巳",
    "parties": [],
    "semantique": "",
@@ -833,6 +969,10 @@ const PAQUET = {
   },
   "真": {
    "hex": "771F",
+   "indice": {
+    "origine": "",
+    "astuce": "Origine débattue. Ce qui tient droit 直 est vrai."
+   },
    "cle": "目",
    "parties": [
     [
@@ -852,6 +992,10 @@ const PAQUET = {
   },
   "奇": {
    "hex": "5947",
+   "indice": {
+    "origine": "大 grand (le sens) + 可 kě (le son, ancien).",
+    "astuce": ""
+   },
    "cle": "大",
    "parties": [
     [
@@ -870,6 +1014,10 @@ const PAQUET = {
   },
   "怪": {
    "hex": "602A",
+   "indice": {
+    "origine": "忄 cœur (le sens) + 圣 (le son, ancien). Ici, sans rapport avec 圣 shèng « saint » d'aujourd'hui.",
+    "astuce": "Le cœur qui s'inquiète de ce qui est bizarre."
+   },
    "cle": "忄",
    "parties": [
     [

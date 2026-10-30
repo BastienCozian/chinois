@@ -75,15 +75,24 @@
     let h = `<p class="compo">${hz(c, "compo-c")}`;
     if (parts.length) h += ` = ${parts.join(" + ")}`;
     if (i.cle && i.cle !== c && !i.parties.some((p) => p[0] === i.cle)) h += `<br><span class="info">clé ${hz(i.cle)} ${i.cleSens || ""}</span>`;
-    return h + "</p>";
+    return h + "</p>" + htmlIndice(c);
+  }
+
+  // Indice d'un caractère, sans le caractère : affichable pendant qu'on le cherche.
+  // L'origine est établie ; l'astuce est inventée pour la mémoire, et le dit.
+  const hzTexte = (t) => t.replace(/[\u2e80-\u2fdf\u3400-\u9fff]+/g, (x) => hz(x));
+  function htmlIndice(c) {
+    const i = P.caracteres[c].indice;
+    return (i.origine ? `<p class="indice"><b>Origine</b> ${hzTexte(i.origine)}</p>` : "") +
+      (i.astuce ? `<p class="indice astuce"><b>Astuce inventée</b> ${hzTexte(i.astuce)}</p>` : "");
   }
 
   // Le mot en entier : caractères, pinyin, son, sens, remarque, composants
   function htmlMot(id, avecCompo) {
     const m = P.mots[id];
     let h = `<div class="mot">${hz(m.hz, "grand")}<p class="py" lang="zh-Latn-pinyin">${py(m)} ${bSon(id)}</p>
-      <p class="sens">${m.sens}</p>${m.remarque ? `<p class="remarque">${m.remarque}</p>` : ""}</div>`;
-    if (avecCompo) h += `<details class="compos"><summary>Composants</summary>${[...new Set(m.hz)].map(htmlComposants).join("")}</details>`;
+      <p class="sens">${m.sens}</p>${m.motAMot ? `<p class="indice"><b>Mot à mot</b> ${hzTexte(m.motAMot)}</p>` : ""}${m.remarque ? `<p class="remarque">${m.remarque}</p>` : ""}</div>`;
+    if (avecCompo) h += `<details class="compos" open><summary>Pour retenir</summary>${[...new Set(m.hz)].map(htmlComposants).join("")}</details>`;
     return h;
   }
 
@@ -155,7 +164,7 @@
       <p>Chaque mot donne quatre cartes, qui arrivent à quelques mots d'écart.</p>
       <p><b>Écriture</b> (le sens et le pinyin sont donnés). Écrivez chaque caractère au doigt, trait par trait,
       dans l'ordre et dans le bon sens : un trait faux est refusé et compté. Après trois essais, le trait attendu clignote.
-      « Indice » montre le trait suivant ; « Je ne sais pas » montre le caractère, puis vous le repassez.
+      « Aide-mémoire » donne l'origine du caractère ou une astuce ; « Trait suivant » montre le trait attendu ; « Je ne sais pas » montre le caractère, puis vous le repassez.
       La première fois, le mot se présente : regardez l'ordre des traits, puis repassez sur le modèle.
       La note proposée suit vos fautes ; changez-la si elle vous semble injuste.</p>
       <p><b>Sens</b> (les caractères). Retrouvez le sens, puis vérifiez.</p>
@@ -166,6 +175,7 @@
       de tête, jusqu'à ce que vous fermiez la page. Vos enregistrements ne sont jamais gardés.</p>
       <p><b>Les mots</b>. La fiche de chaque mot permet aussi de s'enregistrer et de se comparer au modèle, sans note.</p>
       <p><b>Écoute</b> (le son seul). Retrouvez le sens, puis vérifiez.</p>
+      <p><b>Pour retenir</b>. « Origine » est ce qu'on sait de l'histoire du caractère ; « Astuce inventée » est une image pour la mémoire, pas une vérité sur le chinois. Quand un composant ne donne que le son, l'indice le dit.</p>
       <p>Tons du dictionnaire : dans 你好, on écrit nǐ hǎo, on dit ní hǎo. La remarque sous le mot le signale.</p>
       <p>Clavier sur PC : espace pour voir la réponse ou réécouter, R pour s'enregistrer, 1 à 4 pour noter, 1 à 5 pour les tons (5 : neutre).</p></details>`;
 
@@ -394,7 +404,7 @@
       <div class="ecrire">${GRILLE}<div class="hw"></div></div>
       <div class="actions" id="aides">${ctx.nouvelle
         ? `<button id="revoir">▶ Revoir l'ordre des traits</button>`
-        : `<button id="indice">Indice</button><button id="montrer">Je ne sais pas</button>`}</div>
+        : `<button id="memo">Aide-mémoire</button><button id="indice">Trait suivant</button><button id="montrer">Je ne sais pas</button>`}</div>
       <div id="compo"></div><div id="suite"></div></section>`;
     on("#quitter", accueil);
     brancherSons();
@@ -417,13 +427,17 @@
 
     function caractere() {
       cases();
-      if (ctx.nouvelle) zone.querySelector("#compo").innerHTML = htmlComposants(chars[k]);
+      zone.querySelector("#compo").innerHTML = ctx.nouvelle ? htmlComposants(chars[k]) : "";
       w = traceur(chars[k], { showOutline: ctx.nouvelle });
       if (ctx.nouvelle) w.animateCharacter({ onComplete: () => quiz(true) });
       else quiz(false);
     }
 
     on("#revoir", () => { if (w) w.animateCharacter({ onComplete: () => quiz(true) }); });
+    on("#memo", () => {
+      aides[k] = Math.max(aides[k], 1);
+      zone.querySelector("#compo").innerHTML = htmlIndice(chars[k]);
+    });
     on("#indice", () => {
       if (!w) return;
       aides[k] = Math.max(aides[k], 1);
@@ -460,13 +474,20 @@
   // Cartes à réponse cachée (sens, écoute) : « Voir la réponse », puis le mot entier et la note
   function reveler(ctx) {
     const go = zone.querySelector("#voir");
+    let extra;
+    on("#memo", () => {
+      extra = { indice: true };
+      zone.querySelector("#memo").outerHTML = `<div class="memo">${[...new Set(ctx.m.hz)].map(htmlIndice).join("")}</div>`;
+    });
     const voir = () => {
       go.remove();
       const q = zone.querySelector(".question");
       if (q) q.remove();
       zone.querySelector("#suite").innerHTML = htmlMot(ctx.mot, true) + htmlNotes(ctx);
+      const memo = zone.querySelector(".memo");
+      if (memo) memo.remove();
       brancherSons();
-      brancherNotes(ctx);
+      brancherNotes(ctx, extra);
       jouer(ctx.mot);
       clavier({ " ": () => jouer(ctx.mot), note: touchesNotes });
     };
@@ -479,6 +500,7 @@
     zone.innerHTML = entete(ctx) + `<section class="carte">
       <p class="consigne">Que veut dire ce mot ?</p>
       <div class="question">${hz(ctx.m.hz, "grand")}</div>
+      <button class="plein" id="memo">Aide-mémoire</button>
       <button class="principal plein" id="voir">Voir la réponse</button><div id="suite"></div></section>`;
     on("#quitter", accueil);
     const voir = reveler(ctx);

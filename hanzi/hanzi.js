@@ -118,6 +118,8 @@ const Hanzi = (() => {
       const r = js.filter((e) => e.id[0] === t);
       if (!r.length) return;
       L.push(`  ${titre} : ${repartition(r)}.`);
+      const aides = r.filter((e) => e.indice).length;
+      if (aides) L.push(`    Avec aide-mémoire : ${aides}.`);
       const durs = {};
       r.filter((e) => e.n === 1).forEach((e) => { const hz = M(e.id).hz; durs[hz] = (durs[hz] || 0) + 1; });
       if (Object.keys(durs).length) L.push("    Notés « À revoir » : " + trie(durs).map(([k, n]) => k + (n > 1 ? ` ×${n}` : "")).join(", ") + ".");
