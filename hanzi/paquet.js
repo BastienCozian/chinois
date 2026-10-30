@@ -407,7 +407,7 @@ const PAQUET = {
   "上": {
    "hex": "4E0A",
    "indice": {
-    "origine": "Écriture ancienne : un petit trait au-dessus d'une ligne, « au-dessus ».",
+    "origine": "Écriture ancienne : un petit trait au-dessus d'une ligne, « au-dessus ». Rien à voir avec la divination 卜, malgré la ressemblance.",
     "astuce": ""
    },
    "cle": "一",
@@ -650,7 +650,7 @@ const PAQUET = {
   "下": {
    "hex": "4E0B",
    "indice": {
-    "origine": "Écriture ancienne : un petit trait sous une ligne, « en dessous ». Le contraire de 上.",
+    "origine": "Écriture ancienne : un petit trait sous une ligne, « en dessous ». Le contraire de 上. Rien à voir avec la divination 卜, malgré la ressemblance.",
     "astuce": ""
    },
    "cle": "一",

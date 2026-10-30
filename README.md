@@ -26,6 +26,7 @@ Reconstruire après avoir modifié le paquet : `python -X utf8 construire.py`.
 
 Les mots du cours, page : <https://bastiencozian.github.io/chinois/hanzi/>. Quatre cartes par mot : **écriture** au doigt, trait par trait, dans l'ordre (tracé vérifié par Hanzi Writer), **sens**, **lecture** (tons corrigés ; enregistrement facultatif, comparé au modèle à l'oreille et sur la courbe de ton ; « Je ne peux pas parler ici » pour lire de tête), **écoute**. Pour chaque mot : l'ordre des traits animé, la clé et les composants, et la comparaison de sa prononciation au modèle.
 
+- Chaque caractère a un indice (section « indices » de `hanzi/paquet.txt`, obligatoire) : l'origine établie, ou une astuce affichée comme inventée. Les mots composés ont leur mot à mot.
 - Le paquet se modifie dans `hanzi/paquet.txt`, puis `python -X utf8 construire.py` dans `hanzi/` (tracés, sons, composants, cache hors ligne).
 - Même répétition espacée que la page Pinyin (`srs.js`), mêmes profils (`profil.js`), même micro et même courbe de ton (`voix.js`, `ton.js`), même manifeste et mêmes icônes : après une modification de l'un de ces fichiers ou de `style.css`, relancer les **deux** constructions, pour que chaque page renouvelle son cache.
 - Chaque page n'efface et ne lit que ses propres caches (`pinyin-…`, `hanzi-…`).
