@@ -166,3 +166,11 @@ nav.site a.actif { background: var(--accent); border-color: var(--accent); color
 #nouveau label { display: block; font-family: var(--sans); font-size: 0.9rem; margin-bottom: 0.3rem; }
 .nouveau { display: flex; gap: 8px; }
 .nouveau input { flex: 1; min-width: 0; font: inherit; font-size: 1.05rem; padding: 0.5rem 0.6rem; border: 1px solid var(--rule); border-radius: 8px; background: var(--card); color: var(--fg); }
+
+/* Retrouver mon niveau (niveau.js) : un élément par ligne, son niveau à droite */
+.niveaux ul { list-style: none; padding: 0; margin: 0.4rem 0 0; }
+.niveaux li { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; padding: 0.35rem 0; border-bottom: 1px solid var(--rule); margin: 0; }
+.niveaux .element { flex: 1; min-width: 0; }
+.niveaux .element small { color: var(--muted); font-family: var(--sans); }
+.niveaux select { font: inherit; font-size: 0.9rem; padding: 0.3rem; max-width: 52%; }
+.niveaux .tout { margin: 0.2rem 0 0.4rem; font-size: 0.9rem; }

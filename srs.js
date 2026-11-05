@@ -171,6 +171,60 @@ const SRS = (() => {
     etat.jour.bonus += 10;
   }
 
+  /* ---------- La progression ne se perd jamais ---------- */
+
+  // Cartes absentes du paquet (mot retiré, paquet mal construit) : rangées dans etat.archive, jamais effacées.
+  // Elles reprennent leur place si elles reviennent dans le paquet. existe(id) : la carte est-elle au paquet ?
+  function ranger(etat, existe) {
+    etat.archive = etat.archive || {};
+    for (const id of Object.keys(etat.cartes)) if (!existe(id)) { etat.archive[id] = etat.cartes[id]; delete etat.cartes[id]; }
+    for (const id of Object.keys(etat.archive)) if (existe(id)) { etat.cartes[id] = etat.archive[id]; delete etat.archive[id]; }
+    return etat;
+  }
+
+  /* ---------- Niveau déclaré (sauvegarde perdue) ---------- */
+
+  // L'élève dit où il en est pour un mot ou une syllabe ; ses cartes repartent de là, en révision espacée.
+  const NIVEAUX = ["Pas encore vu", "Je débute", "Je le connais", "Je le maîtrise"];
+  const IVL_NIVEAU = [0, 1, 7, 30];
+
+  function niveauCarte(c) {
+    if (!c || c.etat === "nouvelle") return 0;
+    if (c.etat !== "revision" || c.ivl < IVL_NIVEAU[2]) return 1;
+    return c.ivl < IVL_NIVEAU[3] ? 2 : 3;
+  }
+  // Niveau d'un élément : celui de sa carte vue la moins avancée ; 0 si aucune n'a été vue
+  function niveau(etat, ids) {
+    const n = ids.filter((id) => etat.cartes[id]).map((id) => niveauCarte(etat.cartes[id]));
+    return n.length ? Math.min(...n) : 0;
+  }
+
+  // changements : [{ cle, ids, n }]. Les retours sont étalés (sur 3 jours au moins, sur l'intervalle sinon),
+  // pour ne pas tout revoir le même jour. Le quota de nouvelles cartes n'est pas touché.
+  function declarer(etat, changements, t) {
+    const par = {};
+    changements.forEach((ch, rang) => {
+      (par[ch.n] = par[ch.n] || []).push(ch.cle);
+      ch.ids.forEach((id) => {
+        if (ch.n === 0) { delete etat.cartes[id]; return; }
+        const ivl = IVL_NIVEAU[ch.n], fenetre = Math.max(3, ivl);
+        const c = Object.assign(neuve(), etat.cartes[id] || {});
+        c.etat = "revision"; c.ivl = ivl; c.pas = 0; c.declare = true; delete c.retour;
+        c.due = dansNJours(t, 1 + (rang % fenetre));
+        etat.cartes[id] = c;
+      });
+    });
+    if (changements.length) (etat.declarations = etat.declarations || []).push({ t: t, par: par });
+    return etat;
+  }
+
+  // Lignes du bilan : niveaux déclarés depuis le dernier bilan. nom(cle) : comment écrire l'élément.
+  function lignesDeclarations(etat, depuis, nom) {
+    return (etat.declarations || []).filter((d) => d.t > depuis).map((d) =>
+      `  Niveaux déclarés à la main le ${date(d.t, true)} (auto-évaluation, poids faible) : ` +
+      Object.keys(d.par).sort().map((n) => `${NIVEAUX[n]} : ${d.par[n].map(nom).join(", ")}`).join(" ; ") + ".");
+  }
+
   /* ---------- Bilan ---------- */
 
   function date(t, heure) {
@@ -249,6 +303,7 @@ const SRS = (() => {
     const L = [`Bilan Pinyin du ${date(t, true)}`, ""];
     L.push(depuis ? `Depuis le dernier bilan (${date(depuis, true)}) :` : "Depuis le début (premier bilan) :");
     L.push(...bloc(recents, paquet));
+    L.push(...lignesDeclarations(etat, depuis, marque));
     if (depuis && etat.journal.length > recents.length) {
       L.push("", `Cumul depuis le ${date(etat.debut || etat.journal[0].t)} :`);
       L.push(...bloc(etat.journal, paquet));
@@ -263,7 +318,8 @@ const SRS = (() => {
     return s[Math.floor(s.length / 2)];
   }
 
-  return { marque, traits, jour, noter, delai, etatVide, quota, compter, prochaine, repondre, corriger, modifiable, encoreDix, bilan, date, NOTES };
+  return { marque, traits, jour, noter, delai, etatVide, quota, compter, prochaine, repondre, corriger, modifiable, encoreDix, bilan, date, NOTES,
+    ranger, NIVEAUX, niveau, declarer, lignesDeclarations };
 })();
 
 if (typeof module !== "undefined") module.exports = SRS;

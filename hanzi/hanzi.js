@@ -133,6 +133,7 @@ const Hanzi = (() => {
     const L = [`Bilan Sinogrammes du ${S.date(t, true)}`, ""];
     L.push(depuis ? `Depuis le dernier bilan (${S.date(depuis, true)}) :` : "Depuis le début (premier bilan) :");
     L.push(...bloc(recents, paquet));
+    L.push(...S.lignesDeclarations(etat, depuis, (id) => paquet.mots[id] ? paquet.mots[id].hz : id));
     if (depuis && etat.journal.length > recents.length) {
       L.push("", `Cumul depuis le ${S.date(etat.debut || etat.journal[0].t)} :`);
       L.push(...bloc(etat.journal, paquet));

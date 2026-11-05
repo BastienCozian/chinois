@@ -179,7 +179,7 @@ def ecrire(listes: list, mots: dict, infos: dict, indices: dict) -> None:
     # Manifeste et icônes : ceux de la page Pinyin, une seule appli pour les deux pages
     fichiers = ["./", "index.html", "hanzi.css", "app.js", "hanzi.js", "paquet.js", "hanzi-writer.min.js",
                 "../manifest.json", "../icone-180.png", "../icone-512.png",
-                "../style.css", "../srs.js", "../profil.js", "../ton.js", "../voix.js"]
+                "../style.css", "../srs.js", "../profil.js", "../niveau.js", "../ton.js", "../voix.js"]
     fichiers += sorted(f"traits/{i['hex']}.json" for i in infos.values())
     fichiers += sorted(f"sons/{p.name}" for p in SONS.glob("*.mp3") if p.stem in mots)
     h = hashlib.sha1()

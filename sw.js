@@ -1,6 +1,6 @@
 // Généré par construire.py : ne pas modifier à la main.
 // Cache hors ligne : la page marche sans réseau une fois ouverte.
-const VERSION = "pinyin-f1d7c6d5df";
+const VERSION = "pinyin-b13e67701d";
 const FICHIERS = [
  "./",
  "index.html",
@@ -8,6 +8,7 @@ const FICHIERS = [
  "app.js",
  "srs.js",
  "profil.js",
+ "niveau.js",
  "ton.js",
  "voix.js",
  "paquet.js",

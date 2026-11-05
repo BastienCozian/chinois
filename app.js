@@ -22,9 +22,8 @@
       const v = localStorage.getItem(CLE);
       if (v) {
         const e = Object.assign(SRS.etatVide(), JSON.parse(v));
-        // Cartes retirées du paquet : on oublie leur progression
-        for (const id of Object.keys(e.cartes)) if (!ORDRE.includes(id)) delete e.cartes[id];
-        return e;
+        // Cartes retirées du paquet : rangées à part, jamais effacées (une mise à jour ne perd aucune progression)
+        return SRS.ranger(e, (id) => ORDRE.includes(id));
       }
     } catch (e) { /* stockage indisponible : on repart d'un état vide */ }
     return SRS.etatVide();
@@ -59,6 +58,8 @@
     }
     h += `<button class="large" id="sons">Tableau des consonnes et des voyelles</button>
       <button class="large" id="mes-sons">Mes sons : choisir dans le tableau et s'entraîner</button>`;
+    if (!c.vues) h += `<p class="info">Vous aviez déjà commencé, sur cet appareil ou un autre ? Restaurez une sauvegarde (Réglages), ou
+      <button class="lien" id="niveau-haut">retrouvez votre niveau</button> syllabe par syllabe.</p>`;
     if (ios) h += `<p class="info">Pour garder votre progression : Partager → « Sur l'écran d'accueil », puis ouvrez la page depuis son icône.</p>`;
 
     if (Profil.proprio()) h += `<section class="bloc"><h2>Bilan pour l'Agent Teach</h2>
@@ -85,6 +86,7 @@
       <p class="info">La progression est enregistrée sur cet appareil, dans ce navigateur, pas sur le site. Une sauvegarde de temps en temps la protège et permet de la transporter.</p>
       <p><button id="export">Sauvegarder la progression</button>
       <label class="bouton">Restaurer une sauvegarde<input id="import" type="file" accept="application/json" hidden></label></p>
+      <p class="info">Sauvegarde perdue ? Indiquez syllabe par syllabe où vous en êtes : <button id="niveau">Retrouver mon niveau</button></p>
       <p><button class="danger" id="zero">Tout remettre à zéro</button></p></details>`;
 
     h += `<footer><p>Sons : syllabes enregistrées par Chen Wang, projet <a href="https://github.com/hugolpz/audio-cmn" target="_blank" rel="noopener">audio-cmn</a>
@@ -98,6 +100,8 @@
     on("#encore", () => { SRS.encoreDix(E, Date.now()); sauver(); seance(); });
     on("#bilan", copierBilan);
     on("#export", exporter);
+    on("#niveau", niveaux);
+    on("#niveau-haut", niveaux);
     on("#zero", () => {
       if (confirm(`Effacer toute la progression de ${Profil.actif().nom} sur la page Pinyin ?${Profil.proprio() ? " Pensez d'abord à copier le bilan." : ""}`)) { E = SRS.etatVide(); sauver(); accueil(); }
     });
@@ -137,8 +141,22 @@
     f.text().then((txt) => {
       const v = JSON.parse(txt);
       if (!v.cartes || !v.journal) throw new Error("format");
-      if (confirm("Remplacer la progression actuelle par cette sauvegarde ?")) { E = Object.assign(SRS.etatVide(), v); sauver(); accueil(); }
+      if (confirm("Remplacer la progression actuelle par cette sauvegarde ?")) { E = SRS.ranger(Object.assign(SRS.etatVide(), v), (id) => ORDRE.includes(id)); sauver(); accueil(); }
     }).catch(() => alert("Ce fichier n'est pas une sauvegarde de la page Pinyin."));
+  }
+
+  // Sauvegarde perdue : l'élève indique son niveau, syllabe par syllabe (les deux cartes de la syllabe)
+  function niveaux() {
+    Micro.arreter();
+    const sections = PAQUET.groupes.map((g) => {
+      const vues = new Set();
+      const elements = g.contrastes.flatMap((c) => c.cibles).filter((s) => !vues.has(s) && vues.add(s)).map((s) => ({
+        cle: s, html: `<b>${M(s)}</b>`, ids: ["p-" + s, "e-" + s].filter((id) => ORDRE.includes(id)),
+      })).filter((e) => e.ids.length);
+      return { titre: g.titre, elements: elements };
+    }).filter((s) => s.elements.length);
+    Niveau.ecran({ zone, etat: E, sauver, retour: accueil, nom: "syllabe", sections,
+      intro: "Sauvegarde perdue, ou nouvel appareil : dites où vous en êtes, sans tout reprendre à zéro." });
   }
 
   /* ---------- Tableau des sons : chaque case joue sa syllabe ---------- */

@@ -12,6 +12,18 @@ Au premier passage sur un appareil, on choisit son profil ou on tape son prénom
 - Un autre profil range sa progression sous `pinyin-v1@<id>` et `hanzi-v1@<id>`. Registre des profils : `chinois-profils`.
 - La progression ne suit pas l'élève d'un appareil à l'autre : « Sauvegarder la progression » puis « Restaurer une sauvegarde » (Réglages, sur chacune des deux pages).
 
+## Une mise à jour ne fait perdre aucune progression
+
+Règles pour toute modification du site, quel que soit le profil :
+
+- **Clés de stockage** (`pinyin-v1`, `hanzi-v1`, `chinois-profils`, suffixe `@<id>`) et **ids de cartes** (`p-zhang1`, `e-ni`…) : ne jamais les renommer. La progression y est attachée.
+- **Carte retirée du paquet** (ou paquet mal construit) : sa progression est rangée dans `archive` de l'état (`SRS.ranger`), jamais effacée, et reprend sa place si la carte revient.
+- **Format de l'état** : n'ajouter que des champs facultatifs, que l'ancien code ignore et que le nouveau sait absents (`Object.assign(SRS.etatVide(), …)`). Pas de migration qui réécrit l'état.
+- Le cache hors ligne (`sw.js`) ne touche pas au stockage : une nouvelle version remplace les fichiers, pas la progression.
+- Ce qui peut encore la perdre : effacer les données du navigateur, changer d'appareil, ou Safari qui efface le stockage d'un site non ouvert depuis 7 jours (les pages le demandent persistant, et l'icône sur l'écran d'accueil l'en protège). D'où la sauvegarde, et l'écran ci-dessous.
+
+**Retrouver mon niveau** (`niveau.js`, Réglages, ou lien sur l'accueil d'un profil vierge) : sans sauvegarde, l'élève indique pour chaque mot (Sinogrammes) ou chaque syllabe (Prononciation), ou pour toute une liste, « Pas encore vu », « Je débute », « Je le connais » ou « Je le maîtrise ». Les cartes de l'élément passent en révision espacée avec un intervalle de 1, 7 ou 30 jours, et leurs retours sont étalés (`SRS.declarer`). Seuls les éléments changés sont touchés. Les déclarations sont gardées dans `declarations` et apparaissent au bilan de l'Agent Teach comme une auto-évaluation.
+
 ## Prononciation
 
 Cartes de prononciation du mandarin : écouter le modèle, s'enregistrer, comparer à l'oreille et sur la courbe de ton, et s'entraîner à distinguer à l'oreille les syllabes qu'on confond.

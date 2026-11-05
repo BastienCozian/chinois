@@ -22,9 +22,8 @@
       const v = localStorage.getItem(CLE);
       if (v) {
         const e = Object.assign(SRS.etatVide(), { types: Object.assign({}, TOUS) }, JSON.parse(v));
-        // Mots retirés du paquet : on oublie leur progression
-        for (const id of Object.keys(e.cartes)) if (!P.mots[id.slice(2)]) delete e.cartes[id];
-        return e;
+        // Mots retirés du paquet : rangés à part, jamais effacés (une mise à jour ne perd aucune progression)
+        return SRS.ranger(e, (id) => !!P.mots[id.slice(2)]);
       }
     } catch (e) { /* stockage indisponible : on repart d'un état vide */ }
     return Object.assign(SRS.etatVide(), { types: Object.assign({}, TOUS) });
@@ -159,6 +158,8 @@
       if (c.restantes) h += `<button class="principal" id="encore">Encore 10 nouvelles cartes</button>`;
     }
     h += `<button class="large" id="liste">Les mots : ordre des traits, composants, écriture libre</button>`;
+    if (!Object.keys(E.cartes).length) h += `<p class="info">Vous aviez déjà commencé, sur cet appareil ou un autre ? Restaurez une sauvegarde (Réglages), ou
+      <button class="lien" id="niveau-haut">retrouvez votre niveau</button> mot par mot.</p>`;
     if (ios) h += `<p class="info">Pour garder votre progression : Partager → « Sur l'écran d'accueil », puis ouvrez la page depuis son icône.</p>`;
 
     if (Profil.proprio()) h += `<section class="bloc"><h2>Bilan pour l'Agent Teach</h2>
@@ -194,6 +195,7 @@
       <p class="info">La progression est enregistrée sur cet appareil, dans ce navigateur, pas sur le site. Une sauvegarde de temps en temps la protège et permet de la transporter.</p>
       <p><button id="export">Sauvegarder la progression</button>
       <label class="bouton">Restaurer une sauvegarde<input id="import" type="file" accept="application/json" hidden></label></p>
+      <p class="info">Sauvegarde perdue ? Indiquez mot par mot où vous en êtes : <button id="niveau">Retrouver mon niveau</button></p>
       <p><button class="danger" id="zero">Tout remettre à zéro</button></p></details>`;
 
     h += `<footer><p>Ordre des traits : <a href="https://hanziwriter.org" target="_blank" rel="noopener">Hanzi Writer</a> (David Chanin, MIT),
@@ -210,6 +212,8 @@
     on("#encore", () => { SRS.encoreDix(E, Date.now()); sauver(); seance(); });
     on("#bilan", copierBilan);
     on("#export", exporter);
+    on("#niveau", niveaux);
+    on("#niveau-haut", niveaux);
     on("#zero", () => {
       if (confirm(`Effacer toute la progression de ${Profil.actif().nom} sur la page Sinogrammes ?${Profil.proprio() ? " Pensez d'abord à copier le bilan." : ""}`)) {
         E = Object.assign(SRS.etatVide(), { types: Object.assign({}, TOUS) }); ORDRE = Hanzi.ordre(P, E.types); sauver(); accueil();
@@ -260,9 +264,21 @@
       const v = JSON.parse(txt);
       if (!v.cartes || !v.journal) throw new Error("format");
       if (confirm("Remplacer la progression actuelle par cette sauvegarde ?")) {
-        E = Object.assign(SRS.etatVide(), { types: Object.assign({}, TOUS) }, v); ORDRE = Hanzi.ordre(P, E.types); sauver(); accueil();
+        E = SRS.ranger(Object.assign(SRS.etatVide(), { types: Object.assign({}, TOUS) }, v), (id) => !!P.mots[id.slice(2)]); ORDRE = Hanzi.ordre(P, E.types); sauver(); accueil();
       }
     }).catch(() => alert("Ce fichier n'est pas une sauvegarde de la page Sinogrammes."));
+  }
+
+  // Sauvegarde perdue : l'élève indique son niveau, mot par mot (toutes les cartes du mot)
+  function niveaux() {
+    lacher();
+    const sections = P.listes.map((l) => ({ titre: l.titre, elements: l.mots.map((id) => {
+      const m = P.mots[id];
+      return { cle: id, html: `${hz(m.hz)} <small lang="zh-Latn-pinyin">${py(m)}</small> <small>${m.sens}</small>`,
+        ids: Object.keys(Hanzi.TYPES).filter((t) => t !== "o" || m.son).map((t) => t + "-" + id) };
+    }) }));
+    Niveau.ecran({ zone, etat: E, sauver, retour: accueil, nom: "mot", sections,
+      intro: "Sauvegarde perdue, ou nouvel appareil : dites où vous en êtes, sans tout reprendre à zéro." });
   }
 
   /* ---------- Les mots : liste, fiche, écriture libre ---------- */
