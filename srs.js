@@ -152,6 +152,20 @@ const SRS = (() => {
     etat.journal.push(Object.assign({ t: t, id: id, n: note }, extra || {}));
   }
 
+  // Change la note d'une réponse déjà donnée : la carte repart de son état d'avant cette réponse.
+  // Possible seulement si la carte n'a pas été revue depuis ; renvoie false sinon.
+  function corriger(etat, r, note) {
+    if (!modifiable(etat, r)) return false;
+    etat.cartes[r.id] = noter(r.avant, note, r.t);
+    const e = etat.journal.filter((x) => x.id === r.id).pop();
+    e.n = note; e.corrige = true;
+    return true;
+  }
+  function modifiable(etat, r) {
+    const e = etat.journal.filter((x) => x.id === r.id).pop();
+    return !!e && e.t === r.t;
+  }
+
   function encoreDix(etat, t) {
     if (etat.jour.date !== jour(t)) etat.jour = { date: jour(t), nouvelles: 0, bonus: 0 };
     etat.jour.bonus += 10;
@@ -249,7 +263,7 @@ const SRS = (() => {
     return s[Math.floor(s.length / 2)];
   }
 
-  return { marque, traits, jour, noter, delai, etatVide, quota, compter, prochaine, repondre, encoreDix, bilan, date, NOTES };
+  return { marque, traits, jour, noter, delai, etatVide, quota, compter, prochaine, repondre, corriger, modifiable, encoreDix, bilan, date, NOTES };
 })();
 
 if (typeof module !== "undefined") module.exports = SRS;

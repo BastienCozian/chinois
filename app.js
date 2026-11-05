@@ -77,11 +77,12 @@
       <p><b>La courbe</b> : la hauteur de la voix, en demi-tons autour de votre hauteur moyenne (bleu : modèle, rouge : vous).
       Elle montre la forme du ton, pas sa hauteur absolue, et ne dit rien des consonnes ni des voyelles.</p>
       <p>Vos enregistrements ne sont jamais gardés : chacun disparaît à la carte suivante.</p>
-      <p>Clavier sur PC : espace pour réécouter, R pour s'enregistrer, 1 à 4 pour répondre, flèches pour passer d'un son à l'autre.</p></details>`;
+      ${Profil.htmlFrequence()}
+      <p>Clavier sur PC : espace pour réécouter, R pour s'enregistrer, 1 à 4 pour répondre, flèches pour passer d'un son ou d'une réponse à l'autre.</p></details>`;
 
     h += `<details class="bloc"><summary>Réglages et sauvegarde</summary>
       <p><label>Nouvelles cartes par jour <input id="parjour" type="number" min="0" max="130" value="${E.parJour}"></label></p>
-      <p class="info">La progression ne vit que dans ce navigateur. Une sauvegarde de temps en temps la protège.</p>
+      <p class="info">La progression est enregistrée sur cet appareil, dans ce navigateur, pas sur le site. Une sauvegarde de temps en temps la protège et permet de la transporter.</p>
       <p><button id="export">Sauvegarder la progression</button>
       <label class="bouton">Restaurer une sauvegarde<input id="import" type="file" accept="application/json" hidden></label></p>
       <p><button class="danger" id="zero">Tout remettre à zéro</button></p></details>`;
@@ -234,40 +235,90 @@
 
   /* ---------- Séance ---------- */
 
-  let S = null; // séance : { rang, derniere, faites }
+  let S = null; // séance : { rang, derniere, faites, hist : réponses données, courante : carte à l'écran }
 
   function seance() {
     Ton.contexte(); // créé pendant un geste : Safari l'exige
-    S = { rang: 0, derniere: null, faites: 0 };
+    S = { rang: 0, derniere: null, faites: 0, hist: [], courante: null };
     suivante();
   }
 
   function suivante() {
     const t = Date.now(), p = SRS.prochaine(E, ORDRE, t, S.derniere, S.rang);
-    if (!p) return fin();
+    if (!p) { S.courante = null; return fin(); }
     S.derniere = p.id;
     const cible = p.id.slice(2), info = PAQUET.cibles[cible];
     const groupe = PAQUET.groupes.find((g) => g.id === info.groupe);
     const contraste = groupe.contrastes.find((c) => c.id === info.contraste);
-    const ctx = { id: p.id, cible, info, nouvelle: !E.cartes[p.id], titre: groupe.titre.split(" :")[0] + " · " + contraste.libelle };
-    if (p.id.startsWith("p-")) production(ctx); else perception(ctx);
+    S.courante = { id: p.id, cible, info, nouvelle: !E.cartes[p.id], titre: groupe.titre.split(" :")[0] + " · " + contraste.libelle };
+    lancer(S.courante);
+  }
+
+  function lancer(ctx) {
+    if (ctx.id.startsWith("p-")) production(ctx); else perception(ctx);
+    window.scrollTo(0, 0);
+  }
+
+  /* Revenir sur une réponse de la séance : la voir, changer sa note, réessayer sans note */
+  function revue(i) {
+    Micro.arreter();
+    const r = S.hist[i], ctx = r.ctx, n = S.hist.length, s = ctx.cible;
+    const peut = SRS.modifiable(E, r);
+    const reponse = r.choix ? `<p class="${r.choix === s ? "ok" : "ko"} centre">${r.choix === s ? "Vous aviez choisi la bonne syllabe." : `Vous aviez choisi <b>${M(r.choix)}</b>.`}</p>` : "";
+    zone.innerHTML = `<div class="haut"><button class="lien" id="quitter">✕ Quitter</button><span class="compteur">réponse ${i + 1} / ${n}</span></div>
+      <p class="groupe">${ctx.titre}</p>
+      <section class="carte"><div class="syllabe" lang="zh-Latn-pinyin">${M(s)}</div>${reponse}
+      <div class="actions"><button id="modele">▶ Écouter</button>${r.choix && r.choix !== s ? `<button id="j-moi">▶ ${M(r.choix)}</button>` : ""}</div>
+      <p class="info centre">Votre note : <b>${SRS.NOTES[r.note]}</b>.${peut ? " Touchez-en une autre pour la changer." : " Cette carte a été revue depuis : la note ne change plus."}</p>
+      ${peut ? `<div class="notes">${[1, 2, 3, 4].map((x) => `<button data-revue="${x}" class="note n${x}${x === r.note ? " propose" : ""}">${SRS.NOTES[x]}<small>${SRS.delai(r.avant, x, r.t)}</small></button>`).join("")}</div>` : ""}
+      <div class="actions"><button id="essai">↺ Réessayer, sans note</button></div></section>
+      <div class="actions">${i > 0 ? `<button id="av">← Précédente</button>` : ""}<button class="principal" id="ap">Suivante →</button></div>`;
+    on("#quitter", accueil);
+    on("#modele", () => jouer(son(s)));
+    on("#j-moi", () => jouer(son(r.choix)));
+    zone.querySelectorAll("[data-revue]").forEach((b) => {
+      b.onclick = () => {
+        r.note = +b.dataset.revue;
+        SRS.corriger(E, r, r.note);
+        sauver();
+        if (S.courante && S.courante.id === r.id) S.courante = null;
+        revue(i);
+      };
+    });
+    on("#essai", () => lancer(Object.assign({}, ctx, { nouvelle: false, essai: i })));
+    const av = () => { if (i > 0) revue(i - 1); };
+    const ap = () => {
+      if (i + 1 < n) return revue(i + 1);
+      if (S.courante) lancer(S.courante); else suivante();
+    };
+    on("#av", av);
+    on("#ap", ap);
+    clavier({ " ": () => jouer(son(s)), arrowleft: av, arrowright: ap });
+    window.scrollTo(0, 0);
   }
 
   function entete(ctx) {
     const c = SRS.compter(E, ORDRE, Date.now());
+    if (ctx.essai !== undefined) return `<div class="haut"><button class="lien" id="quitter">← Ma réponse</button><span class="compteur">essai libre, sans note</span></div>
+      <p class="groupe">${ctx.titre}</p>`;
     return `<div class="haut"><button class="lien" id="quitter">✕ Quitter</button>
+      ${S.hist.length ? `<button class="lien" id="precedente">← Précédente</button>` : ""}
       <span class="compteur" title="à réviser · nouvelles">${c.dues} · ${c.nouvelles}</span></div>
       <p class="groupe">${ctx.titre}${ctx.nouvelle ? ' <span class="pastille">nouvelle</span>' : ""}</p>`;
   }
 
   function noter(ctx, note, extra) {
-    SRS.repondre(E, ctx.id, note, Date.now(), extra);
+    if (ctx.essai !== undefined) return revue(ctx.essai);
+    const t = Date.now();
+    S.hist.push({ ctx, id: ctx.id, avant: E.cartes[ctx.id], t, note, choix: extra && extra.choix });
+    SRS.repondre(E, ctx.id, note, t, extra);
     sauver();
     S.rang++; S.faites++;
     suivante();
   }
 
   function boutonsNotes(ctx) {
+    if (ctx.essai !== undefined) return `<button data-note="0" class="principal plein">← Revenir à ma réponse</button>`;
     const t = Date.now(), carte = E.cartes[ctx.id];
     return `<div class="notes">${[1, 2, 3, 4].map((n) =>
       `<button data-note="${n}" class="note n${n}">${SRS.NOTES[n]}<small>${SRS.delai(carte, n, t)}</small></button>`).join("")}</div>`;
@@ -291,7 +342,8 @@
       });
     };
     const c = Voix.comparer(zone, son(s), { apres: montrerNotes, sansMicro: ", répétez à voix haute et notez-vous.", duree: DUREE_MAX });
-    on("#quitter", () => { c.liberer(); accueil(); });
+    on("#quitter", () => { c.liberer(); if (ctx.essai !== undefined) revue(ctx.essai); else accueil(); });
+    on("#precedente", () => { c.liberer(); revue(S.hist.length - 1); });
     if (ctx.nouvelle) jouer(son(s));
     clavier({ " ": c.modele, r: c.rec, note: (n) => { const b = zone.querySelector(`[data-note="${n}"]`); if (b) b.click(); } });
   }
@@ -306,7 +358,8 @@
       <button class="ecoute" id="ecoute" aria-label="Réécouter">▶</button>
       <div class="choix">${options.map((o, i) => `<button data-choix="${o}" lang="zh-Latn-pinyin"><small>${i + 1}</small>${M(o)}</button>`).join("")}</div>
       <div id="suite"></div></section>`;
-    on("#quitter", accueil);
+    on("#quitter", ctx.essai !== undefined ? () => revue(ctx.essai) : accueil);
+    on("#precedente", () => revue(S.hist.length - 1));
     on("#ecoute", () => jouer(son(s)));
     zone.querySelectorAll("[data-choix]").forEach((b) => { b.onclick = () => repondre(b.dataset.choix); });
 
@@ -321,8 +374,9 @@
       });
       zone.querySelector("#suite").innerHTML = `<p class="${juste ? "ok" : "ko"}">${juste ? "Juste." : `C'était <b>${M(s)}</b>, vous avez choisi <b>${M(o)}</b>.`}</p>
         ${juste ? "" : `<div class="actions"><button id="j-bon">▶ ${M(s)}</button><button id="j-moi">▶ ${M(o)}</button></div>`}
-        <p class="info">Étiez-vous sûr ?</p>
-        <div class="notes deux"><button data-sur="1" class="note n3">Sûr<small>1</small></button><button data-sur="0" class="note n2">J'hésitais<small>2</small></button></div>`;
+        ${ctx.essai !== undefined ? boutonsNotes(ctx) : `<p class="info">Étiez-vous sûr ?</p>
+        <div class="notes deux"><button data-sur="1" class="note n3">Sûr<small>1</small></button><button data-sur="0" class="note n2">J'hésitais<small>2</small></button></div>`}`;
+      zone.querySelectorAll("[data-note]").forEach((b) => { b.onclick = () => noter(ctx, 0); });
       on("#j-bon", () => jouer(son(s)));
       on("#j-moi", () => jouer(son(o)));
       zone.querySelectorAll("[data-sur]").forEach((b) => {
@@ -338,7 +392,7 @@
       " ": () => jouer(son(s)),
       note: (n) => {
         if (!choix) { const b = zone.querySelectorAll("[data-choix]")[n - 1]; if (b) b.click(); }
-        else if (n <= 2) zone.querySelector(`[data-sur="${n === 1 ? 1 : 0}"]`).click();
+        else if (n <= 2 && zone.querySelector("[data-sur]")) zone.querySelector(`[data-sur="${n === 1 ? 1 : 0}"]`).click();
       },
     });
   }
@@ -348,9 +402,10 @@
     const c = SRS.compter(E, ORDRE, Date.now());
     let h = `<section class="carte fin"><h2>Séance terminée</h2><p>${S.faites} carte${S.faites > 1 ? "s" : ""} aujourd'hui dans cette séance.</p>`;
     if (c.restantes) h += `<button class="principal" id="encore">Encore 10 nouvelles cartes</button>`;
-    h += `<button id="retour">Retour à l'accueil</button></section>`;
+    h += `${S.hist.length ? `<button id="revoir-fin">← Revoir mes réponses</button>` : ""}<button id="retour">Retour à l'accueil</button></section>`;
     zone.innerHTML = h;
     on("#encore", () => { SRS.encoreDix(E, Date.now()); sauver(); suivante(); });
+    on("#revoir-fin", () => revue(S.hist.length - 1));
     on("#retour", accueil);
     clavier({});
   }

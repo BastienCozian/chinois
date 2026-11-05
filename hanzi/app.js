@@ -177,13 +177,14 @@
       <p><b>Écoute</b> (le son seul). Retrouvez le sens, puis vérifiez.</p>
       <p><b>Pour retenir</b>. « Origine » est ce qu'on sait de l'histoire du caractère ; « Astuce inventée » est une image pour la mémoire, pas une vérité sur le chinois. Quand un composant ne donne que le son, l'indice le dit.</p>
       <p>Tons du dictionnaire : dans 你好, on écrit nǐ hǎo, on dit ní hǎo. La remarque sous le mot le signale.</p>
-      <p>Clavier sur PC : espace pour voir la réponse ou réécouter, R pour s'enregistrer, 1 à 4 pour noter, 1 à 5 pour les tons (5 : neutre).</p></details>`;
+      ${Profil.htmlFrequence()}
+      <p>Clavier sur PC : espace pour voir la réponse ou réécouter, R pour s'enregistrer, 1 à 4 pour noter, 1 à 5 pour les tons (5 : neutre), flèches pour passer d'une réponse à l'autre.</p></details>`;
 
     h += `<details class="bloc"><summary>Réglages et sauvegarde</summary>
       <p>Cartes à travailler :</p><p class="types">${Object.entries(Hanzi.TYPES).map(([t, nom]) =>
         `<label><input type="checkbox" data-type="${t}"${E.types[t] ? " checked" : ""}> ${nom}</label>`).join("")}</p>
       <p><label>Nouvelles cartes par jour <input id="parjour" type="number" min="0" max="200" value="${E.parJour}"></label></p>
-      <p class="info">La progression ne vit que dans ce navigateur. Une sauvegarde de temps en temps la protège.</p>
+      <p class="info">La progression est enregistrée sur cet appareil, dans ce navigateur, pas sur le site. Une sauvegarde de temps en temps la protège et permet de la transporter.</p>
       <p><button id="export">Sauvegarder la progression</button>
       <label class="bouton">Restaurer une sauvegarde<input id="import" type="file" accept="application/json" hidden></label></p>
       <p><button class="danger" id="zero">Tout remettre à zéro</button></p></details>`;
@@ -314,11 +315,11 @@
   }
 
   // Écriture libre, sans note : avec ou sans modèle, autant de fois qu'on veut
-  function libre(id, k) {
+  function libre(id, k, retour) {
     lacher();
     const m = P.mots[id], chars = [...m.hz];
     let modele = true, w = null;
-    zone.innerHTML = `<div class="haut"><button class="lien" id="quitter">← Fiche</button><span class="compteur">entraînement libre</span></div>
+    zone.innerHTML = `<div class="haut"><button class="lien" id="quitter">${retour ? "← Ma réponse" : "← Fiche"}</button><span class="compteur">entraînement libre</span></div>
       <section class="carte"><p class="py centre" lang="zh-Latn-pinyin">${py(m)} ${bSon(id)}</p><p class="sens centre">${m.sens}</p>
       ${chars.length > 1 ? `<div class="onglets">${chars.map((c, i) => `<button data-k="${i}">${hz(c)}</button>`).join("")}</div>` : ""}
       <div class="ecrire">${GRILLE}<div class="hw"></div></div>
@@ -339,7 +340,7 @@
     zone.querySelectorAll("[data-k]").forEach((b) => { b.onclick = () => { k = +b.dataset.k; lancer(); }; });
     on("#modele", () => { modele = !modele; lancer(); });
     on("#encore", lancer);
-    on("#quitter", () => fiche(id));
+    on("#quitter", retour || (() => fiche(id)));
     brancherSons();
     lancer();
     clavier({});
@@ -347,35 +348,87 @@
 
   /* ---------- Séance ---------- */
 
-  let S = null; // séance : { rang, derniere, faites }
+  let S = null; // séance : { rang, derniere, faites, hist : réponses données, courante : carte à l'écran }
 
   function seance() {
-    S = { rang: 0, derniere: null, faites: 0 };
+    S = { rang: 0, derniere: null, faites: 0, hist: [], courante: null };
     suivante();
   }
 
   function suivante() {
     lacher();
     const t = Date.now(), p = SRS.prochaine(vue(), ORDRE, t, S.derniere, S.rang);
-    if (!p) return fin();
+    if (!p) { S.courante = null; return fin(); }
     S.derniere = p.id;
     const id = p.id.slice(2);
-    const ctx = { id: p.id, mot: id, m: P.mots[id], nouvelle: !E.cartes[p.id] };
-    ({ e: ecriture, s: sens, l: lecture, o: ecoute })[p.id[0]](ctx);
+    S.courante = { id: p.id, mot: id, m: P.mots[id], nouvelle: !E.cartes[p.id] };
+    lancer(S.courante);
+  }
+
+  function lancer(ctx) {
+    ({ e: ecriture, s: sens, l: lecture, o: ecoute })[ctx.id[0]](ctx);
+    window.scrollTo(0, 0);
+  }
+
+  /* Revenir sur une réponse de la séance : la voir, changer sa note, réessayer sans note */
+  function revue(i) {
+    lacher();
+    const r = S.hist[i], ctx = r.ctx, n = S.hist.length;
+    const peut = SRS.modifiable(E, r);
+    zone.innerHTML = `<div class="haut"><button class="lien" id="quitter">✕ Quitter</button><span class="compteur">réponse ${i + 1} / ${n}</span></div>
+      <p class="groupe">${Hanzi.TYPES[ctx.id[0]]}</p>
+      <section class="carte">${htmlMot(ctx.mot, true)}
+      <p class="info centre">Votre note : <b>${SRS.NOTES[r.note]}</b>.${peut ? " Touchez-en une autre pour la changer." : " Cette carte a été revue depuis : la note ne change plus."}</p>
+      ${peut ? `<div class="notes">${[1, 2, 3, 4].map((x) => `<button data-revue="${x}" class="note n${x}${x === r.note ? " propose" : ""}">${SRS.NOTES[x]}<small>${SRS.delai(r.avant, x, r.t)}</small></button>`).join("")}</div>` : ""}
+      <div class="actions"><button id="essai">↺ Réessayer, sans note</button><button id="retracer">✎ Retracer, avec ou sans modèle</button></div></section>
+      <div class="actions">${i > 0 ? `<button id="av">← Précédente</button>` : ""}<button class="principal" id="ap">Suivante →</button></div>`;
+    on("#quitter", accueil);
+    zone.querySelectorAll("[data-revue]").forEach((b) => {
+      b.onclick = () => {
+        r.note = +b.dataset.revue;
+        SRS.corriger(E, r, r.note);
+        sauver();
+        if (S.courante && S.courante.id === r.id) S.courante = null;
+        revue(i);
+      };
+    });
+    on("#essai", () => lancer(Object.assign({}, ctx, { nouvelle: false, essai: i })));
+    on("#retracer", () => libre(ctx.mot, 0, () => revue(i)));
+    const av = () => { if (i > 0) revue(i - 1); };
+    const ap = () => {
+      if (i + 1 < n) return revue(i + 1);
+      lacher();
+      if (S.courante) lancer(S.courante); else suivante();
+    };
+    on("#av", av);
+    on("#ap", ap);
+    brancherSons();
+    clavier({ " ": () => jouer(ctx.mot), arrowleft: av, arrowright: ap });
     window.scrollTo(0, 0);
   }
 
   function entete(ctx) {
     const c = SRS.compter(vue(), ORDRE, Date.now());
     const liste = P.listes.find((l) => l.id === ctx.m.liste);
+    if (ctx.essai !== undefined) return `<div class="haut"><button class="lien" id="quitter">← Ma réponse</button><span class="compteur">essai libre, sans note</span></div>
+      <p class="groupe">${Hanzi.TYPES[ctx.id[0]]}</p>`;
     return `<div class="haut"><button class="lien" id="quitter">✕ Quitter</button>
+      ${S.hist.length ? `<button class="lien" id="precedente">← Précédente</button>` : ""}
       <span class="compteur" title="à réviser · nouvelles">${c.dues} · ${c.nouvelles}</span></div>
       <p class="groupe">${Hanzi.TYPES[ctx.id[0]]} · ${liste.titre.split(" · ")[0]}${ctx.nouvelle ? ' <span class="pastille">nouvelle</span>' : ""}</p>`;
   }
 
+  function brancherEntete(ctx) {
+    on("#quitter", ctx.essai !== undefined ? () => revue(ctx.essai) : accueil);
+    on("#precedente", () => revue(S.hist.length - 1));
+  }
+
   function noter(ctx, note, extra) {
+    if (ctx.essai !== undefined) return revue(ctx.essai);
     if (voix && voix.enregistre()) extra = Object.assign({}, extra, { voix: true });
-    SRS.repondre(E, ctx.id, note, Date.now(), extra);
+    const t = Date.now();
+    S.hist.push({ ctx, id: ctx.id, avant: E.cartes[ctx.id], t, note });
+    SRS.repondre(E, ctx.id, note, t, extra);
     sauver();
     S.rang++; S.faites++;
     suivante();
@@ -383,6 +436,7 @@
 
   // Boutons de note ; « propose » : la note suggérée, mise en avant
   function htmlNotes(ctx, propose) {
+    if (ctx.essai !== undefined) return `<button data-note="0" class="principal plein">← Revenir à ma réponse</button>`;
     const t = Date.now(), carte = E.cartes[ctx.id];
     return `<div class="notes">${[1, 2, 3, 4].map((n) =>
       `<button data-note="${n}" class="note n${n}${n === propose ? " propose" : ""}">${SRS.NOTES[n]}<small>${SRS.delai(carte, n, t)}</small></button>`).join("")}</div>`;
@@ -406,7 +460,7 @@
         ? `<button id="revoir">▶ Revoir l'ordre des traits</button>`
         : `<button id="memo">Aide-mémoire</button><button id="indice">Trait suivant</button><button id="montrer">Je ne sais pas</button>`}</div>
       <div id="compo"></div><div id="suite"></div></section>`;
-    on("#quitter", accueil);
+    brancherEntete(ctx);
     brancherSons();
 
     const cases = () => zone.querySelectorAll("[data-case]").forEach((s, i) => {
@@ -502,7 +556,7 @@
       <div class="question">${hz(ctx.m.hz, "grand")}</div>
       <button class="plein" id="memo">Aide-mémoire</button>
       <button class="principal plein" id="voir">Voir la réponse</button><div id="suite"></div></section>`;
-    on("#quitter", accueil);
+    brancherEntete(ctx);
     const voir = reveler(ctx);
     clavier({ " ": voir });
   }
@@ -513,7 +567,7 @@
       <p class="consigne">Écoutez : que veut dire ce mot ?</p>
       <button class="ecoute" id="ecoute" aria-label="Réécouter">▶</button>
       <button class="principal plein" id="voir">Voir la réponse</button><div id="suite"></div></section>`;
-    on("#quitter", accueil);
+    brancherEntete(ctx);
     on("#ecoute", () => jouer(ctx.mot));
     const voir = reveler(ctx);
     jouer(ctx.mot);
@@ -535,7 +589,7 @@
       <div class="tons">${chars.map((c, i) => `<div class="ligne-ton">${hz(c)}${[1, 2, 3, 4, 5].map((n) =>
         `<button data-s="${i}" data-ton="${n}" aria-label="${Hanzi.TONS[n]}"><b>${ETIQ[n]}</b><small>${n === 5 ? "neutre" : n}</small></button>`).join("")}</div>`).join("")}</div>
       <div id="suite"></div></section>`;
-    on("#quitter", accueil);
+    brancherEntete(ctx);
     // Bascule valable pour toutes les cartes, jusqu'à la fermeture de la page
     on("#silence", () => { silence = !silence; lacher(); lecture(ctx); });
     if (parle) brancherVoix(ctx.mot, { cache: true, sansMicro: " : dites le mot dans votre tête." });
@@ -564,10 +618,10 @@
       zone.querySelector("#suite").innerHTML = htmlMot(ctx.mot, true) + (ok
         ? notes()
         : `<p class="ko">Ton faux : ${m.py.map((s, i) => justes[i] ? null : `${hz(chars[i])} ${SRS.marque(s)}, ${Hanzi.TONS[Hanzi.ton(s)]}`).filter(Boolean).join(" ; ")}.</p>
-          <button class="note n1 plein" id="revoir">À revoir<small>${SRS.delai(E.cartes[ctx.id], 1, Date.now())}</small></button>
-          <p class="centre"><button class="lien" id="mal">J'avais juste : j'ai mal touché</button></p>`);
+          ${ctx.essai !== undefined ? htmlNotes(ctx) : `<button class="note n1 plein" id="revoir">À revoir<small>${SRS.delai(E.cartes[ctx.id], 1, Date.now())}</small></button>
+          <p class="centre"><button class="lien" id="mal">J'avais juste : j'ai mal touché</button></p>`}`);
       brancherSons();
-      if (ok) brancherNotes(ctx, extra);
+      if (ok || ctx.essai !== undefined) brancherNotes(ctx, extra);
       on("#revoir", () => noter(ctx, 1, extra));
       on("#mal", () => {
         zone.querySelector("#revoir").remove();
@@ -589,9 +643,10 @@
     const c = SRS.compter(vue(), ORDRE, Date.now());
     let h = `<section class="carte fin"><h2>Séance terminée</h2><p>${S.faites} carte${S.faites > 1 ? "s" : ""} dans cette séance.</p>`;
     if (c.restantes) h += `<button class="principal" id="encore">Encore 10 nouvelles cartes</button>`;
-    h += `<button id="retour">Retour à l'accueil</button></section>`;
+    h += `${S.hist.length ? `<button id="revoir-fin">← Revoir mes réponses</button>` : ""}<button id="retour">Retour à l'accueil</button></section>`;
     zone.innerHTML = h;
     on("#encore", () => { SRS.encoreDix(E, Date.now()); sauver(); suivante(); });
+    on("#revoir-fin", () => revue(S.hist.length - 1));
     on("#retour", accueil);
     clavier({});
   }

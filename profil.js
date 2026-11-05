@@ -14,10 +14,9 @@ const Profil = (() => {
       const r = JSON.parse(localStorage.getItem(CLE));
       if (r && Array.isArray(r.liste)) return r;
     } catch (e) { /* stockage indisponible ou abîmé */ }
-    // Premier passage après l'arrivée des profils : la progression déjà là est celle de Bastien
-    let ancienne = false;
-    try { ancienne = BASES.some((b) => localStorage.getItem(b) !== null); } catch (e) { /* idem */ }
-    return { liste: [], actif: ancienne ? PROPRIO.id : null };
+    // Personne n'est choisi d'office : tout nouvel arrivant voit « Qui s'entraîne ? ».
+    // La progression d'avant les profils reste sous les clés de Bastien, retrouvée en touchant son prénom.
+    return { liste: [], actif: null };
   }
   function ecrire(r) {
     try { localStorage.setItem(CLE, JSON.stringify(r)); } catch (e) { /* le profil vaudra pour cette visite */ }
@@ -73,6 +72,21 @@ const Profil = (() => {
     } catch (e) { return 0; }
   }
 
+  // Explication des intervalles, commune aux deux pages (« Comment ça marche »)
+  const htmlFrequence = () => `<p><b>Quand une carte revient</b>. Le temps affiché sous chaque note est le délai avant de revoir la carte :
+      on la revoit juste avant de risquer de l'oublier, et chaque réussite éloigne le passage suivant.</p>
+      <p><i>Une carte nouvelle ou oubliée</i> est en apprentissage et passe par des étapes courtes : 1 min, puis 10 min, puis 1 jour.
+      « Bien » avance d'une seule étape. « Facile » dit « je n'ai pas besoin de ces étapes » et saute directement à 4 jours.
+      C'est pourquoi on peut lire « Bien 10 min » à côté de « Facile 4 j ».</p>
+      <p><i>Une carte déjà installée</i> voit son délai multiplié à chaque réussite : environ ×1,2 avec « Difficile », ×2,5 avec « Bien », ×3 ou plus avec « Facile ».
+      Après 4 jours : 5 j, 10 j ou 14 j. L'écart se creuse donc avec le temps.
+      « À revoir » la ramène à 10 min, puis le délai repart de la moitié de ce qu'il était.</p>
+      <p>Ces multiplicateurs s'ajustent à chaque carte : celles souvent difficiles reviennent plus vite. Une carte n'arrive jamais toute seule :
+      elle attend votre prochaine séance, et un jour commence à 4 h du matin.</p>
+      <p><b>Revenir en arrière</b>. Pendant une séance, « ← Précédente » rouvre vos réponses, puis « Suivante → » ramène à la carte en cours.
+      Vous pouvez y changer la note, tant que la carte n'a pas été revue depuis, et réessayer librement : cet essai ne compte pas.
+      Cet historique s'efface quand vous quittez la séance.</p>`;
+
   // Barre du site ; ici : « pinyin » ou « hanzi » ; racine : chemin de la page Pinyin depuis la page courante
   function barre(ici, racine) {
     const onglet = (id, href, nom, base) => {
@@ -89,14 +103,16 @@ const Profil = (() => {
     let h = retour ? `<div class="haut"><button class="lien" id="retour">← Retour</button></div>` : "";
     h += `<header><p class="kicker">Chinois · prononciation et caractères</p><h1>Qui s'entraîne ?</h1>
       <p class="sous-titre">Chacun a sa progression et avance à son rythme.</p></header>
+      <p class="stockage"><b>Votre progression est enregistrée sur cet appareil, pas sur le site.</b>
+      Il n'y a ni compte ni mot de passe, et rien n'est envoyé. Sur un autre appareil ou un autre navigateur, vous ne la retrouverez pas,
+      sauf en y restaurant une sauvegarde (Réglages). Effacer les données du navigateur l'efface aussi.
+      Toute personne qui utilise cet appareil peut ouvrir les profils ci-dessous.</p>
       <div class="profils">${tous().map((p) => `<button data-profil="${p.id}"${p.id === r.actif ? ' class="actif"' : ""}>${esc(p.nom)}${p.id === r.actif ? "<small>profil actuel</small>" : ""}</button>`).join("")}</div>
       <section class="bloc"><h2>Première fois ?</h2>
       <form id="nouveau"><label for="nom">Votre prénom</label>
       <div class="nouveau"><input id="nom" type="text" autocomplete="given-name" autocapitalize="words" maxlength="30" required>
       <button class="principal">Commencer</button></div></form>
-      <p class="info">Vous partez de zéro : les sons du pinyin, puis les mots du cours, au rythme des révisions.
-      Votre progression reste dans ce navigateur, rien n'est envoyé. Sur un autre appareil, elle ne vous suit pas :
-      Réglages → « Sauvegarder la progression » permet de la transporter.</p></section>`;
+      <p class="info">Vous partez de zéro : les sons du pinyin, puis les mots du cours, au rythme des révisions.</p></section>`;
     if (autres.length) h += `<details class="bloc"><summary>Retirer un profil de cet appareil</summary>
       <p class="info">Le profil et toute sa progression sont effacés.</p>
       <div class="profils">${autres.map((p) => `<button class="danger" data-retirer="${p.id}">Retirer ${esc(p.nom)}</button>`).join("")}</div></details>`;
@@ -128,7 +144,7 @@ const Profil = (() => {
     });
   }
 
-  return { actif, proprio, cle, choisir, creer, supprimer, barre, ecran, esc, fichier };
+  return { actif, proprio, cle, choisir, creer, supprimer, barre, ecran, esc, fichier, htmlFrequence };
 })();
 
 if (typeof module !== "undefined") module.exports = Profil;

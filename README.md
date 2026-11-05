@@ -8,7 +8,7 @@ Page : <https://bastiencozian.github.io/chinois/>
 
 Au premier passage sur un appareil, on choisit son profil ou on tape son prénom : un nouveau profil part de zéro. Chacun a sa progression et son rythme ; elle reste dans le navigateur, rien n'est envoyé. « Changer de profil » est en haut des deux pages.
 
-- **Bastien**, toujours proposé en premier, garde les clés de stockage d'origine (`pinyin-v1`, `hanzi-v1`) : sa progression d'avant les profils est la sienne, sans migration. Sur un appareil qui a déjà cette progression, son profil s'active seul. Lui seul voit le bloc « Bilan pour l'Agent Teach ».
+- **Bastien**, toujours proposé en premier, garde les clés de stockage d'origine (`pinyin-v1`, `hanzi-v1`) : sa progression d'avant les profils est la sienne, sans migration. Personne n'est choisi d'office : tout nouvel arrivant voit « Qui s'entraîne ? », et Bastien retrouve sa progression en touchant son prénom. Lui seul voit le bloc « Bilan pour l'Agent Teach ».
 - Un autre profil range sa progression sous `pinyin-v1@<id>` et `hanzi-v1@<id>`. Registre des profils : `chinois-profils`.
 - La progression ne suit pas l'élève d'un appareil à l'autre : « Sauvegarder la progression » puis « Restaurer une sauvegarde » (Réglages, sur chacune des deux pages).
 

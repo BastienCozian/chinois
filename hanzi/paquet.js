@@ -37,6 +37,15 @@ const PAQUET = {
     "zhen",
     "qiguai"
    ]
+  },
+  {
+   "id": "l3",
+   "titre": "Leçon 3 · Joyeux anniversaire (生日快乐)",
+   "mots": [
+    "zhu",
+    "shengri",
+    "kuaile"
+   ]
   }
  ],
  "mots": {
@@ -313,6 +322,40 @@ const PAQUET = {
    "remarque": "真奇怪！« Vraiment bizarre ! »",
    "liste": "l2",
    "motAMot": "« étrange » + « bizarre » : deux mots proches."
+  },
+  "zhu": {
+   "hz": "祝",
+   "py": [
+    "zhu4"
+   ],
+   "sens": "souhaiter (à quelqu'un)",
+   "son": true,
+   "remarque": "祝你生日快乐 « (je te souhaite un) joyeux anniversaire ».",
+   "liste": "l3"
+  },
+  "shengri": {
+   "hz": "生日",
+   "py": [
+    "sheng1",
+    "ri4"
+   ],
+   "sens": "anniversaire",
+   "son": true,
+   "remarque": "En parlant, souvent allégé : shēngri.",
+   "liste": "l3",
+   "motAMot": "« naître » + « jour » : le jour de la naissance."
+  },
+  "kuaile": {
+   "hz": "快乐",
+   "py": [
+    "kuai4",
+    "le4"
+   ],
+   "sens": "heureux, joyeux",
+   "son": true,
+   "remarque": "生日快乐！« Joyeux anniversaire ! » 乐 se lit aussi yuè, « musique » (音乐).",
+   "liste": "l3",
+   "motAMot": "« content » + « joie » : deux mots de la joie."
   }
  },
  "caracteres": {
@@ -1033,6 +1076,84 @@ const PAQUET = {
    ],
    "semantique": "",
    "phonetique": ""
+  },
+  "祝": {
+   "hex": "795D",
+   "indice": {
+    "origine": "Écriture ancienne : un homme à genoux, la bouche ouverte (兄), devant un autel (示, devenu 礻) : il prie. De la prière au vœu.",
+    "astuce": ""
+   },
+   "cle": "礻",
+   "parties": [
+    [
+     "礻",
+     "shì",
+     "autel, culte (示 sur le côté)"
+    ],
+    [
+     "兄",
+     "xiōng",
+     "frère aîné"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "生": {
+   "hex": "751F",
+   "indice": {
+    "origine": "Écriture ancienne : une pousse qui sort de terre, d'où « naître, vivre ».",
+    "astuce": ""
+   },
+   "cle": "生",
+   "parties": [
+    [
+     "一",
+     "yī",
+     "un, un trait"
+    ],
+    [
+     "土",
+     "tǔ",
+     "terre"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "日": {
+   "hex": "65E5",
+   "indice": {
+    "origine": "Écriture ancienne : le dessin du soleil. Le trait du milieu le distingue de 口.",
+    "astuce": ""
+   },
+   "cle": "日",
+   "parties": [
+    [
+     "口",
+     "kǒu",
+     "bouche"
+    ],
+    [
+     "一",
+     "yī",
+     "un, un trait"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "乐": {
+   "hex": "4E50",
+   "indice": {
+    "origine": "Simplification de 樂 : des cordes tendues sur du bois 木, un instrument. Lu yuè, « musique » ; lu lè, « joie ».",
+    "astuce": ""
+   },
+   "cle": "丿",
+   "parties": [],
+   "semantique": "",
+   "phonetique": "",
+   "cleSens": "trait oblique"
   }
  }
 };
