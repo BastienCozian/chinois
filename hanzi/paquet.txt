@@ -23,10 +23,10 @@
 
 ## l1 | Leçon 1 · Les phrases de la classe
 ni | 你 | ni3 | tu | |
-hao | 好 | hao3 | bien, bon | | 你好 « bonjour » se prononce ní hǎo : deux 3ᵉ tons de suite, le premier passe au 2ᵉ.
+hao | 好 | hao3 | bien, bon | | 你好 « bonjour » : on écrit nǐ hǎo, on dit ní hǎo. Deux 3ᵉ tons de suite : le premier se dit au 2ᵉ.
 nimen | 你们 | ni3 men5 | vous (plusieurs personnes) | | 们 marque le pluriel des personnes.
 wanshang | 晚上 | wan3 shang5 | le soir | | 晚上好 « bonsoir ».
-yi | 一 | yi1 | un | | yī en comptant ; devant un autre mot, yì ou yí (一只 yì zhī).
+yi | 一 | yi1 | un | | yī en comptant. Devant un autre mot, il change : 一只, on écrit yī zhī, on dit yì zhī.
 er | 二 | er4 | deux (pour compter) | | Devant un classificateur, on dit 两 liǎng.
 san | 三 | san1 | trois | |
 kaishi | 开始 | kai1 shi3 | commencer | | 一二三，开始！« 1, 2, 3, commencez ! »
@@ -41,7 +41,7 @@ zaijian | 再见 | zai4 jian4 | au revoir | |
 ## l2 | Leçon 2 · Deux tigres (两只老虎)
 liang | 两 | liang3 | deux (devant un classificateur) | | 两只老虎 « deux tigres ». Pour compter : 二 èr.
 zhi | 只 | zhi1 | (classificateur des animaux) | syllabe zhi1 | Lu zhǐ, c'est un autre mot : « seulement ».
-laohu | 老虎 | lao3 hu3 | tigre | | Prononcé láohǔ : deux 3ᵉ tons de suite.
+laohu | 老虎 | lao3 hu3 | tigre | | On écrit lǎohǔ, on dit láohǔ : deux 3ᵉ tons de suite.
 pao | 跑 | pao3 | courir | |
 de | 得 | de5 | (relie le verbe à sa manière) | aucun | 跑得快 « courir vite ». Lu dé, c'est un autre mot : « obtenir ».
 kuai | 快 | kuai4 | vite, rapide | |
@@ -52,7 +52,7 @@ qiguai | 奇怪 | qi2 guai4 | bizarre | | 真奇怪！« Vraiment bizarre ! »
 
 ## l3 | Leçon 3 · Joyeux anniversaire (生日快乐)
 zhu | 祝 | zhu4 | souhaiter (à quelqu'un) | | 祝你生日快乐 « (je te souhaite un) joyeux anniversaire ».
-shengri | 生日 | sheng1 ri4 | anniversaire | | En parlant, souvent allégé : shēngri.
+shengri | 生日 | sheng1 ri4 | anniversaire | | On écrit shēngrì ; en parlant, la 2ᵉ syllabe est souvent allégée : shēngri.
 kuaile | 快乐 | kuai4 le4 | heureux, joyeux | | 生日快乐！« Joyeux anniversaire ! » 乐 se lit aussi yuè, « musique » (音乐).
 
 ## composants

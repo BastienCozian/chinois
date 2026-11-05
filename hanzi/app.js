@@ -72,10 +72,17 @@
       const roles = [p === i.cle && "clé", p === i.semantique && "donne le sens", p === i.phonetique && "donne le son"].filter(Boolean);
       return `${hz(p)} <i>${pin}</i> ${sens}${roles.length ? ` <em>(${roles.join(", ")})</em>` : ""}`;
     });
-    let h = `<p class="compo">${hz(c, "compo-c")}`;
+    let h = `<div class="car"><p class="compo">${hz(c, "compo-c")}`;
     if (parts.length) h += ` = ${parts.join(" + ")}`;
     if (i.cle && i.cle !== c && !i.parties.some((p) => p[0] === i.cle)) h += `<br><span class="info">clé ${hz(i.cle)} ${i.cleSens || ""}</span>`;
-    return h + "</p>" + htmlIndice(c);
+    return h + "</p>" + htmlIndice(c) + "</div>";
+  }
+
+  // Aide-mémoire d'un mot : un bloc par caractère, numéroté sans montrer le caractère
+  function htmlMemo(m) {
+    const cs = [...new Set(m.hz)];
+    return `<div class="memo">${cs.map((c, i) => `<div class="car">${cs.length > 1
+      ? `<p class="car-num">${i === 0 ? "1<sup>er</sup>" : `${i + 1}<sup>e</sup>`} caractère</p>` : ""}${htmlIndice(c)}</div>`).join("")}</div>`;
   }
 
   // Indice d'un caractère, sans le caractère : affichable pendant qu'on le cherche.
@@ -531,7 +538,7 @@
     let extra;
     on("#memo", () => {
       extra = { indice: true };
-      zone.querySelector("#memo").outerHTML = `<div class="memo">${[...new Set(ctx.m.hz)].map(htmlIndice).join("")}</div>`;
+      zone.querySelector("#memo").outerHTML = htmlMemo(ctx.m);
     });
     const voir = () => {
       go.remove();

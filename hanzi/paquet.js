@@ -66,7 +66,7 @@ const PAQUET = {
    ],
    "sens": "bien, bon",
    "son": true,
-   "remarque": "你好 « bonjour » se prononce ní hǎo : deux 3ᵉ tons de suite, le premier passe au 2ᵉ.",
+   "remarque": "你好 « bonjour » : on écrit nǐ hǎo, on dit ní hǎo. Deux 3ᵉ tons de suite : le premier se dit au 2ᵉ.",
    "liste": "l1"
   },
   "nimen": {
@@ -100,7 +100,7 @@ const PAQUET = {
    ],
    "sens": "un",
    "son": true,
-   "remarque": "yī en comptant ; devant un autre mot, yì ou yí (一只 yì zhī).",
+   "remarque": "yī en comptant. Devant un autre mot, il change : 一只, on écrit yī zhī, on dit yì zhī.",
    "liste": "l1"
   },
   "er": {
@@ -243,7 +243,7 @@ const PAQUET = {
    ],
    "sens": "tigre",
    "son": true,
-   "remarque": "Prononcé láohǔ : deux 3ᵉ tons de suite.",
+   "remarque": "On écrit lǎohǔ, on dit láohǔ : deux 3ᵉ tons de suite.",
    "liste": "l2",
    "motAMot": "老 n'est ici qu'un préfixe : le tigre n'est pas forcément vieux. Le sens est dans 虎."
   },
@@ -341,7 +341,7 @@ const PAQUET = {
    ],
    "sens": "anniversaire",
    "son": true,
-   "remarque": "En parlant, souvent allégé : shēngri.",
+   "remarque": "On écrit shēngrì ; en parlant, la 2ᵉ syllabe est souvent allégée : shēngri.",
    "liste": "l3",
    "motAMot": "« naître » + « jour » : le jour de la naissance."
   },
