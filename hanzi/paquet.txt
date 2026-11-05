@@ -55,6 +55,30 @@ zhu | 祝 | zhu4 | souhaiter (à quelqu'un) | | 祝你生日快乐 « (je te sou
 shengri | 生日 | sheng1 ri4 | anniversaire | | On écrit shēngrì ; en parlant, la 2ᵉ syllabe est souvent allégée : shēngri.
 kuaile | 快乐 | kuai4 le4 | heureux, joyeux | | 生日快乐！« Joyeux anniversaire ! » 乐 se lit aussi yuè, « musique » (音乐).
 
+## l3b | Leçon 3 · Clés et composants (4ᵉ cours)
+mu | 目 | mu4 | œil | | Se lit comme 木 « arbre » : même syllabe, même ton.
+xin | 心 | xin1 | cœur | | Comme clé, à gauche : 忄 (快, 怪).
+kou | 口 | kou3 | bouche | | Clé des mots de la voix (吗, 哈).
+shui | 水 | shui3 | eau | | Comme clé, à gauche : 氵, « trois gouttes » (没, 清).
+mu-arbre | 木 | mu4 | arbre, bois | | Se lit comme 目 « œil » : même syllabe, même ton.
+qing | 青 | qing1 | bleu-vert | | Composant de son : 清 qīng, 晴 qíng, 情 qíng, 睛 jīng.
+bao | 包 | bao1 | envelopper ; paquet | | Composant de son : 跑 pǎo, 抱 bào, 泡 pào.
+xiang1 | 相 | xiang1 | l'un l'autre, mutuellement | syllabe xiang1 | 木 + 目. Lu xiàng, c'est un autre mot : « apparence ».
+xiang3 | 想 | xiang3 | penser ; vouloir | | 相 (le son) + 心 (le sens).
+
+## l3c | Leçon 3 · Villes de Chine
+chengdu | 成都 | cheng2 du1 | Chengdu (Sichuan) | aucun | 都 se lit ici dū, « capitale » ; d'habitude dōu, « tous ».
+xian | 西安 | xi1 an1 | Xi'an (Shaanxi) | aucun | L'apostrophe de Xī'ān sépare deux syllabes : xian seul serait une syllabe.
+chongqing | 重庆 | chong2 qing4 | Chongqing | aucun | 重 se lit ici chóng, « de nouveau, double » ; d'habitude zhòng, « lourd ».
+hangzhou | 杭州 | hang2 zhou1 | Hangzhou (Zhejiang) | aucun |
+suzhou | 苏州 | su1 zhou1 | Suzhou (Jiangsu) | aucun |
+xiamen | 厦门 | xia4 men2 | Xiamen (Fujian) | aucun | 厦 se lit xià dans 厦门 ; ailleurs shà, « grand bâtiment ».
+qingdao | 青岛 | qing1 dao3 | Qingdao (Shandong) | aucun |
+kunming | 昆明 | kun1 ming2 | Kunming (Yunnan) | aucun |
+dali | 大理 | da4 li3 | Dali (Yunnan) | aucun |
+haerbin | 哈尔滨 | ha1 er3 bin1 | Harbin (Heilongjiang) | aucun | On écrit Hā'ěrbīn, avec une apostrophe devant ěr.
+kashi | 喀什 | ka1 shi2 | Kashgar (Xinjiang) | aucun | 什 se lit ici shí ; dans 什么 « quoi », shén.
+
 ## composants
 亻 | personne (人 sur le côté)
 尔 | tu (forme ancienne)
@@ -108,6 +132,37 @@ kuaile | 快乐 | kuai4 le4 | heureux, joyeux | | 生日快乐！« Joyeux anniv
 兄 | frère aîné
 土 | terre
 礻 | autel, culte (示 sur le côté)
+⺈ | (forme de 刀, couteau)
+丁 | clou
+亢 | (ici pour le son)
+人 | personne
+兀 | (forme simple, sans sens ici)
+办 | (forme cursive, sans sens ici)
+勹 | envelopper
+十 | dix
+千 | mille
+厂 | abri, falaise
+合 | fermer, réunir
+囗 | enceinte
+夏 | été ; grand
+宀 | toit
+客 | invité
+宾 | invité
+小 | petit
+山 | montagne
+川 | rivière
+广 | abri, grand toit
+心 | cœur
+戈 | hallebarde, arme
+比 | comparer
+王 | roi ; à gauche, le jade 玉
+相 | l'un l'autre ; observer
+者 | celui qui (ici pour le son)
+艹 | herbe, plante (艸 en haut)
+里 | village
+阝 | à droite : la ville 邑 ; à gauche : la colline 阜
+鸟 | oiseau
+龶 | (forme de 生, en haut de 青)
 
 # Section « indices » : ce qui aide à retrouver un caractère ou un mot. Tout caractère et tout mot de
 #   plusieurs caractères doit en avoir un : construire.py s'arrête sinon.
@@ -169,3 +224,44 @@ kuaile | 快乐 | kuai4 le4 | heureux, joyeux | | 生日快乐！« Joyeux anniv
 乐 | Simplification de 樂 : des cordes tendues sur du bois 木, un instrument. Lu yuè, « musique » ; lu lè, « joie ». |
 生日 | « naître » + « jour » : le jour de la naissance. |
 快乐 | « content » + « joie » : deux mots de la joie. |
+目 | Écriture ancienne : le dessin d'un œil, tourné d'un quart de tour. |
+心 | Écriture ancienne : le dessin d'un cœur, très stylisé. |
+口 | Écriture ancienne : une bouche ouverte. |
+水 | Écriture ancienne : de l'eau qui coule. À gauche d'un caractère, elle devient 氵. |
+木 | Écriture ancienne : un arbre, les branches en haut, les racines en bas. |
+青 | Origine discutée. Le bas ressemble à 月, sans rapport avec la lune. |
+包 | Écriture ancienne : un enfant dans le ventre de sa mère, ou un bébé emmailloté : envelopper. |
+相 | 木 arbre + 目 œil : un œil qui regarde un arbre, « observer ». Le sens « l'un l'autre » est un emprunt du son. |
+想 | 心 cœur, l'esprit (le sens) + 相 xiāng (le son) : penser. |
+成 | 戊, une arme (le sens) + 丁 dīng (le son). Le petit 口 qu'on croit voir n'en est pas un. |
+都 | 阝 à droite, la ville 邑 (le sens) + 者 (le son, ancien). D'abord « grande ville, capitale ». |
+西 | | Origine discutée. Une lecture ancienne y voit un nid d'oiseau.
+安 | 宀 toit (le sens) + 女 femme (le son, ancien). | Une femme assise sous un toit : la paix.
+重 | Écriture ancienne : un homme qui porte un sac, « lourd ». |
+庆 | Simplification de 慶 (1956), dont le cœur 心 disait la bonne fortune : « fêter ». |
+杭 | 木 arbre, bois (le sens) + 亢 kàng (le son). |
+州 | Écriture ancienne : un îlot dans une rivière. Puis une division du territoire, la préfecture. |
+苏 | Simplification de 蘇, plante (艹, le sens) + 穌 (le son). |
+厦 | Variante de 廈 : 广 un abri (le sens) + 夏 xià (le son, qui veut aussi dire « grand »). |
+门 | Simplification de 門 : le dessin d'une porte à deux battants. |
+岛 | 山 montagne (le sens) + 鸟 niǎo, oiseau (le son, ancien) : une île. |
+昆 | Écriture ancienne : le corps et les pattes d'un insecte. |
+明 | 日 soleil + 月 lune : le soleil qui se lève avant que la lune ne se couche, « lumineux ». |
+大 | Écriture ancienne : une personne debout, de face, « grand ». |
+理 | 王, ici le jade 玉 (le sens) + 里 lǐ (le son). D'abord « polir le jade », puis « mettre en ordre ». |
+哈 | 口 bouche (le sens) + 合 (le son). |
+尔 | Simplification de 爾 : à l'origine un tissu sur un métier à tisser, emprunté pour dire « tu ». Ici, simple son. |
+滨 | 氵 eau (le sens) + 宾 bīn (le son) : le rivage. |
+喀 | 口 bouche (le sens) + 客 kè (le son). Sert surtout à transcrire des noms étrangers. |
+什 | 亻 personne + 十 shí, dix (le son). Sens ancien : un groupe de dix familles, ou de dix soldats. |
+成都 | « devenir » + « capitale ». Origine du nom incertaine. |
+西安 | « ouest » + « paix » : « paix de l'Ouest ». |
+重庆 | « double » + « fête » : « double fête ». |
+杭州 | « Hang » + « préfecture » : la préfecture de Hang. |
+苏州 | « Su » (du mont Gusu 姑苏) + « préfecture ». |
+厦门 | « grand bâtiment » + « porte ». D'abord écrit 下门, « porte d'en bas ». |
+青岛 | « vert » + « île » : « l'île verte ». |
+昆明 | Le nom d'un peuple ancien, les Kunming : les caractères notent le son. |
+大理 | « grand » + « raison, ordre ». Nom d'un ancien royaume. |
+哈尔滨 | Transcription d'un nom mandchou ou jurchen, au sens discuté : les caractères notent le son. |
+喀什 | Abrégé de 喀什噶尔, transcription du nom ouïghour Qeshqer : les caractères notent le son. |

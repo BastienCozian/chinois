@@ -46,6 +46,38 @@ const PAQUET = {
     "shengri",
     "kuaile"
    ]
+  },
+  {
+   "id": "l3b",
+   "titre": "Leçon 3 · Clés et composants (4ᵉ cours)",
+   "mots": [
+    "mu",
+    "xin",
+    "kou",
+    "shui",
+    "mu-arbre",
+    "qing",
+    "bao",
+    "xiang1",
+    "xiang3"
+   ]
+  },
+  {
+   "id": "l3c",
+   "titre": "Leçon 3 · Villes de Chine",
+   "mots": [
+    "chengdu",
+    "xian",
+    "chongqing",
+    "hangzhou",
+    "suzhou",
+    "xiamen",
+    "qingdao",
+    "kunming",
+    "dali",
+    "haerbin",
+    "kashi"
+   ]
   }
  ],
  "mots": {
@@ -356,6 +388,229 @@ const PAQUET = {
    "remarque": "生日快乐！« Joyeux anniversaire ! » 乐 se lit aussi yuè, « musique » (音乐).",
    "liste": "l3",
    "motAMot": "« content » + « joie » : deux mots de la joie."
+  },
+  "mu": {
+   "hz": "目",
+   "py": [
+    "mu4"
+   ],
+   "sens": "œil",
+   "son": true,
+   "remarque": "Se lit comme 木 « arbre » : même syllabe, même ton.",
+   "liste": "l3b"
+  },
+  "xin": {
+   "hz": "心",
+   "py": [
+    "xin1"
+   ],
+   "sens": "cœur",
+   "son": true,
+   "remarque": "Comme clé, à gauche : 忄 (快, 怪).",
+   "liste": "l3b"
+  },
+  "kou": {
+   "hz": "口",
+   "py": [
+    "kou3"
+   ],
+   "sens": "bouche",
+   "son": true,
+   "remarque": "Clé des mots de la voix (吗, 哈).",
+   "liste": "l3b"
+  },
+  "shui": {
+   "hz": "水",
+   "py": [
+    "shui3"
+   ],
+   "sens": "eau",
+   "son": true,
+   "remarque": "Comme clé, à gauche : 氵, « trois gouttes » (没, 清).",
+   "liste": "l3b"
+  },
+  "mu-arbre": {
+   "hz": "木",
+   "py": [
+    "mu4"
+   ],
+   "sens": "arbre, bois",
+   "son": true,
+   "remarque": "Se lit comme 目 « œil » : même syllabe, même ton.",
+   "liste": "l3b"
+  },
+  "qing": {
+   "hz": "青",
+   "py": [
+    "qing1"
+   ],
+   "sens": "bleu-vert",
+   "son": true,
+   "remarque": "Composant de son : 清 qīng, 晴 qíng, 情 qíng, 睛 jīng.",
+   "liste": "l3b"
+  },
+  "bao": {
+   "hz": "包",
+   "py": [
+    "bao1"
+   ],
+   "sens": "envelopper ; paquet",
+   "son": true,
+   "remarque": "Composant de son : 跑 pǎo, 抱 bào, 泡 pào.",
+   "liste": "l3b"
+  },
+  "xiang1": {
+   "hz": "相",
+   "py": [
+    "xiang1"
+   ],
+   "sens": "l'un l'autre, mutuellement",
+   "son": true,
+   "remarque": "木 + 目. Lu xiàng, c'est un autre mot : « apparence ».",
+   "liste": "l3b"
+  },
+  "xiang3": {
+   "hz": "想",
+   "py": [
+    "xiang3"
+   ],
+   "sens": "penser ; vouloir",
+   "son": true,
+   "remarque": "相 (le son) + 心 (le sens).",
+   "liste": "l3b"
+  },
+  "chengdu": {
+   "hz": "成都",
+   "py": [
+    "cheng2",
+    "du1"
+   ],
+   "sens": "Chengdu (Sichuan)",
+   "son": false,
+   "remarque": "都 se lit ici dū, « capitale » ; d'habitude dōu, « tous ».",
+   "liste": "l3c",
+   "motAMot": "« devenir » + « capitale ». Origine du nom incertaine."
+  },
+  "xian": {
+   "hz": "西安",
+   "py": [
+    "xi1",
+    "an1"
+   ],
+   "sens": "Xi'an (Shaanxi)",
+   "son": false,
+   "remarque": "L'apostrophe de Xī'ān sépare deux syllabes : xian seul serait une syllabe.",
+   "liste": "l3c",
+   "motAMot": "« ouest » + « paix » : « paix de l'Ouest »."
+  },
+  "chongqing": {
+   "hz": "重庆",
+   "py": [
+    "chong2",
+    "qing4"
+   ],
+   "sens": "Chongqing",
+   "son": false,
+   "remarque": "重 se lit ici chóng, « de nouveau, double » ; d'habitude zhòng, « lourd ».",
+   "liste": "l3c",
+   "motAMot": "« double » + « fête » : « double fête »."
+  },
+  "hangzhou": {
+   "hz": "杭州",
+   "py": [
+    "hang2",
+    "zhou1"
+   ],
+   "sens": "Hangzhou (Zhejiang)",
+   "son": false,
+   "remarque": "",
+   "liste": "l3c",
+   "motAMot": "« Hang » + « préfecture » : la préfecture de Hang."
+  },
+  "suzhou": {
+   "hz": "苏州",
+   "py": [
+    "su1",
+    "zhou1"
+   ],
+   "sens": "Suzhou (Jiangsu)",
+   "son": false,
+   "remarque": "",
+   "liste": "l3c",
+   "motAMot": "« Su » (du mont Gusu 姑苏) + « préfecture »."
+  },
+  "xiamen": {
+   "hz": "厦门",
+   "py": [
+    "xia4",
+    "men2"
+   ],
+   "sens": "Xiamen (Fujian)",
+   "son": false,
+   "remarque": "厦 se lit xià dans 厦门 ; ailleurs shà, « grand bâtiment ».",
+   "liste": "l3c",
+   "motAMot": "« grand bâtiment » + « porte ». D'abord écrit 下门, « porte d'en bas »."
+  },
+  "qingdao": {
+   "hz": "青岛",
+   "py": [
+    "qing1",
+    "dao3"
+   ],
+   "sens": "Qingdao (Shandong)",
+   "son": false,
+   "remarque": "",
+   "liste": "l3c",
+   "motAMot": "« vert » + « île » : « l'île verte »."
+  },
+  "kunming": {
+   "hz": "昆明",
+   "py": [
+    "kun1",
+    "ming2"
+   ],
+   "sens": "Kunming (Yunnan)",
+   "son": false,
+   "remarque": "",
+   "liste": "l3c",
+   "motAMot": "Le nom d'un peuple ancien, les Kunming : les caractères notent le son."
+  },
+  "dali": {
+   "hz": "大理",
+   "py": [
+    "da4",
+    "li3"
+   ],
+   "sens": "Dali (Yunnan)",
+   "son": false,
+   "remarque": "",
+   "liste": "l3c",
+   "motAMot": "« grand » + « raison, ordre ». Nom d'un ancien royaume."
+  },
+  "haerbin": {
+   "hz": "哈尔滨",
+   "py": [
+    "ha1",
+    "er3",
+    "bin1"
+   ],
+   "sens": "Harbin (Heilongjiang)",
+   "son": false,
+   "remarque": "On écrit Hā'ěrbīn, avec une apostrophe devant ěr.",
+   "liste": "l3c",
+   "motAMot": "Transcription d'un nom mandchou ou jurchen, au sens discuté : les caractères notent le son."
+  },
+  "kashi": {
+   "hz": "喀什",
+   "py": [
+    "ka1",
+    "shi2"
+   ],
+   "sens": "Kashgar (Xinjiang)",
+   "son": false,
+   "remarque": "什 se lit ici shí ; dans 什么 « quoi », shén.",
+   "liste": "l3c",
+   "motAMot": "Abrégé de 喀什噶尔, transcription du nom ouïghour Qeshqer : les caractères notent le son."
   }
  },
  "caracteres": {
@@ -1154,6 +1409,623 @@ const PAQUET = {
    "semantique": "",
    "phonetique": "",
    "cleSens": "trait oblique"
+  },
+  "目": {
+   "hex": "76EE",
+   "indice": {
+    "origine": "Écriture ancienne : le dessin d'un œil, tourné d'un quart de tour.",
+    "astuce": ""
+   },
+   "cle": "目",
+   "parties": [
+    [
+     "口",
+     "kǒu",
+     "bouche"
+    ],
+    [
+     "二",
+     "èr",
+     "deux"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "心": {
+   "hex": "5FC3",
+   "indice": {
+    "origine": "Écriture ancienne : le dessin d'un cœur, très stylisé.",
+    "astuce": ""
+   },
+   "cle": "心",
+   "parties": [],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "口": {
+   "hex": "53E3",
+   "indice": {
+    "origine": "Écriture ancienne : une bouche ouverte.",
+    "astuce": ""
+   },
+   "cle": "口",
+   "parties": [
+    [
+     "冂",
+     "jiōng",
+     "enceinte"
+    ],
+    [
+     "一",
+     "yī",
+     "un, un trait"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "水": {
+   "hex": "6C34",
+   "indice": {
+    "origine": "Écriture ancienne : de l'eau qui coule. À gauche d'un caractère, elle devient 氵.",
+    "astuce": ""
+   },
+   "cle": "水",
+   "parties": [],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "木": {
+   "hex": "6728",
+   "indice": {
+    "origine": "Écriture ancienne : un arbre, les branches en haut, les racines en bas.",
+    "astuce": ""
+   },
+   "cle": "木",
+   "parties": [
+    [
+     "十",
+     "shí",
+     "dix"
+    ],
+    [
+     "八",
+     "bā",
+     "huit"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "青": {
+   "hex": "9752",
+   "indice": {
+    "origine": "Origine discutée. Le bas ressemble à 月, sans rapport avec la lune.",
+    "astuce": ""
+   },
+   "cle": "青",
+   "parties": [
+    [
+     "龶",
+     "",
+     "(forme de 生, en haut de 青)"
+    ],
+    [
+     "月",
+     "yuè",
+     "lune ; aussi la chair (肉)"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "包": {
+   "hex": "5305",
+   "indice": {
+    "origine": "Écriture ancienne : un enfant dans le ventre de sa mère, ou un bébé emmailloté : envelopper.",
+    "astuce": ""
+   },
+   "cle": "勹",
+   "parties": [
+    [
+     "勹",
+     "bāo",
+     "envelopper"
+    ],
+    [
+     "巳",
+     "sì",
+     "(signe cyclique)"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "相": {
+   "hex": "76F8",
+   "indice": {
+    "origine": "木 arbre + 目 œil : un œil qui regarde un arbre, « observer ». Le sens « l'un l'autre » est un emprunt du son.",
+    "astuce": ""
+   },
+   "cle": "目",
+   "parties": [
+    [
+     "木",
+     "mù",
+     "arbre"
+    ],
+    [
+     "目",
+     "mù",
+     "œil"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "想": {
+   "hex": "60F3",
+   "indice": {
+    "origine": "心 cœur, l'esprit (le sens) + 相 xiāng (le son) : penser.",
+    "astuce": ""
+   },
+   "cle": "心",
+   "parties": [
+    [
+     "相",
+     "xiāng",
+     "l'un l'autre ; observer"
+    ],
+    [
+     "心",
+     "xīn",
+     "cœur"
+    ]
+   ],
+   "semantique": "心",
+   "phonetique": "相"
+  },
+  "成": {
+   "hex": "6210",
+   "indice": {
+    "origine": "戊, une arme (le sens) + 丁 dīng (le son). Le petit 口 qu'on croit voir n'en est pas un.",
+    "astuce": ""
+   },
+   "cle": "戈",
+   "parties": [
+    [
+     "丁",
+     "dīng",
+     "clou"
+    ],
+    [
+     "戈",
+     "gē",
+     "hallebarde, arme"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "都": {
+   "hex": "90FD",
+   "indice": {
+    "origine": "阝 à droite, la ville 邑 (le sens) + 者 (le son, ancien). D'abord « grande ville, capitale ».",
+    "astuce": ""
+   },
+   "cle": "阝",
+   "parties": [
+    [
+     "者",
+     "zhě",
+     "celui qui (ici pour le son)"
+    ],
+    [
+     "阝",
+     "yì",
+     "à droite : la ville 邑 ; à gauche : la colline 阜"
+    ]
+   ],
+   "semantique": "阝",
+   "phonetique": "者"
+  },
+  "西": {
+   "hex": "897F",
+   "indice": {
+    "origine": "",
+    "astuce": "Origine discutée. Une lecture ancienne y voit un nid d'oiseau."
+   },
+   "cle": "西",
+   "parties": [
+    [
+     "兀",
+     "wù",
+     "(forme simple, sans sens ici)"
+    ],
+    [
+     "囗",
+     "wéi",
+     "enceinte"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "安": {
+   "hex": "5B89",
+   "indice": {
+    "origine": "宀 toit (le sens) + 女 femme (le son, ancien).",
+    "astuce": "Une femme assise sous un toit : la paix."
+   },
+   "cle": "宀",
+   "parties": [
+    [
+     "宀",
+     "gài",
+     "toit"
+    ],
+    [
+     "女",
+     "nǚ",
+     "femme"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "重": {
+   "hex": "91CD",
+   "indice": {
+    "origine": "Écriture ancienne : un homme qui porte un sac, « lourd ».",
+    "astuce": ""
+   },
+   "cle": "里",
+   "parties": [
+    [
+     "千",
+     "qiān",
+     "mille"
+    ],
+    [
+     "里",
+     "lǐ",
+     "village"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "庆": {
+   "hex": "5E86",
+   "indice": {
+    "origine": "Simplification de 慶 (1956), dont le cœur 心 disait la bonne fortune : « fêter ».",
+    "astuce": ""
+   },
+   "cle": "广",
+   "parties": [
+    [
+     "广",
+     "guǎng",
+     "abri, grand toit"
+    ],
+    [
+     "大",
+     "dà",
+     "grand"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "杭": {
+   "hex": "676D",
+   "indice": {
+    "origine": "木 arbre, bois (le sens) + 亢 kàng (le son).",
+    "astuce": ""
+   },
+   "cle": "木",
+   "parties": [
+    [
+     "木",
+     "mù",
+     "arbre"
+    ],
+    [
+     "亢",
+     "kàng",
+     "(ici pour le son)"
+    ]
+   ],
+   "semantique": "木",
+   "phonetique": "亢"
+  },
+  "州": {
+   "hex": "5DDE",
+   "indice": {
+    "origine": "Écriture ancienne : un îlot dans une rivière. Puis une division du territoire, la préfecture.",
+    "astuce": ""
+   },
+   "cle": "川",
+   "parties": [],
+   "semantique": "",
+   "phonetique": "",
+   "cleSens": "rivière"
+  },
+  "苏": {
+   "hex": "82CF",
+   "indice": {
+    "origine": "Simplification de 蘇, plante (艹, le sens) + 穌 (le son).",
+    "astuce": ""
+   },
+   "cle": "艹",
+   "parties": [
+    [
+     "艹",
+     "cǎo",
+     "herbe, plante (艸 en haut)"
+    ],
+    [
+     "办",
+     "bàn",
+     "(forme cursive, sans sens ici)"
+    ]
+   ],
+   "semantique": "艹",
+   "phonetique": "稣"
+  },
+  "厦": {
+   "hex": "53A6",
+   "indice": {
+    "origine": "Variante de 廈 : 广 un abri (le sens) + 夏 xià (le son, qui veut aussi dire « grand »).",
+    "astuce": ""
+   },
+   "cle": "厂",
+   "parties": [
+    [
+     "厂",
+     "chǎng",
+     "abri, falaise"
+    ],
+    [
+     "夏",
+     "xià",
+     "été ; grand"
+    ]
+   ],
+   "semantique": "厂",
+   "phonetique": "夏"
+  },
+  "门": {
+   "hex": "95E8",
+   "indice": {
+    "origine": "Simplification de 門 : le dessin d'une porte à deux battants.",
+    "astuce": ""
+   },
+   "cle": "门",
+   "parties": [],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "岛": {
+   "hex": "5C9B",
+   "indice": {
+    "origine": "山 montagne (le sens) + 鸟 niǎo, oiseau (le son, ancien) : une île.",
+    "astuce": ""
+   },
+   "cle": "山",
+   "parties": [
+    [
+     "鸟",
+     "niǎo",
+     "oiseau"
+    ],
+    [
+     "山",
+     "shān",
+     "montagne"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "昆": {
+   "hex": "6606",
+   "indice": {
+    "origine": "Écriture ancienne : le corps et les pattes d'un insecte.",
+    "astuce": ""
+   },
+   "cle": "日",
+   "parties": [
+    [
+     "日",
+     "rì",
+     "soleil, jour"
+    ],
+    [
+     "比",
+     "bǐ",
+     "comparer"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "明": {
+   "hex": "660E",
+   "indice": {
+    "origine": "日 soleil + 月 lune : le soleil qui se lève avant que la lune ne se couche, « lumineux ».",
+    "astuce": ""
+   },
+   "cle": "日",
+   "parties": [
+    [
+     "日",
+     "rì",
+     "soleil, jour"
+    ],
+    [
+     "月",
+     "yuè",
+     "lune ; aussi la chair (肉)"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "大": {
+   "hex": "5927",
+   "indice": {
+    "origine": "Écriture ancienne : une personne debout, de face, « grand ».",
+    "astuce": ""
+   },
+   "cle": "大",
+   "parties": [
+    [
+     "一",
+     "yī",
+     "un, un trait"
+    ],
+    [
+     "人",
+     "rén",
+     "personne"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "理": {
+   "hex": "7406",
+   "indice": {
+    "origine": "王, ici le jade 玉 (le sens) + 里 lǐ (le son). D'abord « polir le jade », puis « mettre en ordre ».",
+    "astuce": ""
+   },
+   "cle": "王",
+   "parties": [
+    [
+     "王",
+     "wáng",
+     "roi ; à gauche, le jade 玉"
+    ],
+    [
+     "里",
+     "lǐ",
+     "village"
+    ]
+   ],
+   "semantique": "王",
+   "phonetique": "里"
+  },
+  "哈": {
+   "hex": "54C8",
+   "indice": {
+    "origine": "口 bouche (le sens) + 合 (le son).",
+    "astuce": ""
+   },
+   "cle": "口",
+   "parties": [
+    [
+     "口",
+     "kǒu",
+     "bouche"
+    ],
+    [
+     "合",
+     "hé",
+     "fermer, réunir"
+    ]
+   ],
+   "semantique": "口",
+   "phonetique": "合"
+  },
+  "尔": {
+   "hex": "5C14",
+   "indice": {
+    "origine": "Simplification de 爾 : à l'origine un tissu sur un métier à tisser, emprunté pour dire « tu ». Ici, simple son.",
+    "astuce": ""
+   },
+   "cle": "小",
+   "parties": [
+    [
+     "⺈",
+     "",
+     "(forme de 刀, couteau)"
+    ],
+    [
+     "小",
+     "xiǎo",
+     "petit"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "滨": {
+   "hex": "6EE8",
+   "indice": {
+    "origine": "氵 eau (le sens) + 宾 bīn (le son) : le rivage.",
+    "astuce": ""
+   },
+   "cle": "氵",
+   "parties": [
+    [
+     "氵",
+     "shuǐ",
+     "eau (水 sur le côté)"
+    ],
+    [
+     "宾",
+     "bīn",
+     "invité"
+    ]
+   ],
+   "semantique": "氵",
+   "phonetique": "宾"
+  },
+  "喀": {
+   "hex": "5580",
+   "indice": {
+    "origine": "口 bouche (le sens) + 客 kè (le son). Sert surtout à transcrire des noms étrangers.",
+    "astuce": ""
+   },
+   "cle": "口",
+   "parties": [
+    [
+     "口",
+     "kǒu",
+     "bouche"
+    ],
+    [
+     "客",
+     "kè",
+     "invité"
+    ]
+   ],
+   "semantique": "口",
+   "phonetique": "客"
+  },
+  "什": {
+   "hex": "4EC0",
+   "indice": {
+    "origine": "亻 personne + 十 shí, dix (le son). Sens ancien : un groupe de dix familles, ou de dix soldats.",
+    "astuce": ""
+   },
+   "cle": "亻",
+   "parties": [
+    [
+     "亻",
+     "rén",
+     "personne (人 sur le côté)"
+    ],
+    [
+     "十",
+     "shí",
+     "dix"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
   }
  }
 };
