@@ -1,8 +1,12 @@
 # Pinyin
 
-Site d'entraînement au chinois pour les élèves du cours, sur téléphone. Deux sections, en onglets : **Prononciation** (cette page) et **Caractères** (`hanzi/`). Une seule appli à mettre sur l'écran d'accueil : « Chinois ».
+Site d'entraînement au chinois pour les élèves du cours, sur téléphone. Deux sections, en onglets : **Prononciation** (cette page) et **Caractères** (`hanzi/`), plus un troisième onglet vers les **Leçons** (`cours/`). Une seule appli à mettre sur l'écran d'accueil : « Chinois ».
 
 Page : <https://bastiencozian.github.io/chinois/>
+
+## Leçons (`cours/`)
+
+Les leçons de révision du cours, une par lot donné par l'enseignant : <https://bastiencozian.github.io/chinois/cours/>. Elles sont écrites hors de ce dépôt, dans le dossier de travail de l'apprenant, puis copiées ici par `python -X utf8 cours/construire.py`. Ne pas modifier à la main les pages de `cours/` : relancer le script. La copie retire ce qui ne sert qu'à l'apprenant suivi par un Agent Teach (éléments `data-public="non"`, récapitulatif à coller dans un terminal) ; les exercices s'y corrigent tout de suite et finissent par un bilan des exercices à revoir. Rien n'est enregistré.
 
 ## Profils (`profil.js`)
 
@@ -46,6 +50,7 @@ Les mots du cours, page : <https://bastiencozian.github.io/chinois/hanzi/>. Quat
 ## Crédits et licences
 
 - **Sons** (`audio/`) : syllabes enregistrées par **Chen Wang**, projet [audio-cmn](https://github.com/hugolpz/audio-cmn) (Hugo Lopez, Inalco), licence [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Fichiers repris tels quels, renommés seulement pour `jù` (`jv4` → `ju4`).
-- **Sons des mots** (`hanzi/sons/`) : mots du HSK lus par **Yue Tan** (et quelques syllabes de Chen Wang), même projet audio-cmn, CC BY-SA 4.0.
+- **Sons des mots** (`hanzi/sons/`, `cours/assets/son-*.mp3`) : mots du HSK lus par **Yue Tan** (et quelques syllabes de Chen Wang), même projet audio-cmn, CC BY-SA 4.0.
+- **Carte des villes** (`cours/reference/villes-et-provinces.html`) : fond [Natural Earth](https://www.naturalearthdata.com/), domaine public.
 - **Ordre des traits** : bibliothèque [Hanzi Writer](https://hanziwriter.org) (David Chanin, licence MIT), `hanzi/hanzi-writer.min.js` ; tracés (`hanzi/traits/`) du paquet hanzi-writer-data, tirés de [Make Me a Hanzi](https://github.com/skishore/makemeahanzi) (Shaunak Kishore), d'après les polices Arphic : licence Arphic Public License (`hanzi/ARPHICPL.TXT`). Décompositions et clés : dictionnaire de Make Me a Hanzi (LGPL).
 - **Code** : licence MIT.

@@ -149,7 +149,7 @@ button.large { display: block; width: 100%; margin: 0.5rem 0; }
 .profil-ligne { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-family: var(--sans); font-size: 0.85rem; color: var(--muted); }
 .profil-ligne .lien { font-size: inherit; }
 .profil-ligne span { font-weight: 600; color: var(--fg); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-nav.site { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 0.3rem 0 1rem; font-family: var(--sans); }
+nav.site { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin: 0.3rem 0 1rem; font-family: var(--sans); }
 nav.site a {
   display: flex; justify-content: center; align-items: center; gap: 0.4em; min-height: 44px; padding: 0.4rem;
   border: 1px solid var(--rule); border-radius: 8px; background: var(--card); color: var(--fg); text-decoration: none; font-weight: 500;

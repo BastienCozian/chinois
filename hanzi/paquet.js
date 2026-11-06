@@ -49,7 +49,7 @@ const PAQUET = {
   },
   {
    "id": "l3b",
-   "titre": "Leçon 3 · Clés et composants (4ᵉ cours)",
+   "titre": "Leçon 3 · Clés et composants",
    "mots": [
     "mu",
     "xin",

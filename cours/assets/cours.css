@@ -1,0 +1,510 @@
+/* Feuille de style commune aux leçons et fiches de Chinois (reprise d'Ornithologie, elle-même reprise de Parades topologiques).
+   Inspiration : mise en page de Tufte (colonne de texte étroite, notes en marge). */
+
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400&display=swap");
+
+:root {
+  --fond: #fffff8;
+  --encre: #1f1f1f;
+  --encre-douce: #5b5b5b;
+  --filet: #d9d6c8;
+  --accent: #1d5a6e;          /* bleu pétrole : titres, liens */
+  --surface: #f6f3e6;         /* encadrés */
+  --ok: #2e6b30;
+  --ok-fond: #e7f1e3;
+  --ko: #a1271b;
+  --ko-fond: #f8e5e1;
+  --alerte: #b26a00;
+  --ligne-ouverte: #a8a49a;
+  --serif: "Source Serif 4", "Georgia", "Cambria", serif;
+  --sans: "Source Sans 3", "Segoe UI", "Helvetica Neue", sans-serif;
+  --mono: "JetBrains Mono", "Consolas", monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --fond: #1b1b19;
+    --encre: #e9e6dc;
+    --encre-douce: #a9a59a;
+    --filet: #3d3b35;
+    --accent: #7cc3d6;
+    --surface: #24231f;
+    --ok: #8fcf8a;
+    --ok-fond: #1f2e1e;
+    --ko: #f08a7c;
+    --ko-fond: #3a2220;
+    --alerte: #e8b04f;
+    --ligne-ouverte: #6c695f;
+  }
+}
+:root[data-theme="dark"] {
+  --fond: #1b1b19;
+  --encre: #e9e6dc;
+  --encre-douce: #a9a59a;
+  --filet: #3d3b35;
+  --accent: #7cc3d6;
+  --surface: #24231f;
+  --ok: #8fcf8a;
+  --ok-fond: #1f2e1e;
+  --ko: #f08a7c;
+  --ko-fond: #3a2220;
+  --alerte: #e8b04f;
+  --ligne-ouverte: #6c695f;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+html { font-size: 17px; }
+
+body {
+  margin: 0;
+  background: var(--fond);
+  color: var(--encre);
+  font-family: var(--serif);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Colonne principale + marge pour les notes */
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 16px 5rem;
+}
+main > *, section > * {
+  max-width: 38rem;
+}
+section { max-width: none; }
+
+/* ---------- Typographie ---------- */
+h1 {
+  font-weight: 400;
+  font-size: 2.3rem;
+  line-height: 1.15;
+  margin: 0 0 0.3rem;
+}
+.surtitre {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.6rem;
+}
+.chapeau {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--encre-douce);
+  margin: 0.4rem 0 2rem;
+}
+h2 {
+  font-weight: 400;
+  font-style: italic;
+  font-size: 1.55rem;
+  margin: 3rem 0 0.8rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--filet);
+}
+h3 {
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin: 1.8rem 0 0.4rem;
+}
+p { margin: 0 0 1rem; }
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+strong { font-weight: 600; }
+code, .mono { font-family: var(--mono); font-size: 0.85em; }
+
+ul, ol { padding-left: 1.3rem; }
+li { margin-bottom: 0.35rem; }
+
+/* ---------- Bandeau d'infos ---------- */
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.4rem;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--encre-douce);
+  padding: 0.7rem 0;
+  border-top: 1px solid var(--filet);
+  border-bottom: 1px solid var(--filet);
+  margin-bottom: 2rem;
+}
+.meta b { color: var(--encre); font-weight: 600; }
+
+/* ---------- Notes en marge (sidenotes) ---------- */
+.note {
+  float: right;
+  clear: right;
+  width: 15rem;
+  margin-right: -17.5rem;
+  margin-top: 0.2rem;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: var(--encre-douce);
+  font-family: var(--sans);
+}
+/* Note posée seule, entre deux blocs (après un tableau ou une liste) : son flottant se cale
+   sur le bord droit de <main>, pas sur celui de la colonne de texte. On la ramène dans la
+   même marge que les notes dans le texte : bord droit à 38rem + 2.5rem + 15rem = 55.5rem. */
+@media (min-width: 1061px) {
+  main > .note, section > .note { margin-right: calc(100% - 55.5rem); }
+}
+@media (max-width: 1060px) {
+  .note {
+    float: none;
+    display: block;
+    width: auto;
+    margin: 0.4rem 0 1rem;
+    padding: 0.5rem 0.8rem;
+    border-left: 2px solid var(--filet);
+  }
+}
+
+/* ---------- Encadrés ---------- */
+.encadre {
+  background: var(--surface);
+  border-left: 3px solid var(--accent);
+  padding: 0.9rem 1.1rem;
+  margin: 1.4rem 0;
+}
+.encadre > :last-child { margin-bottom: 0; }
+.encadre .titre {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+  display: block;
+}
+
+/* Formule centrée, mise en valeur (LaTeX entre $$…$$, rendu par assets/math.js) */
+.formule {
+  text-align: center;
+  font-size: 1.05rem;
+  margin: 1.2rem 0;
+}
+
+/* ---------- Mathématiques (KaTeX) ---------- */
+.katex-display { overflow-x: auto; overflow-y: hidden; padding: 0.2rem 0; }
+.formule .katex-display { margin: 0; }
+.formule .legende {
+  display: block;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-family: var(--sans);
+  color: var(--encre-douce);
+  margin-top: 0.3rem;
+}
+
+/* ---------- Tableaux ---------- */
+table {
+  border-collapse: collapse;
+  margin: 1rem 0 1.4rem;
+  font-size: 0.95rem;
+  width: 100%;
+}
+th, td {
+  text-align: left;
+  padding: 0.35rem 0.7rem 0.35rem 0;
+  border-bottom: 1px solid var(--filet);
+  vertical-align: top;
+}
+th {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--encre-douce);
+  border-bottom: 1.5px solid var(--encre);
+}
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+/* ---------- Figures ---------- */
+figure { margin: 1.6rem 0; }
+figure svg { display: block; max-width: 100%; height: auto; }
+figcaption {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  color: var(--encre-douce);
+  margin-top: 0.4rem;
+}
+
+/* ---------- Pied de leçon ---------- */
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--filet);
+}
+.inactif { color: var(--encre-douce); }
+
+/* ---------- Impression ---------- */
+@media print {
+  html { font-size: 11pt; }
+  body { background: #fff; color: #000; }
+  main { padding: 0; max-width: none; }
+  main > *, section > * { max-width: none; }
+  .note {
+    float: none; width: auto; margin: 0.3rem 0 0.8rem;
+    padding-left: 0.6rem; border-left: 2px solid #ccc; color: #444;
+  }
+  .no-print, button, .simu-commandes { display: none !important; }
+  h2 { break-after: avoid; }
+  .encadre, figure, .exo { break-inside: avoid; }
+  a { color: #000; }
+}
+
+/* ======================================================================
+   Composant : exercices (quiz.js)
+   ====================================================================== */
+.exo {
+  border: 1px solid var(--filet);
+  border-left: 3px solid var(--encre-douce);
+  padding: 0.9rem 1.1rem 0.8rem;
+  margin: 1.3rem 0;
+  background: var(--fond);
+}
+.exo.exo-reussi { border-left-color: var(--ok); }
+.exo .num-exo {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--encre-douce);
+  display: block;
+  margin-bottom: 0.3rem;
+}
+.exo-saisie {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.4rem 0 0.6rem;
+}
+.exo-saisie input {
+  font: inherit;
+  font-family: var(--mono);
+  width: 7.5rem;
+  padding: 0.3rem 0.5rem;
+  border: 1px solid var(--filet);
+  background: var(--surface);
+  color: var(--encre);
+}
+.exo-unite { font-family: var(--sans); color: var(--encre-douce); }
+button {
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  padding: 0.35rem 0.9rem;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--fond);
+  cursor: pointer;
+}
+button:hover { filter: brightness(1.1); }
+button:focus-visible, input:focus-visible, .zone-clic:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.bouton-secondaire {
+  background: transparent;
+  color: var(--accent);
+}
+.retour { font-family: var(--sans); font-size: 0.9rem; }
+.retour-ok { color: var(--ok); }
+.retour-ko { color: var(--ko); }
+div.retour { margin: 0.3rem 0 0.6rem; min-height: 1.2em; }
+
+.choix { list-style: none; padding: 0; margin: 0.6rem 0 0.2rem; }
+.choix li { margin: 0 0 0.4rem; }
+.choix-bouton {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-family: var(--serif);
+  font-size: 1rem;
+  padding: 0.45rem 0.8rem;
+  background: var(--surface);
+  color: var(--encre);
+  border: 1px solid var(--filet);
+}
+.choix-bouton:hover { border-color: var(--accent); filter: none; }
+.choix-bouton.choix-ok { background: var(--ok-fond); border-color: var(--ok); }
+.choix-bouton.choix-ko { background: var(--ko-fond); border-color: var(--ko); opacity: 0.8; cursor: default; }
+
+.solution {
+  margin-top: 0.7rem;
+  padding: 0.7rem 0.9rem;
+  background: var(--surface);
+  font-size: 0.95rem;
+}
+.solution > :last-child { margin-bottom: 0; }
+.exo > .bouton-secondaire { margin-top: 0.2rem; }
+/* Exercice « papier et stylo » (data-papier, quiz.js) */
+.etiquette-papier {
+  display: inline-block; margin-left: 0.6rem; padding: 0.05rem 0.45rem;
+  font-family: var(--sans); font-size: 0.75rem; font-weight: 600;
+  border: 1px solid var(--accent); color: var(--accent); border-radius: 3px;
+}
+.exo > .bouton-papier { display: block; margin: 0.4rem 0; }
+.bouton-papier[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+.choix-bouton[aria-pressed="true"] { border-color: var(--accent); box-shadow: inset 3px 0 0 var(--accent); }
+.choix-bouton:disabled:not(.choix-ko) { opacity: 0.6; cursor: default; }
+
+/* Niveau de confiance, déclaré avant le premier essai */
+.confiance {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0.5rem 0 0.3rem;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+}
+.confiance span { color: var(--encre-douce); margin-right: 0.2rem; }
+.confiance button {
+  font-size: 0.82rem;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--filet);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--encre);
+}
+.confiance button:hover { border-color: var(--accent); filter: none; }
+.confiance button[aria-pressed="true"] { border-color: var(--accent); background: var(--accent); color: var(--fond); }
+.confiance button:disabled { cursor: default; }
+.confiance button:disabled:not([aria-pressed="true"]) { opacity: 0.45; }
+.confiance-manquante span { color: var(--ko); font-weight: 600; }
+
+/* Récapitulatif à coller dans le terminal */
+.quiz-recap {
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  border: 1px solid var(--filet);
+  background: var(--surface);
+  padding: 0.9rem 1.1rem;
+  margin: 1.6rem 0;
+}
+.quiz-recap .score-recap { font-size: 1.05rem; font-weight: 600; }
+.quiz-recap pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  background: var(--fond);
+  border: 1px solid var(--filet);
+  padding: 0.6rem 0.7rem;
+}
+@media print { .confiance, .quiz-recap { display: none; } }
+
+.score {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--encre-douce);
+}
+
+
+/* Fil de retour : premier élément de <main> sur chaque page (sommaire, leçon, fiche) */
+.fil-retour { font: 500 0.85rem/1.4 system-ui, sans-serif; margin: 0 0 1rem; display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; }
+.fil-retour a { color: inherit; opacity: 0.75; text-decoration: none; padding-block: 0.3rem; }
+.fil-retour a:hover { opacity: 1; text-decoration: underline; }
+@media print { .fil-retour { display: none; } }
+
+/* ======================================================================
+   Fiches de référence : formules de poche, « Retrouver », rappels repliés
+   ====================================================================== */
+.en { font-style: italic; color: var(--encre-douce); }
+.table-wrap { max-width: 46rem; overflow-x: auto; }
+
+/* Encadré dépliable : démonstration « Retrouver » et rappels */
+details {
+  margin: 0.5rem 0;
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+details > summary {
+  cursor: pointer;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+}
+details[open] > summary { margin-bottom: 0.4rem; }
+details > :not(summary) { margin-left: 0.9rem; }
+details > p:last-child, details > ul:last-child, details > ol:last-child { margin-bottom: 0.3rem; }
+details .formule { font-family: var(--serif); font-size: 1.05rem; margin: 0.6rem 0; }
+
+/* Formules de poche : trois colonnes, empilées sur téléphone */
+table.poche td:first-child { font-family: var(--sans); font-weight: 600; font-size: 0.85rem; width: 9rem; }
+table.poche td.f { white-space: nowrap; }
+@media (max-width: 640px) {
+  table.poche, table.poche tbody, table.poche tr, table.poche td { display: block; width: auto; }
+  table.poche tr:first-child { display: none; }
+  table.poche tr { border-bottom: 1px solid var(--filet); padding: 0.5rem 0; }
+  table.poche td, table.poche td:first-child { border: 0; padding: 0.15rem 0; width: auto; }
+  table.poche td.f { white-space: normal; }
+}
+
+/* Rappels : une ligne repliée par notion, discrète */
+.rappels details {
+  border-top: 1px solid var(--filet);
+  padding: 0.45rem 0;
+  margin: 0;
+}
+.rappels details:last-child { border-bottom: 1px solid var(--filet); }
+.rappels summary { color: var(--encre); font-weight: 500; font-size: 0.9rem; letter-spacing: 0; }
+.rappels summary .en { font-weight: 400; }
+:target > summary, details:target > summary { background: var(--surface); }
+
+@media print {
+  details > summary { color: #000; }
+  .table-wrap { overflow: visible; }
+}
+
+
+/* ======================================================================
+   Chinois : caractères, pinyin, sons
+   ====================================================================== */
+
+.hz { font-family: "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif; font-size: 1.35em; letter-spacing: 0.05em; }
+.py { font-family: var(--sans); color: var(--accent); }
+.lit { font-style: italic; color: var(--encre-douce); }
+
+/* Tableau des phrases : français, caractères, pinyin, son. Empilé sur téléphone. */
+table.phrases td { vertical-align: middle; }
+table.phrases td.hz { white-space: nowrap; }
+@media (max-width: 40rem) {
+  table.phrases, table.phrases tbody, table.phrases tr, table.phrases td { display: block; width: auto; border: none; padding: 0.1rem 0; }
+  table.phrases tr:first-child { display: none; }
+  table.phrases tr { padding: 0.6rem 0; border-bottom: 1px solid var(--filet); }
+}
+
+/* Bouton d'écoute (assets/son.js) */
+button.son { font-size: 0.8rem; padding: 0.15rem 0.55rem; margin-left: 0.3rem; vertical-align: middle; }
+
+/* Paroles de chanson : une ligne = caractères, pinyin, traduction */
+.paroles { list-style: none; padding-left: 0; }
+.paroles li { margin: 0 0 0.9rem; }
+.paroles .hz, .paroles .py, .paroles .lit { display: block; }
+.paroles .bis { font-family: var(--sans); font-size: 0.8rem; color: var(--encre-douce); }
+
+/* Repli : cacher le chinois ou le français pour s'interroger soi-même (assets/son.js) */
+.masquer-zh .masquable.zh, .masquer-fr .masquable.fr { color: transparent; background: var(--surface); border-radius: 3px; cursor: pointer; }
+.masquer-zh .masquable.zh.vu, .masquer-fr .masquable.fr.vu { color: inherit; background: none; }
+.interrupteurs { display: flex; flex-wrap: wrap; gap: 0.8rem; font-family: var(--sans); font-size: 0.9rem; margin: 0.6rem 0 1rem; }
+
+/* Navigation en haut et en bas de page : la barre des leçons est recopiée sous le fil de retour (« haut »),
+   le fil de retour est recopié sous la barre des leçons (« bas »). */
+.navigation.haut { margin: 0 0 1.5rem; padding: 0 0 0.8rem; border-top: none; border-bottom: 1px solid var(--filet); }
+.fil-retour.bas { margin: 2.5rem 0 0; padding-top: 0.8rem; border-top: 1px solid var(--filet); }
+.navigation + .fil-retour.bas { margin-top: 0.4rem; padding-top: 0; border-top: none; }
+@media print { .navigation.haut { display: none; } }

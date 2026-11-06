@@ -1,6 +1,6 @@
 // Profils : plusieurs élèves sur un même appareil, chacun avec sa progression. Rien ne quitte le navigateur.
 // Bastien garde les clés d'origine (pinyin-v1, hanzi-v1) ; un autre profil a les siennes (pinyin-v1@<id>).
-// Barre du site (les deux sections et le profil), commune à la page Pinyin et à la page Sinogrammes.
+// Barre du site (les deux sections, le lien vers les leçons de cours/ et le profil), commune à la page Pinyin et à la page Sinogrammes.
 "use strict";
 
 const Profil = (() => {
@@ -94,7 +94,7 @@ const Profil = (() => {
       return `<a href="${href}"${id === ici ? ' class="actif" aria-current="page"' : ""}>${nom}${n ? ` <span class="badge" title="à réviser">${n}</span>` : ""}</a>`;
     };
     return `<div class="profil-ligne"><span>${esc(actif().nom)}</span><button class="lien" id="profil">Changer de profil</button></div>
-      <nav class="site" aria-label="Sections">${onglet("pinyin", racine || "./", "Prononciation", "pinyin-v1")}${onglet("hanzi", racine + "hanzi/", "Caractères", "hanzi-v1")}</nav>`;
+      <nav class="site" aria-label="Sections">${onglet("pinyin", racine || "./", "Prononciation", "pinyin-v1")}${onglet("hanzi", racine + "hanzi/", "Caractères", "hanzi-v1")}<a href="${racine}cours/">Leçons</a></nav>`;
   }
 
   // Écran « Qui s'entraîne ? ». retour : revenir à l'écran précédent sans changer de profil (absent au premier passage)
