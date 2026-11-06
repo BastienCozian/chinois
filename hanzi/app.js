@@ -144,7 +144,6 @@
     if (aRecharger) { location.reload(); return; }
     lacher();
     const t = Date.now(), c = SRS.compter(vue(), ORDRE, t);
-    const ios = /iPhone|iPad|iPod/.test(navigator.userAgent) && !navigator.standalone;
     let h = Profil.barre("hanzi", "../") + `<header><h1>Sinogrammes</h1>
       <p class="sous-titre">Les mots du cours : les écrire trait par trait, les lire, les comprendre.</p></header>`;
     if (alerteStockage) h += `<p class="alerte">Le navigateur refuse d'enregistrer la progression (navigation privée ?). Elle sera perdue à la fermeture.</p>`;
@@ -160,7 +159,7 @@
     h += `<button class="large" id="liste">Les mots : ordre des traits, composants, écriture libre</button>`;
     if (!Object.keys(E.cartes).length) h += `<p class="info">Vous aviez déjà commencé, sur cet appareil ou un autre ? Restaurez une sauvegarde (Réglages), ou
       <button class="lien" id="niveau-haut">retrouvez votre niveau</button> mot par mot.</p>`;
-    if (ios) h += `<p class="info">Pour garder votre progression : Partager → « Sur l'écran d'accueil », puis ouvrez la page depuis son icône.</p>`;
+    h += Profil.htmlAppli(true);
 
     if (Profil.proprio()) h += `<section class="bloc"><h2>Bilan pour l'Agent Teach</h2>
       <p class="info">Dernier bilan copié : ${E.dernierBilan ? SRS.date(E.dernierBilan, true) : "jamais"}.

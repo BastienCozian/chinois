@@ -87,6 +87,58 @@ const Profil = (() => {
       Vous pouvez y changer la note, tant que la carte n'a pas été revue depuis, et réessayer librement : cet essai ne compte pas.
       Cet historique s'efface quand vous quittez la séance.</p>`;
 
+  /* ---------- Le site comme une application, sur l'écran d'accueil ---------- */
+
+  // Ouvert depuis son icône : navigator.standalone sur iPhone, display-mode ailleurs
+  const enAppli = () => navigator.standalone === true ||
+    (!!window.matchMedia && matchMedia("(display-mode: standalone)").matches);
+  const surIOS = () => /iPhone|iPad|iPod/.test(navigator.userAgent) ||
+    (/Macintosh/.test(navigator.userAgent) && navigator.maxTouchPoints > 1); // iPad en mode « ordinateur »
+  const surAndroid = () => /Android/.test(navigator.userAgent);
+
+  // Chrome (Android) offre sa propre fenêtre d'installation : on la garde pour le bouton « Installer l'application »
+  let invite = null;
+  const montrerBouton = (oui) => document.querySelectorAll("button.installer").forEach((b) => { b.hidden = !oui; });
+  window.addEventListener("beforeinstallprompt", (ev) => { invite = ev; montrerBouton(true); });
+  window.addEventListener("appinstalled", () => { invite = null; montrerBouton(false); });
+  document.addEventListener("click", (ev) => {
+    const b = ev.target.closest && ev.target.closest("button.installer");
+    if (!b || !invite) return;
+    try { invite.prompt(); } catch (e) { /* le menu du navigateur reste possible */ }
+    invite = null; montrerBouton(false);
+  });
+
+  const ETAPES_IOS = `<ol>
+      <li>Ouvrez le site dans <b>Safari</b>.</li>
+      <li>Touchez le bouton <b>Partager</b> : un carré d'où sort une flèche vers le haut.
+        Sur les iPhone récents, il est dans le menu <b>⋯</b>, en bas à droite.</li>
+      <li>Touchez <b>« Sur l'écran d'accueil »</b> (au besoin, faites défiler la liste ou touchez « Afficher plus »), puis <b>« Ajouter »</b>.</li>
+      <li>Ouvrez désormais le site depuis l'icône <b>Chinois</b>.</li></ol>
+      <p class="info">L'icône garde mieux votre progression : Safari efface celle d'un site qu'on n'a pas ouvert depuis 7 jours.
+      Mais elle ne voit pas la progression faite dans Safari. Si vous avez déjà commencé dans Safari, ouvrez-y « Réglages et sauvegarde »,
+      touchez « Sauvegarder la progression », puis, dans l'icône, « Restaurer une sauvegarde » ; à faire sur les deux pages, Prononciation et Caractères.</p>`;
+  const ETAPES_ANDROID = `<ol>
+      <li>Ouvrez le site dans <b>Chrome</b>.</li>
+      <li>Touchez le menu <b>⋮</b>, en haut à droite, puis <b>« Ajouter à l'écran d'accueil »</b> ou <b>« Installer l'application »</b>, et confirmez avec « Installer ».</li>
+      <li>Ouvrez désormais le site depuis l'icône <b>Chinois</b>.</li></ol>
+      <p class="info">Samsung Internet : menu <b>≡</b>, en bas à droite, « Ajouter la page à », puis « Écran d'accueil ».
+      Firefox : menu <b>⋮</b>, puis « Ajouter à l'écran d'accueil ». La progression est la même dans l'icône et dans le navigateur.</p>`;
+
+  // Mode d'emploi, rien si le site est déjà ouvert depuis son icône. replie : tout le bloc dans un <details>
+  function htmlAppli(replie) {
+    if (enAppli()) return "";
+    const ios = surIOS(), android = surAndroid();
+    const corps = `<p>Mettez le site sur l'écran d'accueil de votre téléphone : il s'ouvre alors depuis son icône <b>Chinois</b>,
+      en plein écran, comme une application, et les pages Prononciation et Caractères marchent même sans réseau.
+      ${ios ? "<b>Sur iPhone, faites-le avant de commencer</b> : l'icône ne retrouve pas la progression faite dans Safari." : ""}</p>
+      <button class="installer principal"${invite ? "" : " hidden"}>Installer l'application</button>
+      <details${ios ? " open" : ""}><summary>Sur iPhone ou iPad</summary>${ETAPES_IOS}</details>
+      <details${android ? " open" : ""}><summary>Sur Android</summary>${ETAPES_ANDROID}</details>`;
+    return replie
+      ? `<details class="bloc appli"><summary>Installer comme une application${ios ? " (conseillé)" : ""}</summary>${corps}</details>`
+      : `<section class="bloc appli"><h2>Installer comme une application</h2>${corps}</section>`;
+  }
+
   // Barre du site ; ici : « pinyin » ou « hanzi » ; racine : chemin de la page Pinyin depuis la page courante
   function barre(ici, racine) {
     const onglet = (id, href, nom, base) => {
@@ -99,7 +151,7 @@ const Profil = (() => {
 
   // Écran « Qui s'entraîne ? ». retour : revenir à l'écran précédent sans changer de profil (absent au premier passage)
   function ecran(zone, retour) {
-    const r = lire(), autres = r.liste;
+    const r = lire(), autres = r.liste, mobile = surIOS() || surAndroid();
     let h = retour ? `<div class="haut"><button class="lien" id="retour">← Retour</button></div>` : "";
     h += `<header><p class="kicker">Chinois · prononciation et caractères</p><h1>Qui s'entraîne ?</h1>
       <p class="sous-titre">Chacun a sa progression et avance à son rythme.</p></header>
@@ -108,11 +160,13 @@ const Profil = (() => {
       sauf en y restaurant une sauvegarde (Réglages). Effacer les données du navigateur l'efface aussi.
       Toute personne qui utilise cet appareil peut ouvrir les profils ci-dessous.</p>
       <div class="profils">${tous().map((p) => `<button data-profil="${p.id}"${p.id === r.actif ? ' class="actif"' : ""}>${esc(p.nom)}${p.id === r.actif ? "<small>profil actuel</small>" : ""}</button>`).join("")}</div>
+      ${mobile ? htmlAppli(false) : ""}
       <section class="bloc"><h2>Première fois ?</h2>
       <form id="nouveau"><label for="nom">Votre prénom</label>
       <div class="nouveau"><input id="nom" type="text" autocomplete="given-name" autocapitalize="words" maxlength="30" required>
       <button class="principal">Commencer</button></div></form>
       <p class="info">Vous partez de zéro : les sons du pinyin, puis les mots du cours, au rythme des révisions.</p></section>`;
+    if (!mobile) h += htmlAppli(true);
     if (autres.length) h += `<details class="bloc"><summary>Retirer un profil de cet appareil</summary>
       <p class="info">Le profil et toute sa progression sont effacés.</p>
       <div class="profils">${autres.map((p) => `<button class="danger" data-retirer="${p.id}">Retirer ${esc(p.nom)}</button>`).join("")}</div></details>`;
@@ -144,7 +198,7 @@ const Profil = (() => {
     });
   }
 
-  return { actif, proprio, cle, choisir, creer, supprimer, barre, ecran, esc, fichier, htmlFrequence };
+  return { actif, proprio, cle, choisir, creer, supprimer, barre, ecran, esc, fichier, htmlFrequence, htmlAppli };
 })();
 
 if (typeof module !== "undefined") module.exports = Profil;

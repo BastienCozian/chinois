@@ -43,7 +43,6 @@
     if (aRecharger) { location.reload(); return; }
     Micro.arreter();
     const t = Date.now(), c = SRS.compter(E, ORDRE, t);
-    const ios = /iPhone|iPad|iPod/.test(navigator.userAgent) && !navigator.standalone;
     let h = Profil.barre("pinyin", "") + `<header><h1>Pinyin</h1>
       <p class="sous-titre">Les sons et les tons qu'on confond, avec la voix de Chen Wang.</p></header>`;
     if (alerteStockage) h += `<p class="alerte">Le navigateur refuse d'enregistrer la progression (navigation privée ?). Elle sera perdue à la fermeture.</p>`;
@@ -60,7 +59,7 @@
       <button class="large" id="mes-sons">Mes sons : choisir dans le tableau et s'entraîner</button>`;
     if (!c.vues) h += `<p class="info">Vous aviez déjà commencé, sur cet appareil ou un autre ? Restaurez une sauvegarde (Réglages), ou
       <button class="lien" id="niveau-haut">retrouvez votre niveau</button> syllabe par syllabe.</p>`;
-    if (ios) h += `<p class="info">Pour garder votre progression : Partager → « Sur l'écran d'accueil », puis ouvrez la page depuis son icône.</p>`;
+    h += Profil.htmlAppli(true);
 
     if (Profil.proprio()) h += `<section class="bloc"><h2>Bilan pour l'Agent Teach</h2>
       <p class="info">Dernier bilan copié : ${E.dernierBilan ? SRS.date(E.dernierBilan, true) : "jamais"}.

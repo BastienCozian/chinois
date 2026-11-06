@@ -8,6 +8,10 @@ Page : <https://bastiencozian.github.io/chinois/>
 
 Les leçons de révision du cours, une par lot donné par l'enseignant : <https://bastiencozian.github.io/chinois/cours/>. Elles sont écrites hors de ce dépôt, dans le dossier de travail de l'apprenant, puis copiées ici par `python -X utf8 cours/construire.py`. Ne pas modifier à la main les pages de `cours/` : relancer le script. La copie retire ce qui ne sert qu'à l'apprenant suivi par un Agent Teach (éléments `data-public="non"`, récapitulatif à coller dans un terminal) ; les exercices s'y corrigent tout de suite et finissent par un bilan des exercices à revoir. Rien n'est enregistré.
 
+## Installer comme une application (`Profil.htmlAppli`)
+
+Tant que le site n'est pas ouvert depuis son icône, un bloc « Installer comme une application » donne les étapes pour iPhone (Safari, Partager, « Sur l'écran d'accueil ») et pour Android (Chrome, menu ⋮, « Installer l'application » ; Samsung Internet, Firefox). Les étapes de l'appareil utilisé sont dépliées. Sur téléphone, le bloc s'affiche avant « Première fois ? » sur l'écran « Qui s'entraîne ? » : sur iPhone, l'icône ne voit pas la progression faite dans Safari, il faut donc installer avant de commencer. Il est replié sur l'accueil des deux pages. Quand Chrome propose sa propre installation (`beforeinstallprompt`), un bouton « Installer l'application » s'ajoute.
+
 ## Profils (`profil.js`)
 
 Au premier passage sur un appareil, on choisit son profil ou on tape son prénom : un nouveau profil part de zéro. Chacun a sa progression et son rythme ; elle reste dans le navigateur, rien n'est envoyé. « Changer de profil » est en haut des deux pages.

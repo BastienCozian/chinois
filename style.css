@@ -141,8 +141,11 @@ button.large { display: block; width: 100%; margin: 0.5rem 0; }
 }
 .barre-choix .principal { flex: 1; }
 .vide { border: 1px dashed var(--rule); border-radius: 8px; opacity: 0.5; }
-.bloc ul { padding-left: 1.1rem; margin: 0.4rem 0 0; }
+.bloc ul, .bloc ol { padding-left: 1.1rem; margin: 0.4rem 0 0; }
 .bloc li { margin: 0.25rem 0; }
+.appli details { margin: 0.4rem 0; }
+.appli details > :not(summary) { margin-left: 0.2rem; }
+.appli .installer { margin: 0.3rem 0 0.5rem; }
 .fin { text-align: center; }
 .fin button { display: block; width: 100%; margin-top: 0.6rem; }
 /* Barre du site, commune aux deux pages : le profil, puis les deux sections */
