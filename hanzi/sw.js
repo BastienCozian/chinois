@@ -1,6 +1,6 @@
 // Généré par construire.py : ne pas modifier l'en-tête à la main.
 // Cache hors ligne : la page marche sans réseau une fois ouverte.
-const VERSION = "hanzi-850b6f6955";
+const VERSION = "hanzi-6dd8ce0c0d";
 const FICHIERS = [
  "./",
  "index.html",
@@ -30,6 +30,7 @@ const FICHIERS = [
  "traits/4F60.json",
  "traits/518D.json",
  "traits/5305.json",
+ "traits/5357.json",
  "traits/53A6.json",
  "traits/53E3.json",
  "traits/53EA.json",
@@ -64,6 +65,7 @@ const FICHIERS = [
  "traits/676D.json",
  "traits/6C34.json",
  "traits/6CA1.json",
+ "traits/6D4E.json",
  "traits/6EE8.json",
  "traits/7406.json",
  "traits/751F.json",

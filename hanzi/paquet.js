@@ -76,7 +76,8 @@ const PAQUET = {
     "kunming",
     "dali",
     "haerbin",
-    "kashi"
+    "kashi",
+    "jinan"
    ]
   }
  ],
@@ -611,6 +612,18 @@ const PAQUET = {
    "remarque": "什 se lit ici shí ; dans 什么 « quoi », shén.",
    "liste": "l3c",
    "motAMot": "Abrégé de 喀什噶尔, transcription du nom ouïghour Qeshqer : les caractères notent le son."
+  },
+  "jinan": {
+   "hz": "济南",
+   "py": [
+    "ji3",
+    "nan2"
+   ],
+   "sens": "Jinan (Shandong)",
+   "son": false,
+   "remarque": "济 se lit ici jǐ, la rivière Ji ; d'habitude jì, « traverser, aider » (经济 jīngjì, « économie »).",
+   "liste": "l3c",
+   "motAMot": "« la Ji » + « sud » : « au sud de la Ji », une rivière disparue en 1852 dans le lit du fleuve Jaune."
   }
  },
  "caracteres": {
@@ -2022,6 +2035,60 @@ const PAQUET = {
      "十",
      "shí",
      "dix"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "济": {
+   "hex": "6D4E",
+   "indice": {
+    "origine": "Simplification de 濟 : 氵 eau (le sens) + 齐 qí (le son). Le nom d'une rivière, la Ji.",
+    "astuce": ""
+   },
+   "cle": "氵",
+   "parties": [
+    [
+     "氵",
+     "shuǐ",
+     "eau (水 sur le côté)"
+    ],
+    [
+     "齐",
+     "qí",
+     "égal, aligné ; ici pour le son"
+    ]
+   ],
+   "semantique": "氵",
+   "phonetique": "齐"
+  },
+  "南": {
+   "hex": "5357",
+   "indice": {
+    "origine": "Écriture ancienne : un vase à couvercle, emprunté pour son son pour dire « sud ».",
+    "astuce": ""
+   },
+   "cle": "十",
+   "parties": [
+    [
+     "十",
+     "shí",
+     "dix"
+    ],
+    [
+     "冂",
+     "jiōng",
+     "enceinte"
+    ],
+    [
+     "丷",
+     "ha",
+     "(deux petits traits : une partie du dessin)"
+    ],
+    [
+     "干",
+     "gàn",
+     "sec ; ici, une partie du dessin"
     ]
    ],
    "semantique": "",

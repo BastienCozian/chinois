@@ -78,6 +78,7 @@ kunming | 昆明 | kun1 ming2 | Kunming (Yunnan) | aucun |
 dali | 大理 | da4 li3 | Dali (Yunnan) | aucun |
 haerbin | 哈尔滨 | ha1 er3 bin1 | Harbin (Heilongjiang) | aucun | On écrit Hā'ěrbīn, avec une apostrophe devant ěr.
 kashi | 喀什 | ka1 shi2 | Kashgar (Xinjiang) | aucun | 什 se lit ici shí ; dans 什么 « quoi », shén.
+jinan | 济南 | ji3 nan2 | Jinan (Shandong) | aucun | 济 se lit ici jǐ, la rivière Ji ; d'habitude jì, « traverser, aider » (经济 jīngjì, « économie »).
 
 ## composants
 亻 | personne (人 sur le côté)
@@ -163,6 +164,9 @@ kashi | 喀什 | ka1 shi2 | Kashgar (Xinjiang) | aucun | 什 se lit ici shí ; d
 阝 | à droite : la ville 邑 ; à gauche : la colline 阜
 鸟 | oiseau
 龶 | (forme de 生, en haut de 青)
+齐 | égal, aligné ; ici pour le son
+干 | sec ; ici, une partie du dessin
+丷 | (deux petits traits : une partie du dessin)
 
 # Section « indices » : ce qui aide à retrouver un caractère ou un mot. Tout caractère et tout mot de
 #   plusieurs caractères doit en avoir un : construire.py s'arrête sinon.
@@ -171,6 +175,7 @@ kashi | 喀什 | ka1 shi2 | Kashgar (Xinjiang) | aucun | 什 se lit ici shí ; d
 #   Si un composant trompe (老 de 老虎 ne veut pas dire « vieux »), le dire.
 # Astuce : une image inventée pour la mémoire, affichée comme telle. Si l'origine est débattue, astuce seule.
 # L'indice d'un caractère ne le contient pas : il s'affiche pendant qu'on cherche à l'écrire.
+
 ## indices
 你 | 亻 personne + 尔, ancienne façon de dire « tu » : la personne à qui l'on parle. |
 好 | 女 femme + 子 enfant. La lecture courante est « une femme et son enfant : c'est bien » ; d'autres lectures existent. |
@@ -253,6 +258,8 @@ kashi | 喀什 | ka1 shi2 | Kashgar (Xinjiang) | aucun | 什 se lit ici shí ; d
 尔 | Simplification de 爾 : à l'origine un tissu sur un métier à tisser, emprunté pour dire « tu ». Ici, simple son. |
 滨 | 氵 eau (le sens) + 宾 bīn (le son) : le rivage. |
 喀 | 口 bouche (le sens) + 客 kè (le son). Sert surtout à transcrire des noms étrangers. |
+济 | Simplification de 濟 : 氵 eau (le sens) + 齐 qí (le son). Le nom d'une rivière, la Ji. |
+南 | Écriture ancienne : un vase à couvercle, emprunté pour son son pour dire « sud ». |
 什 | 亻 personne + 十 shí, dix (le son). Sens ancien : un groupe de dix familles, ou de dix soldats. |
 成都 | « devenir » + « capitale ». Origine du nom incertaine. |
 西安 | « ouest » + « paix » : « paix de l'Ouest ». |
@@ -265,3 +272,4 @@ kashi | 喀什 | ka1 shi2 | Kashgar (Xinjiang) | aucun | 什 se lit ici shí ; d
 大理 | « grand » + « raison, ordre ». Nom d'un ancien royaume. |
 哈尔滨 | Transcription d'un nom mandchou ou jurchen, au sens discuté : les caractères notent le son. |
 喀什 | Abrégé de 喀什噶尔, transcription du nom ouïghour Qeshqer : les caractères notent le son. |
+济南 | « la Ji » + « sud » : « au sud de la Ji », une rivière disparue en 1852 dans le lit du fleuve Jaune. |
