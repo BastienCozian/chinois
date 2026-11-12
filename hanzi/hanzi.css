@@ -91,3 +91,4 @@ button.son { min-height: 36px; padding: 0.2rem 0.7rem; font-size: 0.9rem; vertic
 .carte-geo .ville-t { font: 600 26px "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif; fill: var(--fg); }
 .carte-geo .prov-t { font: 600 24px "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif; fill: color-mix(in srgb, var(--warm) 75%, var(--fg)); }
 .carte-geo .repere-t { font: 17px system-ui, sans-serif; fill: var(--muted); }
+.carte-geo .repere-t { font: 18px "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif; }

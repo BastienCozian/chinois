@@ -90,6 +90,8 @@ shandong | 山东 | shan1 dong1 | Shandong (province) | aucun | « À l'est des 
 yunnan | 云南 | yun2 nan2 | Yunnan (province) | aucun | « Au sud des nuages », explication courante mais débattue. Plaque 云.
 heilongjiang | 黑龙江 | hei1 long2 jiang1 | Heilongjiang (province) | aucun | « Fleuve du Dragon noir », le fleuve Amour. Plaque 黑.
 xinjiang | 新疆 | xin1 jiang1 | Xinjiang (région autonome) | aucun | « La nouvelle frontière ». Plaque 新.
+beijing | 北京 | bei3 jing1 | Pékin (municipalité) | aucun | « La capitale du nord ». Une municipalité, comme Shanghai, Tianjin et Chongqing : elle ne dépend d'aucune province. Plaque 京.
+shanghai | 上海 | shang4 hai3 | Shanghai (municipalité) | aucun | Une municipalité, comme Pékin. Plaque 沪, l'ancien nom d'une rivière de la ville.
 
 ## composants
 亻 | personne (人 sur le côté)
@@ -194,6 +196,8 @@ xinjiang | 新疆 | xin1 jiang1 | Xinjiang (région autonome) | aucun | « La no
 畐 | (vase plein) ; ici pour le son
 畺 | champs séparés, limite
 聿 | main qui tient un pinceau
+亠 | couvercle, toit (en haut)
+每 | chaque ; ici pour le son
 
 # Section « indices » : ce qui aide à retrouver un caractère ou un mot. Tout caractère et tout mot de
 #   plusieurs caractères doit en avoir un : construire.py s'arrête sinon.
@@ -323,3 +327,8 @@ xinjiang | 新疆 | xin1 jiang1 | Xinjiang (région autonome) | aucun | « La no
 新疆 | « nouveau » + « frontière » : nom donné par les Qing. |
 川 | Écriture ancienne : une rivière qui coule entre ses deux berges. |
 山 | Écriture ancienne : trois pics de montagne. |
+北 | Écriture ancienne : deux personnes dos à dos, « tourner le dos ». Le sens « nord » est venu ensuite. |
+京 | Écriture ancienne : un grand bâtiment sur une butte, d'où « capitale ». |
+海 | 氵 eau (le sens) + 每 měi (le son, ancien). |
+北京 | « nord » + « capitale » : la capitale du nord. |
+上海 | « sur » + « mer ». Le sens exact du nom est discuté. |

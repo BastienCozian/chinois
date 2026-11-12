@@ -102,7 +102,7 @@
     return `<figure class="carte-geo"><svg viewBox="${C.viewBox}" role="img" aria-label="Carte de la Chine">
       <rect class="mer" width="100%" height="100%"/><g class="voisin">${C.voisins}</g>
       <g class="fond">${C.fonds.map((d) => `<path d="${d}"/>`).join("")}${Object.entries(C.provinces).map(([k, d]) => `<path${k === prov ? ' class="vue"' : ""} d="${d}"/>`).join("")}</g>
-      <circle class="repere" cx="${C.pekin[0]}" cy="${C.pekin[1]}" r="3.5"/><text class="repere-t" x="${C.pekin[0] - 8}" y="${C.pekin[1] - 4}" text-anchor="end">Pékin</text>
+      ${prov === "beijing" ? "" : `<circle class="repere" cx="${C.pekin[0]}" cy="${C.pekin[1]}" r="3.5"/><text class="repere-t" x="${C.pekin[0] - 8}" y="${C.pekin[1] - 4}" text-anchor="end">北京</text>`}
       ${e ? `<text class="prov-t" x="${e.x}" y="${e.y}"${e.milieu ? ' text-anchor="middle"' : ""}>${e.nom}</text>` : ""}
       ${v ? `<circle class="ville" cx="${v.x}" cy="${v.y}" r="6"/><text class="ville-t" x="${v.tx}" y="${v.ty}"${v.fin ? ' text-anchor="end"' : ""}>${v.nom}</text>` : ""}
     </svg></figure>`;

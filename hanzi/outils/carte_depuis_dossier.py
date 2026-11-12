@@ -35,10 +35,20 @@ for cx, cy, tx, ty, ta, nom in re.findall(r'<circle class="ville-p" cx="(\d+)" c
     villes[VILLES[nom]] = {"x": int(cx), "y": int(cy), "tx": int(tx), "ty": int(ty), "fin": bool(ta), "nom": nom}
 etiquettes = {NOMS[n]: {"x": int(x), "y": int(y), "milieu": bool(m), "nom": n}
               for x, y, m, n in re.findall(r'<text class="prov-t" x="(\d+)" y="(\d+)"( text-anchor="middle")?>([^<]+)</text>', corps)}
+# Villes absentes de la carte du dossier : position calculée sur la même projection (Pékin : le repère gris)
+pekin = re.search(r'<circle class="repere-p" cx="(\d+)" cy="(\d+)"', corps).groups()
+EXTRAS = {"beijing": {"x": int(pekin[0]), "y": int(pekin[1]), "tx": 404, "ty": 160, "fin": True, "nom": "北京"},
+          "shanghai": {"x": 460, "y": 265, "tx": 470, "ty": 262, "fin": False, "nom": "上海"}}
+PROVINCE.update(beijing="beijing", shanghai="shanghai")
 fonds, colorees = [], {}
 for vue, d in provinces:
     if not vue:
-        fonds.append(d); continue
+        m = [v for v, p in EXTRAS.items() if dedans(p["x"], p["y"], d)]
+        if m:
+            colorees[m[0]] = d
+        else:
+            fonds.append(d)
+        continue
     ids = {PROVINCE[v] for v, p in villes.items() if dedans(p["x"], p["y"], d)}
     if not ids:  # morceau sans ville (île, enclave) : la province de la ville la plus proche
         pts = [q for a in anneaux(d) for q in a]
@@ -48,8 +58,8 @@ for vue, d in provinces:
     assert len(ids) == 1, ids
     i = ids.pop()
     colorees[i] = colorees.get(i, "") + d
-assert len(colorees) == 10, colorees.keys()
-pekin = re.search(r'<circle class="repere-p" cx="(\d+)" cy="(\d+)"', corps).groups()
+villes.update(EXTRAS)
+assert len(colorees) == 12, colorees.keys()
 carte = {"viewBox": vb, "voisins": voisins, "fonds": fonds, "provinces": colorees, "villes": villes,
          "etiquettes": etiquettes, "province": PROVINCE, "pekin": list(map(int, pekin))}
 Path(__file__).resolve().parent.parent.joinpath("carte.js").write_text(

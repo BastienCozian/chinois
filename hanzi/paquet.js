@@ -92,7 +92,9 @@ const PAQUET = {
     "shandong",
     "yunnan",
     "heilongjiang",
-    "xinjiang"
+    "xinjiang",
+    "beijing",
+    "shanghai"
    ]
   }
  ],
@@ -748,6 +750,30 @@ const PAQUET = {
    "remarque": "« La nouvelle frontière ». Plaque 新.",
    "liste": "l3d",
    "motAMot": "« nouveau » + « frontière » : nom donné par les Qing."
+  },
+  "beijing": {
+   "hz": "北京",
+   "py": [
+    "bei3",
+    "jing1"
+   ],
+   "sens": "Pékin (municipalité)",
+   "son": false,
+   "remarque": "« La capitale du nord ». Une municipalité, comme Shanghai, Tianjin et Chongqing : elle ne dépend d'aucune province. Plaque 京.",
+   "liste": "l3d",
+   "motAMot": "« nord » + « capitale » : la capitale du nord."
+  },
+  "shanghai": {
+   "hz": "上海",
+   "py": [
+    "shang4",
+    "hai3"
+   ],
+   "sens": "Shanghai (municipalité)",
+   "son": false,
+   "remarque": "Une municipalité, comme Pékin. Plaque 沪, l'ancien nom d'une rivière de la ville.",
+   "liste": "l3d",
+   "motAMot": "« sur » + « mer ». Le sens exact du nom est discuté."
   }
  },
  "caracteres": {
@@ -2526,6 +2552,67 @@ const PAQUET = {
    "semantique": "",
    "phonetique": "",
    "cleSens": "champ"
+  },
+  "北": {
+   "hex": "5317",
+   "indice": {
+    "origine": "Écriture ancienne : deux personnes dos à dos, « tourner le dos ». Le sens « nord » est venu ensuite.",
+    "astuce": ""
+   },
+   "cle": "匕",
+   "parties": [],
+   "semantique": "",
+   "phonetique": "",
+   "cleSens": "cuillère"
+  },
+  "京": {
+   "hex": "4EAC",
+   "indice": {
+    "origine": "Écriture ancienne : un grand bâtiment sur une butte, d'où « capitale ».",
+    "astuce": ""
+   },
+   "cle": "亠",
+   "parties": [
+    [
+     "亠",
+     "tóu",
+     "couvercle, toit (en haut)"
+    ],
+    [
+     "口",
+     "kǒu",
+     "bouche"
+    ],
+    [
+     "小",
+     "xiǎo",
+     "petit"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "海": {
+   "hex": "6D77",
+   "indice": {
+    "origine": "氵 eau (le sens) + 每 měi (le son, ancien).",
+    "astuce": ""
+   },
+   "cle": "氵",
+   "parties": [
+    [
+     "氵",
+     "shuǐ",
+     "eau (水 sur le côté)"
+    ],
+    [
+     "每",
+     "měi",
+     "chaque ; ici pour le son"
+    ]
+   ],
+   "semantique": "氵",
+   "phonetique": "每"
   }
  }
 };
