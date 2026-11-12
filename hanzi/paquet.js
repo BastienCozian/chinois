@@ -505,7 +505,7 @@ const PAQUET = {
    "son": false,
    "remarque": "都 se lit ici dū, « capitale » ; d'habitude dōu, « tous ».",
    "liste": "l3c",
-   "motAMot": "« devenir » + « capitale ». Origine du nom incertaine."
+   "motAMot": "« devenir » + « capitale ». Origine du nom incertaine. Légende, rapportée par une géographie du Xᵉ siècle et rejetée par les historiens : selon le roi Tai des Zhou, un lieu met un an à devenir un bourg, deux une ville, trois une métropole."
   },
   "xian": {
    "hz": "西安",
@@ -1726,7 +1726,7 @@ const PAQUET = {
   "成": {
    "hex": "6210",
    "indice": {
-    "origine": "戊, une arme (le sens) + 丁 dīng (le son). Le petit 口 qu'on croit voir n'en est pas un.",
+    "origine": "戊, une arme (le sens) + 丁 dīng (le son). Le petit 口 qu'on croit voir n'en est pas un, ni 千 « mille ». Sens : « achever, accomplir », d'où « devenir ».",
     "astuce": ""
    },
    "cle": "戈",
