@@ -80,6 +80,17 @@ haerbin | 哈尔滨 | ha1 er3 bin1 | Harbin (Heilongjiang) | aucun | On écrit H
 kashi | 喀什 | ka1 shi2 | Kashgar (Xinjiang) | aucun | 什 se lit ici shí ; dans 什么 « quoi », shén.
 jinan | 济南 | ji3 nan2 | Jinan (Shandong) | aucun | 济 se lit ici jǐ, la rivière Ji ; d'habitude jì, « traverser, aider » (经济 jīngjì, « économie »).
 
+## l3d | Leçon 3 · Provinces du dossier
+sichuan | 四川 | si4 chuan1 | Sichuan (province) | aucun | Plaque 川, cuisine 川菜. On traduit souvent « quatre rivières » : fausse piste, ce sont « quatre circuits ».
+shaanxi | 陕西 | shan3 xi1 | Shaanxi (province) | aucun | Shǎnxī, 3ᵉ ton ; à ne pas confondre avec 山西 Shānxī, 1ᵉʳ ton. D'où l'orthographe Shaanxi.
+zhejiang | 浙江 | zhe4 jiang1 | Zhejiang (province) | aucun | Plaque 浙, cuisine 浙菜. Hangzhou en est la capitale.
+jiangsu | 江苏 | jiang1 su1 | Jiangsu (province) | aucun | 江(宁), ancien nom de Nankin, + 苏(州). Plaque 苏.
+fujian | 福建 | fu2 jian4 | Fujian (province) | aucun | 福(州) + 建(州). Plaque 闽, pas 福.
+shandong | 山东 | shan1 dong1 | Shandong (province) | aucun | « À l'est des montagnes ». Plaque 鲁, pas 山.
+yunnan | 云南 | yun2 nan2 | Yunnan (province) | aucun | « Au sud des nuages », explication courante mais débattue. Plaque 云.
+heilongjiang | 黑龙江 | hei1 long2 jiang1 | Heilongjiang (province) | aucun | « Fleuve du Dragon noir », le fleuve Amour. Plaque 黑.
+xinjiang | 新疆 | xin1 jiang1 | Xinjiang (région autonome) | aucun | « La nouvelle frontière ». Plaque 新.
+
 ## composants
 亻 | personne (人 sur le côté)
 尔 | tu (forme ancienne)
@@ -167,6 +178,22 @@ jinan | 济南 | ji3 nan2 | Jinan (Shandong) | aucun | 济 se lit ici jǐ, la ri
 齐 | égal, aligné ; ici pour le son
 干 | sec ; ici, une partie du dessin
 丷 | (deux petits traits : une partie du dessin)
+七 | sept
+丨 | trait vertical
+亲 | parent, proche ; ici pour le son
+凵 | creux, récipient ouvert
+厶 | (forme simple, sans sens ici)
+夹 | serrer entre deux ; ici pour le son
+尤 | surtout ; ici, une partie du dessin
+工 | travail, outil ; ici pour le son
+廴 | avancer à grands pas
+弓 | arc
+折 | casser, plier ; ici pour le son
+斤 | hache
+田 | champ
+畐 | (vase plein) ; ici pour le son
+畺 | champs séparés, limite
+聿 | main qui tient un pinceau
 
 # Section « indices » : ce qui aide à retrouver un caractère ou un mot. Tout caractère et tout mot de
 #   plusieurs caractères doit en avoir un : construire.py s'arrête sinon.
@@ -273,3 +300,26 @@ jinan | 济南 | ji3 nan2 | Jinan (Shandong) | aucun | 济 se lit ici jǐ, la ri
 哈尔滨 | Transcription d'un nom mandchou ou jurchen, au sens discuté : les caractères notent le son. |
 喀什 | Abrégé de 喀什噶尔, transcription du nom ouïghour Qeshqer : les caractères notent le son. |
 济南 | « la Ji » + « sud » : « au sud de la Ji », une rivière disparue en 1852 dans le lit du fleuve Jaune. |
+四 | Écriture ancienne : quatre traits 亖, comme 一 二 三. La forme actuelle est un emprunt, d'origine discutée. |
+陕 | Simplification de 陝 : 阝 à gauche, la colline 阜 (le sens) + 夾 (le son, ancien). |
+浙 | 氵 eau (le sens : le nom d'un fleuve) + 折 zhé (le son). |
+江 | 氵 eau (le sens) + 工 gōng (le son, ancien). D'abord le nom du Yangzi, puis « grand fleuve ». |
+福 | 礻 autel (le sens) + 畐 fú (le son) : le bonheur que donnent les dieux. |
+建 | | Origine discutée. Une main tient un pinceau 聿 pour tracer le plan, et 廴 s'avance : on construit.
+东 | Simplification de 東. Écriture ancienne : un sac fermé aux deux bouts, emprunté pour dire « est ». Le soleil 日 derrière un arbre 木 de 東 est une étymologie populaire. |
+云 | Écriture ancienne : un nuage qui s'enroule. La forme traditionnelle 雲 a ajouté la pluie 雨 ; la simplification revient à la forme ancienne. |
+黑 | Origine discutée. Le bas 灬 est le feu. | La suie noire au-dessus du foyer.
+龙 | Simplification de 龍 : le dessin d'un dragon. |
+新 | 斤 hache (le sens : couper du bois) + 亲 qīn, abrégé (le son). « Nouveau » est un sens emprunté. |
+疆 | 畺 (le sens et le son) : des champs 田 séparés par des traits, la limite. 土 terre et 弓 arc ont été ajoutés. |
+四川 | « quatre » + « rivière », mais le nom abrège « les quatre circuits » des Song. |
+陕西 | « (le col de) Shan » + « ouest » : à l'ouest du col de Shan. |
+浙江 | « la Zhe » + « fleuve » : l'ancien nom du fleuve de Hangzhou. |
+江苏 | 江(宁), Nankin + 苏(州), Suzhou : deux villes collées. |
+福建 | 福(州) + 建(州) : deux villes collées. |
+山东 | « montagne » + « est » : à l'est des monts Taihang. |
+云南 | « nuage » + « sud » : « au sud des nuages », lecture courante mais débattue. |
+黑龙江 | « noir » + « dragon » + « fleuve » : le fleuve Amour. |
+新疆 | « nouveau » + « frontière » : nom donné par les Qing. |
+川 | Écriture ancienne : une rivière qui coule entre ses deux berges. |
+山 | Écriture ancienne : trois pics de montagne. |

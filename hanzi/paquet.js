@@ -79,6 +79,21 @@ const PAQUET = {
     "kashi",
     "jinan"
    ]
+  },
+  {
+   "id": "l3d",
+   "titre": "Leçon 3 · Provinces du dossier",
+   "mots": [
+    "sichuan",
+    "shaanxi",
+    "zhejiang",
+    "jiangsu",
+    "fujian",
+    "shandong",
+    "yunnan",
+    "heilongjiang",
+    "xinjiang"
+   ]
   }
  ],
  "mots": {
@@ -624,6 +639,115 @@ const PAQUET = {
    "remarque": "济 se lit ici jǐ, la rivière Ji ; d'habitude jì, « traverser, aider » (经济 jīngjì, « économie »).",
    "liste": "l3c",
    "motAMot": "« la Ji » + « sud » : « au sud de la Ji », une rivière disparue en 1852 dans le lit du fleuve Jaune."
+  },
+  "sichuan": {
+   "hz": "四川",
+   "py": [
+    "si4",
+    "chuan1"
+   ],
+   "sens": "Sichuan (province)",
+   "son": false,
+   "remarque": "Plaque 川, cuisine 川菜. On traduit souvent « quatre rivières » : fausse piste, ce sont « quatre circuits ».",
+   "liste": "l3d",
+   "motAMot": "« quatre » + « rivière », mais le nom abrège « les quatre circuits » des Song."
+  },
+  "shaanxi": {
+   "hz": "陕西",
+   "py": [
+    "shan3",
+    "xi1"
+   ],
+   "sens": "Shaanxi (province)",
+   "son": false,
+   "remarque": "Shǎnxī, 3ᵉ ton ; à ne pas confondre avec 山西 Shānxī, 1ᵉʳ ton. D'où l'orthographe Shaanxi.",
+   "liste": "l3d",
+   "motAMot": "« (le col de) Shan » + « ouest » : à l'ouest du col de Shan."
+  },
+  "zhejiang": {
+   "hz": "浙江",
+   "py": [
+    "zhe4",
+    "jiang1"
+   ],
+   "sens": "Zhejiang (province)",
+   "son": false,
+   "remarque": "Plaque 浙, cuisine 浙菜. Hangzhou en est la capitale.",
+   "liste": "l3d",
+   "motAMot": "« la Zhe » + « fleuve » : l'ancien nom du fleuve de Hangzhou."
+  },
+  "jiangsu": {
+   "hz": "江苏",
+   "py": [
+    "jiang1",
+    "su1"
+   ],
+   "sens": "Jiangsu (province)",
+   "son": false,
+   "remarque": "江(宁), ancien nom de Nankin, + 苏(州). Plaque 苏.",
+   "liste": "l3d",
+   "motAMot": "江(宁), Nankin + 苏(州), Suzhou : deux villes collées."
+  },
+  "fujian": {
+   "hz": "福建",
+   "py": [
+    "fu2",
+    "jian4"
+   ],
+   "sens": "Fujian (province)",
+   "son": false,
+   "remarque": "福(州) + 建(州). Plaque 闽, pas 福.",
+   "liste": "l3d",
+   "motAMot": "福(州) + 建(州) : deux villes collées."
+  },
+  "shandong": {
+   "hz": "山东",
+   "py": [
+    "shan1",
+    "dong1"
+   ],
+   "sens": "Shandong (province)",
+   "son": false,
+   "remarque": "« À l'est des montagnes ». Plaque 鲁, pas 山.",
+   "liste": "l3d",
+   "motAMot": "« montagne » + « est » : à l'est des monts Taihang."
+  },
+  "yunnan": {
+   "hz": "云南",
+   "py": [
+    "yun2",
+    "nan2"
+   ],
+   "sens": "Yunnan (province)",
+   "son": false,
+   "remarque": "« Au sud des nuages », explication courante mais débattue. Plaque 云.",
+   "liste": "l3d",
+   "motAMot": "« nuage » + « sud » : « au sud des nuages », lecture courante mais débattue."
+  },
+  "heilongjiang": {
+   "hz": "黑龙江",
+   "py": [
+    "hei1",
+    "long2",
+    "jiang1"
+   ],
+   "sens": "Heilongjiang (province)",
+   "son": false,
+   "remarque": "« Fleuve du Dragon noir », le fleuve Amour. Plaque 黑.",
+   "liste": "l3d",
+   "motAMot": "« noir » + « dragon » + « fleuve » : le fleuve Amour."
+  },
+  "xinjiang": {
+   "hz": "新疆",
+   "py": [
+    "xin1",
+    "jiang1"
+   ],
+   "sens": "Xinjiang (région autonome)",
+   "son": false,
+   "remarque": "« La nouvelle frontière ». Plaque 新.",
+   "liste": "l3d",
+   "motAMot": "« nouveau » + « frontière » : nom donné par les Qing."
   }
  },
  "caracteres": {
@@ -2093,6 +2217,315 @@ const PAQUET = {
    ],
    "semantique": "",
    "phonetique": ""
+  },
+  "四": {
+   "hex": "56DB",
+   "indice": {
+    "origine": "Écriture ancienne : quatre traits 亖, comme 一 二 三. La forme actuelle est un emprunt, d'origine discutée.",
+    "astuce": ""
+   },
+   "cle": "囗",
+   "parties": [
+    [
+     "囗",
+     "wéi",
+     "enceinte"
+    ],
+    [
+     "儿",
+     "ér",
+     "jambes ; enfant"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "川": {
+   "hex": "5DDD",
+   "indice": {
+    "origine": "Écriture ancienne : une rivière qui coule entre ses deux berges.",
+    "astuce": ""
+   },
+   "cle": "川",
+   "parties": [
+    [
+     "丿",
+     "piě",
+     "trait oblique"
+    ],
+    [
+     "丨",
+     "shù",
+     "trait vertical"
+    ],
+    [
+     "丨",
+     "shù",
+     "trait vertical"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "陕": {
+   "hex": "9655",
+   "indice": {
+    "origine": "Simplification de 陝 : 阝 à gauche, la colline 阜 (le sens) + 夾 (le son, ancien).",
+    "astuce": ""
+   },
+   "cle": "阝",
+   "parties": [
+    [
+     "阝",
+     "yì",
+     "à droite : la ville 邑 ; à gauche : la colline 阜"
+    ],
+    [
+     "夹",
+     "jiā",
+     "serrer entre deux ; ici pour le son"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "浙": {
+   "hex": "6D59",
+   "indice": {
+    "origine": "氵 eau (le sens : le nom d'un fleuve) + 折 zhé (le son).",
+    "astuce": ""
+   },
+   "cle": "氵",
+   "parties": [
+    [
+     "氵",
+     "shuǐ",
+     "eau (水 sur le côté)"
+    ],
+    [
+     "折",
+     "zhé",
+     "casser, plier ; ici pour le son"
+    ]
+   ],
+   "semantique": "氵",
+   "phonetique": "折"
+  },
+  "江": {
+   "hex": "6C5F",
+   "indice": {
+    "origine": "氵 eau (le sens) + 工 gōng (le son, ancien). D'abord le nom du Yangzi, puis « grand fleuve ».",
+    "astuce": ""
+   },
+   "cle": "氵",
+   "parties": [
+    [
+     "氵",
+     "shuǐ",
+     "eau (水 sur le côté)"
+    ],
+    [
+     "工",
+     "gōng",
+     "travail, outil ; ici pour le son"
+    ]
+   ],
+   "semantique": "氵",
+   "phonetique": "工"
+  },
+  "福": {
+   "hex": "798F",
+   "indice": {
+    "origine": "礻 autel (le sens) + 畐 fú (le son) : le bonheur que donnent les dieux.",
+    "astuce": ""
+   },
+   "cle": "礻",
+   "parties": [
+    [
+     "礻",
+     "shì",
+     "autel, culte (示 sur le côté)"
+    ],
+    [
+     "畐",
+     "fú",
+     "(vase plein) ; ici pour le son"
+    ]
+   ],
+   "semantique": "礻",
+   "phonetique": "畐"
+  },
+  "建": {
+   "hex": "5EFA",
+   "indice": {
+    "origine": "",
+    "astuce": "Origine discutée. Une main tient un pinceau 聿 pour tracer le plan, et 廴 s'avance : on construit."
+   },
+   "cle": "廴",
+   "parties": [
+    [
+     "廴",
+     "yǐn",
+     "avancer à grands pas"
+    ],
+    [
+     "聿",
+     "yù",
+     "main qui tient un pinceau"
+    ]
+   ],
+   "semantique": "廴",
+   "phonetique": "聿"
+  },
+  "山": {
+   "hex": "5C71",
+   "indice": {
+    "origine": "Écriture ancienne : trois pics de montagne.",
+    "astuce": ""
+   },
+   "cle": "山",
+   "parties": [
+    [
+     "凵",
+     "qiǎn",
+     "creux, récipient ouvert"
+    ],
+    [
+     "丨",
+     "shù",
+     "trait vertical"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "东": {
+   "hex": "4E1C",
+   "indice": {
+    "origine": "Simplification de 東. Écriture ancienne : un sac fermé aux deux bouts, emprunté pour dire « est ». Le soleil 日 derrière un arbre 木 de 東 est une étymologie populaire.",
+    "astuce": ""
+   },
+   "cle": "一",
+   "parties": [
+    [
+     "七",
+     "qī",
+     "sept"
+    ],
+    [
+     "小",
+     "xiǎo",
+     "petit"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": "",
+   "cleSens": "un, un trait"
+  },
+  "云": {
+   "hex": "4E91",
+   "indice": {
+    "origine": "Écriture ancienne : un nuage qui s'enroule. La forme traditionnelle 雲 a ajouté la pluie 雨 ; la simplification revient à la forme ancienne.",
+    "astuce": ""
+   },
+   "cle": "二",
+   "parties": [
+    [
+     "二",
+     "èr",
+     "deux"
+    ],
+    [
+     "厶",
+     "sī",
+     "(forme simple, sans sens ici)"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "黑": {
+   "hex": "9ED1",
+   "indice": {
+    "origine": "Origine discutée. Le bas 灬 est le feu.",
+    "astuce": "La suie noire au-dessus du foyer."
+   },
+   "cle": "黑",
+   "parties": [],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "龙": {
+   "hex": "9F99",
+   "indice": {
+    "origine": "Simplification de 龍 : le dessin d'un dragon.",
+    "astuce": ""
+   },
+   "cle": "龙",
+   "parties": [
+    [
+     "尤",
+     "yóu",
+     "surtout ; ici, une partie du dessin"
+    ],
+    [
+     "丿",
+     "piě",
+     "trait oblique"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "新": {
+   "hex": "65B0",
+   "indice": {
+    "origine": "斤 hache (le sens : couper du bois) + 亲 qīn, abrégé (le son). « Nouveau » est un sens emprunté.",
+    "astuce": ""
+   },
+   "cle": "斤",
+   "parties": [
+    [
+     "亲",
+     "qīn",
+     "parent, proche ; ici pour le son"
+    ],
+    [
+     "斤",
+     "jīn",
+     "hache"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "疆": {
+   "hex": "7586",
+   "indice": {
+    "origine": "畺 (le sens et le son) : des champs 田 séparés par des traits, la limite. 土 terre et 弓 arc ont été ajoutés.",
+    "astuce": ""
+   },
+   "cle": "田",
+   "parties": [
+    [
+     "弓",
+     "gōng",
+     "arc"
+    ],
+    [
+     "土",
+     "tǔ",
+     "terre"
+    ],
+    [
+     "畺",
+     "jiāng",
+     "champs séparés, limite"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": "",
+   "cleSens": "champ"
   }
  }
 };
