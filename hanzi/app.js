@@ -93,11 +93,26 @@
       (i.astuce ? `<p class="indice astuce"><b>Astuce inventée</b> ${hzTexte(i.astuce)}</p>` : "");
   }
 
+  // Carte (villes et provinces du dossier) : seulement la ville et sa province, ou la province
+  function htmlCarte(id) {
+    if (typeof CARTE === "undefined") return "";
+    const C = CARTE, v = C.villes[id], prov = v ? C.province[id] : (C.provinces[id] ? id : null);
+    if (!prov) return "";
+    const e = !v && C.etiquettes[prov];
+    return `<figure class="carte-geo"><svg viewBox="${C.viewBox}" role="img" aria-label="Carte de la Chine">
+      <rect class="mer" width="100%" height="100%"/><g class="voisin">${C.voisins}</g>
+      <g class="fond">${C.fonds.map((d) => `<path d="${d}"/>`).join("")}${Object.entries(C.provinces).map(([k, d]) => `<path${k === prov ? ' class="vue"' : ""} d="${d}"/>`).join("")}</g>
+      <circle class="repere" cx="${C.pekin[0]}" cy="${C.pekin[1]}" r="3.5"/><text class="repere-t" x="${C.pekin[0] - 8}" y="${C.pekin[1] - 4}" text-anchor="end">Pékin</text>
+      ${e ? `<text class="prov-t" x="${e.x}" y="${e.y}"${e.milieu ? ' text-anchor="middle"' : ""}>${e.nom}</text>` : ""}
+      ${v ? `<circle class="ville" cx="${v.x}" cy="${v.y}" r="6"/><text class="ville-t" x="${v.tx}" y="${v.ty}"${v.fin ? ' text-anchor="end"' : ""}>${v.nom}</text>` : ""}
+    </svg></figure>`;
+  }
+
   // Le mot en entier : caractères, pinyin, son, sens, remarque, composants
   function htmlMot(id, avecCompo) {
     const m = P.mots[id];
     let h = `<div class="mot">${hz(m.hz, "grand")}<p class="py" lang="zh-Latn-pinyin">${py(m)} ${bSon(id)}</p>
-      <p class="sens">${m.sens}</p>${m.motAMot ? `<p class="indice"><b>Mot à mot</b> ${hzTexte(m.motAMot)}</p>` : ""}${m.remarque ? `<p class="remarque">${m.remarque}</p>` : ""}</div>`;
+      <p class="sens">${m.sens}</p>${m.motAMot ? `<p class="indice"><b>Mot à mot</b> ${hzTexte(m.motAMot)}</p>` : ""}${m.remarque ? `<p class="remarque">${m.remarque}</p>` : ""}${htmlCarte(id)}</div>`;
     if (avecCompo) h += `<details class="compos" open><summary>Pour retenir</summary>${[...new Set(m.hz)].map(htmlComposants).join("")}</details>`;
     return h;
   }

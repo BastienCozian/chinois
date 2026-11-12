@@ -1,6 +1,6 @@
 // Généré par construire.py : ne pas modifier l'en-tête à la main.
 // Cache hors ligne : la page marche sans réseau une fois ouverte.
-const VERSION = "hanzi-8a83ecc87b";
+const VERSION = "hanzi-cbcbfb2fea";
 const FICHIERS = [
  "./",
  "index.html",
@@ -8,6 +8,7 @@ const FICHIERS = [
  "app.js",
  "hanzi.js",
  "paquet.js",
+ "carte.js",
  "hanzi-writer.min.js",
  "../manifest.json",
  "../icone-180.png",

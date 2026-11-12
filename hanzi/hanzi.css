@@ -77,3 +77,17 @@ button.son { min-height: 36px; padding: 0.2rem 0.7rem; font-size: 0.9rem; vertic
 .car { border-left: 3px solid var(--accent); padding: 0.1em 0 0.1em 0.7em; margin: 0.6em 0; }
 .car + .car { margin-top: 1.1em; }
 .car-num { margin: 0 0 0.2em; font-family: var(--sans); font-size: 0.8rem; color: var(--muted); }
+
+/* Carte des villes et provinces (réponse d'une carte de ville ou de province) */
+.carte-geo { margin: 0.8rem 0 0; }
+.carte-geo svg { width: 100%; height: auto; display: block; border-radius: 6px; }
+.carte-geo .mer { fill: color-mix(in srgb, var(--accent) 14%, var(--bg)); }
+.carte-geo .voisin path { fill: color-mix(in srgb, var(--fg) 3%, var(--bg)); stroke: var(--rule); stroke-width: 0.8; }
+.carte-geo .fond path { fill: color-mix(in srgb, var(--fg) 9%, var(--bg)); stroke: var(--bg); stroke-width: 1.2; stroke-linejoin: round; }
+.carte-geo .fond path.vue { fill: color-mix(in srgb, var(--warm) 40%, var(--bg)); }
+.carte-geo .ville { fill: var(--accent); stroke: var(--bg); stroke-width: 1.5; }
+.carte-geo .repere { fill: var(--muted); }
+.carte-geo text { paint-order: stroke; stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; }
+.carte-geo .ville-t { font: 600 26px "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif; fill: var(--fg); }
+.carte-geo .prov-t { font: 600 24px "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif; fill: color-mix(in srgb, var(--warm) 75%, var(--fg)); }
+.carte-geo .repere-t { font: 17px system-ui, sans-serif; fill: var(--muted); }
