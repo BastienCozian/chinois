@@ -70,7 +70,50 @@ const PAQUET = {
     "xian",
     "chongqing",
     "hangzhou",
-    "suzhou",
+    "suzhou"
+   ]
+  },
+  {
+   "id": "l4",
+   "titre": "Leçon 4 · Petite étoile (小星星)",
+   "mots": [
+    "shan",
+    "liangjingjing",
+    "mantian",
+    "dou",
+    "shi",
+    "xiao",
+    "xingxing",
+    "gua",
+    "zai",
+    "tianshang",
+    "fang",
+    "guangming",
+    "haoxiang",
+    "xuduo",
+    "yanjing"
+   ]
+  },
+  {
+   "id": "l4b",
+   "titre": "Leçon 4 · Clés du corps, et 人 从 众",
+   "mots": [
+    "ren",
+    "cong",
+    "zhong",
+    "rou",
+    "shen",
+    "nv",
+    "shou",
+    "zu",
+    "yan",
+    "ye"
+   ]
+  },
+  {
+   "id": "l3e",
+   "titre": "Leçon 3 · Villes de Chine (suite)",
+   "mots": [
     "xiamen",
     "qingdao",
     "kunming",
@@ -557,6 +600,273 @@ const PAQUET = {
    "liste": "l3c",
    "motAMot": "« Su » (du mont Gusu 姑苏) + « préfecture »."
   },
+  "shan": {
+   "hz": "闪",
+   "py": [
+    "shan3"
+   ],
+   "sens": "scintiller, briller par éclairs",
+   "son": true,
+   "remarque": "一闪一闪 : on écrit yī shǎn yī shǎn, on dit yì shǎn yì shǎn (一 devant un 3ᵉ ton).",
+   "liste": "l4"
+  },
+  "liangjingjing": {
+   "hz": "亮晶晶",
+   "py": [
+    "liang4",
+    "jing1",
+    "jing1"
+   ],
+   "sens": "étincelant",
+   "son": false,
+   "remarque": "一闪一闪亮晶晶 « scintille, scintille, étincelante ».",
+   "liste": "l4",
+   "motAMot": "« brillant » + « scintillant », redoublé."
+  },
+  "mantian": {
+   "hz": "满天",
+   "py": [
+    "man3",
+    "tian1"
+   ],
+   "sens": "tout le ciel",
+   "son": false,
+   "remarque": "",
+   "liste": "l4",
+   "motAMot": "« plein » + « ciel » : le ciel entier."
+  },
+  "dou": {
+   "hz": "都",
+   "py": [
+    "dou1"
+   ],
+   "sens": "tous, tout",
+   "son": true,
+   "remarque": "满天都是小星星 « tout le ciel n'est que petites étoiles ». Dans 成都, dū, « capitale ».",
+   "liste": "l4"
+  },
+  "shi": {
+   "hz": "是",
+   "py": [
+    "shi4"
+   ],
+   "sens": "être",
+   "son": true,
+   "remarque": "",
+   "liste": "l4"
+  },
+  "xiao": {
+   "hz": "小",
+   "py": [
+    "xiao3"
+   ],
+   "sens": "petit",
+   "son": true,
+   "remarque": "小眼睛 : on écrit xiǎo yǎnjing, on dit xiáo yǎnjing (deux 3ᵉ tons de suite).",
+   "liste": "l4"
+  },
+  "xingxing": {
+   "hz": "星星",
+   "py": [
+    "xing1",
+    "xing5"
+   ],
+   "sens": "étoile",
+   "son": true,
+   "remarque": "La 2ᵉ syllabe est au ton neutre.",
+   "liste": "l4",
+   "motAMot": "« étoile », redoublé ; la 2ᵉ syllabe perd son ton."
+  },
+  "gua": {
+   "hz": "挂",
+   "py": [
+    "gua4"
+   ],
+   "sens": "accrocher ; être suspendu",
+   "son": true,
+   "remarque": "",
+   "liste": "l4"
+  },
+  "zai": {
+   "hz": "在",
+   "py": [
+    "zai4"
+   ],
+   "sens": "à, dans (un lieu)",
+   "son": true,
+   "remarque": "挂在天上 « accroché dans le ciel ».",
+   "liste": "l4"
+  },
+  "tianshang": {
+   "hz": "天上",
+   "py": [
+    "tian1",
+    "shang4"
+   ],
+   "sens": "dans le ciel",
+   "son": true,
+   "remarque": "",
+   "liste": "l4",
+   "motAMot": "« ciel » + « sur » : dans le ciel."
+  },
+  "fang": {
+   "hz": "放",
+   "py": [
+    "fang4"
+   ],
+   "sens": "lâcher ; répandre",
+   "son": true,
+   "remarque": "放光明 « répandre la lumière ».",
+   "liste": "l4"
+  },
+  "guangming": {
+   "hz": "光明",
+   "py": [
+    "guang1",
+    "ming2"
+   ],
+   "sens": "lumière, clarté",
+   "son": true,
+   "remarque": "",
+   "liste": "l4",
+   "motAMot": "« lumière » + « lumineux »."
+  },
+  "haoxiang": {
+   "hz": "好像",
+   "py": [
+    "hao3",
+    "xiang4"
+   ],
+   "sens": "on dirait, comme",
+   "son": true,
+   "remarque": "Pas de changement de ton : xiàng est au 4ᵉ ton.",
+   "liste": "l4",
+   "motAMot": "« bien » + « ressembler » : on dirait."
+  },
+  "xuduo": {
+   "hz": "许多",
+   "py": [
+    "xu3",
+    "duo1"
+   ],
+   "sens": "beaucoup de",
+   "son": true,
+   "remarque": "好像许多小眼睛 « comme une multitude de petits yeux ».",
+   "liste": "l4",
+   "motAMot": "许, ici une quantité + « nombreux » : beaucoup de."
+  },
+  "yanjing": {
+   "hz": "眼睛",
+   "py": [
+    "yan3",
+    "jing5"
+   ],
+   "sens": "œil, yeux",
+   "son": true,
+   "remarque": "睛 au ton neutre. 目 + 青 qīng, vu à la leçon 3.",
+   "liste": "l4",
+   "motAMot": "« œil » + « pupille » : l'œil, les yeux."
+  },
+  "ren": {
+   "hz": "人",
+   "py": [
+    "ren2"
+   ],
+   "sens": "personne, homme",
+   "son": true,
+   "remarque": "Clé n° 9. À gauche : 亻 (你, 们, 像).",
+   "liste": "l4b"
+  },
+  "cong": {
+   "hz": "从",
+   "py": [
+    "cong2"
+   ],
+   "sens": "suivre ; depuis",
+   "son": true,
+   "remarque": "Deux personnes. Traditionnel : 從.",
+   "liste": "l4b"
+  },
+  "zhong": {
+   "hz": "众",
+   "py": [
+    "zhong4"
+   ],
+   "sens": "foule",
+   "son": true,
+   "remarque": "Trois personnes. Traditionnel : 眾.",
+   "liste": "l4b"
+  },
+  "rou": {
+   "hz": "肉",
+   "py": [
+    "rou4"
+   ],
+   "sens": "viande, chair",
+   "son": true,
+   "remarque": "Clé n° 130. À gauche ou en bas : 月 (肚, 脸, 有), à ne pas confondre avec la lune.",
+   "liste": "l4b"
+  },
+  "shen": {
+   "hz": "身",
+   "py": [
+    "shen1"
+   ],
+   "sens": "corps",
+   "son": true,
+   "remarque": "Clé n° 158. 躲 duǒ « se cacher » : 身 + 朵 (le son).",
+   "liste": "l4b"
+  },
+  "nv": {
+   "hz": "女",
+   "py": [
+    "nv3"
+   ],
+   "sens": "femme",
+   "son": true,
+   "remarque": "Clé n° 38 (好, 始, 妈).",
+   "liste": "l4b"
+  },
+  "shou": {
+   "hz": "手",
+   "py": [
+    "shou3"
+   ],
+   "sens": "main",
+   "son": true,
+   "remarque": "Clé n° 64. À gauche : 扌 (挂, 打, 抱).",
+   "liste": "l4b"
+  },
+  "zu": {
+   "hz": "足",
+   "py": [
+    "zu2"
+   ],
+   "sens": "pied",
+   "son": true,
+   "remarque": "Clé n° 157. À gauche : ⻊ (跑, 路).",
+   "liste": "l4b"
+  },
+  "yan": {
+   "hz": "言",
+   "py": [
+    "yan2"
+   ],
+   "sens": "parole",
+   "son": true,
+   "remarque": "Clé n° 149. À gauche : 讠 en simplifié, 訁 en traditionnel (谢, 课, 许, 请).",
+   "liste": "l4b"
+  },
+  "ye": {
+   "hz": "页",
+   "py": [
+    "ye4"
+   ],
+   "sens": "page ; (comme clé) la tête",
+   "son": true,
+   "remarque": "Clé n° 181. Traditionnel : 頁. Comme clé, il garde son sens ancien, la tête (题).",
+   "liste": "l4b"
+  },
   "xiamen": {
    "hz": "厦门",
    "py": [
@@ -566,7 +876,7 @@ const PAQUET = {
    "sens": "Xiamen (Fujian)",
    "son": false,
    "remarque": "厦 se lit xià dans 厦门 ; ailleurs shà, « grand bâtiment ».",
-   "liste": "l3c",
+   "liste": "l3e",
    "motAMot": "« grand bâtiment » + « porte ». D'abord écrit 下门, « porte d'en bas »."
   },
   "qingdao": {
@@ -578,7 +888,7 @@ const PAQUET = {
    "sens": "Qingdao (Shandong)",
    "son": false,
    "remarque": "",
-   "liste": "l3c",
+   "liste": "l3e",
    "motAMot": "« vert » + « île » : « l'île verte »."
   },
   "kunming": {
@@ -590,7 +900,7 @@ const PAQUET = {
    "sens": "Kunming (Yunnan)",
    "son": false,
    "remarque": "",
-   "liste": "l3c",
+   "liste": "l3e",
    "motAMot": "Le nom d'un peuple ancien, les Kunming : les caractères notent le son."
   },
   "dali": {
@@ -602,7 +912,7 @@ const PAQUET = {
    "sens": "Dali (Yunnan)",
    "son": false,
    "remarque": "",
-   "liste": "l3c",
+   "liste": "l3e",
    "motAMot": "« grand » + « raison, ordre ». Nom d'un ancien royaume."
   },
   "haerbin": {
@@ -615,7 +925,7 @@ const PAQUET = {
    "sens": "Harbin (Heilongjiang)",
    "son": false,
    "remarque": "On écrit Hā'ěrbīn, avec une apostrophe devant ěr.",
-   "liste": "l3c",
+   "liste": "l3e",
    "motAMot": "Transcription d'un nom mandchou ou jurchen, au sens discuté : les caractères notent le son."
   },
   "kashi": {
@@ -627,7 +937,7 @@ const PAQUET = {
    "sens": "Kashgar (Xinjiang)",
    "son": false,
    "remarque": "什 se lit ici shí ; dans 什么 « quoi », shén.",
-   "liste": "l3c",
+   "liste": "l3e",
    "motAMot": "Abrégé de 喀什噶尔, transcription du nom ouïghour Qeshqer : les caractères notent le son."
   },
   "jinan": {
@@ -639,7 +949,7 @@ const PAQUET = {
    "sens": "Jinan (Shandong)",
    "son": false,
    "remarque": "济 se lit ici jǐ, la rivière Ji ; d'habitude jì, « traverser, aider » (经济 jīngjì, « économie »).",
-   "liste": "l3c",
+   "liste": "l3e",
    "motAMot": "« la Ji » + « sud » : « au sud de la Ji », une rivière disparue en 1852 dans le lit du fleuve Jaune."
   },
   "sichuan": {
@@ -1937,6 +2247,587 @@ const PAQUET = {
    "semantique": "艹",
    "phonetique": "稣"
   },
+  "闪": {
+   "hex": "95EA",
+   "indice": {
+    "origine": "Simplification de 閃 : 门 porte + 人 personne, quelqu'un qui franchit la porte en courant. D'où « apparaître un instant, briller par éclairs ».",
+    "astuce": ""
+   },
+   "cle": "门",
+   "parties": [
+    [
+     "门",
+     "mén",
+     "porte"
+    ],
+    [
+     "人",
+     "rén",
+     "personne"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "亮": {
+   "hex": "4EAE",
+   "indice": {
+    "origine": "人 personne, en bas (le sens) + 京, une tour (le son, ancien). Le 几 du bas est la personne, pas une petite table.",
+    "astuce": ""
+   },
+   "cle": "亠",
+   "parties": [
+    [
+     "亠",
+     "tóu",
+     "couvercle, toit (en haut)"
+    ],
+    [
+     "口",
+     "kǒu",
+     "bouche"
+    ],
+    [
+     "冖",
+     "mì",
+     "couvercle"
+    ],
+    [
+     "几",
+     "jǐ",
+     "petite table"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "晶": {
+   "hex": "6676",
+   "indice": {
+    "origine": "Trois soleils 日. Le caractère a d'abord noté les étoiles.",
+    "astuce": ""
+   },
+   "cle": "日",
+   "parties": [
+    [
+     "日",
+     "rì",
+     "soleil, jour"
+    ],
+    [
+     "日",
+     "rì",
+     "soleil, jour"
+    ],
+    [
+     "日",
+     "rì",
+     "soleil, jour"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "满": {
+   "hex": "6EE1",
+   "indice": {
+    "origine": "Simplification de 滿 : 氵 eau (le sens) + un composant de son.",
+    "astuce": "Ce qui est plein d'eau déborde."
+   },
+   "cle": "氵",
+   "parties": [
+    [
+     "氵",
+     "shuǐ",
+     "eau (水 sur le côté)"
+    ],
+    [
+     "艹",
+     "cǎo",
+     "herbe, plante (艸 en haut)"
+    ],
+    [
+     "两",
+     "liǎng",
+     "deux ; ici, une partie du dessin"
+    ]
+   ],
+   "semantique": "氵",
+   "phonetique": "㒼"
+  },
+  "天": {
+   "hex": "5929",
+   "indice": {
+    "origine": "Écriture ancienne : un homme debout, de face (大), la tête marquée en haut.",
+    "astuce": "Le trait du haut : le ciel, au-dessus de l'homme."
+   },
+   "cle": "大",
+   "parties": [
+    [
+     "一",
+     "yī",
+     "un, un trait"
+    ],
+    [
+     "大",
+     "dà",
+     "grand"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "是": {
+   "hex": "662F",
+   "indice": {
+    "origine": "",
+    "astuce": "Origine obscure. Le soleil 日 au-dessus de tout : c'est ainsi."
+   },
+   "cle": "日",
+   "parties": [
+    [
+     "日",
+     "rì",
+     "soleil, jour"
+    ],
+    [
+     "疋",
+     "pǐ",
+     "pied (forme ancienne)"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "小": {
+   "hex": "5C0F",
+   "indice": {
+    "origine": "Écriture ancienne : trois petits points, ou trois grains de sable.",
+    "astuce": ""
+   },
+   "cle": "小",
+   "parties": [
+    [
+     "亅",
+     "jué",
+     "crochet (trait vertical)"
+    ],
+    [
+     "八",
+     "bā",
+     "huit"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "星": {
+   "hex": "661F",
+   "indice": {
+    "origine": "生 shēng (le son), sous 日, qui était d'abord 晶, trois étoiles. Le soleil n'y est pour rien.",
+    "astuce": ""
+   },
+   "cle": "日",
+   "parties": [
+    [
+     "日",
+     "rì",
+     "soleil, jour"
+    ],
+    [
+     "生",
+     "shēng",
+     "naître, vivre ; ici pour le son"
+    ]
+   ],
+   "semantique": "日",
+   "phonetique": "生"
+  },
+  "挂": {
+   "hex": "6302",
+   "indice": {
+    "origine": "扌 main (le sens) + 圭 guī (le son, proche) : accrocher de la main.",
+    "astuce": ""
+   },
+   "cle": "扌",
+   "parties": [
+    [
+     "扌",
+     "shǒu",
+     "main (手 sur le côté)"
+    ],
+    [
+     "圭",
+     "guī",
+     "tablette de jade ; ici pour le son"
+    ]
+   ],
+   "semantique": "扌",
+   "phonetique": "圭"
+  },
+  "在": {
+   "hex": "5728",
+   "indice": {
+    "origine": "才 cái (le son, ancien) + un second composant de son, devenu 土 « terre » par erreur de copie.",
+    "astuce": ""
+   },
+   "cle": "土",
+   "parties": [
+    [
+     "才",
+     "cái",
+     "talent ; ici pour le son"
+    ],
+    [
+     "土",
+     "tǔ",
+     "terre"
+    ]
+   ],
+   "semantique": "土",
+   "phonetique": "才"
+  },
+  "放": {
+   "hex": "653E",
+   "indice": {
+    "origine": "方 fāng (le son) + 攵, une main qui agit (le sens) : lâcher.",
+    "astuce": ""
+   },
+   "cle": "攵",
+   "parties": [
+    [
+     "方",
+     "fāng",
+     "carré, direction ; ici pour le son"
+    ],
+    [
+     "攵",
+     "pū",
+     "main qui agit, frapper"
+    ]
+   ],
+   "semantique": "攵",
+   "phonetique": "方"
+  },
+  "光": {
+   "hex": "5149",
+   "indice": {
+    "origine": "Écriture ancienne : un feu au-dessus de la tête d'une personne agenouillée. La lumière qui brille.",
+    "astuce": ""
+   },
+   "cle": "儿",
+   "parties": [
+    [
+     "⺌",
+     "",
+     "(forme de 小 ; dans 光, le feu)"
+    ],
+    [
+     "兀",
+     "wù",
+     "(forme simple, sans sens ici)"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": "",
+   "cleSens": "jambes ; enfant"
+  },
+  "明": {
+   "hex": "660E",
+   "indice": {
+    "origine": "日 soleil + 月 lune : le soleil qui se lève avant que la lune ne se couche, « lumineux ».",
+    "astuce": ""
+   },
+   "cle": "日",
+   "parties": [
+    [
+     "日",
+     "rì",
+     "soleil, jour"
+    ],
+    [
+     "月",
+     "yuè",
+     "lune ; aussi la chair (肉)"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "像": {
+   "hex": "50CF",
+   "indice": {
+    "origine": "亻 personne (le sens) + 象 xiàng, l'éléphant (le son, même syllabe) : ressembler.",
+    "astuce": ""
+   },
+   "cle": "亻",
+   "parties": [
+    [
+     "亻",
+     "rén",
+     "personne (人 sur le côté)"
+    ],
+    [
+     "象",
+     "xiàng",
+     "éléphant ; ici pour le son"
+    ]
+   ],
+   "semantique": "亻",
+   "phonetique": "象"
+  },
+  "许": {
+   "hex": "8BB8",
+   "indice": {
+    "origine": "讠 parole (le sens) + 午 wǔ (le son, ancien). Sens premier : « promettre, permettre ».",
+    "astuce": ""
+   },
+   "cle": "讠",
+   "parties": [
+    [
+     "讠",
+     "yán",
+     "parole (言 sur le côté)"
+    ],
+    [
+     "午",
+     "wǔ",
+     "midi ; ici pour le son"
+    ]
+   ],
+   "semantique": "讠",
+   "phonetique": "午"
+  },
+  "多": {
+   "hex": "591A",
+   "indice": {
+    "origine": "Écriture ancienne : deux morceaux de viande 肉, devenus deux 夕 « soir » par ressemblance.",
+    "astuce": "Deux morceaux de viande : c'est beaucoup."
+   },
+   "cle": "夕",
+   "parties": [
+    [
+     "夕",
+     "xī",
+     "soir"
+    ],
+    [
+     "夕",
+     "xī",
+     "soir"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "眼": {
+   "hex": "773C",
+   "indice": {
+    "origine": "目 œil (le sens) + 艮 gèn (le son, ancien).",
+    "astuce": ""
+   },
+   "cle": "目",
+   "parties": [
+    [
+     "目",
+     "mù",
+     "œil"
+    ],
+    [
+     "艮",
+     "gěn",
+     "(ici pour le son)"
+    ]
+   ],
+   "semantique": "目",
+   "phonetique": "艮"
+  },
+  "睛": {
+   "hex": "775B",
+   "indice": {
+    "origine": "目 œil (le sens) + 青 qīng (le son) : la pupille.",
+    "astuce": ""
+   },
+   "cle": "目",
+   "parties": [
+    [
+     "目",
+     "mù",
+     "œil"
+    ],
+    [
+     "青",
+     "qīng",
+     "bleu-vert ; ici pour le son"
+    ]
+   ],
+   "semantique": "目",
+   "phonetique": "青"
+  },
+  "人": {
+   "hex": "4EBA",
+   "indice": {
+    "origine": "Écriture ancienne : une personne debout, de profil, un bras et une jambe. À gauche d'un caractère, elle devient 亻.",
+    "astuce": ""
+   },
+   "cle": "人",
+   "parties": [],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "从": {
+   "hex": "4ECE",
+   "indice": {
+    "origine": "Deux personnes 人, l'une suit l'autre : « suivre ». Le traditionnel 從 a ajouté la marche ; la forme simplifiée est la plus ancienne. Aujourd'hui, surtout « depuis, à partir de ».",
+    "astuce": ""
+   },
+   "cle": "人",
+   "parties": [
+    [
+     "人",
+     "rén",
+     "personne"
+    ],
+    [
+     "人",
+     "rén",
+     "personne"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "众": {
+   "hex": "4F17",
+   "indice": {
+    "origine": "Trois personnes 人 : la foule. Le traditionnel 眾 met au-dessus un soleil, devenu un œil.",
+    "astuce": ""
+   },
+   "cle": "人",
+   "parties": [
+    [
+     "人",
+     "rén",
+     "personne"
+    ],
+    [
+     "人",
+     "rén",
+     "personne"
+    ],
+    [
+     "人",
+     "rén",
+     "personne"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "肉": {
+   "hex": "8089",
+   "indice": {
+    "origine": "Écriture ancienne : les côtes d'un animal, ou une tranche de viande. À côté d'un composant de son, il devient 月, sans rapport avec la lune.",
+    "astuce": ""
+   },
+   "cle": "肉",
+   "parties": [
+    [
+     "冂",
+     "jiōng",
+     "enceinte"
+    ],
+    [
+     "仌",
+     "bīng",
+     "(ici, une partie du dessin)"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "身": {
+   "hex": "8EAB",
+   "indice": {
+    "origine": "Écriture ancienne : une femme enceinte, de profil. D'où « le corps ». Sans rapport avec 射 « tirer à l'arc ».",
+    "astuce": ""
+   },
+   "cle": "身",
+   "parties": [],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "女": {
+   "hex": "5973",
+   "indice": {
+    "origine": "Écriture ancienne : une femme agenouillée, les bras croisés.",
+    "astuce": ""
+   },
+   "cle": "女",
+   "parties": [],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "手": {
+   "hex": "624B",
+   "indice": {
+    "origine": "Écriture ancienne : une main et ses cinq doigts. À gauche d'un caractère, elle devient 扌.",
+    "astuce": ""
+   },
+   "cle": "手",
+   "parties": [],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "足": {
+   "hex": "8DB3",
+   "indice": {
+    "origine": "Écriture ancienne : une jambe et son pied. À gauche d'un caractère, il devient ⻊.",
+    "astuce": ""
+   },
+   "cle": "足",
+   "parties": [],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "言": {
+   "hex": "8A00",
+   "indice": {
+    "origine": "Écriture ancienne : une bouche 口 surmontée d'un signe, d'origine discutée. À gauche, simplifié en 讠.",
+    "astuce": "Des paroles qui sortent de la bouche."
+   },
+   "cle": "言",
+   "parties": [
+    [
+     "亠",
+     "tóu",
+     "couvercle, toit (en haut)"
+    ],
+    [
+     "二",
+     "èr",
+     "deux"
+    ],
+    [
+     "口",
+     "kǒu",
+     "bouche"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "页": {
+   "hex": "9875",
+   "indice": {
+    "origine": "Simplification de 頁 : la tête d'une personne agenouillée. Le sens « tête » survit dans la clé (题) ; seul, il a pris le sens de « page ».",
+    "astuce": ""
+   },
+   "cle": "页",
+   "parties": [],
+   "semantique": "",
+   "phonetique": ""
+  },
   "厦": {
    "hex": "53A6",
    "indice": {
@@ -2009,28 +2900,6 @@ const PAQUET = {
      "比",
      "bǐ",
      "comparer"
-    ]
-   ],
-   "semantique": "",
-   "phonetique": ""
-  },
-  "明": {
-   "hex": "660E",
-   "indice": {
-    "origine": "日 soleil + 月 lune : le soleil qui se lève avant que la lune ne se couche, « lumineux ».",
-    "astuce": ""
-   },
-   "cle": "日",
-   "parties": [
-    [
-     "日",
-     "rì",
-     "soleil, jour"
-    ],
-    [
-     "月",
-     "yuè",
-     "lune ; aussi la chair (肉)"
     ]
    ],
    "semantique": "",

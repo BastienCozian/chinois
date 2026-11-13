@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="fr" data-public>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leçon 4 · Petite étoile, huit clés et trois personnes</title>
+<link rel="stylesheet" href="../assets/cours.css">
+<script src="../assets/ancres-details.js" defer></script>
+<script src="../assets/son.js" defer></script>
+<style>
+  .cles-place { display: block; width: 100%; max-width: 34rem; height: auto; margin: 0 auto; }
+  .cles-place .cadre { fill: none; stroke: var(--filet); stroke-width: 2; stroke-dasharray: 5 4; }
+  .cles-place .zone { fill: var(--accent); opacity: 0.16; }
+  .cles-place .car { fill: var(--encre); font-size: 76px; text-anchor: middle; }
+  .cles-place .leg { fill: var(--encre-douce); font-family: var(--sans); font-size: 15px; text-anchor: middle; }
+  .cles-place .leg tspan.k { fill: var(--accent); font-weight: 600; }
+  .trio { display: flex; flex-wrap: wrap; gap: 1.2rem 2.4rem; justify-content: center; margin: 1rem 0; }
+  .trio div { text-align: center; }
+  .trio .hz { display: block; font-size: 2.6rem; line-height: 1.2; }
+</style>
+</head>
+<body>
+<main>
+  <nav class="fil-retour" aria-label="Retour"><a href="../index.html">← Les leçons</a><a href="../../">Prononciation et caractères</a></nav>
+  <nav class="navigation haut">
+    <a href="0003-troisieme-cours.html">← Leçon 3 : anniversaire, clés, villes</a>
+    <span class="inactif">Suite à venir →</span>
+  </nav>
+
+<p class="surtitre">Chinois · Leçon 4</p>
+<h1>Petite étoile, huit clés et trois personnes</h1>
+<p class="chapeau">Trois parties à faire séparément. <a href="#partie-1">Partie 1</a> : la comptine <span class="hz">小星星</span>, « Petite étoile ». <a href="#partie-2">Partie 2</a> : huit clés, celles du corps et de la personne, avec leur forme sur le côté et leur forme simplifiée. <a href="#partie-3">Partie 3</a> : une, deux, trois personnes, <span class="hz">人 从 众</span>.</p>
+
+<div class="meta">
+  <span><b>Durée</b> ≈ 10 min par partie</span>
+  <span><b>Prérequis</b> <a href="0003-troisieme-cours.html#cle">la clé et le composant de son</a>, <a href="0002-deux-tigres.html#prononciation"><span class="hz">一只</span>, <span class="py">yì zhī</span></a></span>
+  <span><b>Exercices réussis</b> <span id="score-quiz" class="score">0 / 0</span></span>
+</div>
+
+<div class="encadre">
+  <span class="titre">À la fin de cette leçon</span>
+  <p><strong>Partie 1.</strong> Vous chanterez de tête les quatre vers de <span class="hz">小星星</span>, et vous saurez où le pinyin écrit ne dit pas ce qu'on prononce.</p>
+  <p><strong>Partie 2.</strong> Vous reconnaîtrez huit clés, même sur le côté d'un caractère : <span class="hz">人 肉 身 女 手 足 言 页</span>. Vous ne prendrez plus le <span class="hz">月</span> de <span class="hz">脸</span> pour une lune.</p>
+  <p><strong>Partie 3.</strong> Vous saurez écrire et lire <span class="hz">人</span>, <span class="hz">从</span>, <span class="hz">众</span>, et dire pourquoi la forme simplifiée de « suivre » est la plus ancienne.</p>
+</div>
+
+<div class="encadre" id="video-memoriser">
+  <span class="titre">À regarder, quand vous aurez 12 minutes</span>
+  <p><a href="https://www.youtube.com/watch?v=xfVGc5xeviw"><strong>Mémoriser les caractères chinois</strong></a> (11 min 50, chaîne « Apprendre le chinois », en français) : caractères à reconnaître et caractères à écrire, trois façons de les retenir (comme des images, comme des suites de traits, comme des assemblages de composants), l'exercice d'écriture, et que faire quand un caractère ne rentre pas. Si vous n'avez que deux minutes, regardez le chapitre <a href="https://www.youtube.com/watch?v=xfVGc5xeviw&amp;t=238s">« comme un ensemble de composants graphiques »</a> (3 min 58 à 5 min 54) : c'est la méthode de la <a href="#partie-2">partie 2</a>.</p>
+</div>
+
+<h2 id="partie-1">Partie 1 · Petite étoile, 小星星</h2>
+
+<h3 id="paroles">1. La comptine</h3>
+
+<p>C'est « Ah ! vous dirai-je, maman », l'air de « Twinkle, Twinkle, Little Star ». Écoutez la <a href="https://www.youtube.com/watch?v=oVjVwZ5HMPA">vidéo</a> (1 min 14) une fois en lisant. Puis cachez le chinois et chantez de tête. Quatre vers ; les deux premiers reviennent à la fin.<span class="note">Paroles : Wikipédia en chinois, <a href="https://zh.wikipedia.org/wiki/%E4%B8%80%E9%96%83%E4%B8%80%E9%96%83%E4%BA%AE%E6%99%B6%E6%99%B6">« 一閃一閃亮晶晶 »</a>, section « 歌詞 », version en mandarin, transcrite ici en caractères simplifiés. L'article précise que le texte chinois est une réécriture : il ne suit pas l'anglais vers à vers. Si la vidéo chante un mot différent, dites-le à votre agent.</span></p>
+
+<div class="repli">
+<div class="interrupteurs">
+  <label><input type="checkbox" data-masquer="zh"> Cacher le chinois</label>
+  <label><input type="checkbox" data-masquer="fr"> Cacher le français</label>
+</div>
+
+<ol class="paroles">
+  <li id="vers-1"><span class="hz masquable zh">一闪一闪亮晶晶，</span><span class="py masquable zh">yī shǎn yī shǎn liàngjīngjīng,</span><span class="lit masquable fr">Scintille, scintille, étincelante,</span></li>
+  <li id="vers-2"><span class="hz masquable zh">满天都是小星星。</span><span class="py masquable zh">mǎntiān dōu shì xiǎo xīngxing.</span><span class="lit masquable fr">tout le ciel n'est que petites étoiles.</span></li>
+  <li id="vers-3"><span class="hz masquable zh">挂在天上放光明，</span><span class="py masquable zh">guà zài tiānshàng fàng guāngmíng,</span><span class="lit masquable fr">Accrochées au ciel, elles répandent la lumière,</span></li>
+  <li id="vers-4"><span class="hz masquable zh">好像许多小眼睛。</span><span class="py masquable zh">hǎoxiàng xǔduō xiǎo yǎnjing.</span><span class="lit masquable fr">on dirait une multitude de petits yeux.</span></li>
+  <li id="vers-5"><span class="hz masquable zh">一闪一闪亮晶晶，满天都是小星星。</span><span class="bis">Les vers 1 et 2, une seconde fois.</span></li>
+</ol>
+</div>
+
+<p class="note">Pinyin : celui du dictionnaire, tel qu'on l'écrit (Wiktionary : <a href="https://en.wiktionary.org/wiki/%E6%98%9F%E6%98%9F">星星</a> <span class="py">xīngxing</span>, <a href="https://en.wiktionary.org/wiki/%E7%9C%BC%E7%9D%9B">眼睛</a> <span class="py">yǎnjing</span> en Chine continentale, <a href="https://en.wiktionary.org/wiki/%E4%BA%AE%E6%99%B6%E6%99%B6">亮晶晶</a>, <a href="https://en.wiktionary.org/wiki/%E5%A4%A9%E4%B8%8A">天上</a>, <a href="https://en.wiktionary.org/wiki/%E6%BB%BF%E5%A4%A9">滿天</a>). Ce qu'on prononce autrement est à la <a href="#prononciation">section 3</a>.</p>
+
+<h3 id="mots">2. Les mots, et les clés que vous connaissez déjà</h3>
+
+<div class="table-wrap">
+<table class="phrases">
+  <tr><th>Mot</th><th>Pinyin</th><th>Sens</th><th>Écouter</th></tr>
+  <tr id="mot-shan"><td class="hz">闪</td><td class="py">shǎn</td><td>scintiller, briller par éclairs</td><td><button class="son" data-son="shan">▶</button></td></tr>
+  <tr id="mot-liangjingjing"><td class="hz">亮晶晶</td><td class="py">liàngjīngjīng</td><td>étincelant</td><td></td></tr>
+  <tr id="mot-mantian"><td class="hz">满天</td><td class="py">mǎntiān</td><td>tout le ciel, « plein · ciel »</td><td></td></tr>
+  <tr id="mot-dou"><td class="hz">都是</td><td class="py">dōu shì</td><td>sont tous, ne sont que</td><td></td></tr>
+  <tr id="mot-xiao"><td class="hz">小</td><td class="py">xiǎo</td><td>petit</td><td><button class="son" data-son="xiao">▶</button></td></tr>
+  <tr id="mot-xingxing"><td class="hz">星星</td><td class="py">xīngxing</td><td>étoile</td><td><button class="son" data-son="xingxing">▶</button></td></tr>
+  <tr id="mot-gua"><td class="hz">挂在</td><td class="py">guà zài</td><td>accroché à, suspendu dans</td><td><button class="son" data-son="gua">▶</button></td></tr>
+  <tr id="mot-tianshang"><td class="hz">天上</td><td class="py">tiānshàng</td><td>dans le ciel, « ciel · sur »</td><td><button class="son" data-son="tianshang">▶</button></td></tr>
+  <tr id="mot-fang"><td class="hz">放光明</td><td class="py">fàng guāngmíng</td><td>répandre la lumière</td><td><button class="son" data-son="guangming">▶</button></td></tr>
+  <tr id="mot-haoxiang"><td class="hz">好像</td><td class="py">hǎoxiàng</td><td>on dirait, comme</td><td><button class="son" data-son="haoxiang">▶</button></td></tr>
+  <tr id="mot-xuduo"><td class="hz">许多</td><td class="py">xǔduō</td><td>beaucoup de</td><td><button class="son" data-son="xuduo">▶</button></td></tr>
+  <tr id="mot-yanjing"><td class="hz">眼睛</td><td class="py">yǎnjing</td><td>œil, yeux</td><td><button class="son" data-son="yanjing">▶</button></td></tr>
+</table>
+</div>
+
+<p id="deja-vus"><strong>Ce que vous reconnaissez déjà.</strong> La comptine recycle les composants de la <a href="0003-troisieme-cours.html#partie-2">leçon 3</a> :</p>
+<ul>
+  <li id="dv-jing"><span class="hz">睛</span> de <span class="hz">眼睛</span> : l'œil <span class="hz">目</span> (le sens) et <span class="hz">青</span> <span class="py">qīng</span> (le son), exactement le tableau de la <a href="0003-troisieme-cours.html#qing">leçon 3</a>. <span class="hz">眼</span> porte aussi l'œil à gauche.</li>
+  <li id="dv-xing"><span class="hz">星</span> <span class="py">xīng</span> : <span class="hz">生</span> <span class="py">shēng</span> de <a href="0003-troisieme-cours.html#sheng-ri"><span class="hz">生日</span></a> donne le son. Le <span class="hz">日</span> du haut n'est pas le soleil : c'était d'abord <span class="hz">晶</span>, trois étoiles, le même caractère que dans <span class="hz">亮晶晶</span>.</li>
+  <li id="dv-ming"><span class="hz">明</span> de <span class="hz">光明</span> : le soleil et la lune, comme dans <a href="0003-troisieme-cours.html#b-ming"><span class="hz">昆明</span></a>.</li>
+  <li id="dv-shan"><span class="hz">闪</span> : une personne <span class="hz">人</span> dans une porte <span class="hz">门</span>, quelqu'un qui passe en courant, qu'on ne voit qu'un instant. La personne revient à la <a href="#partie-2">partie 2</a>.</li>
+</ul>
+<p class="note">Wiktionary : <a href="https://en.wiktionary.org/wiki/%E6%98%9F">星</a> « 晶 originally referred to this word; a phonetic 生 was added later […] 晶 was later simplified into 日 » ; <a href="https://en.wiktionary.org/wiki/%E6%99%B6">晶</a> « triplication of 日 » ; <a href="https://en.wiktionary.org/wiki/%E9%96%83">閃</a> « 門 (gate) + 人 (person) — a person running through a gate » ; <a href="https://en.wiktionary.org/wiki/%E7%9C%BC">眼</a> « semantic 目 + phonetic 艮 ».</p>
+
+<h3 id="prononciation">3. Ce qui s'écrit et ce qui se dit</h3>
+
+<p id="yi-shan"><strong><span class="hz">一闪</span> : on écrit <span class="py">yī shǎn</span>, on dit <span class="py">yì shǎn</span>.</strong> C'est la règle de <span class="hz">一只</span> (<a href="0002-deux-tigres.html#prononciation">leçon 2</a>) : devant un 1<sup>er</sup>, 2<sup>e</sup> ou 3<sup>e</sup> ton, <span class="hz">一</span> se dit au 4<sup>e</sup> ton. <span class="py">shǎn</span> est au 3<sup>e</sup>. Certains manuels et certaines vidéos écrivent directement <span class="py">yì</span> : c'est l'exception à la règle « on écrit le ton du dictionnaire », propre à <span class="hz">一</span> et à <span class="hz">不</span>.<span class="note">AllSet, <a href="https://resources.allsetlearning.com/chinese/pronunciation/Tone_changes_for_%22yi%22">« Tone changes for "yi" »</a> ; Wikipédia, <a href="https://en.wikipedia.org/wiki/Standard_Chinese_phonology#Tone_sandhi">« Standard Chinese phonology », Tone sandhi</a>.</span></p>
+
+<p id="xiao-yanjing"><strong><span class="hz">小眼睛</span> : on écrit <span class="py">xiǎo yǎnjing</span>, on dit <span class="py">xiáo yǎnjing</span>.</strong> Deux 3<sup>e</sup> tons de suite, comme <span class="hz">你好</span> : le premier se dit au 2<sup>e</sup>. Dans <span class="hz">小星星</span>, <span class="hz">小</span> précède <span class="py">xīng</span>, au 1<sup>er</sup> ton : il reste <span class="py">xiǎo</span>. <span class="hz">好像</span> et <span class="hz">许多</span> ne changent pas non plus : <span class="py">xiàng</span> et <span class="py">duō</span> ne sont pas des 3<sup>e</sup> tons.<span class="note">AllSet, <a href="https://resources.allsetlearning.com/chinese/pronunciation/Tone_changes_for_third_tones">« Tone changes for third tones »</a>.</span></p>
+
+<p id="dou-du"><strong><span class="hz">都</span> se lit ici <span class="py">dōu</span>, « tous ».</strong> C'est sa lecture courante. Dans <span class="hz">成都</span>, il se lisait <span class="py">dū</span>, « capitale » (<a href="0003-troisieme-cours.html#p-du">leçon 3</a>). <span class="hz">满天都是小星星</span> : « le ciel entier, tout y est petites étoiles ».</p>
+
+<p id="ton-neutre"><strong>Deux tons neutres.</strong> La seconde syllabe de <span class="hz">星星</span> et celle de <span class="hz">眼睛</span> perdent leur ton : <span class="py">xīngxing</span>, <span class="py">yǎnjing</span>. Écoutez <button class="son" data-son="xingxing">星星 ▶</button> et <button class="son" data-son="yanjing">眼睛 ▶</button>.</p>
+
+<h3 id="exercices">4. Exercices</h3>
+
+<p>De tête, sans remonter la page. Déclarez d'abord votre confiance.</p>
+
+<div class="exo" id="q1" data-sujet="Sens de 满天" data-type="qcm" data-reponse="2">
+  <span class="num-exo">Exercice 1</span>
+  <p>Dans <span class="hz">满天都是小星星</span>, que veut dire <span class="hz">满天</span> ?</p>
+  <ol class="choix">
+    <li>le ciel du soir</li>
+    <li>le ciel entier</li>
+    <li>le ciel étoilé</li>
+    <li>le ciel lointain</li>
+  </ol>
+  <div class="solution"><p><span class="hz">满</span> « plein » + <span class="hz">天</span> « ciel » : tout le ciel (<a href="#mots">section 2</a>).</p></div>
+</div>
+
+<div class="exo" id="q2" data-sujet="Prédiction : ton de 一 dans 一闪" data-type="qcm" data-reponse="3">
+  <span class="num-exo">Exercice 2</span>
+  <p>Comment se <strong>prononce</strong> <span class="hz">一</span> dans <span class="hz">一闪一闪</span> (<span class="py">shǎn</span>, 3<sup>e</sup> ton) ?</p>
+  <ol class="choix">
+    <li><span class="py">yī</span>, 1<sup>er</sup> ton</li>
+    <li><span class="py">yí</span>, 2<sup>e</sup> ton</li>
+    <li><span class="py">yì</span>, 4<sup>e</sup> ton</li>
+    <li><span class="py">yǐ</span>, 3<sup>e</sup> ton</li>
+  </ol>
+  <div class="solution"><p>On écrit <span class="py">yī shǎn</span>, on dit <span class="py">yì shǎn</span> : devant un 1<sup>er</sup>, 2<sup>e</sup> ou 3<sup>e</sup> ton, <span class="hz">一</span> passe au 4<sup>e</sup>, comme dans <span class="hz">一只</span> (<a href="#yi-shan">section 3</a>).</p></div>
+</div>
+
+<div class="exo" id="q3" data-sujet="Pinyin écrit de 小眼睛" data-type="qcm" data-reponse="4">
+  <span class="num-exo">Exercice 3</span>
+  <p>Comment <strong>s'écrit</strong> <span class="hz">小眼睛</span> en pinyin ?</p>
+  <ol class="choix">
+    <li><span class="py">xiáo yǎnjing</span></li>
+    <li><span class="py">xiáo yánjing</span></li>
+    <li><span class="py">xiǎo yánjīng</span></li>
+    <li><span class="py">xiǎo yǎnjing</span></li>
+  </ol>
+  <div class="solution"><p>On écrit <span class="py">xiǎo yǎnjing</span>, le ton du dictionnaire ; on dit <span class="py">xiáo yǎnjing</span>, deux 3<sup>e</sup> tons de suite (<a href="#xiao-yanjing">section 3</a>). <span class="hz">睛</span> est au ton neutre.</p></div>
+</div>
+
+<div class="exo" id="q4" data-sujet="Lecture de 都 dans la comptine" data-type="qcm" data-reponse="1">
+  <span class="num-exo">Exercice 4</span>
+  <p>Comment se lit <span class="hz">都</span> dans <span class="hz">满天都是小星星</span> ?</p>
+  <ol class="choix">
+    <li><span class="py">dōu</span>, « tous »</li>
+    <li><span class="py">dū</span>, « tous »</li>
+    <li><span class="py">dōu</span>, « capitale »</li>
+    <li><span class="py">dū</span>, « capitale »</li>
+  </ol>
+  <div class="solution"><p><span class="py">dōu</span>, « tous », la lecture courante. <span class="py">dū</span>, « capitale », est celle de <span class="hz">成都</span> (<a href="#dou-du">section 3</a>).</p></div>
+</div>
+
+<div class="exo" id="q5" data-sujet="Le son de 睛 (rappel leçon 3)" data-type="qcm" data-reponse="3">
+  <span class="num-exo">Exercice 5</span>
+  <p><span class="hz">睛</span>, dans <span class="hz">眼睛</span>. Quel composant donne le son ?</p>
+  <ol class="choix">
+    <li><span class="hz">目</span>, l'œil</li>
+    <li><span class="hz">日</span>, le soleil</li>
+    <li><span class="hz">青</span>, bleu-vert</li>
+    <li><span class="hz">月</span>, la lune</li>
+  </ol>
+  <div class="solution"><p><span class="hz">青</span> <span class="py">qīng</span> → <span class="hz">睛</span> <span class="py">jīng</span>. L'œil <span class="hz">目</span> donne le sens (<a href="#dv-jing">section 2</a>, et la <a href="0003-troisieme-cours.html#qing">leçon 3</a>).</p></div>
+</div>
+
+<h3 id="source-principale">5. Source principale de la partie 1</h3>
+
+<p><strong>À regarder (1 min 14) :</strong> la <a href="https://www.youtube.com/watch?v=oVjVwZ5HMPA">vidéo de la comptine</a> (chaîne The Hong Kong Kid), caractères et pinyin à l'écran. Chantez avec elle dès le deuxième passage.</p>
+
+<h2 id="partie-2">Partie 2 · Huit clés du corps et de la personne</h2>
+
+<p class="chapeau">À la <a href="0003-troisieme-cours.html#cle">leçon 3</a>, cinq clés : <span class="hz">目 心 口 水 木</span>. En voici huit autres, toutes tirées du corps. La plupart changent de forme quand elles passent sur le côté ; deux ont aussi une forme simplifiée différente du traditionnel.</p>
+
+<h3 id="huit-cles">1. Les huit clés</h3>
+
+<div class="table-wrap">
+<table class="phrases">
+  <tr><th>Clé</th><th>Sur le côté</th><th>Traditionnel</th><th>Sens</th><th>Déjà vue dans</th><th>Écouter</th></tr>
+  <tr id="cle-ren"><td><span class="hz">人</span> <span class="py">rén</span><br>n<sup>o</sup> 9</td><td class="hz">亻</td><td>—</td><td>personne</td><td><span class="hz">你 们 什 像</span></td><td><button class="son" data-son="ren">▶</button></td></tr>
+  <tr id="cle-rou"><td><span class="hz">肉</span> <span class="py">ròu</span><br>n<sup>o</sup> 130</td><td class="hz">月</td><td>—</td><td>chair, viande</td><td><span class="hz">有</span> ; <span class="hz">肚 脸</span></td><td><button class="son" data-son="rou">▶</button></td></tr>
+  <tr id="cle-shen"><td><span class="hz">身</span> <span class="py">shēn</span><br>n<sup>o</sup> 158</td><td>—</td><td>—</td><td>corps</td><td><span class="hz">躲</span> (nouveau)</td><td><button class="son" data-son="shen">▶</button></td></tr>
+  <tr id="cle-nv"><td><span class="hz">女</span> <span class="py">nǚ</span><br>n<sup>o</sup> 38</td><td>—</td><td>—</td><td>femme</td><td><span class="hz">好 始 安</span></td><td><button class="son" data-son="nv">▶</button></td></tr>
+  <tr id="cle-shou"><td><span class="hz">手</span> <span class="py">shǒu</span><br>n<sup>o</sup> 64</td><td class="hz">扌</td><td>—</td><td>main</td><td><span class="hz">挂</span> ; <span class="hz">抱</span></td><td><button class="son" data-son="shou">▶</button></td></tr>
+  <tr id="cle-zu"><td><span class="hz">足</span> <span class="py">zú</span><br>n<sup>o</sup> 157</td><td class="hz">⻊</td><td>—</td><td>pied</td><td><span class="hz">跑</span></td><td><button class="son" data-son="zu">▶</button></td></tr>
+  <tr id="cle-yan"><td><span class="hz">言</span> <span class="py">yán</span><br>n<sup>o</sup> 149</td><td class="hz">讠</td><td><span class="hz">訁</span> sur le côté</td><td>parole</td><td><span class="hz">谢 课 许</span></td><td><button class="son" data-son="yan">▶</button></td></tr>
+  <tr id="cle-ye"><td><span class="hz">页</span> <span class="py">yè</span><br>n<sup>o</sup> 181</td><td>—</td><td class="hz">頁</td><td>tête (seul : page)</td><td><span class="hz">题</span> de <span class="hz">问题</span></td><td><button class="son" data-son="ye">▶</button></td></tr>
+</table>
+</div>
+<p class="note">Numéros : les 214 clés du dictionnaire de Kangxi (1716), Wikipédia, <a href="https://en.wikipedia.org/wiki/Kangxi_radical">« Kangxi radical »</a>. Formes sur le côté : Wiktionary, <a href="https://en.wiktionary.org/wiki/%E4%BA%BB">亻</a> « side form of the person (人) radical », <a href="https://en.wiktionary.org/wiki/%E2%BA%BC">⺼</a> « component form of 肉 », <a href="https://en.wiktionary.org/wiki/%E6%89%8C">扌</a>, <a href="https://en.wiktionary.org/wiki/%E8%AE%A0">讠</a>. Origines : Wiktionary, section « Glyph origin » de <a href="https://en.wiktionary.org/wiki/%E4%BA%BA">人</a>, <a href="https://en.wiktionary.org/wiki/%E8%82%89">肉</a>, <a href="https://en.wiktionary.org/wiki/%E8%BA%AB">身</a>, <a href="https://en.wiktionary.org/wiki/%E5%A5%B3">女</a>, <a href="https://en.wiktionary.org/wiki/%E6%89%8B">手</a>, <a href="https://en.wiktionary.org/wiki/%E8%B6%B3">足</a>, <a href="https://en.wiktionary.org/wiki/%E8%A8%80">言</a>, <a href="https://en.wiktionary.org/wiki/%E9%A0%81">頁</a>.</p>
+
+<p id="dessins"><strong>Huit dessins.</strong> <span class="hz">人</span>, une personne de profil, un bras et une jambe. <span class="hz">肉</span>, les côtes d'un animal, ou une tranche de viande. <span class="hz">身</span>, une femme enceinte, de profil : le corps. <span class="hz">女</span>, une femme agenouillée, les bras croisés. <span class="hz">手</span>, une main et ses cinq doigts. <span class="hz">足</span>, une jambe et son pied. <span class="hz">言</span>, une bouche <span class="hz">口</span> surmontée d'un signe dont le sens est discuté. <span class="hz">頁</span>, la tête d'une personne agenouillée.</p>
+
+<h3 id="formes-cles">2. Sur le côté, la clé change de forme</h3>
+
+<p>Une clé tassée à gauche devient plus étroite, et souvent méconnaissable. Cinq formes à reconnaître : <span class="hz">人 → 亻</span>, <span class="hz">手 → 扌</span>, <span class="hz">足 → ⻊</span>, <span class="hz">言 → 讠</span>, <span class="hz">肉 → 月</span>. Les clés de la leçon 3 font de même : <span class="hz">水 → 氵</span>, <span class="hz">心 → 忄</span>. La clé ne se met pas toujours à gauche :</p>
+
+<figure>
+<svg class="cles-place" viewBox="0 0 520 168" role="img" aria-label="Quatre caractères, la place de la clé surlignée : à gauche dans 你, en bas dans 想, à droite dans 题, à gauche dans 脸.">
+  <g transform="translate(10,8)">
+    <rect class="zone" x="0" y="0" width="44" height="110"/><rect class="cadre" x="0" y="0" width="110" height="110"/>
+    <text class="car" x="55" y="83">你</text>
+    <text class="leg" x="55" y="140"><tspan class="k">亻</tspan> à gauche</text>
+  </g>
+  <g transform="translate(140,8)">
+    <rect class="zone" x="0" y="62" width="110" height="48"/><rect class="cadre" x="0" y="0" width="110" height="110"/>
+    <text class="car" x="55" y="83">想</text>
+    <text class="leg" x="55" y="140"><tspan class="k">心</tspan> en bas</text>
+  </g>
+  <g transform="translate(270,8)">
+    <rect class="zone" x="60" y="0" width="50" height="110"/><rect class="cadre" x="0" y="0" width="110" height="110"/>
+    <text class="car" x="55" y="83">题</text>
+    <text class="leg" x="55" y="140"><tspan class="k">页</tspan> à droite</text>
+  </g>
+  <g transform="translate(400,8)">
+    <rect class="zone" x="0" y="0" width="44" height="110"/><rect class="cadre" x="0" y="0" width="110" height="110"/>
+    <text class="car" x="55" y="83">脸</text>
+    <text class="leg" x="55" y="140"><tspan class="k">月</tspan> = 肉, à gauche</text>
+  </g>
+</svg>
+<figcaption class="note">Zone surlignée : la place de la clé. Les proportions sont approximatives.</figcaption>
+</figure>
+
+<p id="simplifie"><strong>Deux clés simplifiées.</strong> <span class="hz">言</span> garde sa forme seul, mais sur le côté il devient <span class="hz">讠</span> en simplifié, au lieu de <span class="hz">訁</span> en traditionnel : <span class="hz">谢</span> s'écrit <span class="hz">謝</span> à Taïwan. <span class="hz">页</span>, lui, est simplifié partout, seul comme en clé : <span class="hz">頁</span> → <span class="hz">页</span>, <span class="hz">題</span> → <span class="hz">题</span>. Vous écrivez en simplifié ; le traditionnel sert à lire les sources, et le Wiktionary range souvent ses explications sous la forme traditionnelle.<span class="note">Wikipédia, <a href="https://en.wikipedia.org/wiki/Radical_149">« Radical 149 »</a> et <a href="https://en.wikipedia.org/wiki/Radical_181">« Radical 181 »</a> ; Wiktionary, <a href="https://en.wiktionary.org/wiki/%E8%AE%A0">讠</a>.</span></p>
+
+<h3 id="deux-lunes">3. Deux <span class="hz">月</span> : la lune et la chair</h3>
+
+<p>Dans <span class="hz">明</span>, <span class="hz">月</span> est bien la lune (<a href="#dv-ming">partie 1</a>). Mais dans <span class="hz">肚</span> <span class="py">dù</span> « ventre », <span class="hz">脸</span> <span class="py">liǎn</span> « visage », et dans <span class="hz">有</span> <span class="py">yǒu</span> (<a href="0001-phrases-de-la-classe.html#brique-oui">leçon 1</a>), c'est la chair, <span class="hz">肉</span>, tassée à gauche ou en bas. Deux dessins différents ont fini par s'écrire pareil. Le test : <strong>une partie du corps, c'est la chair</strong>.<span class="note">Wiktionary, <a href="https://en.wiktionary.org/wiki/%E8%82%89">肉</a> : « Stylized into 月 when next to a phonetic component » ; <a href="https://en.wiktionary.org/wiki/%E2%BA%BC">⺼</a> ; <a href="https://en.wiktionary.org/wiki/%E8%82%9A">肚</a> « semantic 肉 + phonetic 土 » ; <a href="https://en.wiktionary.org/wiki/%E8%87%89">臉</a> « semantic 肉 (body part) + phonetic 僉 ». La forme ⺼ « appears very similar to ⺝, the left component form of 月 », mais elles n'ont pas la même origine.</span></p>
+
+<p id="tete-page"><strong><span class="hz">页</span> veut dire « page », mais comme clé, c'est la tête.</strong> Le caractère a d'abord voulu dire « tête », puis on l'a emprunté pour « feuille, page ». La clé a gardé l'ancien sens : <span class="hz">题</span> désignait d'abord le front, d'où « ce qui vient en tête », le sujet, la question.<span class="note">Wiktionary, <a href="https://en.wiktionary.org/wiki/%E9%A0%81">頁</a> : « head of a kneeling person […] later used as an alternative popular form of 葉 to mean "sheet; page" […] The original sense of "head" is preserved in the radical ».</span></p>
+
+<h3 id="lire-plan">4. Lire le plan d'un caractère inconnu</h3>
+
+<p>Avec la méthode de la <a href="0003-troisieme-cours.html#phonetique">leçon 3</a> (une partie pour le sens, une pour le son) et ces huit clés, trois caractères jamais vus se lisent presque seuls :</p>
+
+<div class="table-wrap">
+<table class="phrases">
+  <tr><th>Caractère</th><th>Clé (le sens)</th><th>Composant de son</th><th>Lecture et sens</th></tr>
+  <tr id="ex-duo"><td class="hz">躲</td><td><span class="hz">身</span> le corps</td><td><span class="hz">朵</span> <span class="py">duǒ</span>, de <a href="0002-deux-tigres.html#vers-3"><span class="hz">耳朵</span></a></td><td><span class="py">duǒ</span>, se cacher</td></tr>
+  <tr id="ex-ma"><td class="hz">妈</td><td><span class="hz">女</span> la femme</td><td><span class="hz">马</span> <span class="py">mǎ</span>, comme dans <span class="hz">吗</span></td><td><span class="py">mā</span>, maman</td></tr>
+  <tr id="ex-qing"><td class="hz">请</td><td><span class="hz">讠</span> la parole</td><td><span class="hz">青</span> <span class="py">qīng</span></td><td><span class="py">qǐng</span>, prier, inviter ; « s'il vous plaît »</td></tr>
+</table>
+</div>
+<p class="note">Wiktionary : <a href="https://en.wiktionary.org/wiki/%E8%BA%B2">躲</a> « semantic 身 (body) + phonetic 朵 » ; <a href="https://en.wiktionary.org/wiki/%E5%AA%BD">媽</a> « semantic 女 + phonetic 馬 » ; <a href="https://en.wiktionary.org/wiki/%E8%AB%8B">請</a> « semantic 言 (say) + phonetic 青 ».</p>
+
+<h3 id="exercices-2">5. Exercices</h3>
+
+<div class="exo" id="q6" data-sujet="Forme de 手 sur le côté" data-type="qcm" data-reponse="2">
+  <span class="num-exo">Exercice 6</span>
+  <p>À gauche d'un caractère, <span class="hz">手</span>, la main, devient…</p>
+  <ol class="choix">
+    <li><span class="hz">亻</span></li>
+    <li><span class="hz">扌</span></li>
+    <li><span class="hz">⻊</span></li>
+    <li><span class="hz">讠</span></li>
+  </ol>
+  <div class="solution"><p><span class="hz">扌</span>, comme dans <span class="hz">挂</span> « accrocher » de la comptine. <span class="hz">亻</span> est la personne, <span class="hz">⻊</span> le pied, <span class="hz">讠</span> la parole (<a href="#formes-cles">section 2</a>).</p></div>
+</div>
+
+<div class="exo" id="q7" data-sujet="月 dans 脸 et 肚" data-type="qcm" data-reponse="4">
+  <span class="num-exo">Exercice 7</span>
+  <p>Dans <span class="hz">脸</span> « visage » et <span class="hz">肚</span> « ventre », que représente <span class="hz">月</span> ?</p>
+  <ol class="choix">
+    <li>la lune</li>
+    <li>le mois</li>
+    <li>le son</li>
+    <li>la chair</li>
+  </ol>
+  <div class="solution"><p>La chair, <span class="hz">肉</span>, tassée à gauche : une partie du corps. La lune, c'est le <span class="hz">月</span> de <span class="hz">明</span> (<a href="#deux-lunes">section 3</a>).</p></div>
+</div>
+
+<div class="exo" id="q8" data-sujet="Prédiction : rôles dans 躲" data-type="qcm" data-reponse="1">
+  <span class="num-exo">Exercice 8</span>
+  <p><span class="hz">躲</span> se lit <span class="py">duǒ</span> et veut dire « se cacher ». Que font <span class="hz">身</span> et <span class="hz">朵</span> ?</p>
+  <ol class="choix">
+    <li><span class="hz">身</span> le sens, <span class="hz">朵</span> le son</li>
+    <li><span class="hz">身</span> le son, <span class="hz">朵</span> le sens</li>
+    <li><span class="hz">身</span> le sens, <span class="hz">朵</span> le sens</li>
+    <li><span class="hz">身</span> le son, <span class="hz">朵</span> le son</li>
+  </ol>
+  <div class="solution"><p>Le corps <span class="hz">身</span> donne le sens ; <span class="hz">朵</span> <span class="py">duǒ</span>, celui de <span class="hz">耳朵</span>, donne le son, ici sans même changer de ton (<a href="#lire-plan">section 4</a>).</p></div>
+</div>
+
+<div class="exo" id="q9" data-sujet="页 comme clé" data-type="qcm" data-reponse="3">
+  <span class="num-exo">Exercice 9</span>
+  <p>Comme clé, dans <span class="hz">题</span>, que représente <span class="hz">页</span> ?</p>
+  <ol class="choix">
+    <li>la page</li>
+    <li>le livre</li>
+    <li>la tête</li>
+    <li>la feuille</li>
+  </ol>
+  <div class="solution"><p>La tête : c'était son sens d'origine, gardé par la clé. Seul, <span class="hz">页</span> veut dire « page », un sens emprunté (<a href="#tete-page">section 3</a>).</p></div>
+</div>
+
+<div class="exo" id="q10" data-sujet="讠, forme de 言" data-type="qcm" data-reponse="2">
+  <span class="num-exo">Exercice 10</span>
+  <p><span class="hz">讠</span>, à gauche de <span class="hz">谢</span> et de <span class="hz">许</span>, est la forme simplifiée de…</p>
+  <ol class="choix">
+    <li><span class="hz">口</span>, la bouche</li>
+    <li><span class="hz">言</span>, la parole</li>
+    <li><span class="hz">心</span>, le cœur</li>
+    <li><span class="hz">人</span>, la personne</li>
+  </ol>
+  <div class="solution"><p><span class="hz">言</span>, la parole. En traditionnel, sur le côté, il s'écrit <span class="hz">訁</span> : <span class="hz">謝</span> (<a href="#simplifie">section 2</a>).</p></div>
+</div>
+
+<div class="exo" id="q11" data-sujet="Prédiction : lecture de 妈" data-type="qcm" data-reponse="4">
+  <span class="num-exo">Exercice 11</span>
+  <p><span class="hz">妈</span>, « maman » : la femme <span class="hz">女</span> à gauche, le cheval <span class="hz">马</span> à droite. Comment se lit-il, à peu près ?</p>
+  <ol class="choix">
+    <li><span class="py">nǚ</span></li>
+    <li><span class="py">hǎo</span></li>
+    <li><span class="py">mù</span></li>
+    <li><span class="py">mā</span></li>
+  </ol>
+  <div class="solution"><p><span class="py">mā</span> : <span class="hz">马</span> <span class="py">mǎ</span> donne le son, comme dans <span class="hz">吗</span> <span class="py">ma</span> ; la femme donne le sens. Le cheval n'a rien à voir avec maman (<a href="#lire-plan">section 4</a>).</p></div>
+</div>
+
+<h3 id="source-principale-2">6. Source principale de la partie 2</h3>
+
+<p><strong>À regarder (2 min) :</strong> le chapitre <a href="https://www.youtube.com/watch?v=xfVGc5xeviw&amp;t=238s">« comme un ensemble de composants graphiques »</a> de la vidéo <a href="#video-memoriser">Mémoriser les caractères chinois</a>, de 3 min 58 à 5 min 54. La vidéo entière (12 min) vaut le détour.</p>
+
+<h2 id="partie-3">Partie 3 · Une, deux, trois personnes : <span class="hz">人 从 众</span></h2>
+
+<div class="trio" id="trio">
+  <div><span class="hz">人</span><span class="py">rén</span> une personne <button class="son" data-son="ren">▶</button></div>
+  <div><span class="hz">从</span><span class="py">cóng</span> suivre <button class="son" data-son="cong">▶</button></div>
+  <div><span class="hz">众</span><span class="py">zhòng</span> la foule <button class="son" data-son="zhong">▶</button></div>
+</div>
+
+<p id="ren-cong-zhong"><strong>Une personne, deux, trois.</strong> <span class="hz">从</span>, deux personnes l'une derrière l'autre : l'une suit l'autre. <span class="hz">众</span>, trois personnes : la foule, le grand nombre. Même procédé que <span class="hz">晶</span>, trois soleils, dans <span class="hz">亮晶晶</span> : on répète le dessin. Aujourd'hui, <span class="hz">从</span> veut surtout dire « depuis, à partir de » : <span class="hz">从</span> + un lieu, « venir de… ».<span class="note">Wiktionary, <a href="https://en.wiktionary.org/wiki/%E4%BB%8E">从</a> : « a person (人) walking with another person in the same direction – to follow » ; <a href="https://en.wiktionary.org/wiki/%E4%BC%97">众</a> : triplication de 人 ; sens et lectures : <a href="https://en.wiktionary.org/wiki/%E5%BE%9E">從</a> <span class="py">cóng</span>, « to follow », « from (a place or time); since » ; <a href="https://en.wiktionary.org/wiki/%E7%9C%BE">眾</a> <span class="py">zhòng</span>, « masses; people; multitude; crowd ».</span></p>
+
+<p id="zhong-pas-dong"><strong>Le troisième se lit <span class="py">zhòng</span>,</strong> au 4<sup>e</sup> ton, avec <span class="py">zh</span> : un des contrastes de votre page Pinyin (<span class="py">zh</span>, pas <span class="py">z</span> ni <span class="py">j</span>). Écoutez <button class="son" data-son="zhong">众 ▶</button>.</p>
+
+<p id="plus-ancien"><strong>Le simplifié est ici le plus ancien.</strong> En traditionnel, « suivre » s'écrit <span class="hz">從</span> : on a ajouté aux deux personnes le signe de la marche. La forme simplifiée <span class="hz">从</span> revient à l'écriture d'origine. <span class="hz">众</span> s'écrit <span class="hz">眾</span> en traditionnel : au-dessus des trois personnes, un soleil, devenu un œil, « des gens qui travaillent sous le soleil ». Simplifier, ce n'est pas toujours inventer : pour « suivre », c'est revenir à la forme d'origine.<span class="note">Wiktionary, <a href="https://en.wiktionary.org/wiki/%E5%BE%9E">從</a> : « Originally written as 从. Now phono-semantic compound : semantic 辵 (walk) + phonetic 从 » ; <a href="https://en.wiktionary.org/wiki/%E7%9C%BE">眾</a> : « a sun (日) above three humans – people gathered or working under the sun […] in bronze script resembling instead a horizontal eye ».</span></p>
+
+<p id="combien-de-personnes"><strong>Compter les personnes.</strong> « Deux personnes » se dit <span class="hz">两个人</span> <span class="py">liǎng gè rén</span> : le classificateur passe-partout <span class="hz">个</span>, et donc <span class="hz">两</span> (<a href="0002-deux-tigres.html#liang-ge">leçon 2</a>). « Trois personnes » : <span class="hz">三个人</span>. Mais en comptant, « un, deux, trois », c'est <span class="hz">一、二、三</span>.</p>
+
+<h3 id="exercices-3">Exercices</h3>
+
+<div class="exo" id="q12" data-sujet="Lequel veut dire suivre" data-type="qcm" data-reponse="3">
+  <span class="num-exo">Exercice 12</span>
+  <p>Lequel veut dire « suivre » ?</p>
+  <ol class="choix">
+    <li><span class="hz">人</span></li>
+    <li><span class="hz">众</span></li>
+    <li><span class="hz">从</span></li>
+    <li><span class="hz">大</span></li>
+  </ol>
+  <div class="solution"><p><span class="hz">从</span> <span class="py">cóng</span> : deux personnes, l'une suit l'autre. <span class="hz">众</span>, trois, c'est la foule (<a href="#ren-cong-zhong">partie 3</a>).</p></div>
+</div>
+
+<div class="exo" id="q13" data-sujet="Deux personnes : 两 ou 二 (LR-0004)" data-type="qcm" data-reponse="1">
+  <span class="num-exo">Exercice 13</span>
+  <p>« Deux personnes » se dit…</p>
+  <ol class="choix">
+    <li><span class="hz">两个人</span></li>
+    <li><span class="hz">二个人</span></li>
+    <li><span class="hz">两只人</span></li>
+    <li><span class="hz">二只人</span></li>
+  </ol>
+  <div class="solution"><p><span class="hz">两个人</span> : devant un classificateur, ici <span class="hz">个</span>, « deux » se dit <span class="hz">两</span>. Ce n'est pas l'animal qui demande <span class="hz">两</span>, c'est la place devant le classificateur. <span class="hz">只</span> sert aux animaux (<a href="#combien-de-personnes">partie 3</a>).</p></div>
+</div>
+
+<div class="exo" id="q14" data-sujet="Compter : 二 ou 两 (LR-0004)" data-type="qcm" data-reponse="3">
+  <span class="num-exo">Exercice 14</span>
+  <p>Vous comptez à voix haute, comme au début du cours : « un, deux, trois ! »</p>
+  <ol class="choix">
+    <li><span class="hz">一、两、三</span></li>
+    <li><span class="hz">一个、两个、三个</span></li>
+    <li><span class="hz">一、二、三</span></li>
+    <li><span class="hz">一、两个、三</span></li>
+  </ol>
+  <div class="solution"><p><span class="hz">一、二、三</span> : pour compter, <span class="hz">二</span>. <span class="hz">两</span> ne vient que devant un classificateur (<a href="#combien-de-personnes">partie 3</a>, et <a href="0001-phrases-de-la-classe.html#commencez">leçon 1</a>).</p></div>
+</div>
+
+<div class="exo" id="q15" data-sujet="La forme la plus ancienne de suivre" data-type="qcm" data-reponse="2">
+  <span class="num-exo">Exercice 15</span>
+  <p>Quelle est la forme la plus ancienne de « suivre » ?</p>
+  <ol class="choix">
+    <li><span class="hz">從</span>, la traditionnelle</li>
+    <li><span class="hz">从</span>, la simplifiée</li>
+    <li><span class="hz">眾</span>, la traditionnelle</li>
+    <li><span class="hz">众</span>, la simplifiée</li>
+  </ol>
+  <div class="solution"><p><span class="hz">从</span> : deux personnes, l'écriture d'origine. <span class="hz">從</span> y a ajouté la marche ; la simplification est revenue en arrière. <span class="hz">众</span> et <span class="hz">眾</span>, c'est la foule (<a href="#plus-ancien">partie 3</a>).</p></div>
+</div>
+
+<h2 id="fin">Récapitulatif et suite</h2>
+
+<div class="quiz-recap" id="recapitulatif" data-quiz="CHI-0004"></div>
+
+
+<div class="encadre">
+  <span class="titre">Avant le prochain cours</span>
+  <p>Chantez <span class="hz">小星星</span> une fois par jour, chinois caché. Les mots des trois parties sont dans vos <a href="https://bastiencozian.github.io/chinois/hanzi/">Sinogrammes</a>, juste après cinq villes de la leçon 3 ; les sept autres villes et les provinces viennent ensuite. Les huit clés sont rassemblées dans le dossier <a href="../reference/cles.html">Les clés</a>, qui grandira à chaque leçon.</p>
+</div>
+
+<nav class="navigation">
+  <a href="0003-troisieme-cours.html">← Leçon 3 : anniversaire, clés, villes</a>
+  <span class="inactif">Suite à venir →</span>
+</nav>
+  <nav class="fil-retour bas" aria-label="Retour"><a href="../index.html">← Les leçons</a><a href="../../">Prononciation et caractères</a></nav>
+</main>
+
+<script src="../assets/quiz.js"></script>
+</body>
+</html>

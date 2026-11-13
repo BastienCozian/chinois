@@ -72,6 +72,40 @@ xian | 西安 | xi1 an1 | Xi'an (Shaanxi) | aucun | L'apostrophe de Xī'ān sép
 chongqing | 重庆 | chong2 qing4 | Chongqing | aucun | 重 se lit ici chóng, « de nouveau, double » ; d'habitude zhòng, « lourd ».
 hangzhou | 杭州 | hang2 zhou1 | Hangzhou (Zhejiang) | aucun |
 suzhou | 苏州 | su1 zhou1 | Suzhou (Jiangsu) | aucun |
+
+# Le 12 novembre 2026, à la demande de l'apprenant : cinq villes d'abord ; les sept autres et les provinces
+#   (listes l3e et l3d) passent après les mots de la leçon 4. L'ordre du fichier est l'ordre des nouvelles cartes.
+
+## l4 | Leçon 4 · Petite étoile (小星星)
+shan | 闪 | shan3 | scintiller, briller par éclairs | | 一闪一闪 : on écrit yī shǎn yī shǎn, on dit yì shǎn yì shǎn (一 devant un 3ᵉ ton).
+liangjingjing | 亮晶晶 | liang4 jing1 jing1 | étincelant | aucun | 一闪一闪亮晶晶 « scintille, scintille, étincelante ».
+mantian | 满天 | man3 tian1 | tout le ciel | aucun |
+dou | 都 | dou1 | tous, tout | syllabe dou1 | 满天都是小星星 « tout le ciel n'est que petites étoiles ». Dans 成都, dū, « capitale ».
+shi | 是 | shi4 | être | |
+xiao | 小 | xiao3 | petit | | 小眼睛 : on écrit xiǎo yǎnjing, on dit xiáo yǎnjing (deux 3ᵉ tons de suite).
+xingxing | 星星 | xing1 xing5 | étoile | | La 2ᵉ syllabe est au ton neutre.
+gua | 挂 | gua4 | accrocher ; être suspendu | |
+zai | 在 | zai4 | à, dans (un lieu) | | 挂在天上 « accroché dans le ciel ».
+tianshang | 天上 | tian1 shang4 | dans le ciel | |
+fang | 放 | fang4 | lâcher ; répandre | | 放光明 « répandre la lumière ».
+guangming | 光明 | guang1 ming2 | lumière, clarté | |
+haoxiang | 好像 | hao3 xiang4 | on dirait, comme | | Pas de changement de ton : xiàng est au 4ᵉ ton.
+xuduo | 许多 | xu3 duo1 | beaucoup de | | 好像许多小眼睛 « comme une multitude de petits yeux ».
+yanjing | 眼睛 | yan3 jing5 | œil, yeux | | 睛 au ton neutre. 目 + 青 qīng, vu à la leçon 3.
+
+## l4b | Leçon 4 · Clés du corps, et 人 从 众
+ren | 人 | ren2 | personne, homme | | Clé n° 9. À gauche : 亻 (你, 们, 像).
+cong | 从 | cong2 | suivre ; depuis | | Deux personnes. Traditionnel : 從.
+zhong | 众 | zhong4 | foule | | Trois personnes. Traditionnel : 眾.
+rou | 肉 | rou4 | viande, chair | | Clé n° 130. À gauche ou en bas : 月 (肚, 脸, 有), à ne pas confondre avec la lune.
+shen | 身 | shen1 | corps | | Clé n° 158. 躲 duǒ « se cacher » : 身 + 朵 (le son).
+nv | 女 | nv3 | femme | | Clé n° 38 (好, 始, 妈).
+shou | 手 | shou3 | main | | Clé n° 64. À gauche : 扌 (挂, 打, 抱).
+zu | 足 | zu2 | pied | | Clé n° 157. À gauche : ⻊ (跑, 路).
+yan | 言 | yan2 | parole | | Clé n° 149. À gauche : 讠 en simplifié, 訁 en traditionnel (谢, 课, 许, 请).
+ye | 页 | ye4 | page ; (comme clé) la tête | | Clé n° 181. Traditionnel : 頁. Comme clé, il garde son sens ancien, la tête (题).
+
+## l3e | Leçon 3 · Villes de Chine (suite)
 xiamen | 厦门 | xia4 men2 | Xiamen (Fujian) | aucun | 厦 se lit xià dans 厦门 ; ailleurs shà, « grand bâtiment ».
 qingdao | 青岛 | qing1 dao3 | Qingdao (Shandong) | aucun |
 kunming | 昆明 | kun1 ming2 | Kunming (Yunnan) | aucun |
@@ -198,6 +232,23 @@ shanghai | 上海 | shang4 hai3 | Shanghai (municipalité) | aucun | Une municip
 聿 | main qui tient un pinceau
 亠 | couvercle, toit (en haut)
 每 | chaque ; ici pour le son
+⺌ | (forme de 小 ; dans 光, le feu)
+两 | deux ; ici, une partie du dessin
+亅 | crochet (trait vertical)
+仌 | (ici, une partie du dessin)
+冖 | couvercle
+午 | midi ; ici pour le son
+圭 | tablette de jade ; ici pour le son
+夕 | soir
+扌 | main (手 sur le côté)
+才 | talent ; ici pour le son
+攵 | main qui agit, frapper
+方 | carré, direction ; ici pour le son
+生 | naître, vivre ; ici pour le son
+疋 | pied (forme ancienne)
+艮 | (ici pour le son)
+象 | éléphant ; ici pour le son
+青 | bleu-vert ; ici pour le son
 
 # Section « indices » : ce qui aide à retrouver un caractère ou un mot. Tout caractère et tout mot de
 #   plusieurs caractères doit en avoir un : construire.py s'arrête sinon.
@@ -332,3 +383,38 @@ shanghai | 上海 | shang4 hai3 | Shanghai (municipalité) | aucun | Une municip
 海 | 氵 eau (le sens) + 每 měi (le son, ancien). |
 北京 | « nord » + « capitale » : la capitale du nord. |
 上海 | « sur » + « mer ». Le sens exact du nom est discuté. |
+闪 | Simplification de 閃 : 门 porte + 人 personne, quelqu'un qui franchit la porte en courant. D'où « apparaître un instant, briller par éclairs ». |
+亮 | 人 personne, en bas (le sens) + 京, une tour (le son, ancien). Le 几 du bas est la personne, pas une petite table. |
+晶 | Trois soleils 日. Le caractère a d'abord noté les étoiles. |
+满 | Simplification de 滿 : 氵 eau (le sens) + un composant de son. | Ce qui est plein d'eau déborde.
+天 | Écriture ancienne : un homme debout, de face (大), la tête marquée en haut. | Le trait du haut : le ciel, au-dessus de l'homme.
+是 | | Origine obscure. Le soleil 日 au-dessus de tout : c'est ainsi.
+小 | Écriture ancienne : trois petits points, ou trois grains de sable. |
+星 | 生 shēng (le son), sous 日, qui était d'abord 晶, trois étoiles. Le soleil n'y est pour rien. |
+挂 | 扌 main (le sens) + 圭 guī (le son, proche) : accrocher de la main. |
+在 | 才 cái (le son, ancien) + un second composant de son, devenu 土 « terre » par erreur de copie. |
+放 | 方 fāng (le son) + 攵, une main qui agit (le sens) : lâcher. |
+光 | Écriture ancienne : un feu au-dessus de la tête d'une personne agenouillée. La lumière qui brille. |
+像 | 亻 personne (le sens) + 象 xiàng, l'éléphant (le son, même syllabe) : ressembler. |
+许 | 讠 parole (le sens) + 午 wǔ (le son, ancien). Sens premier : « promettre, permettre ». |
+多 | Écriture ancienne : deux morceaux de viande 肉, devenus deux 夕 « soir » par ressemblance. | Deux morceaux de viande : c'est beaucoup.
+眼 | 目 œil (le sens) + 艮 gèn (le son, ancien). |
+睛 | 目 œil (le sens) + 青 qīng (le son) : la pupille. |
+人 | Écriture ancienne : une personne debout, de profil, un bras et une jambe. À gauche d'un caractère, elle devient 亻. |
+从 | Deux personnes 人, l'une suit l'autre : « suivre ». Le traditionnel 從 a ajouté la marche ; la forme simplifiée est la plus ancienne. Aujourd'hui, surtout « depuis, à partir de ». |
+众 | Trois personnes 人 : la foule. Le traditionnel 眾 met au-dessus un soleil, devenu un œil. |
+身 | Écriture ancienne : une femme enceinte, de profil. D'où « le corps ». Sans rapport avec 射 « tirer à l'arc ». |
+肉 | Écriture ancienne : les côtes d'un animal, ou une tranche de viande. À côté d'un composant de son, il devient 月, sans rapport avec la lune. |
+女 | Écriture ancienne : une femme agenouillée, les bras croisés. |
+手 | Écriture ancienne : une main et ses cinq doigts. À gauche d'un caractère, elle devient 扌. |
+足 | Écriture ancienne : une jambe et son pied. À gauche d'un caractère, il devient ⻊. |
+言 | Écriture ancienne : une bouche 口 surmontée d'un signe, d'origine discutée. À gauche, simplifié en 讠. | Des paroles qui sortent de la bouche.
+页 | Simplification de 頁 : la tête d'une personne agenouillée. Le sens « tête » survit dans la clé (题) ; seul, il a pris le sens de « page ». |
+亮晶晶 | « brillant » + « scintillant », redoublé. |
+满天 | « plein » + « ciel » : le ciel entier. |
+星星 | « étoile », redoublé ; la 2ᵉ syllabe perd son ton. |
+天上 | « ciel » + « sur » : dans le ciel. |
+光明 | « lumière » + « lumineux ». |
+好像 | « bien » + « ressembler » : on dirait. |
+许多 | 许, ici une quantité + « nombreux » : beaucoup de. |
+眼睛 | « œil » + « pupille » : l'œil, les yeux. |
