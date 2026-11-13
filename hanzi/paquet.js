@@ -111,6 +111,21 @@ const PAQUET = {
    ]
   },
   {
+   "id": "l4d",
+   "titre": "Leçon 4 · Pardon, merci, à demain",
+   "mots": [
+    "duibuqi",
+    "meiguanxi",
+    "bu",
+    "keqi",
+    "bukeqi",
+    "mingtian",
+    "xiuxi",
+    "yihuir",
+    "ba"
+   ]
+  },
+  {
    "id": "l3e",
    "titre": "Leçon 3 · Villes de Chine (suite)",
    "mots": [
@@ -866,6 +881,114 @@ const PAQUET = {
    "son": true,
    "remarque": "Clé n° 181. Traditionnel : 頁. Comme clé, il garde son sens ancien, la tête (题).",
    "liste": "l4b"
+  },
+  "duibuqi": {
+   "hz": "对不起",
+   "py": [
+    "dui4",
+    "bu5",
+    "qi3"
+   ],
+   "sens": "pardon, désolé",
+   "son": true,
+   "remarque": "没关系！« Ce n'est rien ! ». Le manuel écrit duì bù qǐ ; le dictionnaire, duìbuqǐ : 不 y perd son ton.",
+   "liste": "l4d",
+   "motAMot": "对 « faire face » + 不 « ne pas pouvoir » + 起 « se lever » : à peu près « ne pas pouvoir se tenir face à vous »."
+  },
+  "meiguanxi": {
+   "hz": "没关系",
+   "py": [
+    "mei2",
+    "guan1",
+    "xi5"
+   ],
+   "sens": "ce n'est rien",
+   "son": true,
+   "remarque": "没 nie 有 : « (il n'y a) pas de lien ».",
+   "liste": "l4d",
+   "motAMot": "« ne pas (avoir) » + « lien, relation » : ça n'a pas d'importance."
+  },
+  "bu": {
+   "hz": "不",
+   "py": [
+    "bu4"
+   ],
+   "sens": "ne pas",
+   "son": true,
+   "remarque": "Devant un 4ᵉ ton, il se dit bú. 有 se nie avec 没, jamais avec 不.",
+   "liste": "l4d"
+  },
+  "keqi": {
+   "hz": "客气",
+   "py": [
+    "ke4",
+    "qi5"
+   ],
+   "sens": "poli, cérémonieux",
+   "son": true,
+   "remarque": "",
+   "liste": "l4d",
+   "motAMot": "« invité » + « air, manière » : la politesse."
+  },
+  "bukeqi": {
+   "hz": "不客气",
+   "py": [
+    "bu4",
+    "ke4",
+    "qi5"
+   ],
+   "sens": "de rien",
+   "son": false,
+   "remarque": "On écrit bù kèqi, on dit bú kèqi (不 devant un 4ᵉ ton). Le manuel écrit directement bú.",
+   "liste": "l4d",
+   "motAMot": "« ne pas » + « faire des façons » : de rien."
+  },
+  "mingtian": {
+   "hz": "明天",
+   "py": [
+    "ming2",
+    "tian1"
+   ],
+   "sens": "demain",
+   "son": true,
+   "remarque": "明天见！« À demain ! », sur le modèle de 再见.",
+   "liste": "l4d",
+   "motAMot": "« suivant » + « jour » : demain."
+  },
+  "xiuxi": {
+   "hz": "休息",
+   "py": [
+    "xiu1",
+    "xi5"
+   ],
+   "sens": "se reposer",
+   "son": true,
+   "remarque": "休息一会儿！« Repose-toi un peu ! »",
+   "liste": "l4d",
+   "motAMot": "« se reposer » + « souffle »."
+  },
+  "yihuir": {
+   "hz": "一会儿",
+   "py": [
+    "yi1",
+    "hui4",
+    "r5"
+   ],
+   "sens": "un moment",
+   "son": true,
+   "remarque": "On écrit yīhuìr, on dit yíhuìr (一 devant un 4ᵉ ton). 儿 ne fait pas de syllabe : il ajoute un r à huì.",
+   "liste": "l4d",
+   "motAMot": "« un » + « moment » + 儿 : un petit moment."
+  },
+  "ba": {
+   "hz": "吧",
+   "py": [
+    "ba5"
+   ],
+   "sens": "(adoucit la phrase)",
+   "son": false,
+   "remarque": "好吧！« D'accord ! »",
+   "liste": "l4d"
   },
   "xiamen": {
    "hz": "厦门",
@@ -2827,6 +2950,249 @@ const PAQUET = {
    "parties": [],
    "semantique": "",
    "phonetique": ""
+  },
+  "对": {
+   "hex": "5BF9",
+   "indice": {
+    "origine": "Simplification de 對, d'origine incertaine. Le sens « répondre, faire face » est un emprunt.",
+    "astuce": "Une main 又 face à une autre 寸 : on se fait face."
+   },
+   "cle": "寸",
+   "parties": [
+    [
+     "又",
+     "yòu",
+     "main (droite)"
+    ],
+    [
+     "寸",
+     "cùn",
+     "pouce, main"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "不": {
+   "hex": "4E0D",
+   "indice": {
+    "origine": "Écriture ancienne : le calice d'une fleur, emprunté pour dire « ne pas ».",
+    "astuce": ""
+   },
+   "cle": "一",
+   "parties": [],
+   "semantique": "",
+   "phonetique": "",
+   "cleSens": "un, un trait"
+  },
+  "起": {
+   "hex": "8D77",
+   "indice": {
+    "origine": "走 marcher (le sens) + 巳 (le son, ancien) : se lever.",
+    "astuce": ""
+   },
+   "cle": "走",
+   "parties": [
+    [
+     "走",
+     "zǒu",
+     "marcher"
+    ],
+    [
+     "己",
+     "jǐ",
+     "soi-même"
+    ]
+   ],
+   "semantique": "走",
+   "phonetique": "己"
+  },
+  "关": {
+   "hex": "5173",
+   "indice": {
+    "origine": "Simplification de 關 : une porte 門 fermée par deux barres de bois. La forme simplifiée a perdu la porte.",
+    "astuce": ""
+   },
+   "cle": "丷",
+   "parties": [
+    [
+     "丷",
+     "ha",
+     "(deux petits traits : une partie du dessin)"
+    ],
+    [
+     "天",
+     "tiān",
+     "ciel"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "系": {
+   "hex": "7CFB",
+   "indice": {
+    "origine": "Une main, abrégée en haut, qui tient des fils de soie 糸 : lier. Dans « relation », il remplace un caractère traditionnel à clé de la personne.",
+    "astuce": ""
+   },
+   "cle": "糸",
+   "parties": [
+    [
+     "丿",
+     "piě",
+     "trait oblique"
+    ],
+    [
+     "糸",
+     "mì",
+     "fil de soie"
+    ]
+   ],
+   "semantique": "糸",
+   "phonetique": ""
+  },
+  "客": {
+   "hex": "5BA2",
+   "indice": {
+    "origine": "宀 toit (le sens) + 各 gè (le son, ancien) : l'invité.",
+    "astuce": ""
+   },
+   "cle": "宀",
+   "parties": [
+    [
+     "宀",
+     "gài",
+     "toit"
+    ],
+    [
+     "各",
+     "gè",
+     "chacun ; ici pour le son"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "气": {
+   "hex": "6C14",
+   "indice": {
+    "origine": "Écriture ancienne : des nuées qui passent dans le ciel. Le traditionnel 氣 y ajoute le riz 米.",
+    "astuce": ""
+   },
+   "cle": "气",
+   "parties": [],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "休": {
+   "hex": "4F11",
+   "indice": {
+    "origine": "Une personne 亻 adossée à un arbre 木 : se reposer.",
+    "astuce": ""
+   },
+   "cle": "亻",
+   "parties": [
+    [
+     "亻",
+     "rén",
+     "personne (人 sur le côté)"
+    ],
+    [
+     "木",
+     "mù",
+     "arbre"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "息": {
+   "hex": "606F",
+   "indice": {
+    "origine": "自, à l'origine le nez, au-dessus du cœur 心 : respirer, le souffle.",
+    "astuce": ""
+   },
+   "cle": "心",
+   "parties": [
+    [
+     "自",
+     "zì",
+     "soi ; à l'origine, le nez"
+    ],
+    [
+     "心",
+     "xīn",
+     "cœur"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "会": {
+   "hex": "4F1A",
+   "indice": {
+    "origine": "Simplification de 會 : 合 « réunir » (le sens) + un composant de son ancien.",
+    "astuce": ""
+   },
+   "cle": "人",
+   "parties": [
+    [
+     "人",
+     "rén",
+     "personne"
+    ],
+    [
+     "云",
+     "yún",
+     "nuage"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "儿": {
+   "hex": "513F",
+   "indice": {
+    "origine": "Simplification de 兒 : un nourrisson à la fontanelle encore ouverte, « enfant ». Dans « un moment », simple r ajouté à la syllabe d'avant.",
+    "astuce": ""
+   },
+   "cle": "儿",
+   "parties": [
+    [
+     "丿",
+     "piě",
+     "trait oblique"
+    ],
+    [
+     "乚",
+     "gōu",
+     "(trait crochu)"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "吧": {
+   "hex": "5427",
+   "indice": {
+    "origine": "口 bouche (le sens : un mot de la voix) + 巴 bā (le son).",
+    "astuce": ""
+   },
+   "cle": "口",
+   "parties": [
+    [
+     "口",
+     "kǒu",
+     "bouche"
+    ],
+    [
+     "巴",
+     "bā",
+     "(ici pour le son)"
+    ]
+   ],
+   "semantique": "口",
+   "phonetique": "巴"
   },
   "厦": {
    "hex": "53A6",

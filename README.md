@@ -26,6 +26,7 @@ Règles pour toute modification du site, quel que soit le profil :
 
 - **Clés de stockage** (`pinyin-v1`, `hanzi-v1`, `chinois-profils`, suffixe `@<id>`) et **ids de cartes** (`p-zhang1`, `e-ni`…) : ne jamais les renommer. La progression y est attachée.
 - **Carte retirée du paquet** (ou paquet mal construit) : sa progression est rangée dans `archive` de l'état (`SRS.ranger`), jamais effacée, et reprend sa place si la carte revient.
+- **Carte passée** (bouton « Passer ⏭ » des Sinogrammes, 13 novembre 2026) : `passees` de l'état garde `{ id: jusqu'à }` ; la carte sort de la séance 15 min (`SRS.REPORT`), sans note, sans journal et sans toucher à sa planification. Une carte nouvelle passée reste nouvelle.
 - **Format de l'état** : n'ajouter que des champs facultatifs, que l'ancien code ignore et que le nouveau sait absents (`Object.assign(SRS.etatVide(), …)`). Pas de migration qui réécrit l'état.
 - Le cache hors ligne (`sw.js`) ne touche pas au stockage : une nouvelle version remplace les fichiers, pas la progression.
 - Ce qui peut encore la perdre : effacer les données du navigateur, changer d'appareil, ou Safari qui efface le stockage d'un site non ouvert depuis 7 jours (les pages le demandent persistant, et l'icône sur l'écran d'accueil l'en protège). D'où la sauvegarde, et l'écran ci-dessous.

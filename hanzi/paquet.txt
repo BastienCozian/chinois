@@ -105,6 +105,17 @@ zu | 足 | zu2 | pied | | Clé n° 157. À gauche : ⻊ (跑, 路).
 yan | 言 | yan2 | parole | | Clé n° 149. À gauche : 讠 en simplifié, 訁 en traditionnel (谢, 课, 许, 请).
 ye | 页 | ye4 | page ; (comme clé) la tête | | Clé n° 181. Traditionnel : 頁. Comme clé, il garde son sens ancien, la tête (题).
 
+## l4d | Leçon 4 · Pardon, merci, à demain
+duibuqi | 对不起 | dui4 bu5 qi3 | pardon, désolé | | 没关系！« Ce n'est rien ! ». Le manuel écrit duì bù qǐ ; le dictionnaire, duìbuqǐ : 不 y perd son ton.
+meiguanxi | 没关系 | mei2 guan1 xi5 | ce n'est rien | | 没 nie 有 : « (il n'y a) pas de lien ».
+bu | 不 | bu4 | ne pas | | Devant un 4ᵉ ton, il se dit bú. 有 se nie avec 没, jamais avec 不.
+keqi | 客气 | ke4 qi5 | poli, cérémonieux | |
+bukeqi | 不客气 | bu4 ke4 qi5 | de rien | aucun | On écrit bù kèqi, on dit bú kèqi (不 devant un 4ᵉ ton). Le manuel écrit directement bú.
+mingtian | 明天 | ming2 tian1 | demain | | 明天见！« À demain ! », sur le modèle de 再见.
+xiuxi | 休息 | xiu1 xi5 | se reposer | | 休息一会儿！« Repose-toi un peu ! »
+yihuir | 一会儿 | yi1 hui4 r5 | un moment | | On écrit yīhuìr, on dit yíhuìr (一 devant un 4ᵉ ton). 儿 ne fait pas de syllabe : il ajoute un r à huì.
+ba | 吧 | ba5 | (adoucit la phrase) | aucun | 好吧！« D'accord ! »
+
 ## l3e | Leçon 3 · Villes de Chine (suite)
 xiamen | 厦门 | xia4 men2 | Xiamen (Fujian) | aucun | 厦 se lit xià dans 厦门 ; ailleurs shà, « grand bâtiment ».
 qingdao | 青岛 | qing1 dao3 | Qingdao (Shandong) | aucun |
@@ -249,6 +260,16 @@ shanghai | 上海 | shang4 hai3 | Shanghai (municipalité) | aucun | Une municip
 艮 | (ici pour le son)
 象 | éléphant ; ici pour le son
 青 | bleu-vert ; ici pour le son
+乚 | (trait crochu)
+云 | nuage
+又 | main (droite)
+各 | chacun ; ici pour le son
+天 | ciel
+己 | soi-même
+巴 | (ici pour le son)
+糸 | fil de soie
+自 | soi ; à l'origine, le nez
+走 | marcher
 
 # Section « indices » : ce qui aide à retrouver un caractère ou un mot. Tout caractère et tout mot de
 #   plusieurs caractères doit en avoir un : construire.py s'arrête sinon.
@@ -418,3 +439,22 @@ shanghai | 上海 | shang4 hai3 | Shanghai (municipalité) | aucun | Une municip
 好像 | « bien » + « ressembler » : on dirait. |
 许多 | 许, ici une quantité + « nombreux » : beaucoup de. |
 眼睛 | « œil » + « pupille » : l'œil, les yeux. |
+对 | Simplification de 對, d'origine incertaine. Le sens « répondre, faire face » est un emprunt. | Une main 又 face à une autre 寸 : on se fait face.
+不 | Écriture ancienne : le calice d'une fleur, emprunté pour dire « ne pas ». |
+起 | 走 marcher (le sens) + 巳 (le son, ancien) : se lever. |
+关 | Simplification de 關 : une porte 門 fermée par deux barres de bois. La forme simplifiée a perdu la porte. |
+系 | Une main, abrégée en haut, qui tient des fils de soie 糸 : lier. Dans « relation », il remplace un caractère traditionnel à clé de la personne. |
+客 | 宀 toit (le sens) + 各 gè (le son, ancien) : l'invité. |
+气 | Écriture ancienne : des nuées qui passent dans le ciel. Le traditionnel 氣 y ajoute le riz 米. |
+休 | Une personne 亻 adossée à un arbre 木 : se reposer. |
+息 | 自, à l'origine le nez, au-dessus du cœur 心 : respirer, le souffle. |
+会 | Simplification de 會 : 合 « réunir » (le sens) + un composant de son ancien. |
+儿 | Simplification de 兒 : un nourrisson à la fontanelle encore ouverte, « enfant ». Dans « un moment », simple r ajouté à la syllabe d'avant. |
+吧 | 口 bouche (le sens : un mot de la voix) + 巴 bā (le son). |
+对不起 | 对 « faire face » + 不 « ne pas pouvoir » + 起 « se lever » : à peu près « ne pas pouvoir se tenir face à vous ». |
+没关系 | « ne pas (avoir) » + « lien, relation » : ça n'a pas d'importance. |
+客气 | « invité » + « air, manière » : la politesse. |
+不客气 | « ne pas » + « faire des façons » : de rien. |
+明天 | « suivant » + « jour » : demain. |
+休息 | « se reposer » + « souffle ». |
+一会儿 | « un » + « moment » + 儿 : un petit moment. |

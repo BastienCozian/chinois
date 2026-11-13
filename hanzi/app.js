@@ -451,6 +451,7 @@
       <p class="groupe">${Hanzi.TYPES[ctx.id[0]]}</p>`;
     return `<div class="haut"><button class="lien" id="quitter">✕ Quitter</button>
       ${S.hist.length ? `<button class="lien" id="precedente">← Précédente</button>` : ""}
+      <button class="lien" id="passer" title="La carte revient dans ${SRS.REPORT / 60000} min, sans note">Passer ⏭</button>
       <span class="compteur" title="à réviser · nouvelles">${c.dues} · ${c.nouvelles}</span></div>
       <p class="groupe">${Hanzi.TYPES[ctx.id[0]]} · ${liste.titre.split(" · ")[0]}${ctx.nouvelle ? ' <span class="pastille">nouvelle</span>' : ""}</p>`;
   }
@@ -458,6 +459,12 @@
   function brancherEntete(ctx) {
     on("#quitter", ctx.essai !== undefined ? () => revue(ctx.essai) : accueil);
     on("#precedente", () => revue(S.hist.length - 1));
+    on("#passer", () => {
+      // Sans note : la carte revient dans 15 min (une nouvelle reste nouvelle)
+      SRS.passer(E, ctx.id, Date.now());
+      sauver();
+      suivante();
+    });
   }
 
   function noter(ctx, note, extra) {

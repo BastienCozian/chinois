@@ -2,6 +2,9 @@
 
    Son : <button class="son" data-son="xiexie">▶</button> joue assets/son-xiexie.mp3.
    Les sons viennent d'audio-cmn (mots du HSK lus par Yue Tan, CC BY-SA) : voir RESOURCES.md.
+   Autre fichier de assets/ : <button class="son" data-fichier="dialogue02-xiexie.mp3">▶</button>. Les dialogues
+   de « Conversation intensive » (chine-nouvelle.com) ne portent pas le préfixe son- : ils restent hors du site
+   public des élèves (pinyin/cours/construire.py ne copie que son-*.mp3), et leurs boutons sont en data-public="non".
 
    Repli : un conteneur .repli avec des éléments .masquable.zh (caractères, pinyin) ou .masquable.fr,
    et des cases <input type="checkbox" data-masquer="zh|fr"> qui posent masquer-zh ou masquer-fr
@@ -16,7 +19,7 @@
     var b = ev.target.closest("button.son");
     if (b) {
       if (courant) courant.pause();
-      courant = new Audio(base + "son-" + b.dataset.son + ".mp3");
+      courant = new Audio(base + (b.dataset.fichier || "son-" + b.dataset.son + ".mp3"));
       courant.play().catch(function () { b.textContent = "✕"; b.title = "Son indisponible"; });
       return;
     }

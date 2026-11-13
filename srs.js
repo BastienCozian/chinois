@@ -107,8 +107,20 @@ const SRS = (() => {
     return Math.max(0, etat.parJour + j.bonus - j.nouvelles);
   }
 
+  /* ---------- Passer une carte ---------- */
+
+  // « Passer » : la carte quitte la séance pour REPORT, sans note ni changement de planification.
+  // Une carte nouvelle passée reste nouvelle (le quota du jour n'est pas entamé). etat.passees : { id: jusqu'à }.
+  const REPORT = 15 * MIN;
+  function passer(etat, id, t) {
+    etat.passees = etat.passees || {};
+    for (const k of Object.keys(etat.passees)) if (etat.passees[k] <= t) delete etat.passees[k];
+    etat.passees[id] = t + REPORT;
+  }
+  function passee(etat, id, t) { return !!etat.passees && etat.passees[id] > t; }
+
   function compter(etat, ordre, t) {
-    const cs = Object.values(etat.cartes);
+    const cs = Object.entries(etat.cartes).filter(([id]) => !passee(etat, id, t)).map(([, c]) => c);
     const restantes = ordre.filter((id) => !etat.cartes[id]).length;
     return {
       dues: cs.filter((c) => c.etat !== "nouvelle" && c.due <= t).length,
@@ -123,12 +135,12 @@ const SRS = (() => {
   // Prochaine carte : apprentissage dû, puis révisions (une nouvelle toutes les trois cartes), puis nouvelles,
   // puis apprentissage dû bientôt. Évite de reprendre la carte qu'on vient de voir quand une autre attend.
   function prochaine(etat, ordre, t, derniere, rang) {
-    const ids = Object.keys(etat.cartes);
+    const ids = Object.keys(etat.cartes).filter((id) => !passee(etat, id, t));
     const parDue = (a, b) => etat.cartes[a].due - etat.cartes[b].due;
     const sauf = (l) => (l.length > 1 && l[0] === derniere ? l.slice(1) : l);
     const appr = sauf(ids.filter((id) => etat.cartes[id].etat === "apprentissage" && etat.cartes[id].due <= t).sort(parDue));
     const rev = sauf(ids.filter((id) => etat.cartes[id].etat === "revision" && etat.cartes[id].due <= t).sort(parDue));
-    const nouv = quota(etat, t) > 0 ? ordre.find((id) => !etat.cartes[id]) : undefined;
+    const nouv = quota(etat, t) > 0 ? ordre.find((id) => !etat.cartes[id] && !passee(etat, id, t)) : undefined;
     const choix = [];
     if (appr.length && appr[0] !== derniere) choix.push({ id: appr[0] });
     if (rev.length && nouv && rang % 3 === 2) choix.push({ id: nouv, nouvelle: true });
@@ -319,6 +331,7 @@ const SRS = (() => {
   }
 
   return { marque, traits, jour, noter, delai, etatVide, quota, compter, prochaine, repondre, corriger, modifiable, encoreDix, bilan, date, NOTES,
+    passer, passee, REPORT,
     ranger, NIVEAUX, niveau, declarer, lignesDeclarations };
 })();
 
