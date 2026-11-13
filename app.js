@@ -47,8 +47,8 @@
       <p class="sous-titre">Les sons et les tons qu'on confond, avec la voix de Chen Wang.</p></header>`;
     if (alerteStockage) h += `<p class="alerte">Le navigateur refuse d'enregistrer la progression (navigation privée ?). Elle sera perdue à la fermeture.</p>`;
     h += `<section class="tableau">
-      <div><b>${c.dues}</b><span>à réviser</span></div>
-      <div><b>${c.nouvelles}</b><span>nouvelles aujourd'hui</span></div>
+      <button id="t-dues"${c.dues ? "" : " disabled"}><b>${c.dues}</b><span>à réviser</span></button>
+      <button id="t-nouv"${c.nouvelles ? "" : " disabled"}><b>${c.nouvelles}</b><span>nouvelles aujourd'hui</span></button>
       <div><b>${c.vues}/${c.total}</b><span>cartes vues</span></div></section>`;
     if (c.dues || c.nouvelles || c.bientot) h += `<button class="principal" id="go">Commencer</button>`;
     else {
@@ -96,6 +96,8 @@
     zone.innerHTML = h;
 
     on("#go", () => seance());
+    on("#t-dues", () => seance());
+    on("#t-nouv", () => seance());
     on("#sons", tableauSons);
     on("#mes-sons", choisirSons);
     on("#profil", () => { Micro.arreter(); Profil.ecran(zone, accueil); });
@@ -323,8 +325,8 @@
     if (ctx.essai !== undefined) return `<div class="haut"><button class="lien" id="quitter">← Ma réponse</button><span class="compteur">essai libre, sans note</span></div>
       <p class="groupe">${ctx.titre}</p>`;
     return `<div class="haut"><button class="lien" id="quitter">✕ Quitter</button>
-      ${S.hist.length ? `<button class="lien" id="precedente">← Précédente</button>` : ""}
-      <span class="compteur" title="à réviser · nouvelles">${c.dues} · ${c.nouvelles}</span></div>
+      ${S.hist.length ? `<button class="lien" id="precedente">← Précédente</button>` : ""}</div>
+      ${SRS.htmlReste(c)}
       <p class="groupe">${ctx.titre}${ctx.nouvelle ? ' <span class="pastille">nouvelle</span>' : ""}</p>`;
   }
 

@@ -117,7 +117,14 @@ const SRS = (() => {
     for (const k of Object.keys(etat.passees)) if (etat.passees[k] <= t) delete etat.passees[k];
     etat.passees[id] = t + REPORT;
   }
+  function reprendre(etat, id) { if (etat.passees) delete etat.passees[id]; }
   function passee(etat, id, t) { return !!etat.passees && etat.passees[id] > t; }
+
+  // Ligne sous l'en-tête d'une carte : ce qui reste à faire aujourd'hui, en toutes lettres
+  function htmlReste(c) {
+    const s = (n, mot) => `<b>${n}</b> ${mot}${n > 1 ? "s" : ""}`;
+    return `<p class="reste">Reste aujourd'hui : ${s(c.dues, "carte")} à réviser · ${s(c.nouvelles, "nouvelle")}</p>`;
+  }
 
   function compter(etat, ordre, t) {
     const cs = Object.entries(etat.cartes).filter(([id]) => !passee(etat, id, t)).map(([, c]) => c);
@@ -331,7 +338,7 @@ const SRS = (() => {
   }
 
   return { marque, traits, jour, noter, delai, etatVide, quota, compter, prochaine, repondre, corriger, modifiable, encoreDix, bilan, date, NOTES,
-    passer, passee, REPORT,
+    passer, reprendre, passee, REPORT, htmlReste,
     ranger, NIVEAUX, niveau, declarer, lignesDeclarations };
 })();
 

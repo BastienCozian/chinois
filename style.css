@@ -98,6 +98,18 @@ footer { margin-top: 1.5rem; font-family: var(--sans); font-size: 0.75rem; color
 /* Carte */
 .haut { display: flex; justify-content: space-between; align-items: center; }
 .compteur { font-family: var(--sans); font-size: 0.9rem; color: var(--muted); }
+.reste { font-family: var(--sans); font-size: 0.8rem; color: var(--muted); margin: 0.1rem 0 0; }
+.reste b { color: var(--accent); }
+/* Carte passée : bandeau avec « Annuler » */
+.bandeau { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-family: var(--sans); font-size: 0.85rem;
+  background: var(--accent-soft); border-radius: 8px; padding: 0.2rem 0.4rem 0.2rem 0.8rem; margin: 0 0 0.6rem; }
+/* Accueil : tuiles qui se touchent */
+.tableau button { display: block; width: 100%; min-height: 0; padding: 0.6rem 0.4rem; text-align: center;
+  background: var(--accent-soft); border: 1px solid var(--accent); border-radius: 8px; }
+.tableau button:disabled { border-color: transparent; opacity: 1; }
+.tableau button:not(:disabled) span::after { content: " ›"; }
+/* Retrouver mon niveau : recherche */
+.cherche { width: 100%; font: inherit; font-family: var(--sans); padding: 0.6rem; margin: 0.4rem 0; border: 1px solid var(--rule); border-radius: 8px; background: var(--card); color: var(--fg); }
 .groupe { font-family: var(--sans); font-size: 0.8rem; color: var(--muted); margin: 0.2rem 0 0.6rem; }
 .pastille { background: var(--warm-soft); color: var(--warm); border-radius: 999px; padding: 0.05rem 0.5rem; font-weight: 600; }
 .carte { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 1rem; }

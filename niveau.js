@@ -13,7 +13,8 @@ const Niveau = (() => {
       <header><h1>Retrouver mon niveau</h1><p class="sous-titre">${o.intro}</p></header>
       <p class="info">Choisissez un niveau pour chaque ${o.nom}, ou pour toute une liste d'un coup. Les cartes repartent de là,
       en révision espacée : « Je débute » revient dans les trois jours, « Je le connais » dans la semaine, « Je le maîtrise » dans le mois.
-      Une carte trop facile ou oubliée se recale toute seule à la révision suivante. Seuls les ${o.nom}s que vous changez sont touchés.</p>`;
+      Une carte trop facile ou oubliée se recale toute seule à la révision suivante. Seuls les ${o.nom}s que vous changez sont touchés.</p>
+      <input type="search" class="cherche" id="cherche" placeholder="Chercher un ${o.nom} (caractères, pinyin sans tons, sens)" aria-label="Chercher">`;
     o.sections.forEach((s, i) => {
       h += `<section class="bloc niveaux"><h2>${s.titre}</h2>
         <p class="tout"><label>Toute la liste <select data-liste="${i}">${options(-1, true)}</select></label></p>
@@ -42,6 +43,20 @@ const Niveau = (() => {
         majBouton();
       };
     });
+    // Recherche : sans accents ni tons (« xie » trouve xièxie), sur les caractères, le pinyin et le sens
+    const plat = (s) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/\s+/g, " ").trim();
+    zone.querySelector("#cherche").oninput = (ev) => {
+      const q = plat(ev.target.value);
+      zone.querySelectorAll("section.niveaux").forEach((s) => {
+        let vus = 0;
+        s.querySelectorAll("li").forEach((li) => {
+          const ok = !q || plat(li.querySelector(".element").textContent).includes(q);
+          li.hidden = !ok; vus += ok;
+        });
+        s.hidden = !vus;
+        s.querySelector(".tout").hidden = !!q;   // « Toute la liste » n'a pas de sens sur une liste filtrée
+      });
+    };
     zone.querySelector("#annuler").onclick = o.retour;
     zone.querySelector("#annuler-bas").onclick = o.retour;
     zone.querySelector("#ok").onclick = () => {

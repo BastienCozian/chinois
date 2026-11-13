@@ -163,9 +163,9 @@
       <p class="sous-titre">Les mots du cours : les écrire trait par trait, les lire, les comprendre.</p></header>`;
     if (alerteStockage) h += `<p class="alerte">Le navigateur refuse d'enregistrer la progression (navigation privée ?). Elle sera perdue à la fermeture.</p>`;
     h += `<section class="tableau">
-      <div><b>${c.dues}</b><span>à réviser</span></div>
-      <div><b>${c.nouvelles}</b><span>nouvelles aujourd'hui</span></div>
-      <div><b>${c.vues}/${c.total}</b><span>cartes vues</span></div></section>`;
+      <button id="t-dues"${c.dues ? "" : " disabled"}><b>${c.dues}</b><span>à réviser</span></button>
+      <button id="t-nouv"${c.nouvelles ? "" : " disabled"}><b>${c.nouvelles}</b><span>nouvelles aujourd'hui</span></button>
+      <button id="t-vues"><b>${c.vues}/${c.total}</b><span>cartes vues</span></button></section>`;
     if (c.dues || c.nouvelles || c.bientot) h += `<button class="principal" id="go">Commencer</button>`;
     else {
       h += `<p class="info">Rien à réviser pour l'instant.</p>`;
@@ -224,6 +224,9 @@
     zone.innerHTML = h;
 
     on("#go", seance);
+    on("#t-dues", seance);
+    on("#t-nouv", seance);
+    on("#t-vues", liste);
     on("#liste", liste);
     on("#profil", () => { lacher(); Profil.ecran(zone, accueil); });
     on("#encore", () => { SRS.encoreDix(E, Date.now()); sauver(); seance(); });
@@ -455,8 +458,8 @@
       <p class="groupe">${Hanzi.TYPES[ctx.id[0]]}</p>`;
     return `<div class="haut"><button class="lien" id="quitter">✕ Quitter</button>
       ${S.hist.length ? `<button class="lien" id="precedente">← Précédente</button>` : ""}
-      <button class="lien" id="passer" title="La carte revient dans ${SRS.REPORT / 60000} min, sans note">Passer ⏭</button>
-      <span class="compteur" title="à réviser · nouvelles">${c.dues} · ${c.nouvelles}</span></div>
+      <button class="lien" id="passer" title="La carte revient dans ${SRS.REPORT / 60000} min, sans note">Passer ⏭</button></div>
+      ${SRS.htmlReste(c)}
       <p class="groupe">${Hanzi.TYPES[ctx.id[0]]} · ${liste.titre.split(" · ")[0]}${ctx.nouvelle ? ' <span class="pastille">nouvelle</span>' : ""}</p>`;
   }
 
@@ -464,10 +467,19 @@
     on("#quitter", ctx.essai !== undefined ? () => revue(ctx.essai) : accueil);
     on("#precedente", () => revue(S.hist.length - 1));
     on("#passer", () => {
-      // Sans note : la carte revient dans 15 min (une nouvelle reste nouvelle)
+      // Sans note : la carte revient dans 15 min (une nouvelle reste nouvelle). Un bandeau permet d'annuler.
       SRS.passer(E, ctx.id, Date.now());
       sauver();
       suivante();
+      zone.insertAdjacentHTML("afterbegin", `<p class="bandeau" id="bandeau">Carte passée : elle revient dans ${SRS.REPORT / 60000} min.
+        <button class="lien" id="annuler-passer">Annuler</button></p>`);
+      on("#annuler-passer", () => {
+        SRS.reprendre(E, ctx.id);
+        sauver();
+        lacher();
+        S.courante = ctx; S.derniere = ctx.id;
+        lancer(ctx);
+      });
     });
   }
 
