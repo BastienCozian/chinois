@@ -139,14 +139,15 @@ const Profil = (() => {
       : `<section class="bloc appli"><h2>Installer comme une application</h2>${corps}</section>`;
   }
 
-  // Barre du site ; ici : « pinyin » ou « hanzi » ; racine : chemin de la page Pinyin depuis la page courante
+  // Barre du site ; ici : « pinyin » ou « hanzi » ; racine : chemin de la page Pinyin depuis la page courante.
+  // Deux onglets (les deux applis de cartes), puis un lien d'une autre allure vers les leçons, qui sont des pages à lire.
   function barre(ici, racine) {
     const onglet = (id, href, nom, base) => {
       const n = dues(base);
       return `<a href="${href}"${id === ici ? ' class="actif" aria-current="page"' : ""}>${nom}${n ? ` <span class="badge" title="à réviser">${n}</span>` : ""}</a>`;
     };
     return `<div class="profil-ligne"><span>${esc(actif().nom)}</span><button class="lien" id="profil">Changer de profil</button></div>
-      <nav class="site" aria-label="Sections">${onglet("pinyin", racine || "./", "Prononciation", "pinyin-v1")}${onglet("hanzi", racine + "hanzi/", "Caractères", "hanzi-v1")}<a href="${racine}cours/">Leçons</a></nav>`;
+      <nav class="site" aria-label="Sections">${onglet("hanzi", racine + "hanzi/", "Caractères", "hanzi-v1")}${onglet("pinyin", racine || "./", "Prononciation", "pinyin-v1")}<a class="vers-lecons" href="${racine}cours/">Leçons <span aria-hidden="true">→</span></a></nav>`;
   }
 
   // Écran « Qui s'entraîne ? ». retour : revenir à l'écran précédent sans changer de profil (absent au premier passage)

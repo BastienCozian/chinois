@@ -163,9 +163,9 @@
       <p class="sous-titre">Les mots du cours : les écrire trait par trait, les lire, les comprendre.</p></header>`;
     if (alerteStockage) h += `<p class="alerte">Le navigateur refuse d'enregistrer la progression (navigation privée ?). Elle sera perdue à la fermeture.</p>`;
     h += `<section class="tableau">
-      <button id="t-dues"${c.dues ? "" : " disabled"}><b>${c.dues}</b><span>à réviser</span></button>
-      <button id="t-nouv"${c.nouvelles ? "" : " disabled"}><b>${c.nouvelles}</b><span>nouvelles aujourd'hui</span></button>
-      <button id="t-vues"><b>${c.vues}/${c.total}</b><span>cartes vues</span></button></section>`;
+      <div><b>${c.dues}</b><span>à réviser</span></div>
+      <div><b>${c.nouvelles}</b><span>nouvelles aujourd'hui</span></div>
+      <div><b>${c.vues}/${c.total}</b><span>cartes vues</span></div></section>`;
     if (c.dues || c.nouvelles || c.bientot) h += `<button class="principal" id="go">Commencer</button>`;
     else {
       h += `<p class="info">Rien à réviser pour l'instant.</p>`;
@@ -177,12 +177,6 @@
       <button id="niveau-haut">Retrouver mon niveau</button></div>
       <p class="info">Sans sauvegarde, « Retrouver mon niveau » vous fait indiquer, mot par mot, où vous en êtes.</p></section>`;
     h += Profil.htmlAppli(true);
-
-    if (Profil.proprio()) h += `<section class="bloc"><h2>Bilan pour l'Agent Teach</h2>
-      <p class="info">Dernier bilan copié : ${E.dernierBilan ? SRS.date(E.dernierBilan, true) : "jamais"}.
-      Copiez-le quand vous voulez, puis collez-le dans « ✎ Consigne pour l'Agent Teach » en bas de la
-      <a href="${REVISIONS_URL}" target="_blank" rel="noopener">page Révisions</a>, formation Chinois.</p>
-      <button id="bilan">Copier le bilan</button><div id="bilan-zone"></div></section>`;
 
     h += `<details class="bloc"><summary>Comment ça marche</summary>
       <p>Chaque mot donne quatre cartes, qui arrivent à quelques mots d'écart.</p>
@@ -215,6 +209,13 @@
       <p><button id="niveau">Retrouver mon niveau</button></p>
       <p><button class="danger" id="zero">Tout remettre à zéro</button></p></details>`;
 
+    // Tout en bas, après les blocs repliables : le bilan ne sert qu'après une série de révisions
+    if (Profil.proprio()) h += `<section class="bloc"><h2>Bilan pour l'Agent Teach</h2>
+      <p class="info">Dernier bilan copié : ${E.dernierBilan ? SRS.date(E.dernierBilan, true) : "jamais"}.
+      Copiez-le quand vous voulez, puis collez-le dans « ✎ Consigne pour l'Agent Teach » en bas de la
+      <a href="${REVISIONS_URL}" target="_blank" rel="noopener">page Révisions</a>, formation Chinois.</p>
+      <button id="bilan">Copier le bilan</button><div id="bilan-zone"></div></section>`;
+
     h += `<footer><p>Ordre des traits : <a href="https://hanziwriter.org" target="_blank" rel="noopener">Hanzi Writer</a> (David Chanin, MIT),
       données tirées de <a href="https://github.com/skishore/makemeahanzi" target="_blank" rel="noopener">Make Me a Hanzi</a>
       (Shaunak Kishore ; tracés sous licence Arphic Public License, décompositions sous LGPL).
@@ -224,9 +225,6 @@
     zone.innerHTML = h;
 
     on("#go", seance);
-    on("#t-dues", seance);
-    on("#t-nouv", seance);
-    on("#t-vues", liste);
     on("#liste", liste);
     on("#profil", () => { lacher(); Profil.ecran(zone, accueil); });
     on("#encore", () => { SRS.encoreDix(E, Date.now()); sauver(); seance(); });

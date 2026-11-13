@@ -31,7 +31,7 @@ Règles pour toute modification du site, quel que soit le profil :
 - Le cache hors ligne (`sw.js`) ne touche pas au stockage : une nouvelle version remplace les fichiers, pas la progression.
 - Ce qui peut encore la perdre : effacer les données du navigateur, changer d'appareil, ou Safari qui efface le stockage d'un site non ouvert depuis 7 jours (les pages le demandent persistant, et l'icône sur l'écran d'accueil l'en protège). D'où la sauvegarde, et l'écran ci-dessous.
 
-**Retrouver mon niveau** (`niveau.js`, Réglages, ou lien sur l'accueil d'un profil vierge) : sans sauvegarde, l'élève indique pour chaque mot (Sinogrammes) ou chaque syllabe (Prononciation), ou pour toute une liste, « Pas encore vu », « Je débute », « Je le connais » ou « Je le maîtrise ». Les cartes de l'élément passent en révision espacée avec un intervalle de 1, 7 ou 30 jours, et leurs retours sont étalés (`SRS.declarer`). Seuls les éléments changés sont touchés. Les déclarations sont gardées dans `declarations` et apparaissent au bilan de l'Agent Teach comme une auto-évaluation.
+**Retrouver mon niveau** (`niveau.js`, page Caractères seulement : Réglages, ou bouton sur l'accueil d'un profil vierge ; la page Prononciation n'en a pas besoin) : sans sauvegarde, l'élève indique pour chaque mot, ou pour toute une liste, « Pas encore vu », « Je débute », « Je le connais » ou « Je le maîtrise ». Les cartes de l'élément passent en révision espacée avec un intervalle de 1, 7 ou 30 jours, et leurs retours sont étalés (`SRS.declarer`). Seuls les éléments changés sont touchés. Les déclarations sont gardées dans `declarations` et apparaissent au bilan de l'Agent Teach comme une auto-évaluation.
 
 ## Prononciation
 

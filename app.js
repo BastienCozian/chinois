@@ -47,8 +47,8 @@
       <p class="sous-titre">Les sons et les tons qu'on confond, avec la voix de Chen Wang.</p></header>`;
     if (alerteStockage) h += `<p class="alerte">Le navigateur refuse d'enregistrer la progression (navigation privée ?). Elle sera perdue à la fermeture.</p>`;
     h += `<section class="tableau">
-      <button id="t-dues"${c.dues ? "" : " disabled"}><b>${c.dues}</b><span>à réviser</span></button>
-      <button id="t-nouv"${c.nouvelles ? "" : " disabled"}><b>${c.nouvelles}</b><span>nouvelles aujourd'hui</span></button>
+      <div><b>${c.dues}</b><span>à réviser</span></div>
+      <div><b>${c.nouvelles}</b><span>nouvelles aujourd'hui</span></div>
       <div><b>${c.vues}/${c.total}</b><span>cartes vues</span></div></section>`;
     if (c.dues || c.nouvelles || c.bientot) h += `<button class="principal" id="go">Commencer</button>`;
     else {
@@ -58,16 +58,8 @@
     h += `<button class="large" id="sons">Tableau des consonnes et des voyelles</button>
       <button class="large" id="mes-sons">Mes sons : choisir dans le tableau et s'entraîner</button>`;
     if (!c.vues) h += `<section class="reprise"><p><b>Vous aviez déjà commencé ?</b> Sur cet appareil ou sur un autre.</p>
-      <div class="boutons"><label class="bouton">Restaurer une sauvegarde<input id="import-haut" type="file" accept="application/json" hidden></label>
-      <button id="niveau-haut">Retrouver mon niveau</button></div>
-      <p class="info">Sans sauvegarde, « Retrouver mon niveau » vous fait indiquer, syllabe par syllabe, où vous en êtes.</p></section>`;
+      <div class="boutons"><label class="bouton">Restaurer une sauvegarde<input id="import-haut" type="file" accept="application/json" hidden></label></div></section>`;
     h += Profil.htmlAppli(true);
-
-    if (Profil.proprio()) h += `<section class="bloc"><h2>Bilan pour l'Agent Teach</h2>
-      <p class="info">Dernier bilan copié : ${E.dernierBilan ? SRS.date(E.dernierBilan, true) : "jamais"}.
-      Copiez-le quand vous voulez, puis collez-le dans « ✎ Consigne pour l'Agent Teach » en bas de la
-      <a href="${REVISIONS_URL}" target="_blank" rel="noopener">page Révisions</a>, formation Chinois.</p>
-      <button id="bilan">Copier le bilan</button><div id="bilan-zone"></div></section>`;
 
     h += `<details class="bloc"><summary>Comment ça marche</summary>
       <p><b>Production</b> (une syllabe écrite). Carte nouvelle : écoutez le modèle, puis enregistrez-vous et comparez.
@@ -87,25 +79,26 @@
       <p class="info">La progression est enregistrée sur cet appareil, dans ce navigateur, pas sur le site. Une sauvegarde de temps en temps la protège et permet de la transporter.</p>
       <p><button id="export">Sauvegarder la progression</button>
       <label class="bouton">Restaurer une sauvegarde<input id="import" type="file" accept="application/json" hidden></label></p>
-      <p class="info">Sauvegarde perdue ? Indiquez syllabe par syllabe où vous en êtes :</p>
-      <p><button id="niveau">Retrouver mon niveau</button></p>
       <p><button class="danger" id="zero">Tout remettre à zéro</button></p></details>`;
+
+    // Tout en bas, après les blocs repliables : le bilan ne sert qu'après une série de révisions
+    if (Profil.proprio()) h += `<section class="bloc"><h2>Bilan pour l'Agent Teach</h2>
+      <p class="info">Dernier bilan copié : ${E.dernierBilan ? SRS.date(E.dernierBilan, true) : "jamais"}.
+      Copiez-le quand vous voulez, puis collez-le dans « ✎ Consigne pour l'Agent Teach » en bas de la
+      <a href="${REVISIONS_URL}" target="_blank" rel="noopener">page Révisions</a>, formation Chinois.</p>
+      <button id="bilan">Copier le bilan</button><div id="bilan-zone"></div></section>`;
 
     h += `<footer><p>Sons : syllabes enregistrées par Chen Wang, projet <a href="https://github.com/hugolpz/audio-cmn" target="_blank" rel="noopener">audio-cmn</a>
       (Hugo Lopez, Inalco), licence <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr" target="_blank" rel="noopener">CC BY-SA</a>.${Profil.proprio() ? " Une question sur un son, une règle ? Demandez à l'Agent Teach." : ""}</p></footer>`;
     zone.innerHTML = h;
 
     on("#go", () => seance());
-    on("#t-dues", () => seance());
-    on("#t-nouv", () => seance());
     on("#sons", tableauSons);
     on("#mes-sons", choisirSons);
     on("#profil", () => { Micro.arreter(); Profil.ecran(zone, accueil); });
     on("#encore", () => { SRS.encoreDix(E, Date.now()); sauver(); seance(); });
     on("#bilan", copierBilan);
     on("#export", exporter);
-    on("#niveau", niveaux);
-    on("#niveau-haut", niveaux);
     on("#zero", () => {
       if (confirm(`Effacer toute la progression de ${Profil.actif().nom} sur la page Pinyin ?${Profil.proprio() ? " Pensez d'abord à copier le bilan." : ""}`)) { E = SRS.etatVide(); sauver(); accueil(); }
     });
@@ -148,20 +141,6 @@
       if (!v.cartes || !v.journal) throw new Error("format");
       if (confirm("Remplacer la progression actuelle par cette sauvegarde ?")) { E = SRS.ranger(Object.assign(SRS.etatVide(), v), (id) => ORDRE.includes(id)); sauver(); accueil(); }
     }).catch(() => alert("Ce fichier n'est pas une sauvegarde de la page Pinyin."));
-  }
-
-  // Sauvegarde perdue : l'élève indique son niveau, syllabe par syllabe (les deux cartes de la syllabe)
-  function niveaux() {
-    Micro.arreter();
-    const sections = PAQUET.groupes.map((g) => {
-      const vues = new Set();
-      const elements = g.contrastes.flatMap((c) => c.cibles).filter((s) => !vues.has(s) && vues.add(s)).map((s) => ({
-        cle: s, html: `<b>${M(s)}</b>`, ids: ["p-" + s, "e-" + s].filter((id) => ORDRE.includes(id)),
-      })).filter((e) => e.ids.length);
-      return { titre: g.titre, elements: elements };
-    }).filter((s) => s.elements.length);
-    Niveau.ecran({ zone, etat: E, sauver, retour: accueil, nom: "syllabe", sections,
-      intro: "Sauvegarde perdue, ou nouvel appareil : dites où vous en êtes, sans tout reprendre à zéro." });
   }
 
   /* ---------- Tableau des sons : chaque case joue sa syllabe ---------- */
