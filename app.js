@@ -57,8 +57,6 @@
     }
     h += `<button class="large" id="sons">Tableau des consonnes et des voyelles</button>
       <button class="large" id="mes-sons">Mes sons : choisir dans le tableau et s'entraîner</button>`;
-    if (!c.vues) h += `<section class="reprise"><p><b>Vous aviez déjà commencé ?</b> Sur cet appareil ou sur un autre.</p>
-      <div class="boutons"><label class="bouton">Restaurer une sauvegarde<input id="import-haut" type="file" accept="application/json" hidden></label></div></section>`;
     h += Profil.htmlAppli(true);
 
     h += `<details class="bloc"><summary>Comment ça marche</summary>
@@ -105,7 +103,6 @@
     const pj = zone.querySelector("#parjour");
     pj.onchange = () => { E.parJour = Math.max(0, Math.min(130, Math.round(+pj.value) || 0)); sauver(); accueil(); };
     zone.querySelector("#import").onchange = importer;
-    if (zone.querySelector("#import-haut")) zone.querySelector("#import-haut").onchange = importer;
   }
 
   function on(sel, f) { const el = zone.querySelector(sel); if (el) el.onclick = f; }
