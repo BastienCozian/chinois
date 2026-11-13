@@ -172,8 +172,10 @@
       if (c.restantes) h += `<button class="principal" id="encore">Encore 10 nouvelles cartes</button>`;
     }
     h += `<button class="large" id="liste">Les mots : ordre des traits, composants, écriture libre</button>`;
-    if (!Object.keys(E.cartes).length) h += `<p class="info">Vous aviez déjà commencé, sur cet appareil ou un autre ? Restaurez une sauvegarde (Réglages), ou
-      <button class="lien" id="niveau-haut">retrouvez votre niveau</button> mot par mot.</p>`;
+    if (!Object.keys(E.cartes).length) h += `<section class="reprise"><p><b>Vous aviez déjà commencé ?</b> Sur cet appareil ou sur un autre.</p>
+      <div class="boutons"><label class="bouton">Restaurer une sauvegarde<input id="import-haut" type="file" accept="application/json" hidden></label>
+      <button id="niveau-haut">Retrouver mon niveau</button></div>
+      <p class="info">Sans sauvegarde, « Retrouver mon niveau » vous fait indiquer, mot par mot, où vous en êtes.</p></section>`;
     h += Profil.htmlAppli(true);
 
     if (Profil.proprio()) h += `<section class="bloc"><h2>Bilan pour l'Agent Teach</h2>
@@ -209,7 +211,8 @@
       <p class="info">La progression est enregistrée sur cet appareil, dans ce navigateur, pas sur le site. Une sauvegarde de temps en temps la protège et permet de la transporter.</p>
       <p><button id="export">Sauvegarder la progression</button>
       <label class="bouton">Restaurer une sauvegarde<input id="import" type="file" accept="application/json" hidden></label></p>
-      <p class="info">Sauvegarde perdue ? Indiquez mot par mot où vous en êtes : <button id="niveau">Retrouver mon niveau</button></p>
+      <p class="info">Sauvegarde perdue ? Indiquez mot par mot où vous en êtes :</p>
+      <p><button id="niveau">Retrouver mon niveau</button></p>
       <p><button class="danger" id="zero">Tout remettre à zéro</button></p></details>`;
 
     h += `<footer><p>Ordre des traits : <a href="https://hanziwriter.org" target="_blank" rel="noopener">Hanzi Writer</a> (David Chanin, MIT),
@@ -243,6 +246,7 @@
     const pj = zone.querySelector("#parjour");
     pj.onchange = () => { E.parJour = Math.max(0, Math.min(200, Math.round(+pj.value) || 0)); sauver(); accueil(); };
     zone.querySelector("#import").onchange = importer;
+    if (zone.querySelector("#import-haut")) zone.querySelector("#import-haut").onchange = importer;
     clavier({});
   }
 

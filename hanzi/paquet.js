@@ -906,7 +906,7 @@ const PAQUET = {
    "son": true,
    "remarque": "没 nie 有 : « (il n'y a) pas de lien ».",
    "liste": "l4d",
-   "motAMot": "« ne pas (avoir) » + « lien, relation » : ça n'a pas d'importance."
+   "motAMot": "« ne pas (avoir) » + « lien, rapport » : cela n'a pas de rapport, pas d'incidence ; d'où « peu importe ». Le contraire, 有关系, veut dire « avoir de l'importance »."
   },
   "bu": {
    "hz": "不",

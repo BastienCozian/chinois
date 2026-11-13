@@ -71,7 +71,15 @@ button:disabled { opacity: 0.55; cursor: default; }
 button.principal { background: var(--accent); border-color: var(--accent); color: var(--bg); font-weight: 600; }
 button.principal.enregistre { background: var(--warm); border-color: var(--warm); }
 button.danger { color: var(--ko); border-color: var(--ko); }
-button.lien { border: none; background: none; padding: 0.4rem 0; color: var(--muted); min-height: 0; }
+/* Bouton-lien : couleur des liens, pour qu'on voie qu'il se touche ; souligné au milieu d'une phrase */
+button.lien { border: none; background: none; padding: 0.4rem 0; color: var(--accent); min-height: 0; }
+p button.lien { font-size: inherit; padding: 0; text-decoration: underline; text-underline-offset: 2px; }
+/* Accueil sans progression : reprendre là où l'on en était */
+.reprise { background: var(--accent-soft); border-radius: 8px; padding: 0.7rem 0.8rem; margin: 0.8rem 0; }
+.reprise p { margin: 0 0 0.5rem; font-family: var(--sans); }
+.reprise .boutons { display: flex; flex-wrap: wrap; gap: 8px; }
+.reprise .boutons > * { flex: 1 1 12rem; text-align: center; }
+.reprise .info { margin: 0.5rem 0 0; }
 main > button.principal { width: 100%; margin: 0.5rem 0; font-size: 1.1rem; padding: 0.9rem; }
 input[type="number"] { font: inherit; width: 4.5rem; padding: 0.3rem; margin-left: 0.4rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--card); color: var(--fg); }
 
