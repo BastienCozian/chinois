@@ -2,7 +2,7 @@
   "name": "Chinois : prononciation et caractères",
   "short_name": "Chinois",
   "lang": "fr",
-  "start_url": "./",
+  "start_url": "hanzi/",
   "scope": "./",
   "display": "standalone",
   "background_color": "#fffff8",

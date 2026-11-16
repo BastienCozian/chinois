@@ -3,6 +3,9 @@
 // Barre du site (les deux sections, le lien vers les leçons de cours/ et le profil), commune à la page Pinyin et à la page Sinogrammes.
 "use strict";
 
+// Marque la séance comme commencée : la racine (Prononciation) ne renvoie plus vers Caractères (voir index.html).
+try { sessionStorage.setItem("chinois-ouvert", "1"); } catch (e) { /* stockage indisponible */ }
+
 const Profil = (() => {
   const CLE = "chinois-profils";
   const PROPRIO = { id: "bastien", nom: "Bastien" };

@@ -11,6 +11,19 @@
   <meta name="apple-mobile-web-app-title" content="Chinois">
   <link rel="apple-touch-icon" href="icone-180.png">
   <link rel="manifest" href="manifest.json">
+  <script>
+  // Le site s'ouvre sur Caractères (hanzi/), pas sur Prononciation. Seule la première page d'une séance
+  // est redirigée : l'onglet « Prononciation », un retour en arrière ou un lien vers une ancre (#sons) restent ici.
+  (function () {
+    try {
+      var deja = sessionStorage.getItem("chinois-ouvert");
+      sessionStorage.setItem("chinois-ouvert", "1");
+      var dossier = location.origin + location.pathname.replace(/[^\/]*$/, "");
+      var interne = document.referrer && document.referrer.indexOf(dossier) === 0;
+      if (!deja && !interne && !location.hash) location.replace("hanzi/");
+    } catch (e) { /* stockage indisponible : on reste sur Prononciation */ }
+  })();
+  </script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
