@@ -486,6 +486,16 @@ table.phrases td.hz { white-space: nowrap; }
   table.phrases, table.phrases tbody, table.phrases tr, table.phrases td { display: block; width: auto; border: none; padding: 0.1rem 0; }
   table.phrases tr:first-child { display: none; }
   table.phrases tr { padding: 0.6rem 0; border-bottom: 1px solid var(--filet); }
+  /* Étiquettes posées par assets/tableaux.js : le titre de la colonne devant chaque valeur,
+     sauf pour la première cellule, qui sert de titre à la ligne. */
+  table.etiquete td.vide { display: none; }
+  table.etiquete td:first-child { font-size: 1.15rem; padding-bottom: 0.25rem; }
+  table.etiquete td[data-label]:not(:first-child) { position: relative; padding-left: 7.2rem; }
+  table.etiquete td[data-label]:not(:first-child)::before {
+    content: attr(data-label);
+    position: absolute; left: 0; top: 0.15rem; width: 6.8rem;
+    font: 500 0.75rem/1.5 var(--sans); color: var(--encre-douce);
+  }
 }
 
 /* Bouton d'écoute (assets/son.js) */
@@ -508,3 +518,7 @@ button.son { font-size: 0.8rem; padding: 0.15rem 0.55rem; margin-left: 0.3rem; v
 .fil-retour.bas { margin: 2.5rem 0 0; padding-top: 0.8rem; border-top: 1px solid var(--filet); }
 .navigation + .fil-retour.bas { margin-top: 0.4rem; padding-top: 0; border-top: none; }
 @media print { .navigation.haut { display: none; } }
+
+/* Dialogue : ton prononcé noté à côté de la réplique, en petit (« Bù kèqi ! (on écrit bù, on dit bú) ») */
+.paroles .dit { font-family: var(--sans); font-size: 0.78rem; color: var(--encre-douce); white-space: nowrap; }
+.paroles .dit i { font-style: normal; color: inherit; }

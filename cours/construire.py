@@ -21,7 +21,7 @@ from pathlib import Path
 ICI = Path(__file__).resolve().parent
 SOURCE = ICI.parent.parent  # dossier de la formation Chinois
 SOUS_DOSSIERS = ["lessons", "reference"]
-ASSETS = ["cours.css", "quiz.js", "son.js", "ancres-details.js"]
+ASSETS = ["cours.css", "quiz.js", "son.js", "ancres-details.js", "tableaux.js"]
 
 FIL = ('<nav class="fil-retour{bas}" aria-label="Retour"><a href="../index.html">← Les leçons</a>'
        '<a href="../../">Prononciation et caractères</a></nav>')
