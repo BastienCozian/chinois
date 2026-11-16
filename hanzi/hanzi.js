@@ -15,19 +15,20 @@ const Hanzi = (() => {
 
   function aCarte(paquet, type, m) { return type !== "o" || paquet.mots[m].son; }
 
-  // Ordre de présentation des nouvelles cartes, pour les types choisis
-  function ordre(paquet, types) {
+  // Ordre de présentation des nouvelles cartes, pour les types choisis, sans les mots exclus par l'élève
+  function ordre(paquet, types, exclus) {
     const l = [];
     mots(paquet).forEach((m, i) => Object.keys(TYPES).forEach((t, k) => {
-      if (types[t] && aCarte(paquet, t, m)) l.push({ id: t + "-" + m, r: i + DECALAGE[t], k: k });
+      if (types[t] && aCarte(paquet, t, m) && !(exclus && exclus[m])) l.push({ id: t + "-" + m, r: i + DECALAGE[t], k: k });
     }));
     return l.sort((a, b) => a.r - b.r || a.k - b.k).map((x) => x.id);
   }
 
-  // L'état réduit aux cartes des types choisis (le quota du jour reste partagé)
+  // L'état réduit aux cartes des types choisis et des mots non exclus (le quota du jour reste partagé).
+  // Les cartes d'un mot exclu gardent leur progression : elles reviennent telles quelles s'il est repris.
   function vue(etat, types) {
-    const cartes = {};
-    for (const id in etat.cartes) if (types[id[0]]) cartes[id] = etat.cartes[id];
+    const cartes = {}, exclus = etat.exclus || {};
+    for (const id in etat.cartes) if (types[id[0]] && !exclus[id.slice(2)]) cartes[id] = etat.cartes[id];
     return Object.assign({}, etat, { cartes: cartes });
   }
 
@@ -147,6 +148,8 @@ const Hanzi = (() => {
     });
     const dues = Object.values(vue(etat, etat.types || { e: 1, s: 1, l: 1, o: 1 }).cartes).filter((c) => c.etat !== "nouvelle" && c.due <= t).length;
     L.push("", `Progression : ${parType.join(" ; ")}. ${dues} carte${dues > 1 ? "s" : ""} due${dues > 1 ? "s" : ""} maintenant.`);
+    const exclus = mots(paquet).filter((m) => etat.exclus && etat.exclus[m]);
+    if (exclus.length) L.push(`Mots exclus de l'apprentissage (${exclus.length}) : ${exclus.map((m) => paquet.mots[m].hz).join(" ")}.`);
     return L.join("\n");
   }
 

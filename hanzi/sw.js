@@ -1,6 +1,6 @@
 // Généré par construire.py : ne pas modifier l'en-tête à la main.
 // Cache hors ligne : la page marche sans réseau une fois ouverte.
-const VERSION = "hanzi-462c31858a";
+const VERSION = "hanzi-e8589a474a";
 const FICHIERS = [
  "./",
  "index.html",

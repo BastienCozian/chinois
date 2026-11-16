@@ -92,3 +92,12 @@ button.son { min-height: 36px; padding: 0.2rem 0.7rem; font-size: 0.9rem; vertic
 .carte-geo .prov-t { font: 600 24px "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif; fill: color-mix(in srgb, var(--warm) 75%, var(--fg)); }
 .carte-geo .repere-t { font: 17px system-ui, sans-serif; fill: var(--muted); }
 .carte-geo .repere-t { font: 18px "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif; }
+
+/* Mots exclus de l'apprentissage (écran « Les mots », bouton « Choisir les mots à apprendre ») */
+.choix-mots { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.8rem; }
+.tout-liste { margin: 0.2rem 0 0; font-size: 0.85rem; }
+.mots .marque-exclu { display: none; }
+.mots button.exclu { opacity: 0.45; border-style: dashed; }
+.mots button.exclu .marque-exclu { display: block; font-size: 0.7rem; font-family: var(--sans); color: var(--muted); }
+.mots.en-choix button:not(.exclu) { box-shadow: inset 0 0 0 2px var(--accent, #1f5f8b); }
+.mots.en-choix button.exclu .hz { text-decoration: line-through; }

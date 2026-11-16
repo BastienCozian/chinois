@@ -14,7 +14,10 @@
   /* ---------- État, gardé dans le navigateur ---------- */
 
   let E = charger();
-  let ORDRE = Hanzi.ordre(P, E.types);
+  let ORDRE;
+  reordonner();
+  // Après tout changement des types, des mots exclus ou de l'état entier
+  function reordonner() { if (!E.exclus) E.exclus = {}; ORDRE = Hanzi.ordre(P, E.types, E.exclus); }
   let alerteStockage = false;
 
   function charger() {
@@ -225,7 +228,7 @@
     zone.innerHTML = h;
 
     on("#go", seance);
-    on("#liste", liste);
+    on("#liste", () => liste());
     on("#profil", () => { lacher(); Profil.ecran(zone, accueil); });
     on("#encore", () => { SRS.encoreDix(E, Date.now()); sauver(); seance(); });
     on("#bilan", copierBilan);
@@ -234,14 +237,14 @@
     on("#niveau-haut", niveaux);
     on("#zero", () => {
       if (confirm(`Effacer toute la progression de ${Profil.actif().nom} sur la page Sinogrammes ?${Profil.proprio() ? " Pensez d'abord à copier le bilan." : ""}`)) {
-        E = Object.assign(SRS.etatVide(), { types: Object.assign({}, TOUS) }); ORDRE = Hanzi.ordre(P, E.types); sauver(); accueil();
+        E = Object.assign(SRS.etatVide(), { types: Object.assign({}, TOUS) }); reordonner(); sauver(); accueil();
       }
     });
     zone.querySelectorAll("[data-type]").forEach((b) => {
       b.onchange = () => {
         E.types[b.dataset.type] = b.checked;
         if (!Object.values(E.types).some(Boolean)) { E.types[b.dataset.type] = b.checked = true; return; }
-        ORDRE = Hanzi.ordre(P, E.types); sauver(); accueil();
+        reordonner(); sauver(); accueil();
       };
     });
     const pj = zone.querySelector("#parjour");
@@ -283,7 +286,7 @@
       const v = JSON.parse(txt);
       if (!v.cartes || !v.journal) throw new Error("format");
       if (confirm("Remplacer la progression actuelle par cette sauvegarde ?")) {
-        E = SRS.ranger(Object.assign(SRS.etatVide(), { types: Object.assign({}, TOUS) }, v), (id) => !!P.mots[id.slice(2)]); ORDRE = Hanzi.ordre(P, E.types); sauver(); accueil();
+        E = SRS.ranger(Object.assign(SRS.etatVide(), { types: Object.assign({}, TOUS) }, v), (id) => !!P.mots[id.slice(2)]); reordonner(); sauver(); accueil();
       }
     }).catch(() => alert("Ce fichier n'est pas une sauvegarde de la page Sinogrammes."));
   }
@@ -302,28 +305,52 @@
 
   /* ---------- Les mots : liste, fiche, écriture libre ---------- */
 
-  function liste() {
+  // choix : mode « Choisir les mots à apprendre », où toucher un mot l'exclut ou le reprend au lieu d'ouvrir sa fiche.
+  // Un mot exclu ne sort plus en séance (ni nouveau ni révision) ; sa progression est gardée.
+  function liste(choix) {
     lacher();
     const point = (id) => {
       const c = E.cartes[id];
       return `<i class="pt ${c ? c.etat : "nouvelle"}" title="${Hanzi.TYPES[id[0]]}"></i>`;
     };
+    const nbExclus = () => Hanzi.mots(P).filter((id) => E.exclus[id]).length;
+    const resume = () => { const n = nbExclus(); return n ? `${n} mot${n > 1 ? "s" : ""} exclu${n > 1 ? "s" : ""} de l'apprentissage.` : "Aucun mot exclu."; };
     let h = `<div class="haut"><button class="lien" id="quitter">← Accueil</button></div>
-      <header><h1>Les mots</h1><p class="sous-titre">Touchez un mot pour voir l'ordre de ses traits et ses composants, et vous entraîner à l'écrire.</p></header>`;
-    P.listes.forEach((l) => {
-      h += `<section class="bloc"><h2>${l.titre}</h2><div class="mots">${l.mots.map((id) => {
-        const m = P.mots[id];
-        return `<button data-mot="${id}">${hz(m.hz)}<small lang="zh-Latn-pinyin">${py(m)}</small><small>${m.sens}</small>
-          <span class="pts">${Object.keys(Hanzi.TYPES).filter((t) => t !== "o" || m.son).map((t) => point(t + "-" + id)).join("")}</span></button>`;
+      <header><h1>Les mots</h1><p class="sous-titre">${choix
+        ? "Touchez un mot pour l'exclure de l'apprentissage, touchez-le encore pour le reprendre. Un mot exclu ne revient plus en séance ; sa progression est gardée."
+        : "Touchez un mot pour voir l'ordre de ses traits et ses composants, et vous entraîner à l'écrire."}</p></header>
+      <p class="choix-mots"><button id="choix"${choix ? ' class="principal"' : ""}>${choix ? "Terminé" : "Choisir les mots à apprendre"}</button>
+      <span class="info" id="resume-exclus">${resume()}</span></p>`;
+    P.listes.forEach((l, k) => {
+      h += `<section class="bloc"><h2>${l.titre}</h2>${choix ? `<p class="tout-liste"><button class="lien" data-liste="${k}" data-exclure="1">Tout exclure</button> · <button class="lien" data-liste="${k}" data-exclure="">Tout reprendre</button></p>` : ""}
+        <div class="mots${choix ? " en-choix" : ""}">${l.mots.map((id) => {
+        const m = P.mots[id], ex = !!E.exclus[id];
+        return `<button data-mot="${id}" class="${ex ? "exclu" : ""}"${choix ? ` aria-pressed="${!ex}"` : ""}>${hz(m.hz)}<small lang="zh-Latn-pinyin">${py(m)}</small><small>${m.sens}</small>
+          <span class="pts">${Object.keys(Hanzi.TYPES).filter((t) => t !== "o" || m.son).map((t) => point(t + "-" + id)).join("")}</span><span class="marque-exclu">exclu</span></button>`;
       }).join("")}</div></section>`;
     });
     h += `<p class="info legende-pts"><i class="pt nouvelle"></i> pas encore vue <i class="pt apprentissage"></i> en apprentissage <i class="pt revision"></i> en révision espacée
       (dans l'ordre : écriture, sens, lecture, écoute).</p>`;
     zone.innerHTML = h;
     on("#quitter", accueil);
-    zone.querySelectorAll("[data-mot]").forEach((b) => { b.onclick = () => fiche(b.dataset.mot); });
+    on("#choix", () => liste(!choix));
+    // En mode choix, on change le bouton sur place : la page ne remonte pas en haut à chaque mot
+    const basculer = (b, ex) => {
+      if (ex) E.exclus[b.dataset.mot] = true; else delete E.exclus[b.dataset.mot];
+      b.classList.toggle("exclu", ex); b.setAttribute("aria-pressed", String(!ex));
+    };
+    const apres = () => { reordonner(); sauver(); zone.querySelector("#resume-exclus").textContent = resume(); };
+    zone.querySelectorAll("[data-mot]").forEach((b) => {
+      b.onclick = choix ? () => { basculer(b, !E.exclus[b.dataset.mot]); apres(); } : () => fiche(b.dataset.mot);
+    });
+    zone.querySelectorAll("[data-liste]").forEach((t) => {
+      t.onclick = () => {
+        t.closest("section").querySelectorAll("[data-mot]").forEach((b) => basculer(b, !!t.dataset.exclure));
+        apres();
+      };
+    });
     clavier({});
-    window.scrollTo(0, 0);
+    if (choix === undefined) window.scrollTo(0, 0);
   }
 
   function fiche(id) {
@@ -348,7 +375,7 @@
     zone.querySelectorAll("[data-k]").forEach((b) => { b.onclick = () => montrer(+b.dataset.k); });
     on("#anim", () => w && w.animateCharacter());
     on("#libre", () => libre(id, k));
-    on("#quitter", liste);
+    on("#quitter", () => liste());
     brancherSons();
     if (m.son) brancherVoix(id);
     jouer(id);
