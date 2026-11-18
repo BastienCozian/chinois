@@ -30,7 +30,7 @@ yi | 一 | yi1 | un | | yī en comptant. Devant un autre mot, il change : 一只
 er | 二 | er4 | deux (pour compter) | | Devant un classificateur, on dit 两 liǎng.
 san | 三 | san1 | trois | |
 kaishi | 开始 | kai1 shi3 | commencer | | 一二三，开始！« 1, 2, 3, commencez ! »
-xiexie | 谢谢 | xie4 xie5 | merci | |
+xiexie | 谢谢 | xie4 xie5 | merci | | Le mot redoublé : la copie perd son ton (xièxie), comme dans 星星.
 you | 有 | you3 | avoir ; il y a | |
 wenti | 问题 | wen4 ti2 | question, problème | | 有问题吗？« Des questions ? »
 ma | 吗 | ma5 | (particule de question) | | En fin de phrase, fait d'une affirmation une question fermée.
@@ -63,8 +63,8 @@ shui | 水 | shui3 | eau | | Comme clé, à gauche : 氵, « trois gouttes » (�
 mu-arbre | 木 | mu4 | arbre, bois | | Se lit comme 目 « œil » : même syllabe, même ton.
 qing | 青 | qing1 | bleu-vert | | Composant de son : 清 qīng, 晴 qíng, 情 qíng, 睛 jīng.
 bao | 包 | bao1 | envelopper ; paquet | | Composant de son : 跑 pǎo, 抱 bào, 泡 pào.
-xiang1 | 相 | xiang1 | l'un l'autre, mutuellement | syllabe xiang1 | 木 + 目. Lu xiàng, c'est un autre mot : « apparence ».
-xiang3 | 想 | xiang3 | penser ; vouloir | | 相 (le son) + 心 (le sens).
+xiang1 | 相 | xiang1 | l'un l'autre, mutuellement | syllabe xiang1 | Lu xiàng, c'est un autre mot : « apparence ».
+xiang3 | 想 | xiang3 | penser ; vouloir | |
 
 ## l3c | Leçon 3 · Villes de Chine
 chengdu | 成都 | cheng2 du1 | Chengdu (Sichuan) | aucun | 都 se lit ici dū, « capitale » ; d'habitude dōu, « tous ».
@@ -78,12 +78,12 @@ suzhou | 苏州 | su1 zhou1 | Suzhou (Jiangsu) | aucun |
 
 ## l4 | Leçon 4 · Petite étoile (小星星)
 shan | 闪 | shan3 | scintiller, briller par éclairs | | 一闪一闪 : on écrit yī shǎn yī shǎn, on dit yì shǎn yì shǎn (一 devant un 3ᵉ ton).
-liangjingjing | 亮晶晶 | liang4 jing1 jing1 | étincelant | aucun | 一闪一闪亮晶晶 « scintille, scintille, étincelante ».
+liangjingjing | 亮晶晶 | liang4 jing1 jing1 | étincelant | aucun | 一闪一闪亮晶晶 « scintille, scintille, étincelante ». 晶晶 ne répète pas 亮 : il ajoute une image, et garde son ton (≠ 星星, 谢谢).
 mantian | 满天 | man3 tian1 | tout le ciel | aucun |
 dou | 都 | dou1 | tous, tout | syllabe dou1 | 满天都是小星星 « tout le ciel n'est que petites étoiles ». Dans 成都, dū, « capitale ».
 shi | 是 | shi4 | être | |
 xiao | 小 | xiao3 | petit | | 小眼睛 : on écrit xiǎo yǎnjing, on dit xiáo yǎnjing (deux 3ᵉ tons de suite).
-xingxing | 星星 | xing1 xing5 | étoile | | La 2ᵉ syllabe est au ton neutre.
+xingxing | 星星 | xing1 xing5 | étoile | | Le mot redoublé : la copie perd son ton (xīngxing), comme dans 谢谢.
 gua | 挂 | gua4 | accrocher ; être suspendu | |
 zai | 在 | zai4 | à, dans (un lieu) | | 挂在天上 « accroché dans le ciel ».
 tianshang | 天上 | tian1 shang4 | dans le ciel | |
@@ -91,23 +91,23 @@ fang | 放 | fang4 | lâcher ; répandre | | 放光明 « répandre la lumière 
 guangming | 光明 | guang1 ming2 | lumière, clarté | |
 haoxiang | 好像 | hao3 xiang4 | on dirait, comme | | Pas de changement de ton : xiàng est au 4ᵉ ton.
 xuduo | 许多 | xu3 duo1 | beaucoup de | | 好像许多小眼睛 « comme une multitude de petits yeux ».
-yanjing | 眼睛 | yan3 jing5 | œil, yeux | | 睛 au ton neutre. 目 + 青 qīng, vu à la leçon 3.
+yanjing | 眼睛 | yan3 jing5 | œil, yeux | | 睛 au ton neutre.
 
 ## l4b | Leçon 4 · Clés du corps, et 人 从 众
 ren | 人 | ren2 | personne, homme | | Clé n° 9. À gauche : 亻 (你, 们, 像).
-cong | 从 | cong2 | suivre ; depuis | | Deux personnes. Traditionnel : 從.
-zhong | 众 | zhong4 | foule | | Trois personnes. Traditionnel : 眾.
+cong | 从 | cong2 | suivre ; depuis | |
+zhong | 众 | zhong4 | foule | |
 rou | 肉 | rou4 | viande, chair | | Clé n° 130. À gauche ou en bas : 月 (肚, 脸, 有), à ne pas confondre avec la lune.
 shen | 身 | shen1 | corps | | Clé n° 158. 躲 duǒ « se cacher » : 身 + 朵 (le son).
 nv | 女 | nv3 | femme | | Clé n° 38 (好, 始, 妈).
 shou | 手 | shou3 | main | | Clé n° 64. À gauche : 扌 (挂, 打, 抱).
 zu | 足 | zu2 | pied | | Clé n° 157. À gauche : ⻊ (跑, 路).
 yan | 言 | yan2 | parole | | Clé n° 149. À gauche : 讠 en simplifié, 訁 en traditionnel (谢, 课, 许, 请).
-ye | 页 | ye4 | page ; (comme clé) la tête | | Clé n° 181. Traditionnel : 頁. Comme clé, il garde son sens ancien, la tête (题).
+ye | 页 | ye4 | page ; (comme clé) la tête | | Clé n° 181. Traditionnel : 頁.
 
 ## l4d | Leçon 4 · Pardon, merci, à demain
 duibuqi | 对不起 | dui4 bu5 qi3 | pardon, désolé | | 没关系！« Ce n'est rien ! ». Le manuel écrit duì bù qǐ ; le dictionnaire, duìbuqǐ : 不 y perd son ton.
-meiguanxi | 没关系 | mei2 guan1 xi5 | ce n'est rien | | 没 nie 有 : « (il n'y a) pas de lien ».
+meiguanxi | 没关系 | mei2 guan1 xi5 | ce n'est rien | | 对不起！— 没关系！« Pardon ! — Ce n'est rien ! »
 bu | 不 | bu4 | ne pas | | Devant un 4ᵉ ton, il se dit bú. 有 se nie avec 没, jamais avec 不.
 keqi | 客气 | ke4 qi5 | poli, cérémonieux | |
 bukeqi | 不客气 | bu4 ke4 qi5 | de rien | aucun | On écrit bù kèqi, on dit bú kèqi (不 devant un 4ᵉ ton). Le manuel écrit directement bú.
@@ -126,16 +126,16 @@ kashi | 喀什 | ka1 shi2 | Kashgar (Xinjiang) | aucun | 什 se lit ici shí ; d
 jinan | 济南 | ji3 nan2 | Jinan (Shandong) | aucun | 济 se lit ici jǐ, la rivière Ji ; d'habitude jì, « traverser, aider » (经济 jīngjì, « économie »).
 
 ## l3d | Leçon 3 · Provinces du dossier
-sichuan | 四川 | si4 chuan1 | Sichuan (province) | aucun | Plaque 川, cuisine 川菜. On traduit souvent « quatre rivières » : fausse piste, ce sont « quatre circuits ».
+sichuan | 四川 | si4 chuan1 | Sichuan (province) | aucun | Plaque 川, cuisine 川菜.
 shaanxi | 陕西 | shan3 xi1 | Shaanxi (province) | aucun | Shǎnxī, 3ᵉ ton ; à ne pas confondre avec 山西 Shānxī, 1ᵉʳ ton. D'où l'orthographe Shaanxi.
 zhejiang | 浙江 | zhe4 jiang1 | Zhejiang (province) | aucun | Plaque 浙, cuisine 浙菜. Hangzhou en est la capitale.
-jiangsu | 江苏 | jiang1 su1 | Jiangsu (province) | aucun | 江(宁), ancien nom de Nankin, + 苏(州). Plaque 苏.
-fujian | 福建 | fu2 jian4 | Fujian (province) | aucun | 福(州) + 建(州). Plaque 闽, pas 福.
-shandong | 山东 | shan1 dong1 | Shandong (province) | aucun | « À l'est des montagnes ». Plaque 鲁, pas 山.
-yunnan | 云南 | yun2 nan2 | Yunnan (province) | aucun | « Au sud des nuages », explication courante mais débattue. Plaque 云.
-heilongjiang | 黑龙江 | hei1 long2 jiang1 | Heilongjiang (province) | aucun | « Fleuve du Dragon noir », le fleuve Amour. Plaque 黑.
-xinjiang | 新疆 | xin1 jiang1 | Xinjiang (région autonome) | aucun | « La nouvelle frontière ». Plaque 新.
-beijing | 北京 | bei3 jing1 | Pékin (municipalité) | aucun | « La capitale du nord ». Une municipalité, comme Shanghai, Tianjin et Chongqing : elle ne dépend d'aucune province. Plaque 京.
+jiangsu | 江苏 | jiang1 su1 | Jiangsu (province) | aucun | Plaque 苏.
+fujian | 福建 | fu2 jian4 | Fujian (province) | aucun | Plaque 闽, pas 福.
+shandong | 山东 | shan1 dong1 | Shandong (province) | aucun | Plaque 鲁, pas 山.
+yunnan | 云南 | yun2 nan2 | Yunnan (province) | aucun | Plaque 云.
+heilongjiang | 黑龙江 | hei1 long2 jiang1 | Heilongjiang (province) | aucun | Plaque 黑.
+xinjiang | 新疆 | xin1 jiang1 | Xinjiang (région autonome) | aucun | Plaque 新.
+beijing | 北京 | bei3 jing1 | Pékin (municipalité) | aucun | Une municipalité, comme Shanghai, Tianjin et Chongqing : elle ne dépend d'aucune province. Plaque 京.
 shanghai | 上海 | shang4 hai3 | Shanghai (municipalité) | aucun | Une municipalité, comme Pékin. Plaque 沪, l'ancien nom d'une rivière de la ville.
 
 ## composants
@@ -335,7 +335,7 @@ shanghai | 上海 | shang4 hai3 | Shanghai (municipalité) | aucun | Une municip
 目 | Écriture ancienne : le dessin d'un œil, tourné d'un quart de tour. |
 心 | Écriture ancienne : le dessin d'un cœur, très stylisé. |
 口 | Écriture ancienne : une bouche ouverte. |
-水 | Écriture ancienne : de l'eau qui coule. À gauche d'un caractère, elle devient 氵. |
+水 | Écriture ancienne : de l'eau qui coule. |
 木 | Écriture ancienne : un arbre, les branches en haut, les racines en bas. |
 青 | Origine discutée. Le bas ressemble à 月, sans rapport avec la lune. |
 包 | Écriture ancienne : un enfant dans le ventre de sa mère, ou un bébé emmailloté : envelopper. |
@@ -421,19 +421,19 @@ shanghai | 上海 | shang4 hai3 | Shanghai (municipalité) | aucun | Une municip
 多 | Écriture ancienne : deux morceaux de viande 肉, devenus deux 夕 « soir » par ressemblance. | Deux morceaux de viande : c'est beaucoup.
 眼 | 目 œil (le sens) + 艮 gèn (le son, ancien). |
 睛 | 目 œil (le sens) + 青 qīng (le son) : la pupille. |
-人 | Écriture ancienne : une personne debout, de profil, un bras et une jambe. À gauche d'un caractère, elle devient 亻. |
+人 | Écriture ancienne : une personne debout, de profil, un bras et une jambe. |
 从 | Deux personnes 人, l'une suit l'autre : « suivre ». Le traditionnel 從 a ajouté la marche ; la forme simplifiée est la plus ancienne. Aujourd'hui, surtout « depuis, à partir de ». |
 众 | Trois personnes 人 : la foule. Le traditionnel 眾 met au-dessus un soleil, devenu un œil. |
 身 | Écriture ancienne : une femme enceinte, de profil. D'où « le corps ». Sans rapport avec 射 « tirer à l'arc ». |
-肉 | Écriture ancienne : les côtes d'un animal, ou une tranche de viande. À côté d'un composant de son, il devient 月, sans rapport avec la lune. |
+肉 | Écriture ancienne : les côtes d'un animal, ou une tranche de viande. |
 女 | Écriture ancienne : une femme agenouillée, les bras croisés. |
-手 | Écriture ancienne : une main et ses cinq doigts. À gauche d'un caractère, elle devient 扌. |
-足 | Écriture ancienne : une jambe et son pied. À gauche d'un caractère, il devient ⻊. |
-言 | Écriture ancienne : une bouche 口 surmontée d'un signe, d'origine discutée. À gauche, simplifié en 讠. | Des paroles qui sortent de la bouche.
+手 | Écriture ancienne : une main et ses cinq doigts. |
+足 | Écriture ancienne : une jambe et son pied. |
+言 | Écriture ancienne : une bouche 口 surmontée d'un signe, d'origine discutée. | Des paroles qui sortent de la bouche.
 页 | Simplification de 頁 : la tête d'une personne agenouillée. Le sens « tête » survit dans la clé (题) ; seul, il a pris le sens de « page ». |
 亮晶晶 | « brillant » + « scintillant », redoublé. |
 满天 | « plein » + « ciel » : le ciel entier. |
-星星 | « étoile », redoublé ; la 2ᵉ syllabe perd son ton. |
+星星 | « étoile », redoublé. |
 天上 | « ciel » + « sur » : dans le ciel. |
 光明 | « lumière » + « lumineux ». |
 好像 | « bien » + « ressembler » : on dirait. |

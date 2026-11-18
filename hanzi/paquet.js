@@ -251,7 +251,7 @@ const PAQUET = {
    ],
    "sens": "merci",
    "son": true,
-   "remarque": "",
+   "remarque": "Le mot redoublé : la copie perd son ton (xièxie), comme dans 星星.",
    "liste": "l1",
    "motAMot": "« remercier », redoublé."
   },
@@ -542,7 +542,7 @@ const PAQUET = {
    ],
    "sens": "l'un l'autre, mutuellement",
    "son": true,
-   "remarque": "木 + 目. Lu xiàng, c'est un autre mot : « apparence ».",
+   "remarque": "Lu xiàng, c'est un autre mot : « apparence ».",
    "liste": "l3b"
   },
   "xiang3": {
@@ -552,7 +552,7 @@ const PAQUET = {
    ],
    "sens": "penser ; vouloir",
    "son": true,
-   "remarque": "相 (le son) + 心 (le sens).",
+   "remarque": "",
    "liste": "l3b"
   },
   "chengdu": {
@@ -634,7 +634,7 @@ const PAQUET = {
    ],
    "sens": "étincelant",
    "son": false,
-   "remarque": "一闪一闪亮晶晶 « scintille, scintille, étincelante ».",
+   "remarque": "一闪一闪亮晶晶 « scintille, scintille, étincelante ». 晶晶 ne répète pas 亮 : il ajoute une image, et garde son ton (≠ 星星, 谢谢).",
    "liste": "l4",
    "motAMot": "« brillant » + « scintillant », redoublé."
   },
@@ -688,9 +688,9 @@ const PAQUET = {
    ],
    "sens": "étoile",
    "son": true,
-   "remarque": "La 2ᵉ syllabe est au ton neutre.",
+   "remarque": "Le mot redoublé : la copie perd son ton (xīngxing), comme dans 谢谢.",
    "liste": "l4",
-   "motAMot": "« étoile », redoublé ; la 2ᵉ syllabe perd son ton."
+   "motAMot": "« étoile », redoublé."
   },
   "gua": {
    "hz": "挂",
@@ -778,7 +778,7 @@ const PAQUET = {
    ],
    "sens": "œil, yeux",
    "son": true,
-   "remarque": "睛 au ton neutre. 目 + 青 qīng, vu à la leçon 3.",
+   "remarque": "睛 au ton neutre.",
    "liste": "l4",
    "motAMot": "« œil » + « pupille » : l'œil, les yeux."
   },
@@ -799,7 +799,7 @@ const PAQUET = {
    ],
    "sens": "suivre ; depuis",
    "son": true,
-   "remarque": "Deux personnes. Traditionnel : 從.",
+   "remarque": "",
    "liste": "l4b"
   },
   "zhong": {
@@ -809,7 +809,7 @@ const PAQUET = {
    ],
    "sens": "foule",
    "son": true,
-   "remarque": "Trois personnes. Traditionnel : 眾.",
+   "remarque": "",
    "liste": "l4b"
   },
   "rou": {
@@ -879,7 +879,7 @@ const PAQUET = {
    ],
    "sens": "page ; (comme clé) la tête",
    "son": true,
-   "remarque": "Clé n° 181. Traditionnel : 頁. Comme clé, il garde son sens ancien, la tête (题).",
+   "remarque": "Clé n° 181. Traditionnel : 頁.",
    "liste": "l4b"
   },
   "duibuqi": {
@@ -904,7 +904,7 @@ const PAQUET = {
    ],
    "sens": "ce n'est rien",
    "son": true,
-   "remarque": "没 nie 有 : « (il n'y a) pas de lien ».",
+   "remarque": "对不起！— 没关系！« Pardon ! — Ce n'est rien ! »",
    "liste": "l4d",
    "motAMot": "« ne pas (avoir) » + « lien, rapport » : cela n'a pas de rapport, pas d'incidence ; d'où « peu importe ». Le contraire, 有关系, veut dire « avoir de l'importance »."
   },
@@ -1083,7 +1083,7 @@ const PAQUET = {
    ],
    "sens": "Sichuan (province)",
    "son": false,
-   "remarque": "Plaque 川, cuisine 川菜. On traduit souvent « quatre rivières » : fausse piste, ce sont « quatre circuits ».",
+   "remarque": "Plaque 川, cuisine 川菜.",
    "liste": "l3d",
    "motAMot": "« quatre » + « rivière », mais le nom abrège « les quatre circuits » des Song."
   },
@@ -1119,7 +1119,7 @@ const PAQUET = {
    ],
    "sens": "Jiangsu (province)",
    "son": false,
-   "remarque": "江(宁), ancien nom de Nankin, + 苏(州). Plaque 苏.",
+   "remarque": "Plaque 苏.",
    "liste": "l3d",
    "motAMot": "江(宁), Nankin + 苏(州), Suzhou : deux villes collées."
   },
@@ -1131,7 +1131,7 @@ const PAQUET = {
    ],
    "sens": "Fujian (province)",
    "son": false,
-   "remarque": "福(州) + 建(州). Plaque 闽, pas 福.",
+   "remarque": "Plaque 闽, pas 福.",
    "liste": "l3d",
    "motAMot": "福(州) + 建(州) : deux villes collées."
   },
@@ -1143,7 +1143,7 @@ const PAQUET = {
    ],
    "sens": "Shandong (province)",
    "son": false,
-   "remarque": "« À l'est des montagnes ». Plaque 鲁, pas 山.",
+   "remarque": "Plaque 鲁, pas 山.",
    "liste": "l3d",
    "motAMot": "« montagne » + « est » : à l'est des monts Taihang."
   },
@@ -1155,7 +1155,7 @@ const PAQUET = {
    ],
    "sens": "Yunnan (province)",
    "son": false,
-   "remarque": "« Au sud des nuages », explication courante mais débattue. Plaque 云.",
+   "remarque": "Plaque 云.",
    "liste": "l3d",
    "motAMot": "« nuage » + « sud » : « au sud des nuages », lecture courante mais débattue."
   },
@@ -1168,7 +1168,7 @@ const PAQUET = {
    ],
    "sens": "Heilongjiang (province)",
    "son": false,
-   "remarque": "« Fleuve du Dragon noir », le fleuve Amour. Plaque 黑.",
+   "remarque": "Plaque 黑.",
    "liste": "l3d",
    "motAMot": "« noir » + « dragon » + « fleuve » : le fleuve Amour."
   },
@@ -1180,7 +1180,7 @@ const PAQUET = {
    ],
    "sens": "Xinjiang (région autonome)",
    "son": false,
-   "remarque": "« La nouvelle frontière ». Plaque 新.",
+   "remarque": "Plaque 新.",
    "liste": "l3d",
    "motAMot": "« nouveau » + « frontière » : nom donné par les Qing."
   },
@@ -1192,7 +1192,7 @@ const PAQUET = {
    ],
    "sens": "Pékin (municipalité)",
    "son": false,
-   "remarque": "« La capitale du nord ». Une municipalité, comme Shanghai, Tianjin et Chongqing : elle ne dépend d'aucune province. Plaque 京.",
+   "remarque": "Une municipalité, comme Shanghai, Tianjin et Chongqing : elle ne dépend d'aucune province. Plaque 京.",
    "liste": "l3d",
    "motAMot": "« nord » + « capitale » : la capitale du nord."
   },
@@ -2064,7 +2064,7 @@ const PAQUET = {
   "水": {
    "hex": "6C34",
    "indice": {
-    "origine": "Écriture ancienne : de l'eau qui coule. À gauche d'un caractère, elle devient 氵.",
+    "origine": "Écriture ancienne : de l'eau qui coule.",
     "astuce": ""
    },
    "cle": "水",
@@ -2790,7 +2790,7 @@ const PAQUET = {
   "人": {
    "hex": "4EBA",
    "indice": {
-    "origine": "Écriture ancienne : une personne debout, de profil, un bras et une jambe. À gauche d'un caractère, elle devient 亻.",
+    "origine": "Écriture ancienne : une personne debout, de profil, un bras et une jambe.",
     "astuce": ""
    },
    "cle": "人",
@@ -2850,7 +2850,7 @@ const PAQUET = {
   "肉": {
    "hex": "8089",
    "indice": {
-    "origine": "Écriture ancienne : les côtes d'un animal, ou une tranche de viande. À côté d'un composant de son, il devient 月, sans rapport avec la lune.",
+    "origine": "Écriture ancienne : les côtes d'un animal, ou une tranche de viande.",
     "astuce": ""
    },
    "cle": "肉",
@@ -2894,7 +2894,7 @@ const PAQUET = {
   "手": {
    "hex": "624B",
    "indice": {
-    "origine": "Écriture ancienne : une main et ses cinq doigts. À gauche d'un caractère, elle devient 扌.",
+    "origine": "Écriture ancienne : une main et ses cinq doigts.",
     "astuce": ""
    },
    "cle": "手",
@@ -2905,7 +2905,7 @@ const PAQUET = {
   "足": {
    "hex": "8DB3",
    "indice": {
-    "origine": "Écriture ancienne : une jambe et son pied. À gauche d'un caractère, il devient ⻊.",
+    "origine": "Écriture ancienne : une jambe et son pied.",
     "astuce": ""
    },
    "cle": "足",
@@ -2916,7 +2916,7 @@ const PAQUET = {
   "言": {
    "hex": "8A00",
    "indice": {
-    "origine": "Écriture ancienne : une bouche 口 surmontée d'un signe, d'origine discutée. À gauche, simplifié en 讠.",
+    "origine": "Écriture ancienne : une bouche 口 surmontée d'un signe, d'origine discutée.",
     "astuce": "Des paroles qui sortent de la bouche."
    },
    "cle": "言",

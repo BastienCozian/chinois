@@ -67,9 +67,16 @@
   const hz = (texte, classe) => `<span class="hz${classe ? " " + classe : ""}" lang="zh-Hans">${texte}</span>`;
   const bSon = (id) => (P.mots[id].son ? `<button class="son" data-son="${id}" aria-label="Écouter">▶</button>` : "");
 
-  // Composants d'un caractère : clé du dictionnaire, puis parties ; « sens » et « son » pour les idéo-phonétiques
+  // Pour retenir un caractère. Quand l'origine est connue, elle dit déjà les composants et leur rôle :
+  // on ne garde que la clé, puis l'origine et l'astuce (demande du 18 novembre 2026 : pas de redites).
+  // Sans origine : clé du dictionnaire, puis parties ; « sens » et « son » pour les idéo-phonétiques.
   function htmlComposants(c) {
     const i = P.caracteres[c];
+    if (i.indice.origine) {
+      const p = i.parties.find((x) => x[0] === i.cle), sensCle = p ? p[2] : i.cleSens || "";
+      const cle = i.cle && i.cle !== c ? ` <span class="info">clé ${hz(i.cle)}${sensCle ? " " + sensCle : ""}</span>` : "";
+      return `<div class="car"><p class="compo">${hz(c, "compo-c")}${cle}</p>${htmlIndice(c)}</div>`;
+    }
     const parts = i.parties.map(([p, pin, sens]) => {
       const roles = [p === i.cle && "clé", p === i.semantique && "donne le sens", p === i.phonetique && "donne le son"].filter(Boolean);
       return `${hz(p)} <i>${pin}</i> ${sens}${roles.length ? ` <em>(${roles.join(", ")})</em>` : ""}`;
@@ -90,23 +97,32 @@
   // Indice d'un caractère, sans le caractère : affichable pendant qu'on le cherche.
   // L'origine est établie ; l'astuce est inventée pour la mémoire, et le dit.
   const hzTexte = (t) => t.replace(/[\u2e80-\u2fdf\u3400-\u9fff]+/g, (x) => hz(x));
-  function htmlIndice(c) {
-    const i = P.caracteres[c].indice;
-    return (i.origine ? `<p class="indice"><b>Origine</b> ${hzTexte(i.origine)}</p>` : "") +
-      (i.astuce ? `<p class="indice astuce"><b>Astuce inventée</b> ${hzTexte(i.astuce)}</p>` : "");
+  // cache : pendant l'écriture, aucun caractère ne s'affiche, pas même un composant ; chacun devient une case vide
+  // (demande du 18 novembre 2026 : l'aide-mémoire donne un indice, pas le dessin).
+  const hzCache = (t) => t.replace(/[⺀-⿟㐀-鿿]/g, '<span class="cache" title="caractère caché">▢</span>');
+  function htmlIndice(c, cache) {
+    const i = P.caracteres[c].indice, f = cache ? hzCache : hzTexte;
+    return (i.origine ? `<p class="indice"><b>Origine</b> ${f(i.origine)}</p>` : "") +
+      (i.astuce ? `<p class="indice astuce"><b>Astuce inventée</b> ${f(i.astuce)}</p>` : "");
   }
 
   // Carte (villes et provinces du dossier) : seulement la ville et sa province, ou la province
+  const DESSUS = { jiangsu: true };
   function htmlCarte(id) {
     if (typeof CARTE === "undefined") return "";
     const C = CARTE, v = C.villes[id], prov = v ? C.province[id] : (C.provinces[id] ? id : null);
     if (!prov) return "";
-    const e = !v && C.etiquettes[prov];
+    // Province nommée aussi pour une ville, avec son pinyin (demande du 18 novembre 2026) ;
+    // le pinyin va sous le nom, ou au-dessus quand la ville est juste dessous (DESSUS)
+    const e = C.etiquettes[prov], mp = v && P.mots[prov];
+    const pyProv = mp ? py(mp).replace(/^./, (x) => x.toUpperCase()) : "";
+    const dy = DESSUS[prov] ? -24 : 22;
     return `<figure class="carte-geo"><svg viewBox="${C.viewBox}" role="img" aria-label="Carte de la Chine">
       <rect class="mer" width="100%" height="100%"/><g class="voisin">${C.voisins}</g>
       <g class="fond">${C.fonds.map((d) => `<path d="${d}"/>`).join("")}${Object.entries(C.provinces).map(([k, d]) => `<path${k === prov ? ' class="vue"' : ""} d="${d}"/>`).join("")}</g>
       ${prov === "beijing" ? "" : `<circle class="repere" cx="${C.pekin[0]}" cy="${C.pekin[1]}" r="3.5"/><text class="repere-t" x="${C.pekin[0] - 8}" y="${C.pekin[1] - 4}" text-anchor="end">北京</text>`}
       ${e ? `<text class="prov-t" x="${e.x}" y="${e.y}"${e.milieu ? ' text-anchor="middle"' : ""}>${e.nom}</text>` : ""}
+      ${e && pyProv ? `<text class="prov-py" x="${e.x}" y="${e.y + dy}"${e.milieu ? ' text-anchor="middle"' : ""}>${pyProv}</text>` : ""}
       ${v ? `<circle class="ville" cx="${v.x}" cy="${v.y}" r="6"/><text class="ville-t" x="${v.tx}" y="${v.ty}"${v.fin ? ' text-anchor="end"' : ""}>${v.nom}</text>` : ""}
     </svg></figure>`;
   }
@@ -185,7 +201,7 @@
       <p>Chaque mot donne quatre cartes, qui arrivent à quelques mots d'écart.</p>
       <p><b>Écriture</b> (le sens et le pinyin sont donnés). Écrivez chaque caractère au doigt, trait par trait,
       dans l'ordre et dans le bon sens : un trait faux est refusé et compté. Après trois essais, le trait attendu clignote.
-      « Aide-mémoire » donne l'origine du caractère ou une astuce ; « Trait suivant » montre le trait attendu ; « Je ne sais pas » montre le caractère, puis vous le repassez.
+      « Aide-mémoire » donne l'origine du caractère ou une astuce, sans montrer de caractère (▢ : un caractère caché) ; « Trait suivant » montre le trait attendu ; « Je ne sais pas » montre le caractère, puis vous le repassez.
       La première fois, le mot se présente : regardez l'ordre des traits, puis repassez sur le modèle.
       La note proposée suit vos fautes ; changez-la si elle vous semble injuste.</p>
       <p><b>Sens</b> (les caractères). Retrouvez le sens, puis vérifiez.</p>
@@ -313,8 +329,13 @@
       const c = E.cartes[id];
       return `<i class="pt ${c ? c.etat : "nouvelle"}" title="${Hanzi.TYPES[id[0]]}"></i>`;
     };
-    const nbExclus = () => Hanzi.mots(P).filter((id) => E.exclus[id]).length;
-    const resume = () => { const n = nbExclus(); return n ? `${n} mot${n > 1 ? "s" : ""} exclu${n > 1 ? "s" : ""} de l'apprentissage.` : "Aucun mot exclu."; };
+    // Décompte des mots à apprendre, exclus retirés : par liste et au total (demande du 18 novembre 2026)
+    const pl = (n, mot) => `${n} ${mot}${n > 1 ? "s" : ""}`;
+    const decompte = (ids) => {
+      const ex = ids.filter((id) => E.exclus[id]).length, n = ids.length - ex;
+      return `${pl(n, "mot")} à apprendre${ex ? ` sur ${ids.length} (${pl(ex, "exclu")})` : ""}`;
+    };
+    const resume = () => `Total : ${decompte(Hanzi.mots(P))}.`;
     let h = `<div class="haut"><button class="lien" id="quitter">← Accueil</button></div>
       <header><h1>Les mots</h1><p class="sous-titre">${choix
         ? "Touchez un mot pour l'exclure de l'apprentissage, touchez-le encore pour le reprendre. Un mot exclu ne revient plus en séance ; sa progression est gardée."
@@ -322,7 +343,7 @@
       <p class="choix-mots"><button id="choix"${choix ? ' class="principal"' : ""}>${choix ? "Terminé" : "Choisir les mots à apprendre"}</button>
       <span class="info" id="resume-exclus">${resume()}</span></p>`;
     P.listes.forEach((l, k) => {
-      h += `<section class="bloc"><h2>${l.titre}</h2>${choix ? `<p class="tout-liste"><button class="lien" data-liste="${k}" data-exclure="1">Tout exclure</button> · <button class="lien" data-liste="${k}" data-exclure="">Tout reprendre</button></p>` : ""}
+      h += `<section class="bloc"><h2>${l.titre} <span class="decompte" data-decompte="${k}">· ${decompte(l.mots)}</span></h2>${choix ? `<p class="tout-liste"><button class="lien" data-liste="${k}" data-exclure="1">Tout exclure</button> · <button class="lien" data-liste="${k}" data-exclure="">Tout reprendre</button></p>` : ""}
         <div class="mots${choix ? " en-choix" : ""}">${l.mots.map((id) => {
         const m = P.mots[id], ex = !!E.exclus[id];
         return `<button data-mot="${id}" class="${ex ? "exclu" : ""}"${choix ? ` aria-pressed="${!ex}"` : ""}>${hz(m.hz)}<small lang="zh-Latn-pinyin">${py(m)}</small><small>${m.sens}</small>
@@ -339,7 +360,11 @@
       if (ex) E.exclus[b.dataset.mot] = true; else delete E.exclus[b.dataset.mot];
       b.classList.toggle("exclu", ex); b.setAttribute("aria-pressed", String(!ex));
     };
-    const apres = () => { reordonner(); sauver(); zone.querySelector("#resume-exclus").textContent = resume(); };
+    const apres = () => {
+      reordonner(); sauver();
+      zone.querySelector("#resume-exclus").textContent = resume();
+      zone.querySelectorAll("[data-decompte]").forEach((d) => { d.textContent = "· " + decompte(P.listes[+d.dataset.decompte].mots); });
+    };
     zone.querySelectorAll("[data-mot]").forEach((b) => {
       b.onclick = choix ? () => { basculer(b, !E.exclus[b.dataset.mot]); apres(); } : () => fiche(b.dataset.mot);
     });
@@ -575,7 +600,7 @@
     on("#revoir", () => { if (w) w.animateCharacter({ onComplete: () => quiz(true) }); });
     on("#memo", () => {
       aides[k] = Math.max(aides[k], 1);
-      zone.querySelector("#compo").innerHTML = htmlIndice(chars[k]);
+      zone.querySelector("#compo").innerHTML = htmlIndice(chars[k], true);
     });
     on("#indice", () => {
       if (!w) return;
