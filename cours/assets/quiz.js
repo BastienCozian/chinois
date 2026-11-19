@@ -16,6 +16,20 @@
         <div class="solution">Explication…</div>
       </div>
 
+   3. Réponse écrite en chinois (caractères ou pinyin à tons)
+      <div class="exo" id="q5" data-type="texte" data-reponse="三百零五|sānbǎi líng wǔ"
+           data-dit="sānbǎi líng wǔ" data-sujet="…">
+        <p>Énoncé…</p>
+        <div class="solution">…</div>
+      </div>
+      data-reponse : formes acceptées, séparées par « | ». Une forme en caractères se compare aux
+      caractères tapés ; une forme en pinyin se compare aux syllabes et aux tons, que l'apprenant
+      tape les tons en accents (sān) ou en chiffres (san1, 5 ou rien pour le ton neutre). Espaces,
+      apostrophes et ponctuation ne comptent pas ; ü s'écrit aussi v ou u:.
+      data-dit (facultatif) : formes prononcées (changements de ton) ; les taper ne compte pas comme
+      un essai, le retour rappelle que le pinyin écrit le ton du dictionnaire.
+      Des syllabes justes sans aucun ton ne comptent pas non plus comme un essai : on demande les tons.
+
    Avant le premier essai, l'apprenant déclare sa confiance (sûr, j'hésite, au hasard).
    Le premier essai est celui qui compte pour le récapitulatif ; on peut ensuite réessayer
    ou consulter la solution, ce que le récapitulatif signale aussi.
@@ -181,6 +195,91 @@
         input.readOnly = true;
       } else if (Math.abs(v + attendu) <= tol) {
         retour(exo, false, "Bonne valeur, mauvais signe : vérifiez le sens du transit.");
+      } else {
+        retour(exo, false, "Pas encore. Réessayez, ou consultez la solution.");
+      }
+    }
+    bouton.addEventListener("click", verifier);
+    input.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") verifier();
+    });
+  }
+
+  /* Pinyin ou caractères → { lettres, tons, hz } pour comparer sans tenir compte de la graphie des tons. */
+  const VOYELLES_TONS = {
+    "ā": "a1", "á": "a2", "ǎ": "a3", "à": "a4", "ē": "e1", "é": "e2", "ě": "e3", "è": "e4",
+    "ī": "i1", "í": "i2", "ǐ": "i3", "ì": "i4", "ō": "o1", "ó": "o2", "ǒ": "o3", "ò": "o4",
+    "ū": "u1", "ú": "u2", "ǔ": "u3", "ù": "u4", "ǖ": "v1", "ǘ": "v2", "ǚ": "v3", "ǜ": "v4", "ü": "v",
+  };
+  function analyserChinois(texte) {
+    const t = String(texte).normalize("NFC").toLowerCase().replace(/u:/g, "v");
+    let lettres = "", tons = "", hz = "";
+    for (const c of t) {
+      const v = VOYELLES_TONS[c];
+      if (v) { lettres += v[0]; tons += v.slice(1); }
+      else if (c >= "a" && c <= "z") lettres += c;
+      else if (c >= "1" && c <= "4") tons += c;
+      else if (/[\u3007\u3400-\u9fff]/.test(c)) hz += c;
+    }
+    return { lettres: lettres, tons: tons, hz: hz };
+  }
+  function memeChinois(a, b) {
+    if (a.hz || b.hz) return a.hz === b.hz && a.lettres === b.lettres;
+    return a.lettres !== "" && a.lettres === b.lettres && a.tons === b.tons;
+  }
+
+  function monterTexte(exo, r) {
+    const formes = (exo.dataset.reponse || "").split("|").map(analyserChinois);
+    const dites = (exo.dataset.dit || "").split("|").filter(Boolean).map(analyserChinois);
+
+    const ligne = document.createElement("div");
+    ligne.className = "exo-saisie";
+    const input = document.createElement("input");
+    input.type = "text";
+    input.autocomplete = "off";
+    input.setAttribute("autocapitalize", "off");
+    input.setAttribute("autocorrect", "off");
+    input.spellcheck = false;
+    input.placeholder = "汉字 ou pinyin : sān, san1";
+    input.className = "saisie-texte";
+    input.setAttribute("aria-label", "Votre réponse, en caractères ou en pinyin à tons");
+    const bouton = document.createElement("button");
+    bouton.type = "button";
+    bouton.textContent = "Vérifier";
+    const ret = document.createElement("span");
+    ret.className = "retour";
+    ret.setAttribute("aria-live", "polite");
+    ligne.append(input, bouton, ret);
+
+    const conf = monterConfiance(exo, r);
+    const sol = exo.querySelector(".solution");
+    exo.insertBefore(ligne, sol || null);
+    exo.insertBefore(conf.ligne, ligne);
+    const boutonSol = preparerSolution(exo, r);
+
+    function verifier() {
+      if (r.reussi) return;
+      const v = analyserChinois(input.value);
+      if (!v.lettres && !v.hz) {
+        retour(exo, false, "Écrivez des caractères ou du pinyin.");
+        return;
+      }
+      if (dites.some(function (d) { return memeChinois(v, d); }) && !formes.some(function (f) { return memeChinois(v, f); })) {
+        retour(exo, false, "C'est ce qu'on dit. Écrivez le ton du dictionnaire.");
+        return;
+      }
+      if (!v.hz && !v.tons && formes.some(function (f) { return !f.hz && f.lettres === v.lettres; })) {
+        retour(exo, false, "Syllabes justes : ajoutez les tons (accents, ou chiffres 1 à 4).");
+        return;
+      }
+      const ok = formes.some(function (f) { return memeChinois(v, f); });
+      if (!essai(exo, r, conf, ok, input.value.trim())) return;
+      if (boutonSol && sol.hidden) boutonSol.hidden = false;
+      if (ok) {
+        retour(exo, true, "Juste.");
+        input.readOnly = true;
+      } else if (!v.hz && formes.some(function (f) { return !f.hz && f.lettres === v.lettres; })) {
+        retour(exo, false, "Les syllabes sont justes, pas les tons. Réessayez, ou consultez la solution.");
       } else {
         retour(exo, false, "Pas encore. Réessayez, ou consultez la solution.");
       }
@@ -377,6 +476,7 @@
       resultats.set(id, r);
       if (exo.dataset.type === "num") monterNum(exo, r);
       else if (exo.dataset.type === "qcm") monterQcm(exo, r);
+      else if (exo.dataset.type === "texte") monterTexte(exo, r);
       if (exo.hasAttribute("data-papier")) monterPapier(exo, r);
     });
     majScore();

@@ -299,6 +299,12 @@ figcaption {
   background: var(--surface);
   color: var(--encre);
 }
+.exo-saisie input.saisie-texte {
+  font-family: var(--serif, inherit);
+  width: 16rem;
+  max-width: 100%;
+  font-size: 1.1rem;
+}
 .exo-unite { font-family: var(--sans); color: var(--encre-douce); }
 button {
   font-family: var(--sans);

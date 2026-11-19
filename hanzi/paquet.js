@@ -154,6 +154,46 @@ const PAQUET = {
     "beijing",
     "shanghai"
    ]
+  },
+  {
+   "id": "l5",
+   "titre": "Leçon 5 · Les nombres",
+   "mots": [
+    "n4",
+    "n5",
+    "n6",
+    "n7",
+    "n8",
+    "n9",
+    "n10",
+    "n0",
+    "n100",
+    "yibai"
+   ]
+  },
+  {
+   "id": "l5b",
+   "titre": "Leçon 5 · La mort et la maladie (歹, 疒)",
+   "mots": [
+    "dai",
+    "ne",
+    "si-mourir",
+    "bing",
+    "shengbing",
+    "teng",
+    "tong"
+   ]
+  },
+  {
+   "id": "l5c",
+   "titre": "Leçon 5 · Les quatre trésors du lettré (文房四宝)",
+   "mots": [
+    "wenfangsibao",
+    "bi",
+    "mo",
+    "zhi-papier",
+    "yan-pierre"
+   ]
   }
  ],
  "mots": {
@@ -1207,6 +1247,234 @@ const PAQUET = {
    "remarque": "Une municipalité, comme Pékin. Plaque 沪, l'ancien nom d'une rivière de la ville.",
    "liste": "l3d",
    "motAMot": "« sur » + « mer ». Le sens exact du nom est discuté."
+  },
+  "n4": {
+   "hz": "四",
+   "py": [
+    "si4"
+   ],
+   "sens": "quatre",
+   "son": true,
+   "remarque": "Sonne presque comme 死 sǐ « mourir » : seul le ton diffère. Attention à 十 shí (s / sh, 4ᵉ / 2ᵉ ton).",
+   "liste": "l5"
+  },
+  "n5": {
+   "hz": "五",
+   "py": [
+    "wu3"
+   ],
+   "sens": "cinq",
+   "son": true,
+   "remarque": "五百 : on écrit wǔbǎi, on dit wúbǎi (deux 3ᵉ tons de suite).",
+   "liste": "l5"
+  },
+  "n6": {
+   "hz": "六",
+   "py": [
+    "liu4"
+   ],
+   "sens": "six",
+   "son": true,
+   "remarque": "",
+   "liste": "l5"
+  },
+  "n7": {
+   "hz": "七",
+   "py": [
+    "qi1"
+   ],
+   "sens": "sept",
+   "son": true,
+   "remarque": "",
+   "liste": "l5"
+  },
+  "n8": {
+   "hz": "八",
+   "py": [
+    "ba1"
+   ],
+   "sens": "huit",
+   "son": true,
+   "remarque": "Chiffre porte-bonheur : bā rappelle 发 fā, « prospérer ».",
+   "liste": "l5"
+  },
+  "n9": {
+   "hz": "九",
+   "py": [
+    "jiu3"
+   ],
+   "sens": "neuf",
+   "son": true,
+   "remarque": "九百 : on écrit jiǔbǎi, on dit jiúbǎi.",
+   "liste": "l5"
+  },
+  "n10": {
+   "hz": "十",
+   "py": [
+    "shi2"
+   ],
+   "sens": "dix",
+   "son": true,
+   "remarque": "Devant, on multiplie (二十 = 20) ; derrière, on ajoute (十二 = 12). Au milieu d'un nombre, il dit son 一 : 一百一十 (110).",
+   "liste": "l5"
+  },
+  "n0": {
+   "hz": "零",
+   "py": [
+    "ling2"
+   ],
+   "sens": "zéro",
+   "son": true,
+   "remarque": "Un trou au milieu d'un nombre se dit 零, une fois, sans unité : 一百零五 (105). Dans les années : 〇.",
+   "liste": "l5"
+  },
+  "n100": {
+   "hz": "百",
+   "py": [
+    "bai3"
+   ],
+   "sens": "cent",
+   "son": true,
+   "remarque": "200 : 两百 ou 二百. 一百五 = 150, jamais 105.",
+   "liste": "l5"
+  },
+  "yibai": {
+   "hz": "一百",
+   "py": [
+    "yi1",
+    "bai3"
+   ],
+   "sens": "cent (100)",
+   "son": false,
+   "remarque": "On écrit yībǎi, on dit yìbǎi (一 devant un 3ᵉ ton).",
+   "liste": "l5",
+   "motAMot": "« un » + « cent »."
+  },
+  "dai": {
+   "hz": "歹",
+   "py": [
+    "dai3"
+   ],
+   "sens": "mauvais ; (clé) restes d'un corps, la mort",
+   "son": false,
+   "remarque": "Clé n° 78 (死, 残). Le trait du haut le distingue de 夕 « soir ».",
+   "liste": "l5b"
+  },
+  "ne": {
+   "hz": "疒",
+   "py": [
+    "ne4"
+   ],
+   "sens": "(clé) la maladie",
+   "son": false,
+   "remarque": "Clé n° 104, toujours en enveloppe en haut et à gauche (病, 疼, 痛). Ne s'emploie plus seul.",
+   "liste": "l5b"
+  },
+  "si-mourir": {
+   "hz": "死",
+   "py": [
+    "si3"
+   ],
+   "sens": "mourir",
+   "son": true,
+   "remarque": "Sǐ : le 4 (sì) lui doit sa mauvaise réputation.",
+   "liste": "l5b"
+  },
+  "bing": {
+   "hz": "病",
+   "py": [
+    "bing4"
+   ],
+   "sens": "maladie ; malade",
+   "son": true,
+   "remarque": "",
+   "liste": "l5b"
+  },
+  "shengbing": {
+   "hz": "生病",
+   "py": [
+    "sheng1",
+    "bing4"
+   ],
+   "sens": "tomber malade",
+   "son": true,
+   "remarque": "",
+   "liste": "l5b",
+   "motAMot": "« produire » + « maladie » : tomber malade."
+  },
+  "teng": {
+   "hz": "疼",
+   "py": [
+    "teng2"
+   ],
+   "sens": "avoir mal",
+   "son": true,
+   "remarque": "我牙疼 « j'ai mal aux dents ».",
+   "liste": "l5b"
+  },
+  "tong": {
+   "hz": "痛",
+   "py": [
+    "tong4"
+   ],
+   "sens": "douleur ; faire mal",
+   "son": true,
+   "remarque": "",
+   "liste": "l5b"
+  },
+  "wenfangsibao": {
+   "hz": "文房四宝",
+   "py": [
+    "wen2",
+    "fang2",
+    "si4",
+    "bao3"
+   ],
+   "sens": "les quatre trésors du lettré",
+   "son": false,
+   "remarque": "Pinceau, encre, papier, pierre à encre : 笔、墨、纸、砚.",
+   "liste": "l5c",
+   "motAMot": "« cabinet d'étude » + « quatre » + « trésors »."
+  },
+  "bi": {
+   "hz": "笔",
+   "py": [
+    "bi3"
+   ],
+   "sens": "pinceau ; stylo",
+   "son": true,
+   "remarque": "",
+   "liste": "l5c"
+  },
+  "mo": {
+   "hz": "墨",
+   "py": [
+    "mo4"
+   ],
+   "sens": "encre",
+   "son": true,
+   "remarque": "",
+   "liste": "l5c"
+  },
+  "zhi-papier": {
+   "hz": "纸",
+   "py": [
+    "zhi3"
+   ],
+   "sens": "papier",
+   "son": true,
+   "remarque": "zhǐ, avec zh, 3ᵉ ton.",
+   "liste": "l5c"
+  },
+  "yan-pierre": {
+   "hz": "砚",
+   "py": [
+    "yan4"
+   ],
+   "sens": "pierre à encre",
+   "son": false,
+   "remarque": "",
+   "liste": "l5c"
   }
  },
  "caracteres": {
@@ -3482,7 +3750,7 @@ const PAQUET = {
   "四": {
    "hex": "56DB",
    "indice": {
-    "origine": "Écriture ancienne : quatre traits 亖, comme 一 二 三. La forme actuelle est un emprunt, d'origine discutée.",
+    "origine": "Écriture ancienne : quatre traits. La forme d'aujourd'hui est un emprunt, pour le son, d'un dessin de nez qui souffle.",
     "astuce": ""
    },
    "cle": "囗",
@@ -3848,6 +4116,447 @@ const PAQUET = {
    ],
    "semantique": "氵",
    "phonetique": "每"
+  },
+  "五": {
+   "hex": "4E94",
+   "indice": {
+    "origine": "",
+    "astuce": "Origine discutée. Deux traits horizontaux, et entre eux une croix."
+   },
+   "cle": "二",
+   "parties": [],
+   "semantique": "",
+   "phonetique": "",
+   "cleSens": "deux"
+  },
+  "六": {
+   "hex": "516D",
+   "indice": {
+    "origine": "",
+    "astuce": "Origine discutée, peut-être une cabane, empruntée pour le son. Un toit, et deux pieds écartés."
+   },
+   "cle": "八",
+   "parties": [
+    [
+     "亠",
+     "tóu",
+     "couvercle, toit (en haut)"
+    ],
+    [
+     "八",
+     "bā",
+     "huit"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "七": {
+   "hex": "4E03",
+   "indice": {
+    "origine": "Écriture ancienne : deux traits qui se coupent, l'ancien « couper ».",
+    "astuce": ""
+   },
+   "cle": "一",
+   "parties": [
+    [
+     "一",
+     "yī",
+     "un, un trait"
+    ],
+    [
+     "乚",
+     "gōu",
+     "(trait crochu)"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "八": {
+   "hex": "516B",
+   "indice": {
+    "origine": "Écriture ancienne : deux traits qui s'écartent, « diviser » ; emprunté pour le son.",
+    "astuce": ""
+   },
+   "cle": "八",
+   "parties": [],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "九": {
+   "hex": "4E5D",
+   "indice": {
+    "origine": "Écriture ancienne : une main, le coude plié.",
+    "astuce": ""
+   },
+   "cle": "乙",
+   "parties": [
+    [
+     "丿",
+     "piě",
+     "trait oblique"
+    ],
+    [
+     "乙",
+     "yǐ",
+     "(forme crochue)"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "十": {
+   "hex": "5341",
+   "indice": {
+    "origine": "",
+    "astuce": "Origine discutée. Une croix : dix."
+   },
+   "cle": "十",
+   "parties": [
+    [
+     "一",
+     "yī",
+     "un, un trait"
+    ],
+    [
+     "丨",
+     "shù",
+     "trait vertical"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "零": {
+   "hex": "96F6",
+   "indice": {
+    "origine": "雨 pluie (le sens) + 令 lìng (le son) : à l'origine, de grosses gouttes de pluie.",
+    "astuce": ""
+   },
+   "cle": "雨",
+   "parties": [
+    [
+     "雨",
+     "yǔ",
+     "pluie"
+    ],
+    [
+     "令",
+     "lìng",
+     "ordonner ; (ici, le son : lìng)"
+    ]
+   ],
+   "semantique": "雨",
+   "phonetique": "令"
+  },
+  "百": {
+   "hex": "767E",
+   "indice": {
+    "origine": "一 (le sens) + 白 bái (le son).",
+    "astuce": ""
+   },
+   "cle": "白",
+   "parties": [
+    [
+     "一",
+     "yī",
+     "un, un trait"
+    ],
+    [
+     "白",
+     "bái",
+     "blanc"
+    ]
+   ],
+   "semantique": "一",
+   "phonetique": "白"
+  },
+  "歹": {
+   "hex": "6B79",
+   "indice": {
+    "origine": "Écriture ancienne : des restes humains, des os.",
+    "astuce": ""
+   },
+   "cle": "歹",
+   "parties": [
+    [
+     "一",
+     "yī",
+     "un, un trait"
+    ],
+    [
+     "夕",
+     "xī",
+     "soir"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "疒": {
+   "hex": "7592",
+   "indice": {
+    "origine": "Écriture ancienne : une personne couchée dans un lit, le malade.",
+    "astuce": ""
+   },
+   "cle": "疒",
+   "parties": [
+    [
+     "广",
+     "guǎng",
+     "abri, grand toit"
+    ],
+    [
+     "冫",
+     "bīng",
+     "glace"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "死": {
+   "hex": "6B7B",
+   "indice": {
+    "origine": "歹 restes d'un corps (le sens) + un composant de son ancien.",
+    "astuce": ""
+   },
+   "cle": "歹",
+   "parties": [
+    [
+     "歹",
+     "dǎi",
+     "restes d'un corps, la mort"
+    ],
+    [
+     "匕",
+     "bǐ",
+     "cuillère"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "病": {
+   "hex": "75C5",
+   "indice": {
+    "origine": "疒 maladie (le sens) + 丙 bǐng (le son).",
+    "astuce": ""
+   },
+   "cle": "疒",
+   "parties": [
+    [
+     "疒",
+     "nè",
+     "maladie"
+    ],
+    [
+     "丙",
+     "bǐng",
+     "(composant de son : bǐng)"
+    ]
+   ],
+   "semantique": "疒",
+   "phonetique": "丙"
+  },
+  "疼": {
+   "hex": "75BC",
+   "indice": {
+    "origine": "疒 maladie (le sens) + 冬 dōng (le son, de loin).",
+    "astuce": ""
+   },
+   "cle": "疒",
+   "parties": [
+    [
+     "疒",
+     "nè",
+     "maladie"
+    ],
+    [
+     "冬",
+     "dōng",
+     "hiver"
+    ]
+   ],
+   "semantique": "疒",
+   "phonetique": "冬"
+  },
+  "痛": {
+   "hex": "75DB",
+   "indice": {
+    "origine": "疒 maladie (le sens) + 甬 yǒng (le son, de loin).",
+    "astuce": ""
+   },
+   "cle": "疒",
+   "parties": [
+    [
+     "疒",
+     "nè",
+     "maladie"
+    ],
+    [
+     "甬",
+     "yǒng",
+     "(composant de son : yǒng)"
+    ]
+   ],
+   "semantique": "疒",
+   "phonetique": "甬"
+  },
+  "文": {
+   "hex": "6587",
+   "indice": {
+    "origine": "Écriture ancienne : une personne de face, un motif tatoué sur la poitrine. D'où « motif », puis « écrit, lettres ».",
+    "astuce": ""
+   },
+   "cle": "文",
+   "parties": [
+    [
+     "亠",
+     "tóu",
+     "couvercle, toit (en haut)"
+    ],
+    [
+     "乂",
+     "yì",
+     "(croisement de traits)"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "房": {
+   "hex": "623F",
+   "indice": {
+    "origine": "户 porte (le sens) + 方 fāng (le son) : la pièce, la chambre.",
+    "astuce": ""
+   },
+   "cle": "户",
+   "parties": [
+    [
+     "户",
+     "hù",
+     "porte (un battant)"
+    ],
+    [
+     "方",
+     "fāng",
+     "carré, direction ; ici pour le son"
+    ]
+   ],
+   "semantique": "户",
+   "phonetique": "方"
+  },
+  "宝": {
+   "hex": "5B9D",
+   "indice": {
+    "origine": "Simplification de 寶 : sous le toit 宀, du jade 玉 (et, en traditionnel, des coquillages et un composant de son). Le trésor qu'on garde chez soi.",
+    "astuce": ""
+   },
+   "cle": "宀",
+   "parties": [
+    [
+     "宀",
+     "gài",
+     "toit"
+    ],
+    [
+     "玉",
+     "yù",
+     "jade"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "笔": {
+   "hex": "7B14",
+   "indice": {
+    "origine": "Simplification de 筆 : bambou (le sens) + l'ancien dessin du pinceau (le son).",
+    "astuce": "La forme simplifiée : un manche de bambou sur une touffe de poils 毛."
+   },
+   "cle": "⺮",
+   "parties": [
+    [
+     "⺮",
+     "zhú",
+     "bambou (竹 en haut)"
+    ],
+    [
+     "毛",
+     "máo",
+     "poil"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "墨": {
+   "hex": "58A8",
+   "indice": {
+    "origine": "黑 hēi noir (le son ; les deux mots sont apparentés) + 土 terre (le sens).",
+    "astuce": ""
+   },
+   "cle": "土",
+   "parties": [
+    [
+     "黑",
+     "hēi",
+     "noir"
+    ],
+    [
+     "土",
+     "tǔ",
+     "terre"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "纸": {
+   "hex": "7EB8",
+   "indice": {
+    "origine": "纟 soie (le sens) + 氏 shì (le son).",
+    "astuce": ""
+   },
+   "cle": "纟",
+   "parties": [
+    [
+     "纟",
+     "sī",
+     "soie (糸 à gauche, simplifié)"
+    ],
+    [
+     "氏",
+     "shì",
+     "clan ; (ici, le son : shì)"
+    ]
+   ],
+   "semantique": "纟",
+   "phonetique": "氏"
+  },
+  "砚": {
+   "hex": "781A",
+   "indice": {
+    "origine": "石 pierre (le sens) + 见 jiàn (le son).",
+    "astuce": ""
+   },
+   "cle": "石",
+   "parties": [
+    [
+     "石",
+     "shí",
+     "pierre"
+    ],
+    [
+     "见",
+     "jiàn",
+     "voir"
+    ]
+   ],
+   "semantique": "石",
+   "phonetique": "见"
   }
  }
 };

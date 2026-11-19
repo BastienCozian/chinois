@@ -138,7 +138,54 @@ xinjiang | 新疆 | xin1 jiang1 | Xinjiang (région autonome) | aucun | Plaque �
 beijing | 北京 | bei3 jing1 | Pékin (municipalité) | aucun | Une municipalité, comme Shanghai, Tianjin et Chongqing : elle ne dépend d'aucune province. Plaque 京.
 shanghai | 上海 | shang4 hai3 | Shanghai (municipalité) | aucun | Une municipalité, comme Pékin. Plaque 沪, l'ancien nom d'une rivière de la ville.
 
+## l5 | Leçon 5 · Les nombres
+n4 | 四 | si4 | quatre | | Sonne presque comme 死 sǐ « mourir » : seul le ton diffère. Attention à 十 shí (s / sh, 4ᵉ / 2ᵉ ton).
+n5 | 五 | wu3 | cinq | | 五百 : on écrit wǔbǎi, on dit wúbǎi (deux 3ᵉ tons de suite).
+n6 | 六 | liu4 | six | |
+n7 | 七 | qi1 | sept | |
+n8 | 八 | ba1 | huit | | Chiffre porte-bonheur : bā rappelle 发 fā, « prospérer ».
+n9 | 九 | jiu3 | neuf | | 九百 : on écrit jiǔbǎi, on dit jiúbǎi.
+n10 | 十 | shi2 | dix | | Devant, on multiplie (二十 = 20) ; derrière, on ajoute (十二 = 12). Au milieu d'un nombre, il dit son 一 : 一百一十 (110).
+n0 | 零 | ling2 | zéro | | Un trou au milieu d'un nombre se dit 零, une fois, sans unité : 一百零五 (105). Dans les années : 〇.
+n100 | 百 | bai3 | cent | | 200 : 两百 ou 二百. 一百五 = 150, jamais 105.
+yibai | 一百 | yi1 bai3 | cent (100) | aucun | On écrit yībǎi, on dit yìbǎi (一 devant un 3ᵉ ton).
+
+## l5b | Leçon 5 · La mort et la maladie (歹, 疒)
+dai | 歹 | dai3 | mauvais ; (clé) restes d'un corps, la mort | aucun | Clé n° 78 (死, 残). Le trait du haut le distingue de 夕 « soir ».
+ne | 疒 | ne4 | (clé) la maladie | aucun | Clé n° 104, toujours en enveloppe en haut et à gauche (病, 疼, 痛). Ne s'emploie plus seul.
+si-mourir | 死 | si3 | mourir | syllabe si3 | Sǐ : le 4 (sì) lui doit sa mauvaise réputation.
+bing | 病 | bing4 | maladie ; malade | syllabe bing4 |
+shengbing | 生病 | sheng1 bing4 | tomber malade | |
+teng | 疼 | teng2 | avoir mal | | 我牙疼 « j'ai mal aux dents ».
+tong | 痛 | tong4 | douleur ; faire mal | |
+
+## l5c | Leçon 5 · Les quatre trésors du lettré (文房四宝)
+wenfangsibao | 文房四宝 | wen2 fang2 si4 bao3 | les quatre trésors du lettré | aucun | Pinceau, encre, papier, pierre à encre : 笔、墨、纸、砚.
+bi | 笔 | bi3 | pinceau ; stylo | |
+mo | 墨 | mo4 | encre | |
+zhi-papier | 纸 | zhi3 | papier | | zhǐ, avec zh, 3ᵉ ton.
+yan-pierre | 砚 | yan4 | pierre à encre | aucun |
+
 ## composants
+⺮ | bambou (竹 en haut)
+丙 | (composant de son : bǐng)
+乂 | (croisement de traits)
+乙 | (forme crochue)
+令 | ordonner ; (ici, le son : lìng)
+冫 | glace
+冬 | hiver
+户 | porte (un battant)
+歹 | restes d'un corps, la mort
+氏 | clan ; (ici, le son : shì)
+玉 | jade
+甬 | (composant de son : yǒng)
+疒 | maladie
+白 | blanc
+石 | pierre
+纟 | soie (糸 à gauche, simplifié)
+见 | voir
+雨 | pluie
+黑 | noir
 亻 | personne (人 sur le côté)
 尔 | tu (forme ancienne)
 女 | femme
@@ -458,3 +505,28 @@ shanghai | 上海 | shang4 hai3 | Shanghai (municipalité) | aucun | Une municip
 明天 | « suivant » + « jour » : demain. |
 休息 | « se reposer » + « souffle ». |
 一会儿 | « un » + « moment » + 儿 : un petit moment. |
+四 | Écriture ancienne : quatre traits. La forme d'aujourd'hui est un emprunt, pour le son, d'un dessin de nez qui souffle. |
+五 | | Origine discutée. Deux traits horizontaux, et entre eux une croix.
+六 | | Origine discutée, peut-être une cabane, empruntée pour le son. Un toit, et deux pieds écartés.
+七 | Écriture ancienne : deux traits qui se coupent, l'ancien « couper ». |
+八 | Écriture ancienne : deux traits qui s'écartent, « diviser » ; emprunté pour le son. |
+九 | Écriture ancienne : une main, le coude plié. |
+十 | | Origine discutée. Une croix : dix.
+零 | 雨 pluie (le sens) + 令 lìng (le son) : à l'origine, de grosses gouttes de pluie. |
+百 | 一 (le sens) + 白 bái (le son). |
+一百 | « un » + « cent ». |
+歹 | Écriture ancienne : des restes humains, des os. |
+疒 | Écriture ancienne : une personne couchée dans un lit, le malade. |
+死 | 歹 restes d'un corps (le sens) + un composant de son ancien. |
+病 | 疒 maladie (le sens) + 丙 bǐng (le son). |
+生病 | « produire » + « maladie » : tomber malade. |
+疼 | 疒 maladie (le sens) + 冬 dōng (le son, de loin). |
+痛 | 疒 maladie (le sens) + 甬 yǒng (le son, de loin). |
+文房四宝 | « cabinet d'étude » + « quatre » + « trésors ». |
+笔 | Simplification de 筆 : bambou (le sens) + l'ancien dessin du pinceau (le son). | La forme simplifiée : un manche de bambou sur une touffe de poils 毛.
+墨 | 黑 hēi noir (le son ; les deux mots sont apparentés) + 土 terre (le sens). |
+纸 | 纟 soie (le sens) + 氏 shì (le son). |
+砚 | 石 pierre (le sens) + 见 jiàn (le son). |
+文 | Écriture ancienne : une personne de face, un motif tatoué sur la poitrine. D'où « motif », puis « écrit, lettres ». |
+房 | 户 porte (le sens) + 方 fāng (le son) : la pièce, la chambre. |
+宝 | Simplification de 寶 : sous le toit 宀, du jade 玉 (et, en traditionnel, des coquillages et un composant de son). Le trésor qu'on garde chez soi. |
