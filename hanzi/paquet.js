@@ -585,7 +585,7 @@ const PAQUET = {
     "chong2",
     "qing4"
    ],
-   "sens": "Chongqing",
+   "sens": "Chongqing (municipalité)",
    "son": false,
    "remarque": "重 se lit ici chóng, « de nouveau, double » ; d'habitude zhòng, « lourd ».",
    "liste": "l3c",

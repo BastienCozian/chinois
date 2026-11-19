@@ -108,6 +108,8 @@
 
   // Carte (villes et provinces du dossier) : seulement la ville et sa province, ou la province
   const DESSUS = { jiangsu: true };
+  // Municipalités (直辖市) : rattachées directement à l'État, dans aucune province (consigne du 19 novembre 2026)
+  const MUNICIPALITES = { beijing: true, shanghai: true, chongqing: true };
   function htmlCarte(id) {
     if (typeof CARTE === "undefined") return "";
     const C = CARTE, v = C.villes[id], prov = v ? C.province[id] : (C.provinces[id] ? id : null);
@@ -124,7 +126,7 @@
       ${e ? `<text class="prov-t" x="${e.x}" y="${e.y}"${e.milieu ? ' text-anchor="middle"' : ""}>${e.nom}</text>` : ""}
       ${e && pyProv ? `<text class="prov-py" x="${e.x}" y="${e.y + dy}"${e.milieu ? ' text-anchor="middle"' : ""}>${pyProv}</text>` : ""}
       ${v ? `<circle class="ville" cx="${v.x}" cy="${v.y}" r="6"/><text class="ville-t" x="${v.tx}" y="${v.ty}"${v.fin ? ' text-anchor="end"' : ""}>${v.nom}</text>` : ""}
-    </svg></figure>`;
+    </svg>${MUNICIPALITES[prov] ? `<figcaption>Municipalité (直辖市 zhíxiáshì) : rattachée directement à l'État, dans aucune province.</figcaption>` : ""}</figure>`;
   }
 
   // Le mot en entier : caractères, pinyin, son, sens, remarque, composants

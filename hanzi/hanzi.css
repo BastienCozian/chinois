@@ -81,6 +81,7 @@ button.son { min-height: 36px; padding: 0.2rem 0.7rem; font-size: 0.9rem; vertic
 /* Carte des villes et provinces (réponse d'une carte de ville ou de province) */
 .carte-geo { margin: 0.8rem 0 0; }
 .carte-geo svg { width: 100%; height: auto; display: block; border-radius: 6px; }
+.carte-geo figcaption { font-size: 0.85rem; color: var(--muted); margin-top: 0.35rem; }
 .carte-geo .mer { fill: color-mix(in srgb, var(--accent) 14%, var(--bg)); }
 .carte-geo .voisin path { fill: color-mix(in srgb, var(--fg) 3%, var(--bg)); stroke: var(--rule); stroke-width: 0.8; }
 .carte-geo .fond path { fill: color-mix(in srgb, var(--fg) 9%, var(--bg)); stroke: var(--bg); stroke-width: 1.2; stroke-linejoin: round; }
