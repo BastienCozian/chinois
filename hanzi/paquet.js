@@ -194,6 +194,18 @@ const PAQUET = {
     "zhi-papier",
     "yan-pierre"
    ]
+  },
+  {
+   "id": "l5d",
+   "titre": "Leçon 5 · Mille, dix mille, et quatre clés",
+   "mots": [
+    "qian",
+    "wan",
+    "zhu-bambou",
+    "mi-soie",
+    "shi-pierre",
+    "tu"
+   ]
   }
  ],
  "mots": {
@@ -1475,6 +1487,66 @@ const PAQUET = {
    "son": false,
    "remarque": "",
    "liste": "l5c"
+  },
+  "qian": {
+   "hz": "千",
+   "py": [
+    "qian1"
+   ],
+   "sens": "mille",
+   "son": true,
+   "remarque": "一千 : on écrit yīqiān, on dit yìqiān. 2 000 : 两千.",
+   "liste": "l5d"
+  },
+  "wan": {
+   "hz": "万",
+   "py": [
+    "wan4"
+   ],
+   "sens": "dix mille",
+   "son": true,
+   "remarque": "Une unité à part entière : 100 000 = 十万, un million = 一百万. Couper les grands nombres par quatre chiffres. 一万 : on écrit yīwàn, on dit yíwàn.",
+   "liste": "l5d"
+  },
+  "zhu-bambou": {
+   "hz": "竹",
+   "py": [
+    "zhu2"
+   ],
+   "sens": "bambou",
+   "son": true,
+   "remarque": "Clé n° 118. En haut : ⺮ (笔, 第, 笑).",
+   "liste": "l5d"
+  },
+  "mi-soie": {
+   "hz": "糸",
+   "py": [
+    "mi4"
+   ],
+   "sens": "(clé) la soie",
+   "son": false,
+   "remarque": "Clé n° 120. À gauche : 纟 en simplifié (纸, 红, 绿) ; en bas, entière (系). Le mot courant pour « soie » est un autre caractère.",
+   "liste": "l5d"
+  },
+  "shi-pierre": {
+   "hz": "石",
+   "py": [
+    "shi2"
+   ],
+   "sens": "pierre",
+   "son": true,
+   "remarque": "Clé n° 112, à gauche (砚, 码).",
+   "liste": "l5d"
+  },
+  "tu": {
+   "hz": "土",
+   "py": [
+    "tu3"
+   ],
+   "sens": "terre",
+   "son": true,
+   "remarque": "Clé n° 32 (墨, 坐). Parfois seulement le son : 肚 dù.",
+   "liste": "l5d"
   }
  },
  "caracteres": {
@@ -4557,6 +4629,117 @@ const PAQUET = {
    ],
    "semantique": "石",
    "phonetique": "见"
+  },
+  "千": {
+   "hex": "5343",
+   "indice": {
+    "origine": "一 (le sens : un nombre) + 人 rén (le son, ancien).",
+    "astuce": ""
+   },
+   "cle": "十",
+   "parties": [
+    [
+     "丿",
+     "piě",
+     "trait oblique"
+    ],
+    [
+     "十",
+     "shí",
+     "dix"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "万": {
+   "hex": "4E07",
+   "indice": {
+    "origine": "Simplification de 萬 : un scorpion, emprunté pour le son de « dix mille ».",
+    "astuce": "Un nuage de scorpions : dix mille."
+   },
+   "cle": "一",
+   "parties": [],
+   "semantique": "",
+   "phonetique": "",
+   "cleSens": "un, un trait"
+  },
+  "竹": {
+   "hex": "7AF9",
+   "indice": {
+    "origine": "Écriture ancienne : deux tiges de bambou et leurs feuilles.",
+    "astuce": ""
+   },
+   "cle": "竹",
+   "parties": [],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "糸": {
+   "hex": "7CF8",
+   "indice": {
+    "origine": "Écriture ancienne : un écheveau de soie.",
+    "astuce": ""
+   },
+   "cle": "糸",
+   "parties": [
+    [
+     "幺",
+     "yāo",
+     "petit fil (moitié de 糸)"
+    ],
+    [
+     "小",
+     "xiǎo",
+     "petit"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "石": {
+   "hex": "77F3",
+   "indice": {
+    "origine": "Écriture ancienne : une pierre sonore ; le carré du bas a été ajouté pour l'ornement.",
+    "astuce": ""
+   },
+   "cle": "石",
+   "parties": [
+    [
+     "厂",
+     "chǎng",
+     "abri, falaise"
+    ],
+    [
+     "口",
+     "kǒu",
+     "bouche"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "土": {
+   "hex": "571F",
+   "indice": {
+    "origine": "Écriture ancienne : une motte de terre sur le sol.",
+    "astuce": ""
+   },
+   "cle": "土",
+   "parties": [
+    [
+     "十",
+     "shí",
+     "dix"
+    ],
+    [
+     "一",
+     "yī",
+     "un, un trait"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
   }
  }
 };

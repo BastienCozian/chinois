@@ -1,6 +1,6 @@
 // Généré par construire.py : ne pas modifier l'en-tête à la main.
 // Cache hors ligne : la page marche sans réseau une fois ouverte.
-const VERSION = "hanzi-43c486b847";
+const VERSION = "hanzi-5af40c9b7b";
 const FICHIERS = [
  "./",
  "index.html",
@@ -21,6 +21,7 @@ const FICHIERS = [
  "../voix.js",
  "traits/4E00.json",
  "traits/4E03.json",
+ "traits/4E07.json",
  "traits/4E09.json",
  "traits/4E0A.json",
  "traits/4E0B.json",
@@ -52,6 +53,7 @@ const FICHIERS = [
  "traits/5305.json",
  "traits/5317.json",
  "traits/5341.json",
+ "traits/5343.json",
  "traits/5357.json",
  "traits/53A6.json",
  "traits/53E3.json",
@@ -61,6 +63,7 @@ const FICHIERS = [
  "traits/54C8.json",
  "traits/5580.json",
  "traits/56DB.json",
+ "traits/571F.json",
  "traits/5728.json",
  "traits/58A8.json",
  "traits/591A.json",
@@ -133,10 +136,13 @@ const FICHIERS = [
  "traits/771F.json",
  "traits/773C.json",
  "traits/775B.json",
+ "traits/77F3.json",
  "traits/781A.json",
  "traits/795D.json",
  "traits/798F.json",
+ "traits/7AF9.json",
  "traits/7B14.json",
+ "traits/7CF8.json",
  "traits/7CFB.json",
  "traits/7EB8.json",
  "traits/8001.json",
@@ -207,6 +213,7 @@ const FICHIERS = [
  "sons/nimen.mp3",
  "sons/nv.mp3",
  "sons/pao.mp3",
+ "sons/qian.mp3",
  "sons/qiguai.mp3",
  "sons/qing.mp3",
  "sons/ren.mp3",
@@ -216,6 +223,7 @@ const FICHIERS = [
  "sons/shen.mp3",
  "sons/shengbing.mp3",
  "sons/shengri.mp3",
+ "sons/shi-pierre.mp3",
  "sons/shi.mp3",
  "sons/shou.mp3",
  "sons/shui.mp3",
@@ -223,6 +231,8 @@ const FICHIERS = [
  "sons/teng.mp3",
  "sons/tianshang.mp3",
  "sons/tong.mp3",
+ "sons/tu.mp3",
+ "sons/wan.mp3",
  "sons/wanshang.mp3",
  "sons/weiba.mp3",
  "sons/wenti.mp3",
@@ -247,6 +257,7 @@ const FICHIERS = [
  "sons/zhi-papier.mp3",
  "sons/zhi.mp3",
  "sons/zhong.mp3",
+ "sons/zhu-bambou.mp3",
  "sons/zhu.mp3",
  "sons/zu.mp3"
 ];

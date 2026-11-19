@@ -166,7 +166,16 @@ mo | 墨 | mo4 | encre | |
 zhi-papier | 纸 | zhi3 | papier | | zhǐ, avec zh, 3ᵉ ton.
 yan-pierre | 砚 | yan4 | pierre à encre | aucun |
 
+## l5d | Leçon 5 · Mille, dix mille, et quatre clés
+qian | 千 | qian1 | mille | | 一千 : on écrit yīqiān, on dit yìqiān. 2 000 : 两千.
+wan | 万 | wan4 | dix mille | | Une unité à part entière : 100 000 = 十万, un million = 一百万. Couper les grands nombres par quatre chiffres. 一万 : on écrit yīwàn, on dit yíwàn.
+zhu-bambou | 竹 | zhu2 | bambou | syllabe zhu2 | Clé n° 118. En haut : ⺮ (笔, 第, 笑).
+mi-soie | 糸 | mi4 | (clé) la soie | aucun | Clé n° 120. À gauche : 纟 en simplifié (纸, 红, 绿) ; en bas, entière (系). Le mot courant pour « soie » est un autre caractère.
+shi-pierre | 石 | shi2 | pierre | syllabe shi2 | Clé n° 112, à gauche (砚, 码).
+tu | 土 | tu3 | terre | | Clé n° 32 (墨, 坐). Parfois seulement le son : 肚 dù.
+
 ## composants
+幺 | petit fil (moitié de 糸)
 ⺮ | bambou (竹 en haut)
 丙 | (composant de son : bǐng)
 乂 | (croisement de traits)
@@ -530,3 +539,9 @@ yan-pierre | 砚 | yan4 | pierre à encre | aucun |
 文 | Écriture ancienne : une personne de face, un motif tatoué sur la poitrine. D'où « motif », puis « écrit, lettres ». |
 房 | 户 porte (le sens) + 方 fāng (le son) : la pièce, la chambre. |
 宝 | Simplification de 寶 : sous le toit 宀, du jade 玉 (et, en traditionnel, des coquillages et un composant de son). Le trésor qu'on garde chez soi. |
+千 | 一 (le sens : un nombre) + 人 rén (le son, ancien). |
+万 | Simplification de 萬 : un scorpion, emprunté pour le son de « dix mille ». | Un nuage de scorpions : dix mille.
+竹 | Écriture ancienne : deux tiges de bambou et leurs feuilles. |
+糸 | Écriture ancienne : un écheveau de soie. |
+石 | Écriture ancienne : une pierre sonore ; le carré du bas a été ajouté pour l'ornement. |
+土 | Écriture ancienne : une motte de terre sur le sol. |

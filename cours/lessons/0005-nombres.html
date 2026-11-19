@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Leçon 5 · Compter jusqu'à 999, deux clés et quatre trésors</title>
+<title>Leçon 5 · Les nombres, deux clés et quatre trésors</title>
 <link rel="stylesheet" href="../assets/cours.css">
 <script src="../assets/ancres-details.js" defer></script>
 <script src="../assets/tableaux.js" defer></script>
@@ -19,6 +19,14 @@
   .schema .grand { fill: var(--encre); font-size: 76px; text-anchor: middle; }
   .schema .leg tspan.k { fill: var(--accent); font-weight: 600; }
   .ecoute { font-family: var(--sans); font-size: 0.9rem; }
+  .schema .chiffres { fill: var(--encre); font-family: var(--mono); font-size: 34px; text-anchor: middle; }
+  .schema .bloc { fill: none; stroke: var(--accent); stroke-width: 2; }
+  .schema .titre-ligne { fill: var(--encre-douce); font-family: var(--sans); font-size: 14px; }
+  .mains { display: block; width: 100%; max-width: 36rem; height: auto; margin: 0 auto; }
+  .mains .paume { fill: var(--encre-douce); }
+  .mains .doigt { fill: none; stroke: var(--encre-douce); stroke-width: 13; stroke-linecap: round; stroke-linejoin: round; }
+  .mains .num { fill: var(--accent); font-family: var(--sans); font-size: 20px; font-weight: 600; text-anchor: middle; }
+  .mains .hzl { fill: var(--encre); font-size: 20px; text-anchor: middle; }
 </style>
 </head>
 <body>
@@ -30,11 +38,11 @@
   </nav>
 
 <p class="surtitre">Chinois · Leçon 5</p>
-<h1>Compter jusqu'à 999, deux clés et quatre trésors</h1>
-<p class="chapeau">Trois parties à faire séparément. <a href="#partie-1">Partie 1</a> : les chiffres, puis tous les nombres de 0 à 999, avec deux règles et quatre détails. <a href="#partie-2">Partie 2</a> : deux clés, la mort <span class="hz">歹</span> et la maladie <span class="hz">疒</span>. <a href="#partie-3">Partie 3</a>, en bonus : les quatre trésors du lettré, <span class="hz">文房四宝</span>.</p>
+<h1>Les nombres, deux clés et quatre trésors</h1>
+<p class="chapeau">Cinq parties à faire séparément. <a href="#partie-1">Partie 1</a> : les chiffres, puis tous les nombres de 0 à 999, avec deux règles et quatre détails. <a href="#partie-2">Partie 2</a> : deux clés, la mort <span class="hz">歹</span> et la maladie <span class="hz">疒</span>. <a href="#partie-3">Partie 3</a>, en bonus : les quatre trésors du lettré, <span class="hz">文房四宝</span>, et leurs quatre clés. <a href="#partie-4">Partie 4</a> : au-delà de 999, <span class="hz">千</span> et <span class="hz">万</span>. <a href="#partie-5">Partie 5</a> : compter de 6 à 10 sur une seule main.</p>
 
 <div class="meta">
-  <span><b>Durée</b> ≈ 15 min pour la partie 1, 8 min pour chacune des deux autres</span>
+  <span><b>Durée</b> ≈ 15 min pour la partie 1, 5 à 10 min pour chacune des autres</span>
   <span><b>Prérequis</b> <a href="0004-petite-etoile.html#combien-de-personnes"><span class="hz">两</span> et <span class="hz">二</span></a>, <a href="0004-petite-etoile.html#bu-yi"><span class="hz">一</span> qui change de ton</a></span>
   <span><b>Exercices réussis</b> <span id="score-quiz" class="score">0 / 0</span></span>
 </div>
@@ -43,7 +51,9 @@
   <span class="titre">À la fin de cette leçon</span>
   <p><strong>Partie 1.</strong> Vous direz et écrirez de tête n'importe quel nombre de 0 à 999, zéros compris, et vous saurez lire <span class="hz">一百八</span> sans tomber dans le piège.</p>
   <p><strong>Partie 2.</strong> Vous reconnaîtrez <span class="hz">歹</span> et <span class="hz">疒</span> dans <span class="hz">死 病 疼 痛</span>, et vous saurez pourquoi le 4 porte malheur.</p>
-  <p><strong>Partie 3.</strong> Vous nommerez le pinceau, l'encre, le papier et la pierre à encre, et vous lirez leur plan : une clé, un son.</p>
+  <p><strong>Partie 3.</strong> Vous nommerez le pinceau, l'encre, le papier et la pierre à encre, et vous lirez leur plan : une clé, un son. Vous reconnaîtrez leurs quatre clés, <span class="hz">⺮ 纟 石 土</span>, dans d'autres caractères.</p>
+  <p><strong>Partie 4.</strong> Vous lirez un grand nombre en le coupant tous les quatre chiffres, et vous direz la population de Chengdu.</p>
+  <p><strong>Partie 5.</strong> Vous montrerez 6, 7, 8, 9 et 10 d'une seule main, et vous les lirez sur la main d'un autre.</p>
 </div>
 
 <div class="encadre" id="exercices-ecrits">
@@ -340,7 +350,22 @@
 </div>
 <p class="note">Wiktionary : <a href="https://en.wiktionary.org/wiki/%E7%AD%86">筆</a> « semantic 竹 + phonetic 聿 », « 聿 originally referred to this word; 竹 was added later » ; <a href="https://en.wiktionary.org/wiki/%E5%A2%A8">墨</a> « phonetic 黑 + semantic 土 », apparenté à 黑 « noir » ; <a href="https://en.wiktionary.org/wiki/%E7%B4%99">紙</a> « semantic 糸 ("silk") + phonetic 氏 » ; <a href="https://en.wiktionary.org/wiki/%E7%A1%AF">硯</a> : <span class="hz">石</span> + <span class="hz">見</span>, série phonétique de <span class="hz">見</span>. La lecture « bambou sur poil » de <span class="hz">笔</span> se voit sur le caractère ; le Wiktionary ne commente pas la simplification. Lieux réputés : Wikipédia, « Four Treasures of the Study ».</p>
 
-<p id="quatre-cles-vues"><strong>Quatre clés en passant.</strong> <span class="hz">⺮</span> (bambou, en haut), <span class="hz">纟</span> (la soie, forme simplifiée à gauche de <span class="hz">糸</span>), <span class="hz">石</span> (la pierre), <span class="hz">土</span> (la terre). Pas besoin de les apprendre aujourd'hui ; elles reviendront.</p>
+<h3 id="quatre-cles">Quatre clés : le bambou, la soie, la pierre, la terre</h3>
+
+<p>Chaque trésor porte une clé qui dit sa matière : le pinceau, le bambou ; le papier, la soie ; la pierre à encre, la pierre ; l'encre, la terre. Vous les croiserez ailleurs.</p>
+
+<div class="table-wrap">
+<table class="phrases">
+  <tr><th>Clé</th><th>Dessin</th><th>Où elle se met</th><th>Dans</th></tr>
+  <tr id="cle-zhu"><td><span class="hz">竹</span> <span class="py">zhú</span><br>n<sup>o</sup> 118</td><td>bambou : deux tiges et leurs feuilles</td><td>en haut, tassée : <span class="hz">⺮</span></td><td><span class="hz">笔</span> ; <span class="hz">第</span> <span class="py">dì</span>, le rang (<span class="hz">第一</span>, « premier ») ; <span class="hz">笑</span> <span class="py">xiào</span>, rire</td></tr>
+  <tr id="cle-mi"><td><span class="hz">糸</span> <span class="py">mì</span><br>n<sup>o</sup> 120</td><td>soie : un écheveau de fil</td><td>à gauche : <span class="hz">纟</span> en simplifié, <span class="hz">糹</span> en traditionnel ; en bas, entière</td><td><span class="hz">纸</span> ; <span class="hz">红</span> <span class="py">hóng</span>, rouge ; <span class="hz">绿</span> <span class="py">lǜ</span>, vert ; <span class="hz">系</span> de <span class="hz">关系</span></td></tr>
+  <tr id="cle-shi"><td><span class="hz">石</span> <span class="py">shí</span><br>n<sup>o</sup> 112</td><td>pierre : à l'origine une pierre sonore, le <span class="hz">口</span> ajouté plus tard</td><td>à gauche</td><td><span class="hz">砚</span> ; <span class="hz">码</span> <span class="py">mǎ</span>, de <span class="hz">号码</span>, « numéro »</td></tr>
+  <tr id="cle-tu"><td><span class="hz">土</span> <span class="py">tǔ</span><br>n<sup>o</sup> 32</td><td>terre : une motte sur le sol</td><td>à gauche ou en bas</td><td><span class="hz">墨</span> ; <span class="hz">坐</span> <span class="py">zuò</span>, s'asseoir, « rester » + « sol »</td></tr>
+</table>
+</div>
+<p class="note">Wiktionary, « Glyph origin » et numéro de clé : <a href="https://en.wiktionary.org/wiki/%E7%AB%B9">竹</a> « two bamboo stalks, with leaves » ; <a href="https://en.wiktionary.org/wiki/%E7%B3%B8">糸</a> « a skein of silk », écrit <span class="hz">纟</span> à gauche en simplifié ; <a href="https://en.wiktionary.org/wiki/%E7%9F%B3">石</a> « representation of a qing (磬) », 口 « subsequently added as a decorative element » ; <a href="https://en.wiktionary.org/wiki/%E5%9C%9F">土</a> « a mound of earth ». Caractères : <a href="https://en.wiktionary.org/wiki/%E7%AC%AC">第</a> 竹 (les lattes de bambou où l'on écrivait) + 弟 ; <a href="https://en.wiktionary.org/wiki/%E7%AC%91">笑</a> 竹 + 夭 ; <a href="https://en.wiktionary.org/wiki/%E7%B4%85">紅</a> « semantic 糸 + phonetic 工 » ; <a href="https://en.wiktionary.org/wiki/%E7%B6%A0">綠</a> 糸 + 彔 ; <a href="https://en.wiktionary.org/wiki/%E7%A2%BC">碼</a> « semantic 石 + phonetic 馬 » ; <a href="https://en.wiktionary.org/wiki/%E5%9D%90">坐</a> « 留 ("to stay") + 土 ("ground") ».</p>
+
+<p id="piege-tu"><strong>Piège : <span class="hz">土</span> n'est pas toujours la clé.</strong> Dans <span class="hz">肚</span> <span class="py">dù</span>, « ventre » (<a href="0004-petite-etoile.html#deux-lunes">leçon 4</a>), la clé est la chair <span class="hz">月</span>, et <span class="hz">土</span> <span class="py">tǔ</span> donne le son. Dans <span class="hz">在</span> (<a href="0004-petite-etoile.html#mots">leçon 4</a>), c'est un composant de son déformé en <span class="hz">土</span> au fil des copies. Même méthode qu'à la <a href="0004-petite-etoile.html#lire-plan">leçon 4</a> : demandez-vous quelle partie donne le sens, et laquelle le son.</p>
 
 <h3 id="exercices-3">Exercices</h3>
 
@@ -374,6 +399,234 @@
   <div class="solution"><p>Il donne le son ; la terre <span class="hz">土</span> donne le sens. Les deux mots sont apparentés : ici, le composant de son dit aussi la couleur (<a href="#t-mo">partie 3</a>).</p></div>
 </div>
 
+<div class="exo" id="q18" data-sujet="Le son de 红" data-type="qcm" data-reponse="3">
+  <span class="num-exo">Exercice 18</span>
+  <p><span class="hz">红</span> <span class="py">hóng</span>, « rouge » : <span class="hz">纟</span> à gauche, <span class="hz">工</span> <span class="py">gōng</span> à droite. Lequel donne le son ?</p>
+  <ol class="choix">
+    <li><span class="hz">纟</span>, la soie</li>
+    <li>les deux</li>
+    <li><span class="hz">工</span>, à droite</li>
+    <li>aucun des deux</li>
+  </ol>
+  <div class="solution"><p><span class="hz">工</span> <span class="py">gōng</span> → <span class="hz">红</span> <span class="py">hóng</span> : même finale, l'initiale a changé. La soie <span class="hz">纟</span> donne le sens : une soie teinte (<a href="#quatre-cles">partie 3</a>).</p></div>
+</div>
+
+<div class="exo" id="q19" data-sujet="Prédiction : lecture de 码" data-type="qcm" data-reponse="2">
+  <span class="num-exo">Exercice 19</span>
+  <p><span class="hz">码</span>, celui de <span class="hz">号码</span> « numéro » : la pierre <span class="hz">石</span> à gauche, le cheval <span class="hz">马</span> à droite. Comment se lit-il, à peu près ?</p>
+  <ol class="choix">
+    <li><span class="py">shí</span></li>
+    <li><span class="py">mǎ</span></li>
+    <li><span class="py">yàn</span></li>
+    <li><span class="py">tǔ</span></li>
+  </ol>
+  <div class="solution"><p><span class="py">mǎ</span>, comme <span class="hz">吗</span> et <span class="hz">妈</span> : <span class="hz">马</span> donne le son, <span class="hz">石</span> le sens (<a href="#cle-shi">partie 3</a>).</p></div>
+</div>
+
+<div class="exo" id="q20" data-sujet="Le rôle de 土 dans 肚 (rappel leçon 4)" data-type="qcm" data-reponse="1">
+  <span class="num-exo">Exercice 20</span>
+  <p>Dans <span class="hz">肚</span> <span class="py">dù</span>, « ventre », que fait <span class="hz">土</span> ?</p>
+  <ol class="choix">
+    <li>il donne le son</li>
+    <li>il est la clé</li>
+    <li>il dit « terre »</li>
+    <li>il note le ton</li>
+  </ol>
+  <div class="solution"><p>Il donne le son, <span class="py">tǔ</span> → <span class="py">dù</span>. La clé, c'est <span class="hz">月</span>, la chair (<a href="#piege-tu">partie 3</a>).</p></div>
+</div>
+
+<h2 id="partie-4">Partie 4 · Au-delà de 999 : <span class="hz">千</span> et <span class="hz">万</span></h2>
+
+<h3 id="qian-wan">1. Deux unités de plus</h3>
+
+<div class="table-wrap">
+<table class="phrases">
+  <tr><th>Nombre</th><th>Chinois</th><th>Pinyin</th><th>Mot à mot</th></tr>
+  <tr id="n1000"><td>1 000</td><td class="hz">一千</td><td class="py">yīqiān</td><td>un mille</td></tr>
+  <tr id="n10000"><td>10 000</td><td class="hz">一万</td><td class="py">yīwàn</td><td>un « dix-mille »</td></tr>
+  <tr id="n100000"><td>100 000</td><td class="hz">十万</td><td class="py">shíwàn</td><td>dix « dix-mille »</td></tr>
+  <tr id="n1000000"><td>1 000 000</td><td class="hz">一百万</td><td class="py">yībǎiwàn</td><td>cent « dix-mille »</td></tr>
+  <tr id="n10000000"><td>10 000 000</td><td class="hz">一千万</td><td class="py">yīqiānwàn</td><td>mille « dix-mille »</td></tr>
+  <tr id="n100000000"><td>100 000 000</td><td class="hz">一亿</td><td class="py">yīyì</td><td>l'unité suivante</td></tr>
+</table>
+</div>
+
+<p id="wan-unite"><strong>Le français compte par milliers, le chinois par « dix-mille ».</strong> <span class="hz">万</span> <span class="py">wàn</span> est une unité à part entière : on ne dit jamais « dix mille », mais <span class="hz">一万</span>. Et il n'y a pas de mot pour « million » : un million, c'est cent <span class="hz">万</span>, <span class="hz">一百万</span>. Au-dessus de <span class="hz">万</span>, l'unité suivante est <span class="hz">亿</span> <span class="py">yì</span>, cent millions.<span class="note">Chinese Grammar Wiki (AllSet), <a href="https://resources.allsetlearning.com/chinese/grammar/Big_numbers_in_Chinese">« Big numbers in Chinese »</a> : 万 (wàn) « ten thousand », 亿 (yì) « hundred million » ; 十万, 百万, 千万. <span class="hz">千</span> : Wiktionary, <a href="https://en.wiktionary.org/wiki/%E5%8D%83">千</a> « semantic 一 + phonetic 人 ». <span class="hz">万</span> : forme simplifiée de <a href="https://en.wiktionary.org/wiki/%E8%90%AC">萬</a>, « pictogram – scorpion », « later phonetically borrowed » pour « dix mille ».</span></p>
+
+<p id="scorpion"><strong>Pour retenir <span class="hz">万</span>.</strong> Sa forme traditionnelle, <span class="hz">萬</span>, dessinait un scorpion, emprunté pour le son. Astuce : un nuage de scorpions, dix mille.</p>
+
+<h3 id="couper-par-quatre">2. Couper par quatre</h3>
+
+<p>Pour lire un grand nombre, coupez-le <strong>tous les quatre chiffres</strong> en partant de la droite, et non tous les trois. Lisez le bloc de gauche, dites <span class="hz">万</span>, puis lisez le bloc de droite. Chaque bloc se lit comme un nombre de 0 à 9 999.</p>
+
+<figure id="schema-wan">
+<svg class="schema" viewBox="0 0 520 210" role="img" aria-label="12 345 678 : en français on coupe par trois, 12, 345, 678 ; en chinois par quatre, 1234 et 5678 : 一千二百三十四万五千六百七十八.">
+  <text class="titre-ligne" x="10" y="22">En français, par trois</text>
+  <text class="chiffres" x="80" y="62">12</text><text class="chiffres" x="200" y="62">345</text><text class="chiffres" x="330" y="62">678</text>
+  <text class="leg" x="80" y="86">millions</text><text class="leg" x="200" y="86">mille</text><text class="leg" x="330" y="86">unités</text>
+  <text class="titre-ligne" x="10" y="118">En chinois, par quatre</text>
+  <rect class="bloc" x="40" y="128" width="170" height="44" rx="6"/>
+  <rect class="bloc" x="280" y="128" width="170" height="44" rx="6"/>
+  <text class="chiffres" x="125" y="162">1234</text><text class="op" x="245" y="160">万</text><text class="chiffres" x="365" y="162">5678</text>
+  <text class="leg" x="125" y="196">一千二百三十四</text><text class="leg" x="365" y="196">五千六百七十八</text>
+</svg>
+<figcaption class="note">12 345 678 = <span class="hz">一千二百三十四万五千六百七十八</span>. Le bloc de gauche compte des <span class="hz">万</span>.</figcaption>
+</figure>
+
+<p id="regles-grands">Les règles de la <a href="#centaines">partie 1</a> continuent :</p>
+<ul>
+  <li id="g-zero"><strong>Un trou se dit <span class="hz">零</span>, une seule fois</strong>, quel que soit le nombre de zéros : 1 005 = <span class="hz">一千零五</span>, 1 020 = <span class="hz">一千零二十</span>.</li>
+  <li id="g-yi"><strong>On dit le <span class="hz">一</span></strong> : <span class="hz">一千</span>, <span class="hz">一万</span>. 11 000 = <span class="hz">一万一千</span>.</li>
+  <li id="g-abrege"><strong>Le bloc final peut s'abréger</strong>, comme <span class="hz">一百五</span> : 12 000 = <span class="hz">一万两千</span>, à l'oral <span class="hz">一万二</span>.</li>
+  <li id="g-liang"><strong>Devant <span class="hz">千</span> et <span class="hz">万</span>, « deux » se dit surtout <span class="hz">两</span></strong> : 2 000 = <span class="hz">两千</span>.</li>
+</ul>
+<p class="note">AllSet, <a href="https://resources.allsetlearning.com/chinese/grammar/Structure_of_numbers">« Structure of numbers »</a> : « no matter how many zeroes are in the middle of the number, you just say 零 (líng) once » ; 1001 = 一千零一, 1010 = 一千零一十, 1020 = 一千零二十. <a href="https://resources.allsetlearning.com/chinese/grammar/Big_numbers_in_Chinese">« Big numbers in Chinese »</a> : 11 000 = « 一万一千 », 12 000 = « 一万两千 », abrégé « 一万二 » ; 两千 dans ses exemples. <a href="https://resources.allsetlearning.com/chinese/grammar/Comparing_%22er%22_and_%22liang%22">« Comparing "er" and "liang" »</a> : 两千 (liǎngqiān).</p>
+
+<p id="tons-qian-wan"><strong>Les tons de <span class="hz">一</span> suivent la règle connue.</strong> On écrit <span class="py">yīqiān</span>, on dit <span class="py">yìqiān</span> (devant un 1<sup>er</sup> ton). On écrit <span class="py">yīwàn</span>, on dit <span class="py">yíwàn</span> (devant un 4<sup>e</sup> ton, comme <span class="hz">一会儿</span>).<span class="note">Wiktionary : <a href="https://en.wiktionary.org/wiki/%E4%B8%80%E5%8D%83">一千</a> « yīqiān [Phonetic: yìqiān] » ; <a href="https://en.wiktionary.org/wiki/%E4%B8%80%E8%90%AC">一萬</a> « yīwàn [Phonetic: yíwàn] ».</span></p>
+
+<p id="villes-en-wan"><strong>Les villes du <a href="../reference/villes-et-provinces.html">dossier</a>, en <span class="hz">万</span>.</strong> Chongqing, 32 millions d'habitants dans la municipalité : 3200 <span class="hz">万</span>, <span class="hz">三千二百万</span>. Hangzhou, 11,9 millions : 1190 <span class="hz">万</span>, <span class="hz">一千一百九十万</span>.</p>
+
+<h3 id="exercices-4">3. Exercices</h3>
+
+<div class="exo" id="q21" data-sujet="Écrire 100 000 (production, 万)" data-type="texte" data-reponse="十万|shíwàn">
+  <span class="num-exo">Exercice 21</span>
+  <p>Écrivez 100 000 en chinois.</p>
+  <div class="solution"><p><span class="hz">十万</span> <span class="py">shíwàn</span>, dix <span class="hz">万</span>. Jamais « cent mille » : le chinois compte par <span class="hz">万</span> (<a href="#wan-unite">section 1</a>).</p></div>
+</div>
+
+<div class="exo" id="q22" data-sujet="Lire 一万二 (bloc abrégé)" data-type="num" data-reponse="12000" data-tolerance="0">
+  <span class="num-exo">Exercice 22</span>
+  <p>On vous annonce un prix : <span class="hz">一万二</span>. Combien ?</p>
+  <div class="solution"><p>12 000 : <span class="hz">一万两千</span>, abrégé. Comme <span class="hz">一百五</span> = 150 (<a href="#g-abrege">section 2</a>).</p></div>
+</div>
+
+<div class="exo" id="q23" data-sujet="Écrire 1 005 (production, zéro)" data-type="texte" data-reponse="一千零五|一千〇五|yīqiān líng wǔ" data-dit="yìqiān líng wǔ">
+  <span class="num-exo">Exercice 23</span>
+  <p>Écrivez 1 005 en chinois.</p>
+  <div class="solution"><p><span class="hz">一千零五</span> <span class="py">yīqiān líng wǔ</span> : deux zéros, un seul <span class="hz">零</span> (<a href="#g-zero">section 2</a>).</p></div>
+</div>
+
+<div class="exo" id="q24" data-sujet="Lire 一百万" data-type="num" data-reponse="1000000" data-tolerance="0">
+  <span class="num-exo">Exercice 24</span>
+  <p>Quel nombre est <span class="hz">一百万</span> ?</p>
+  <div class="solution"><p>1 000 000, un million : cent fois <span class="hz">万</span> (<a href="#wan-unite">section 1</a>).</p></div>
+</div>
+
+<div class="exo" id="q25" data-sujet="Population de Chengdu en 万" data-type="qcm" data-reponse="4">
+  <span class="num-exo">Exercice 25</span>
+  <p>Chengdu compte 20,9 millions d'habitants, soit 20 900 000. Comment le dit-on ?</p>
+  <ol class="choix">
+    <li><span class="hz">两百零九万</span></li>
+    <li><span class="hz">二十万九千</span></li>
+    <li><span class="hz">两千九百万</span></li>
+    <li><span class="hz">两千零九十万</span></li>
+  </ol>
+  <div class="solution"><p>Coupez par quatre : 2090 | 0000. Le bloc de gauche, 2 090, se dit <span class="hz">两千零九十</span>, puis <span class="hz">万</span> (<a href="#couper-par-quatre">section 2</a>). <span class="hz">两百零九万</span>, c'est 2 090 000 ; <span class="hz">两千九百万</span>, 29 millions.</p></div>
+</div>
+
+<div class="exo" id="q26" data-sujet="Prédiction : prononciation de 一万" data-type="qcm" data-reponse="2">
+  <span class="num-exo">Exercice 26</span>
+  <p>Comment se <strong>prononce</strong> <span class="hz">一万</span> (<span class="py">wàn</span>, 4<sup>e</sup> ton) ?</p>
+  <ol class="choix">
+    <li><span class="py">yīwàn</span></li>
+    <li><span class="py">yíwàn</span></li>
+    <li><span class="py">yìwàn</span></li>
+    <li><span class="py">yǐwàn</span></li>
+  </ol>
+  <div class="solution"><p>On écrit <span class="py">yīwàn</span>, on dit <span class="py">yíwàn</span> : devant un 4<sup>e</sup> ton, <span class="hz">一</span> passe au 2<sup>e</sup> (<a href="#tons-qian-wan">section 2</a>).</p></div>
+</div>
+
+<h3 id="source-principale-4">4. Source principale de la partie 4</h3>
+
+<p><strong>À lire (5 min) :</strong> <a href="https://resources.allsetlearning.com/chinese/grammar/Big_numbers_in_Chinese">« Big numbers in Chinese »</a>, Chinese Grammar Wiki (AllSet Learning), en anglais, avec sa méthode pour passer d'un découpage à l'autre.</p>
+
+<h2 id="partie-5">Partie 5 · Compter de 6 à 10 sur une seule main</h2>
+
+<p id="gestes">De 1 à 5, on lève les doigts comme en France ; pour 4, le pouce reste replié dans la paume. Au-delà, on ne prend pas la deuxième main : chaque nombre a son geste. Pratique au marché, où <span class="hz">四</span> et <span class="hz">十</span> se confondent à l'oreille dans certaines régions.</p>
+
+<figure id="schema-mains">
+<svg class="mains" viewBox="0 0 572 196" role="img" aria-label="Cinq mains : 6, pouce et auriculaire tendus ; 7, le bout du pouce, de l'index et du majeur réunis vers le haut ; 8, pouce et index tendus en L ; 9, l'index en crochet ; 10, le poing fermé.">
+    <g transform="translate(14,0)">
+    <rect class="paume" x="16" y="66" width="72" height="62" rx="16"/>
+    <path class="doigt" d="M24 98 L4 66"/>
+    <path class="doigt" d="M32 72 L32 62"/>
+    <path class="doigt" d="M48 70 L48 60"/>
+    <path class="doigt" d="M64 72 L64 62"/>
+    <path class="doigt" d="M78 78 L88 38"/>
+    <text class="num" x="52" y="158">6</text><text class="hzl" x="52" y="184">六</text></g>
+    <g transform="translate(126,0)">
+    <rect class="paume" x="16" y="66" width="72" height="62" rx="16"/>
+    <path class="doigt" d="M24 98 L42 34"/>
+    <path class="doigt" d="M32 72 L43 27"/>
+    <path class="doigt" d="M48 70 L45 25"/>
+    <path class="doigt" d="M64 72 L64 62"/>
+    <path class="doigt" d="M78 78 L78 68"/>
+    <text class="num" x="52" y="158">7</text><text class="hzl" x="52" y="184">七</text></g>
+    <g transform="translate(238,0)">
+    <rect class="paume" x="16" y="66" width="72" height="62" rx="16"/>
+    <path class="doigt" d="M24 98 L4 66"/>
+    <path class="doigt" d="M32 72 L30 22"/>
+    <path class="doigt" d="M48 70 L48 60"/>
+    <path class="doigt" d="M64 72 L64 62"/>
+    <path class="doigt" d="M78 78 L78 68"/>
+    <text class="num" x="52" y="158">8</text><text class="hzl" x="52" y="184">八</text></g>
+    <g transform="translate(350,0)">
+    <rect class="paume" x="16" y="66" width="72" height="62" rx="16"/>
+    <path class="doigt" d="M24 98 L48 100"/>
+    <path class="doigt" d="M32 72 L30 36 L42 30 L44 42"/>
+    <path class="doigt" d="M48 70 L48 60"/>
+    <path class="doigt" d="M64 72 L64 62"/>
+    <path class="doigt" d="M78 78 L78 68"/>
+    <text class="num" x="52" y="158">9</text><text class="hzl" x="52" y="184">九</text></g>
+    <g transform="translate(462,0)">
+    <rect class="paume" x="16" y="66" width="72" height="62" rx="16"/>
+    <path class="doigt" d="M24 98 L48 100"/>
+    <path class="doigt" d="M32 72 L32 62"/>
+    <path class="doigt" d="M48 70 L48 60"/>
+    <path class="doigt" d="M64 72 L64 62"/>
+    <path class="doigt" d="M78 78 L78 68"/>
+    <text class="num" x="52" y="158">10</text><text class="hzl" x="52" y="184">十</text></g>
+</svg>
+<figcaption class="note">Schéma : doigts tendus longs, doigts repliés courts. Les gestes du nord de la Chine continentale ; pour 10, le poing, ou les deux index croisés en <span class="hz">十</span>.</figcaption>
+</figure>
+
+<ul>
+  <li id="geste-6"><strong>6</strong> : pouce et auriculaire tendus, les autres repliés.</li>
+  <li id="geste-7"><strong>7</strong> : le bout du pouce, de l'index et du majeur réunis, pointés vers le haut.</li>
+  <li id="geste-8"><strong>8</strong> : pouce et index tendus en L. Astuce : le dessin de <span class="hz">八</span>, deux traits qui s'écartent.</li>
+  <li id="geste-9"><strong>9</strong> : l'index en crochet, les autres repliés.</li>
+  <li id="geste-10"><strong>10</strong> : le poing fermé, ou les deux index croisés, qui dessinent <span class="hz">十</span>.</li>
+</ul>
+<p class="note">Wikipédia, <a href="https://en.wikipedia.org/wiki/Chinese_number_gestures">« Chinese number gestures »</a> : six, « little finger and thumb extended » ; sept, dans le nord de la Chine, les bouts du pouce, de l'index et du majeur réunis, pointés vers le haut ; huit, pouce et index en L ; neuf, en Chine continentale, l'index en crochet ; dix, le poing, ou les index croisés ; quatre, le pouce dans la paume. L'article précise que les gestes varient selon les régions, surtout de 7 à 10 : sur la côte sud, 7 et 8 se font autrement.</p>
+
+<h3 id="exercices-5">Exercices</h3>
+
+<p>Faites chaque geste de la main avant de répondre.</p>
+
+<div class="exo" id="q27" data-sujet="Geste : pouce et auriculaire" data-type="qcm" data-reponse="1">
+  <span class="num-exo">Exercice 27</span>
+  <p>Un vendeur vous montre le pouce et l'auriculaire tendus. Quel nombre ?</p>
+  <ol class="choix">
+    <li>six</li>
+    <li>sept</li>
+    <li>huit</li>
+    <li>deux</li>
+  </ol>
+  <div class="solution"><p>Six, <span class="hz">六</span> <span class="py">liù</span> (<a href="#geste-6">partie 5</a>).</p></div>
+</div>
+
+<div class="exo" id="q28" data-sujet="Geste : L du pouce et de l'index" data-type="qcm" data-reponse="3">
+  <span class="num-exo">Exercice 28</span>
+  <p>Pouce et index tendus en L. Quel nombre ?</p>
+  <ol class="choix">
+    <li>deux</li>
+    <li>sept</li>
+    <li>huit</li>
+    <li>neuf</li>
+  </ol>
+  <div class="solution"><p>Huit, <span class="hz">八</span> <span class="py">bā</span>. En France, ce geste ferait penser à 2 : c'est le piège (<a href="#geste-8">partie 5</a>).</p></div>
+</div>
+
 <h2 id="fin">Récapitulatif et suite</h2>
 
 <div class="quiz-recap" id="recapitulatif" data-quiz="CHI-0005"></div>
@@ -381,7 +634,7 @@
 
 <div class="encadre">
   <span class="titre">Avant le prochain cours</span>
-  <p>Chaque jour, lisez à voix haute en chinois trois nombres que vous croisez : une heure, un prix, un numéro de bus. Visez au moins un nombre avec un zéro au milieu. Les chiffres, les mots des deux clés et les quatre trésors sont dans vos <a href="https://bastiencozian.github.io/chinois/hanzi/">Sinogrammes</a>, après ceux de la leçon 4. Les deux clés ont rejoint le dossier <a href="../reference/cles.html">Les clés</a>.</p>
+  <p>Chaque jour, lisez à voix haute en chinois trois nombres que vous croisez : une heure, un prix, un numéro de bus. Visez au moins un nombre avec un zéro au milieu, et un nombre à cinq chiffres, coupé par quatre. Montrez aussi d'une main les nombres de 6 à 10. Les chiffres, <span class="hz">千</span> et <span class="hz">万</span>, les mots des clés et les quatre trésors sont dans vos <a href="https://bastiencozian.github.io/chinois/hanzi/">Sinogrammes</a>, après ceux de la leçon 4. Les six clés ont rejoint le dossier <a href="../reference/cles.html">Les clés</a>.</p>
 </div>
 
 <nav class="navigation">
