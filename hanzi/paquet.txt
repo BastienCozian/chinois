@@ -56,7 +56,7 @@ shengri | 生日 | sheng1 ri4 | anniversaire | | On écrit shēngrì ; en parlan
 kuaile | 快乐 | kuai4 le4 | heureux, joyeux | | 生日快乐！« Joyeux anniversaire ! » 乐 se lit aussi yuè, « musique » (音乐).
 
 ## l3b | Leçon 3 · Clés et composants
-mu | 目 | mu4 | œil | | Se lit comme 木 « arbre » : même syllabe, même ton.
+mu | 目 | mu4 | œil | | Se lit comme 木 « arbre » : même syllabe, même ton. Le mot ancien : seul, il ne se dit plus ; l'œil se dit 眼睛.
 xin | 心 | xin1 | cœur | | Comme clé, à gauche : 忄 (快, 怪).
 kou | 口 | kou3 | bouche | | Clé des mots de la voix (吗, 哈).
 shui | 水 | shui3 | eau | | Comme clé, à gauche : 氵, « trois gouttes » (没, 清).
@@ -91,7 +91,7 @@ fang | 放 | fang4 | lâcher ; répandre | | 放光明 « répandre la lumière 
 guangming | 光明 | guang1 ming2 | lumière, clarté | |
 haoxiang | 好像 | hao3 xiang4 | on dirait, comme | | Pas de changement de ton : xiàng est au 4ᵉ ton.
 xuduo | 许多 | xu3 duo1 | beaucoup de | | 好像许多小眼睛 « comme une multitude de petits yeux ».
-yanjing | 眼睛 | yan3 jing5 | œil, yeux | | 睛 au ton neutre.
+yanjing | 眼睛 | yan3 jing5 | œil, yeux | | 睛 au ton neutre. Le mot courant ; 目 mù est le mot ancien. Piège : 眼镜 yǎnjìng, « lunettes ».
 
 ## l4b | Leçon 4 · Clés du corps, et 人 从 众
 ren | 人 | ren2 | personne, homme | | Clé n° 9. À gauche : 亻 (你, 们, 像).
@@ -150,8 +150,8 @@ n0 | 零 | ling2 | zéro | | Un trou au milieu d'un nombre se dit 零, une fois,
 n100 | 百 | bai3 | cent | | 200 : 两百 ou 二百. 一百五 = 150, jamais 105.
 yibai | 一百 | yi1 bai3 | cent (100) | aucun | On écrit yībǎi, on dit yìbǎi (一 devant un 3ᵉ ton).
 
-## l5b | Leçon 5 · La mort et la maladie (歹, 疒)
-dai | 歹 | dai3 | mauvais ; (clé) restes d'un corps, la mort | aucun | Clé n° 78 (死, 残). Le trait du haut le distingue de 夕 « soir ».
+## l5b | Leçon 5 · Le corps et la maladie (尸, 疒)
+shi-corps | 尸 | shi1 | cadavre ; (clé) le corps | aucun | Clé n° 44, en enveloppe en haut et à gauche (尾, 尿, 居). Coiffé d'un point, c'est 户 « porte ».
 ne | 疒 | ne4 | (clé) la maladie | aucun | Clé n° 104, toujours en enveloppe en haut et à gauche (病, 疼, 痛). Ne s'emploie plus seul.
 si-mourir | 死 | si3 | mourir | syllabe si3 | Sǐ : le 4 (sì) lui doit sa mauvaise réputation.
 bing | 病 | bing4 | maladie ; malade | syllabe bing4 |
@@ -525,6 +525,7 @@ tu | 土 | tu3 | terre | | Clé n° 32 (墨, 坐). Parfois seulement le son : �
 百 | 一 (le sens) + 白 bái (le son). |
 一百 | « un » + « cent ». |
 歹 | Écriture ancienne : des restes humains, des os. |
+尸 | Écriture ancienne : une personne aux jambes pliées, assise ou couchée. |
 疒 | Écriture ancienne : une personne couchée dans un lit, le malade. |
 死 | 歹 restes d'un corps (le sens) + un composant de son ancien. |
 病 | 疒 maladie (le sens) + 丙 bǐng (le son). |

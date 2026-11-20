@@ -173,9 +173,9 @@ const PAQUET = {
   },
   {
    "id": "l5b",
-   "titre": "Leçon 5 · La mort et la maladie (歹, 疒)",
+   "titre": "Leçon 5 · Le corps et la maladie (尸, 疒)",
    "mots": [
-    "dai",
+    "shi-corps",
     "ne",
     "si-mourir",
     "bing",
@@ -524,7 +524,7 @@ const PAQUET = {
    ],
    "sens": "œil",
    "son": true,
-   "remarque": "Se lit comme 木 « arbre » : même syllabe, même ton.",
+   "remarque": "Se lit comme 木 « arbre » : même syllabe, même ton. Le mot ancien : seul, il ne se dit plus ; l'œil se dit 眼睛.",
    "liste": "l3b"
   },
   "xin": {
@@ -830,7 +830,7 @@ const PAQUET = {
    ],
    "sens": "œil, yeux",
    "son": true,
-   "remarque": "睛 au ton neutre.",
+   "remarque": "睛 au ton neutre. Le mot courant ; 目 mù est le mot ancien. Piège : 眼镜 yǎnjìng, « lunettes ».",
    "liste": "l4",
    "motAMot": "« œil » + « pupille » : l'œil, les yeux."
   },
@@ -1362,14 +1362,14 @@ const PAQUET = {
    "liste": "l5",
    "motAMot": "« un » + « cent »."
   },
-  "dai": {
-   "hz": "歹",
+  "shi-corps": {
+   "hz": "尸",
    "py": [
-    "dai3"
+    "shi1"
    ],
-   "sens": "mauvais ; (clé) restes d'un corps, la mort",
+   "sens": "cadavre ; (clé) le corps",
    "son": false,
-   "remarque": "Clé n° 78 (死, 残). Le trait du haut le distingue de 夕 « soir ».",
+   "remarque": "Clé n° 44, en enveloppe en haut et à gauche (尾, 尿, 居). Coiffé d'un point, c'est 户 « porte ».",
    "liste": "l5b"
   },
   "ne": {
@@ -4344,25 +4344,14 @@ const PAQUET = {
    "semantique": "一",
    "phonetique": "白"
   },
-  "歹": {
-   "hex": "6B79",
+  "尸": {
+   "hex": "5C38",
    "indice": {
-    "origine": "Écriture ancienne : des restes humains, des os.",
+    "origine": "Écriture ancienne : une personne aux jambes pliées, assise ou couchée.",
     "astuce": ""
    },
-   "cle": "歹",
-   "parties": [
-    [
-     "一",
-     "yī",
-     "un, un trait"
-    ],
-    [
-     "夕",
-     "xī",
-     "soir"
-    ]
-   ],
+   "cle": "尸",
+   "parties": [],
    "semantique": "",
    "phonetique": ""
   },
