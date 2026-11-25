@@ -56,21 +56,39 @@ const Hanzi = (() => {
     return (id) => s.has(id);
   }
 
-  // La carte commune d'homophones part du niveau le plus bas des anciennes cartes d'écoute de ses mots
-  // (demande du 25 novembre 2026). Une seule fois : si elle existe déjà (vue, ou archivée), on n'y touche pas.
-  // Si l'un des mots n'avait jamais vu sa carte d'écoute, le plus bas niveau est « pas encore vue » : elle reste nouvelle.
-  // Les anciennes cartes restent dans l'archive ; on ajoute une carte, rien n'est réécrit.
+  // Niveau de la carte commune d'homophones (demandes du 25 novembre 2026) : celui du mot le moins maîtrisé.
+  // Le niveau d'un mot est celui de son ancienne carte d'écoute ; sans ancienne carte, « pas encore vue ».
+  // - Création : la carte part du niveau le plus bas ; si un mot n'a jamais été vu, elle reste nouvelle (absente).
+  // - Un mot à apprendre rejoint le groupe (nouveau mot au paquet, ou mot repris après exclusion) : même règle,
+  //   la carte descend au niveau le plus bas, et repart de zéro si le nouveau venu n'a jamais été vu.
+  // carte.mots : les mots déjà comptés (champ facultatif). On ne les retire jamais : exclure puis reprendre un mot
+  // ne fait rien perdre. L'état remplacé reste dans l'archive, sous « o-=mu4~<instant> » ; rien n'est effacé.
   const RANG = { nouvelle: 0, apprentissage: 1, revision: 2 };
   const plusBas = (a, b) => (RANG[a.etat] - RANG[b.etat]) || (a.ivl - b.ivl) || ((a.due || 0) - (b.due || 0));
-  function heriter(etat, paquet) {
-    const archive = etat.archive || {};
+  function heriter(etat, paquet, t) {
+    t = t || Date.now();
+    const archive = (etat.archive = etat.archive || {}), exclus = etat.exclus || {};
+    const ancienne = (m) => etat.cartes["o-" + m] || archive["o-" + m];
+    const jamaisVu = (c) => !c || c.etat === "nouvelle";
     Object.entries(groupes(paquet)).forEach(([cle, g]) => {
-      const id = "o-" + cle;
-      if (etat.cartes[id] || archive[id]) return;
-      const anciennes = g.mots.filter((m) => paquet.mots[m].son).map((m) => etat.cartes["o-" + m] || archive["o-" + m]);
-      if (!anciennes.length || anciennes.some((c) => !c || c.etat === "nouvelle")) return;
-      const bas = anciennes.slice().sort(plusBas)[0];
-      etat.cartes[id] = Object.assign({}, bas, { herite: true });
+      const id = "o-" + cle, carte = etat.cartes[id];
+      const actifs = g.mots.filter((m) => !exclus[m]);
+      if (!actifs.length) return;
+      if (!carte) {
+        const anciennes = actifs.map(ancienne);
+        if (anciennes.some(jamaisVu)) return;
+        etat.cartes[id] = Object.assign({}, anciennes.slice().sort(plusBas)[0], { herite: true, mots: actifs });
+        return;
+      }
+      if (!carte.mots) { carte.mots = actifs; return; }       // carte d'avant ce suivi : ses mots actuels
+      const venus = actifs.filter((m) => !carte.mots.includes(m));
+      if (!venus.length) return;
+      const leurs = venus.map(ancienne), mots = carte.mots.concat(venus);
+      if (leurs.some(jamaisVu)) { archive[id + "~" + t] = carte; delete etat.cartes[id]; return; }
+      const bas = leurs.concat([carte]).sort(plusBas)[0];
+      if (bas === carte) { carte.mots = mots; return; }
+      archive[id + "~" + t] = carte;
+      etat.cartes[id] = Object.assign({}, bas, { herite: true, mots: mots });
     });
     return etat;
   }

@@ -371,7 +371,7 @@
       b.classList.toggle("exclu", ex); b.setAttribute("aria-pressed", String(!ex));
     };
     const apres = () => {
-      reordonner(); sauver();
+      Hanzi.heriter(E, P); reordonner(); sauver();
       zone.querySelector("#resume-exclus").textContent = resume();
       zone.querySelectorAll("[data-decompte]").forEach((d) => { d.textContent = "· " + decompte(P.listes[+d.dataset.decompte].mots); });
     };
