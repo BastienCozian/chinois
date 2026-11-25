@@ -12,6 +12,8 @@
 #   « aucun » = pas de son (pas de carte d'écoute).
 # Chaque mot donne jusqu'à quatre cartes : écriture (e-<id>), sens (s-<id>), lecture (l-<id>),
 #   écoute (o-<id>, si le mot a un son).
+# Homophones (mêmes syllabes, mêmes tons : 目 et 木 mù) : construire.py les trouve seul. Ils partagent une carte
+#   d'écoute (o-=mu4), qui demande de les retrouver tous ; leurs cartes o-<id> sont archivées.
 # Un id ne change jamais : la progression y est attachée. Ajouter les mots en fin de fichier :
 #   l'ordre du fichier est l'ordre des nouvelles cartes.
 #
@@ -151,7 +153,7 @@ n100 | 百 | bai3 | cent | | 200 : 两百 ou 二百. 一百五 = 150, jamais 105
 yibai | 一百 | yi1 bai3 | cent (100) | aucun | On écrit yībǎi, on dit yìbǎi (一 devant un 3ᵉ ton).
 
 ## l5b | Leçon 5 · Le corps et la maladie (尸, 疒)
-shi-corps | 尸 | shi1 | cadavre ; (clé) le corps | aucun | Clé n° 44, en enveloppe en haut et à gauche (尾, 尿, 居). Coiffé d'un point, c'est 户 « porte ».
+shi-corps | 尸 | shi1 | cadavre ; (clé) le corps | aucun | Clé n° 44, en enveloppe en haut et à gauche (尾, 尿, 居).
 ne | 疒 | ne4 | (clé) la maladie | aucun | Clé n° 104, toujours en enveloppe en haut et à gauche (病, 疼, 痛). Ne s'emploie plus seul.
 si-mourir | 死 | si3 | mourir | syllabe si3 | Sǐ : le 4 (sì) lui doit sa mauvaise réputation.
 bing | 病 | bing4 | maladie ; malade | syllabe bing4 |
@@ -327,6 +329,21 @@ tu | 土 | tu3 | terre | | Clé n° 32 (墨, 坐). Parfois seulement le son : �
 自 | soi ; à l'origine, le nez
 走 | marcher
 
+# Section « confusions » : clés et composants qui se ressemblent (consigne du 25 novembre 2026).
+#   <caractère> | <caractère> | <message : ce qui les distingue à l'œil>
+# Le message s'affiche dans « Pour retenir » de tout caractère qui est l'un des deux, les contient ou a l'un pour clé ;
+#   jamais pendant l'écriture. Ne pas le répéter dans une remarque.
+
+## confusions
+见 | 贝 | 见 jiàn « voir » finit par deux jambes : la dernière part à droite et remonte en crochet. 贝 bèi « coquillage » finit par un trait oblique et un point. 贝 est la clé n° 154 : les cauris servaient de monnaie, d'où la clé des mots de l'argent (贵 guì « cher », 财 cái « richesse », 货 huò « marchandise »).
+尸 | 户 | 尸 « corps » (尾, 尿) : trois traits, rien au-dessus. 户 « porte » (房) : le même dessin, coiffé d'un point.
+广 | 厂 | 广 « abri, grand toit » (庆) a un point au-dessus ; 厂 « abri, falaise » (厦) n'en a pas.
+宀 | 冖 | 宀 « toit » (安, 客, 宝) a un point au-dessus ; 冖 « couvercle » (亮) n'en a pas.
+日 | 目 | 日 « soleil » (明, 晚) n'a qu'un trait à l'intérieur ; 目 « œil » (眼, 睛, 相) en a deux, et il est plus haut que large.
+冫 | 氵 | 冫 « glace » (dans 疼) : deux gouttes ; 氵 « eau » (没, 海, 江) : trois.
+亻 | 彳 | 亻 « personne » (你, 们) : un trait oblique ; 彳 « pas, marcher » (得) : deux.
+礻 | 衤 | 礻 « autel » (祝, 福) : un seul point en haut ; 衤 « vêtement » (pas encore au cours) a un petit trait de plus, en bas à droite.
+土 | 士 | 土 « terre » (墨, 在) : le trait du bas est le plus long. 士 shì « lettré » (pas encore au cours) : c'est celui du haut.
 # Section « indices » : ce qui aide à retrouver un caractère ou un mot. Tout caractère et tout mot de
 #   plusieurs caractères doit en avoir un : construire.py s'arrête sinon.
 #   <caractère ou mot> | <origine> | <astuce>

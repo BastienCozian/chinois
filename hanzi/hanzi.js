@@ -13,22 +13,55 @@ const Hanzi = (() => {
 
   function mots(paquet) { return paquet.listes.flatMap((l) => l.mots); }
 
-  function aCarte(paquet, type, m) { return type !== "o" || paquet.mots[m].son; }
+  // Homophones (mêmes syllabes, mêmes tons : 目 et 木 mù) : leur carte d'écoute serait ambiguë.
+  // Ils la partagent (consigne du 25 novembre 2026) : une carte « o-=mu4 », dont la réponse montre tous les mots.
+  const groupes = (paquet) => paquet.homophones || {};
+  function aCarte(paquet, type, m) { return type !== "o" || (paquet.mots[m].son && !paquet.mots[m].homophone); }
 
-  // Ordre de présentation des nouvelles cartes, pour les types choisis, sans les mots exclus par l'élève
+  // Mots d'une carte : le mot, ou les mots du groupe d'homophones
+  function motsCarte(paquet, id) {
+    const k = id.slice(2), g = groupes(paquet)[k];
+    return g ? g.mots : paquet.mots[k] ? [k] : [];
+  }
+  // Mots d'une carte qui sont encore à apprendre (non exclus)
+  function motsActifs(paquet, id, exclus) { return motsCarte(paquet, id).filter((m) => !(exclus && exclus[m])); }
+  // Cartes d'un mot, dans l'ordre des types ; l'écoute d'un homophone est celle de son groupe
+  function cartesMot(paquet, m) {
+    const mot = paquet.mots[m];
+    return Object.keys(TYPES).map((t) => (t === "o" && mot.homophone ? "o-" + mot.homophone : aCarte(paquet, t, m) ? t + "-" + m : null)).filter(Boolean);
+  }
+  // Caractères d'une carte, pour le bilan : « 目/木 » pour un groupe
+  function hzCarte(paquet, id) { return motsCarte(paquet, id).map((m) => paquet.mots[m].hz).join("/"); }
+
+  // Ordre de présentation des nouvelles cartes, pour les types choisis, sans les mots exclus par l'élève.
+  // La carte d'un groupe d'homophones vient après le dernier de ses mots.
   function ordre(paquet, types, exclus) {
-    const l = [];
-    mots(paquet).forEach((m, i) => Object.keys(TYPES).forEach((t, k) => {
-      if (types[t] && aCarte(paquet, t, m) && !(exclus && exclus[m])) l.push({ id: t + "-" + m, r: i + DECALAGE[t], k: k });
-    }));
+    const l = [], rang = {};
+    mots(paquet).forEach((m, i) => {
+      rang[m] = i;
+      Object.keys(TYPES).forEach((t, k) => {
+        if (types[t] && aCarte(paquet, t, m) && !(exclus && exclus[m])) l.push({ id: t + "-" + m, r: i + DECALAGE[t], k: k });
+      });
+    });
+    if (types.o) Object.entries(groupes(paquet)).forEach(([cle, g]) => {
+      const actifs = g.mots.filter((m) => !(exclus && exclus[m]));
+      if (actifs.length) l.push({ id: "o-" + cle, r: Math.max(...g.mots.map((m) => rang[m])) + DECALAGE.o, k: 3 });
+    });
     return l.sort((a, b) => a.r - b.r || a.k - b.k).map((x) => x.id);
+  }
+
+  // Toutes les cartes du paquet, exclus compris : une carte absente de cette liste est archivée (SRS.ranger)
+  function existe(paquet) {
+    const s = new Set(ordre(paquet, { e: 1, s: 1, l: 1, o: 1 }));
+    return (id) => s.has(id);
   }
 
   // L'état réduit aux cartes des types choisis et des mots non exclus (le quota du jour reste partagé).
   // Les cartes d'un mot exclu gardent leur progression : elles reviennent telles quelles s'il est repris.
-  function vue(etat, types) {
+  // Une carte d'homophones reste tant que l'un de ses mots n'est pas exclu.
+  function vue(etat, types, paquet) {
     const cartes = {}, exclus = etat.exclus || {};
-    for (const id in etat.cartes) if (types[id[0]] && !exclus[id.slice(2)]) cartes[id] = etat.cartes[id];
+    for (const id in etat.cartes) if (types[id[0]] && motsActifs(paquet, id, exclus).length) cartes[id] = etat.cartes[id];
     return Object.assign({}, etat, { cartes: cartes });
   }
 
@@ -59,6 +92,8 @@ const Hanzi = (() => {
   }
 
   function bloc(js, paquet) {
+    // Réponses à des mots retirés du paquet (歹, 20 novembre 2026) : sans caractères à citer, on les laisse de côté
+    js = js.filter((e) => motsCarte(paquet, e.id).length);
     if (!js.length) return ["  Aucune réponse."];
     const M = (id) => paquet.mots[id.slice(2)];
     const L = [];
@@ -122,7 +157,7 @@ const Hanzi = (() => {
       const aides = r.filter((e) => e.indice).length;
       if (aides) L.push(`    Avec aide-mémoire : ${aides}.`);
       const durs = {};
-      r.filter((e) => e.n === 1).forEach((e) => { const hz = M(e.id).hz; durs[hz] = (durs[hz] || 0) + 1; });
+      r.filter((e) => e.n === 1).forEach((e) => { const hz = hzCarte(paquet, e.id); durs[hz] = (durs[hz] || 0) + 1; });
       if (Object.keys(durs).length) L.push("    Notés « À revoir » : " + trie(durs).map(([k, n]) => k + (n > 1 ? ` ×${n}` : "")).join(", ") + ".");
     });
     return L;
@@ -146,14 +181,14 @@ const Hanzi = (() => {
       const rev = vus.filter((id) => etat.cartes[id].etat === "revision").length;
       return `${TYPES[ty]} ${vus.length}/${ids.length} (${rev} en révision espacée)` + (etat.types && !etat.types[ty] ? " [désactivé]" : "");
     });
-    const dues = Object.values(vue(etat, etat.types || { e: 1, s: 1, l: 1, o: 1 }).cartes).filter((c) => c.etat !== "nouvelle" && c.due <= t).length;
+    const dues = Object.values(vue(etat, etat.types || { e: 1, s: 1, l: 1, o: 1 }, paquet).cartes).filter((c) => c.etat !== "nouvelle" && c.due <= t).length;
     L.push("", `Progression : ${parType.join(" ; ")}. ${dues} carte${dues > 1 ? "s" : ""} due${dues > 1 ? "s" : ""} maintenant.`);
     const exclus = mots(paquet).filter((m) => etat.exclus && etat.exclus[m]);
     if (exclus.length) L.push(`Mots exclus de l'apprentissage (${exclus.length}) : ${exclus.map((m) => paquet.mots[m].hz).join(" ")}.`);
     return L.join("\n");
   }
 
-  return { TYPES, TONS, ordre, vue, pinyin, ton, noteEcriture, bilan, mots };
+  return { TYPES, TONS, ordre, existe, vue, pinyin, ton, noteEcriture, bilan, mots, motsCarte, motsActifs, cartesMot };
 })();
 
 if (typeof module !== "undefined") module.exports = Hanzi;

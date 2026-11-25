@@ -525,7 +525,8 @@ const PAQUET = {
    "sens": "œil",
    "son": true,
    "remarque": "Se lit comme 木 « arbre » : même syllabe, même ton. Le mot ancien : seul, il ne se dit plus ; l'œil se dit 眼睛.",
-   "liste": "l3b"
+   "liste": "l3b",
+   "homophone": "=mu4"
   },
   "xin": {
    "hz": "心",
@@ -565,7 +566,8 @@ const PAQUET = {
    "sens": "arbre, bois",
    "son": true,
    "remarque": "Se lit comme 目 « œil » : même syllabe, même ton.",
-   "liste": "l3b"
+   "liste": "l3b",
+   "homophone": "=mu4"
   },
   "qing": {
    "hz": "青",
@@ -1328,7 +1330,8 @@ const PAQUET = {
    "sens": "dix",
    "son": true,
    "remarque": "Devant, on multiplie (二十 = 20) ; derrière, on ajoute (十二 = 12). Au milieu d'un nombre, il dit son 一 : 一百一十 (110).",
-   "liste": "l5"
+   "liste": "l5",
+   "homophone": "=shi2"
   },
   "n0": {
    "hz": "零",
@@ -1369,7 +1372,7 @@ const PAQUET = {
    ],
    "sens": "cadavre ; (clé) le corps",
    "son": false,
-   "remarque": "Clé n° 44, en enveloppe en haut et à gauche (尾, 尿, 居). Coiffé d'un point, c'est 户 « porte ».",
+   "remarque": "Clé n° 44, en enveloppe en haut et à gauche (尾, 尿, 居).",
    "liste": "l5b"
   },
   "ne": {
@@ -1536,7 +1539,8 @@ const PAQUET = {
    "sens": "pierre",
    "son": true,
    "remarque": "Clé n° 112, à gauche (砚, 码).",
-   "liste": "l5d"
+   "liste": "l5d",
+   "homophone": "=shi2"
   },
   "tu": {
    "hz": "土",
@@ -1570,7 +1574,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "",
-   "phonetique": ""
+   "phonetique": "",
+   "confusions": [
+    6
+   ]
   },
   "好": {
    "hex": "597D",
@@ -1614,7 +1621,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "亻",
-   "phonetique": "门"
+   "phonetique": "门",
+   "confusions": [
+    6
+   ]
   },
   "晚": {
    "hex": "665A",
@@ -1636,7 +1646,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "",
-   "phonetique": ""
+   "phonetique": "",
+   "confusions": [
+    4
+   ]
   },
   "上": {
    "hex": "4E0A",
@@ -1879,7 +1892,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "氵",
-   "phonetique": "殳"
+   "phonetique": "殳",
+   "confusions": [
+    5
+   ]
   },
   "下": {
    "hex": "4E0B",
@@ -1968,7 +1984,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "",
-   "phonetique": ""
+   "phonetique": "",
+   "confusions": [
+    0
+   ]
   },
   "两": {
    "hex": "4E24",
@@ -2110,7 +2129,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "",
-   "phonetique": ""
+   "phonetique": "",
+   "confusions": [
+    6
+   ]
   },
   "快": {
    "hex": "5FEB",
@@ -2187,7 +2209,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "",
-   "phonetique": ""
+   "phonetique": "",
+   "confusions": [
+    1
+   ]
   },
   "巴": {
    "hex": "5DF4",
@@ -2222,7 +2247,10 @@ const PAQUET = {
    ],
    "semantique": "",
    "phonetique": "",
-   "cleSens": "œil"
+   "cleSens": "œil",
+   "confusions": [
+    4
+   ]
   },
   "奇": {
    "hex": "5947",
@@ -2288,7 +2316,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "",
-   "phonetique": ""
+   "phonetique": "",
+   "confusions": [
+    7
+   ]
   },
   "生": {
    "hex": "751F",
@@ -2310,7 +2341,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "",
-   "phonetique": ""
+   "phonetique": "",
+   "confusions": [
+    8
+   ]
   },
   "日": {
    "hex": "65E5",
@@ -2332,7 +2366,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "",
-   "phonetique": ""
+   "phonetique": "",
+   "confusions": [
+    4
+   ]
   },
   "乐": {
    "hex": "4E50",
@@ -2366,7 +2403,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "",
-   "phonetique": ""
+   "phonetique": "",
+   "confusions": [
+    4
+   ]
   },
   "心": {
    "hex": "5FC3",
@@ -2498,7 +2538,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "",
-   "phonetique": ""
+   "phonetique": "",
+   "confusions": [
+    4
+   ]
   },
   "想": {
    "hex": "60F3",
@@ -2608,7 +2651,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "",
-   "phonetique": ""
+   "phonetique": "",
+   "confusions": [
+    3
+   ]
   },
   "重": {
    "hex": "91CD",
@@ -2652,7 +2698,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "",
-   "phonetique": ""
+   "phonetique": "",
+   "confusions": [
+    2
+   ]
   },
   "杭": {
    "hex": "676D",
@@ -2762,7 +2811,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "",
-   "phonetique": ""
+   "phonetique": "",
+   "confusions": [
+    3
+   ]
   },
   "晶": {
    "hex": "6676",
@@ -2789,7 +2841,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "",
-   "phonetique": ""
+   "phonetique": "",
+   "confusions": [
+    4
+   ]
   },
   "满": {
    "hex": "6EE1",
@@ -2816,7 +2871,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "氵",
-   "phonetique": "㒼"
+   "phonetique": "㒼",
+   "confusions": [
+    5
+   ]
   },
   "天": {
    "hex": "5929",
@@ -2860,7 +2918,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "",
-   "phonetique": ""
+   "phonetique": "",
+   "confusions": [
+    4
+   ]
   },
   "小": {
    "hex": "5C0F",
@@ -2904,7 +2965,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "日",
-   "phonetique": "生"
+   "phonetique": "生",
+   "confusions": [
+    4
+   ]
   },
   "挂": {
    "hex": "6302",
@@ -2948,7 +3012,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "土",
-   "phonetique": "才"
+   "phonetique": "才",
+   "confusions": [
+    8
+   ]
   },
   "放": {
    "hex": "653E",
@@ -3015,7 +3082,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "",
-   "phonetique": ""
+   "phonetique": "",
+   "confusions": [
+    4
+   ]
   },
   "像": {
    "hex": "50CF",
@@ -3037,7 +3107,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "亻",
-   "phonetique": "象"
+   "phonetique": "象",
+   "confusions": [
+    6
+   ]
   },
   "许": {
    "hex": "8BB8",
@@ -3103,7 +3176,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "目",
-   "phonetique": "艮"
+   "phonetique": "艮",
+   "confusions": [
+    4
+   ]
   },
   "睛": {
    "hex": "775B",
@@ -3125,7 +3201,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "目",
-   "phonetique": "青"
+   "phonetique": "青",
+   "confusions": [
+    4
+   ]
   },
   "人": {
    "hex": "4EBA",
@@ -3411,7 +3490,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "",
-   "phonetique": ""
+   "phonetique": "",
+   "confusions": [
+    3
+   ]
   },
   "气": {
    "hex": "6C14",
@@ -3444,7 +3526,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "",
-   "phonetique": ""
+   "phonetique": "",
+   "confusions": [
+    6
+   ]
   },
   "息": {
    "hex": "606F",
@@ -3554,7 +3639,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "厂",
-   "phonetique": "夏"
+   "phonetique": "夏",
+   "confusions": [
+    2
+   ]
   },
   "门": {
    "hex": "95E8",
@@ -3609,7 +3697,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "",
-   "phonetique": ""
+   "phonetique": "",
+   "confusions": [
+    4
+   ]
   },
   "大": {
    "hex": "5927",
@@ -3719,7 +3810,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "氵",
-   "phonetique": "宾"
+   "phonetique": "宾",
+   "confusions": [
+    5
+   ]
   },
   "喀": {
    "hex": "5580",
@@ -3763,7 +3857,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "",
-   "phonetique": ""
+   "phonetique": "",
+   "confusions": [
+    6
+   ]
   },
   "济": {
    "hex": "6D4E",
@@ -3785,7 +3882,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "氵",
-   "phonetique": "齐"
+   "phonetique": "齐",
+   "confusions": [
+    5
+   ]
   },
   "南": {
    "hex": "5357",
@@ -3910,7 +4010,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "氵",
-   "phonetique": "折"
+   "phonetique": "折",
+   "confusions": [
+    5
+   ]
   },
   "江": {
    "hex": "6C5F",
@@ -3932,7 +4035,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "氵",
-   "phonetique": "工"
+   "phonetique": "工",
+   "confusions": [
+    5
+   ]
   },
   "福": {
    "hex": "798F",
@@ -3954,7 +4060,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "礻",
-   "phonetique": "畐"
+   "phonetique": "畐",
+   "confusions": [
+    7
+   ]
   },
   "建": {
    "hex": "5EFA",
@@ -4126,7 +4235,10 @@ const PAQUET = {
    ],
    "semantique": "",
    "phonetique": "",
-   "cleSens": "champ"
+   "cleSens": "champ",
+   "confusions": [
+    8
+   ]
   },
   "北": {
    "hex": "5317",
@@ -4187,7 +4299,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "氵",
-   "phonetique": "每"
+   "phonetique": "每",
+   "confusions": [
+    5
+   ]
   },
   "五": {
    "hex": "4E94",
@@ -4353,7 +4468,10 @@ const PAQUET = {
    "cle": "尸",
    "parties": [],
    "semantique": "",
-   "phonetique": ""
+   "phonetique": "",
+   "confusions": [
+    1
+   ]
   },
   "疒": {
    "hex": "7592",
@@ -4375,7 +4493,11 @@ const PAQUET = {
     ]
    ],
    "semantique": "",
-   "phonetique": ""
+   "phonetique": "",
+   "confusions": [
+    2,
+    5
+   ]
   },
   "死": {
    "hex": "6B7B",
@@ -4507,7 +4629,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "户",
-   "phonetique": "方"
+   "phonetique": "方",
+   "confusions": [
+    1
+   ]
   },
   "宝": {
    "hex": "5B9D",
@@ -4529,7 +4654,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "",
-   "phonetique": ""
+   "phonetique": "",
+   "confusions": [
+    3
+   ]
   },
   "笔": {
    "hex": "7B14",
@@ -4573,7 +4701,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "",
-   "phonetique": ""
+   "phonetique": "",
+   "confusions": [
+    8
+   ]
   },
   "纸": {
    "hex": "7EB8",
@@ -4617,7 +4748,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "石",
-   "phonetique": "见"
+   "phonetique": "见",
+   "confusions": [
+    0
+   ]
   },
   "千": {
    "hex": "5343",
@@ -4706,7 +4840,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "",
-   "phonetique": ""
+   "phonetique": "",
+   "confusions": [
+    2
+   ]
   },
   "土": {
    "hex": "571F",
@@ -4728,7 +4865,73 @@ const PAQUET = {
     ]
    ],
    "semantique": "",
-   "phonetique": ""
+   "phonetique": "",
+   "confusions": [
+    8
+   ]
   }
- }
+ },
+ "homophones": {
+  "=mu4": {
+   "mots": [
+    "mu",
+    "mu-arbre"
+   ],
+   "son": "mu"
+  },
+  "=shi2": {
+   "mots": [
+    "n10",
+    "shi-pierre"
+   ],
+   "son": "n10"
+  }
+ },
+ "confusions": [
+  {
+   "a": "见",
+   "b": "贝",
+   "texte": "见 jiàn « voir » finit par deux jambes : la dernière part à droite et remonte en crochet. 贝 bèi « coquillage » finit par un trait oblique et un point. 贝 est la clé n° 154 : les cauris servaient de monnaie, d'où la clé des mots de l'argent (贵 guì « cher », 财 cái « richesse », 货 huò « marchandise »)."
+  },
+  {
+   "a": "尸",
+   "b": "户",
+   "texte": "尸 « corps » (尾, 尿) : trois traits, rien au-dessus. 户 « porte » (房) : le même dessin, coiffé d'un point."
+  },
+  {
+   "a": "广",
+   "b": "厂",
+   "texte": "广 « abri, grand toit » (庆) a un point au-dessus ; 厂 « abri, falaise » (厦) n'en a pas."
+  },
+  {
+   "a": "宀",
+   "b": "冖",
+   "texte": "宀 « toit » (安, 客, 宝) a un point au-dessus ; 冖 « couvercle » (亮) n'en a pas."
+  },
+  {
+   "a": "日",
+   "b": "目",
+   "texte": "日 « soleil » (明, 晚) n'a qu'un trait à l'intérieur ; 目 « œil » (眼, 睛, 相) en a deux, et il est plus haut que large."
+  },
+  {
+   "a": "冫",
+   "b": "氵",
+   "texte": "冫 « glace » (dans 疼) : deux gouttes ; 氵 « eau » (没, 海, 江) : trois."
+  },
+  {
+   "a": "亻",
+   "b": "彳",
+   "texte": "亻 « personne » (你, 们) : un trait oblique ; 彳 « pas, marcher » (得) : deux."
+  },
+  {
+   "a": "礻",
+   "b": "衤",
+   "texte": "礻 « autel » (祝, 福) : un seul point en haut ; 衤 « vêtement » (pas encore au cours) a un petit trait de plus, en bas à droite."
+  },
+  {
+   "a": "土",
+   "b": "士",
+   "texte": "土 « terre » (墨, 在) : le trait du bas est le plus long. 士 shì « lettré » (pas encore au cours) : c'est celui du haut."
+  }
+ ]
 };

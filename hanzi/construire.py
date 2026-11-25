@@ -49,8 +49,8 @@ def hexa(c: str) -> str:
     return f"{ord(c):X}"
 
 
-def lire_paquet() -> tuple[list[dict], dict, dict, dict]:
-    listes, mots, composants, indices = [], {}, {}, {}
+def lire_paquet() -> tuple[list[dict], dict, dict, dict, list]:
+    listes, mots, composants, indices, confusions = [], {}, {}, {}, []
     erreurs, section = [], None
     for n, brute in enumerate((ICI / "paquet.txt").read_text(encoding="utf-8").splitlines(), 1):
         l = brute.strip()
@@ -59,7 +59,7 @@ def lire_paquet() -> tuple[list[dict], dict, dict, dict]:
         if l.startswith("## "):
             ident, _, titre = l[3:].partition("|")
             section = ident.strip()
-            if section not in ("composants", "indices"):
+            if section not in ("composants", "indices", "confusions"):
                 listes.append({"id": section, "titre": titre.strip(), "mots": []})
             continue
         champs = [c.strip() for c in l.split("|")]
@@ -73,6 +73,12 @@ def lire_paquet() -> tuple[list[dict], dict, dict, dict]:
                 erreurs.append(f"ligne {n} : l'indice de {champs[0]} ne doit pas contenir ce caractère")
             else:
                 indices[champs[0]] = {"origine": champs[1], "astuce": champs[2]}
+            continue
+        if section == "confusions":
+            if len(champs) != 3 or not all(champs):
+                erreurs.append(f"ligne {n} : confusion : « caractère | caractère | message »")
+            else:
+                confusions.append({"a": champs[0], "b": champs[1], "texte": champs[2]})
             continue
         if section is None or len(champs) != 6:
             erreurs.append(f"ligne {n} : six champs attendus, ou ligne hors liste")
@@ -93,7 +99,26 @@ def lire_paquet() -> tuple[list[dict], dict, dict, dict]:
                 erreurs.append(f"pas d'indice pour {cle} (section « indices »)")
     if erreurs:
         sys.exit("paquet.txt :\n  " + "\n  ".join(erreurs))
-    return listes, mots, composants, indices
+    return listes, mots, composants, indices, confusions
+
+
+def homophones(mots: dict) -> dict:
+    """Mots qui se disent exactement pareil (mêmes syllabes, mêmes tons) : une seule carte d'écoute pour le groupe.
+
+    Clé du groupe : « = » + les syllabes collées (=mu4), qui ne peut pas être un id de mot. Le groupe n'a de carte
+    que si l'un de ses mots a un son ; on joue le premier, dans l'ordre du paquet.
+    """
+    par_son: dict[str, list[str]] = {}
+    for ident, m in mots.items():
+        par_son.setdefault("=" + "".join(m["py"]), []).append(ident)
+    groupes = {}
+    for cle, ids in par_son.items():
+        avec_son = [i for i in ids if mots[i]["son"] != "aucun"]
+        if len(ids) > 1 and avec_son:
+            groupes[cle] = {"mots": ids, "son": avec_son[0]}
+            for i in ids:
+                mots[i]["homophone"] = cle
+    return groupes
 
 
 def feuilles(ids: str) -> list[str]:
@@ -153,6 +178,21 @@ def caracteres(mots: dict, composants: dict, indices: dict) -> dict:
     return infos
 
 
+def lier_confusions(infos: dict, confusions: list) -> None:
+    """« Ne pas confondre » : chaque caractère reçoit les numéros des confusions qui le touchent (lui-même,
+    l'une de ses parties ou sa clé)."""
+    vues = set()
+    for c, i in infos.items():
+        presents = {c, i["cle"], *(p[0] for p in i["parties"])}
+        ks = [k for k, x in enumerate(confusions) if x["a"] in presents or x["b"] in presents]
+        if ks:
+            i["confusions"] = ks
+            vues.update(ks)
+    for k, x in enumerate(confusions):
+        if k not in vues:
+            print(f"Confusion {x['a']} / {x['b']} : aucun caractère du paquet ne la contient, elle ne s'affiche nulle part.")
+
+
 def sons(mots: dict) -> None:
     for ident, m in mots.items():
         if m["son"] == "aucun":
@@ -168,12 +208,12 @@ def sons(mots: dict) -> None:
             sys.exit(f"Son introuvable pour {m['hz']} ({url}) : {e}. Mettre « aucun » ou « syllabe … » dans paquet.txt.")
 
 
-def ecrire(listes: list, mots: dict, infos: dict, indices: dict) -> None:
+def ecrire(listes: list, mots: dict, infos: dict, indices: dict, groupes: dict, confusions: list) -> None:
     for m in mots.values():
         if len(m["hz"]) > 1:
             m["motAMot"] = indices[m["hz"]]["origine"]
         m["son"] = m["son"] != "aucun"
-    paquet = {"listes": listes, "mots": mots, "caracteres": infos}
+    paquet = {"listes": listes, "mots": mots, "caracteres": infos, "homophones": groupes, "confusions": confusions}
     (ICI / "paquet.js").write_text("// Généré par construire.py à partir de paquet.txt : ne pas modifier à la main.\n"
                                    "const PAQUET = " + json.dumps(paquet, ensure_ascii=False, indent=1) + ";\n", encoding="utf-8")
     # Manifeste et icônes : ceux de la page Pinyin, une seule appli pour les deux pages
@@ -195,15 +235,20 @@ def ecrire(listes: list, mots: dict, infos: dict, indices: dict) -> None:
 
 
 def main() -> None:
-    listes, mots, composants, indices = lire_paquet()
+    listes, mots, composants, indices, confusions = lire_paquet()
     if telecharger(HANZI_WRITER, ICI / "hanzi-writer.min.js"):
         print("  Hanzi Writer téléchargé")
     telecharger(LICENCE_DONNEES, ICI / "ARPHICPL.TXT")
     infos = caracteres(mots, composants, indices)
+    lier_confusions(infos, confusions)
     sons(mots)
-    ecrire(listes, mots, infos, indices)
-    n = sum(4 if m["son"] else 3 for m in mots.values())
+    groupes = homophones(mots)
+    ecrire(listes, mots, infos, indices, groupes, confusions)
+    # Écoute : une carte par mot qui a un son, sauf les homophones, qui partagent une carte par groupe
+    n = 3 * len(mots) + sum(1 for m in mots.values() if m["son"] and "homophone" not in m) + len(groupes)
     print(f"{len(mots)} mots, {len(infos)} caractères, {n} cartes.")
+    for cle, g in groupes.items():
+        print(f"  Homophones {cle[1:]} : " + " ".join(mots[i]["hz"] for i in g["mots"]) + " (une carte d'écoute commune)")
 
 
 if __name__ == "__main__":

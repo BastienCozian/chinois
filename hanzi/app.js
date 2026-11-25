@@ -10,6 +10,7 @@
   const REVISIONS_URL = "https://claude.ai/artifact/WLAHNFeXYSz8xzBWGoF7x8";
   const P = PAQUET;
   const TOUS = { e: true, s: true, l: true, o: true };
+  const EXISTE = Hanzi.existe(P);
 
   /* ---------- État, gardé dans le navigateur ---------- */
 
@@ -25,8 +26,9 @@
       const v = localStorage.getItem(CLE);
       if (v) {
         const e = Object.assign(SRS.etatVide(), { types: Object.assign({}, TOUS) }, JSON.parse(v));
-        // Mots retirés du paquet : rangés à part, jamais effacés (une mise à jour ne perd aucune progression)
-        return SRS.ranger(e, (id) => !!P.mots[id.slice(2)]);
+        // Cartes retirées du paquet (mot retiré, écoute d'un homophone devenue commune) : rangées à part,
+        // jamais effacées (une mise à jour ne perd aucune progression)
+        return SRS.ranger(e, EXISTE);
       }
     } catch (e) { /* stockage indisponible : on repart d'un état vide */ }
     return Object.assign(SRS.etatVide(), { types: Object.assign({}, TOUS) });
@@ -36,7 +38,7 @@
     catch (e) { alerteStockage = true; }
   }
   if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
-  const vue = () => Hanzi.vue(E, E.types);
+  const vue = () => Hanzi.vue(E, E.types, P);
 
   /* ---------- Son ---------- */
 
@@ -70,12 +72,17 @@
   // Pour retenir un caractère. Quand l'origine est connue, elle dit déjà les composants et leur rôle :
   // on ne garde que la clé, puis l'origine et l'astuce (demande du 18 novembre 2026 : pas de redites).
   // Sans origine : clé du dictionnaire, puis parties ; « sens » et « son » pour les idéo-phonétiques.
+  // « Ne pas confondre » : clés et composants qui se ressemblent (consigne du 25 novembre 2026). Jamais pendant
+  // l'écriture : le message montre les deux dessins.
+  const htmlConfusions = (c) => (P.caracteres[c].confusions || []).map((k) =>
+    `<p class="indice piege"><b>Ne pas confondre</b> ${hzTexte(P.confusions[k].texte)}</p>`).join("");
+
   function htmlComposants(c) {
     const i = P.caracteres[c];
     if (i.indice.origine) {
       const p = i.parties.find((x) => x[0] === i.cle), sensCle = p ? p[2] : i.cleSens || "";
       const cle = i.cle && i.cle !== c ? ` <span class="info">clé ${hz(i.cle)}${sensCle ? " " + sensCle : ""}</span>` : "";
-      return `<div class="car"><p class="compo">${hz(c, "compo-c")}${cle}</p>${htmlIndice(c)}</div>`;
+      return `<div class="car"><p class="compo">${hz(c, "compo-c")}${cle}</p>${htmlIndice(c)}${htmlConfusions(c)}</div>`;
     }
     const parts = i.parties.map(([p, pin, sens]) => {
       const roles = [p === i.cle && "clé", p === i.semantique && "donne le sens", p === i.phonetique && "donne le son"].filter(Boolean);
@@ -84,7 +91,7 @@
     let h = `<div class="car"><p class="compo">${hz(c, "compo-c")}`;
     if (parts.length) h += ` = ${parts.join(" + ")}`;
     if (i.cle && i.cle !== c && !i.parties.some((p) => p[0] === i.cle)) h += `<br><span class="info">clé ${hz(i.cle)} ${i.cleSens || ""}</span>`;
-    return h + "</p>" + htmlIndice(c) + "</div>";
+    return h + "</p>" + htmlIndice(c) + htmlConfusions(c) + "</div>";
   }
 
   // Aide-mémoire d'un mot : un bloc par caractère, numéroté sans montrer le caractère
@@ -213,7 +220,8 @@
       Là où vous ne pouvez pas parler, touchez « Je ne peux pas parler ici » : les cartes de lecture se font alors
       de tête, jusqu'à ce que vous fermiez la page. Vos enregistrements ne sont jamais gardés.</p>
       <p><b>Les mots</b>. La fiche de chaque mot permet aussi de s'enregistrer et de se comparer au modèle, sans note.</p>
-      <p><b>Écoute</b> (le son seul). Retrouvez le sens, puis vérifiez.</p>
+      <p><b>Écoute</b> (le son seul). Retrouvez le sens, puis vérifiez. Quand plusieurs mots se disent exactement pareil
+      (目 et 木, mù), ils partagent une seule carte d'écoute : retrouvez-les tous.</p>
       <p><b>Pour retenir</b>. « Origine » est ce qu'on sait de l'histoire du caractère ; « Astuce inventée » est une image pour la mémoire, pas une vérité sur le chinois. Quand un composant ne donne que le son, l'indice le dit.</p>
       <p>Tons du dictionnaire : dans 你好, on écrit nǐ hǎo, on dit ní hǎo. La remarque sous le mot le signale.</p>
       ${Profil.htmlFrequence()}
@@ -304,7 +312,7 @@
       const v = JSON.parse(txt);
       if (!v.cartes || !v.journal) throw new Error("format");
       if (confirm("Remplacer la progression actuelle par cette sauvegarde ?")) {
-        E = SRS.ranger(Object.assign(SRS.etatVide(), { types: Object.assign({}, TOUS) }, v), (id) => !!P.mots[id.slice(2)]); reordonner(); sauver(); accueil();
+        E = SRS.ranger(Object.assign(SRS.etatVide(), { types: Object.assign({}, TOUS) }, v), EXISTE); reordonner(); sauver(); accueil();
       }
     }).catch(() => alert("Ce fichier n'est pas une sauvegarde de la page Sinogrammes."));
   }
@@ -315,7 +323,7 @@
     const sections = P.listes.map((l) => ({ titre: l.titre, elements: l.mots.map((id) => {
       const m = P.mots[id];
       return { cle: id, html: `${hz(m.hz)} <small lang="zh-Latn-pinyin">${py(m)}</small> <small>${m.sens}</small>`,
-        ids: Object.keys(Hanzi.TYPES).filter((t) => t !== "o" || m.son).map((t) => t + "-" + id) };
+        ids: Hanzi.cartesMot(P, id) };
     }) }));
     Niveau.ecran({ zone, etat: E, sauver, retour: accueil, nom: "mot", sections,
       intro: "Sauvegarde perdue, ou nouvel appareil : dites où vous en êtes, sans tout reprendre à zéro." });
@@ -349,7 +357,7 @@
         <div class="mots${choix ? " en-choix" : ""}">${l.mots.map((id) => {
         const m = P.mots[id], ex = !!E.exclus[id];
         return `<button data-mot="${id}" class="${ex ? "exclu" : ""}"${choix ? ` aria-pressed="${!ex}"` : ""}>${hz(m.hz)}<small lang="zh-Latn-pinyin">${py(m)}</small><small>${m.sens}</small>
-          <span class="pts">${Object.keys(Hanzi.TYPES).filter((t) => t !== "o" || m.son).map((t) => point(t + "-" + id)).join("")}</span><span class="marque-exclu">exclu</span></button>`;
+          <span class="pts">${Hanzi.cartesMot(P, id).map(point).join("")}</span><span class="marque-exclu">exclu</span></button>`;
       }).join("")}</div></section>`;
     });
     h += `<p class="info legende-pts"><i class="pt nouvelle"></i> pas encore vue <i class="pt apprentissage"></i> en apprentissage <i class="pt revision"></i> en révision espacée
@@ -456,9 +464,22 @@
     const t = Date.now(), p = SRS.prochaine(vue(), ORDRE, t, S.derniere, S.rang);
     if (!p) { S.courante = null; return fin(); }
     S.derniere = p.id;
-    const id = p.id.slice(2);
-    S.courante = { id: p.id, mot: id, m: P.mots[id], nouvelle: !E.cartes[p.id] };
+    S.courante = contexte(p.id);
     lancer(S.courante);
+  }
+
+  // Une carte : son mot (mot, m). Pour l'écoute d'homophones, « mots » liste les mots du groupe encore à apprendre,
+  // et « mot » est celui dont on joue le son.
+  function contexte(id) {
+    const g = P.homophones && P.homophones[id.slice(2)];
+    const mot = g ? g.son : id.slice(2);
+    const ctx = { id, mot, m: P.mots[mot], nouvelle: !E.cartes[id] };
+    if (g) ctx.mots = Hanzi.motsActifs(P, id, E.exclus);
+    return ctx;
+  }
+  // Réponse d'une carte : le mot entier, ou chacun des homophones
+  function htmlReponse(ctx) {
+    return ctx.mots ? ctx.mots.map((id) => htmlMot(id, true)).join("") : htmlMot(ctx.mot, true);
   }
 
   function lancer(ctx) {
@@ -473,7 +494,7 @@
     const peut = SRS.modifiable(E, r);
     zone.innerHTML = `<div class="haut"><button class="lien" id="quitter">✕ Quitter</button><span class="compteur">réponse ${i + 1} / ${n}</span></div>
       <p class="groupe">${Hanzi.TYPES[ctx.id[0]]}</p>
-      <section class="carte">${htmlMot(ctx.mot, true)}
+      <section class="carte">${htmlReponse(ctx)}
       <p class="info centre">Votre note : <b>${SRS.NOTES[r.note]}</b>.${peut ? " Touchez-en une autre pour la changer." : " Cette carte a été revue depuis : la note ne change plus."}</p>
       ${peut ? `<div class="notes">${[1, 2, 3, 4].map((x) => `<button data-revue="${x}" class="note n${x}${x === r.note ? " propose" : ""}">${SRS.NOTES[x]}<small>${SRS.delai(r.avant, x, r.t)}</small></button>`).join("")}</div>` : ""}
       <div class="actions"><button id="essai">↺ Réessayer, sans note</button><button id="retracer">✎ Retracer, avec ou sans modèle</button></div></section>
@@ -512,7 +533,7 @@
       ${S.hist.length ? `<button class="lien" id="precedente">← Précédente</button>` : ""}
       <button class="lien" id="passer" title="La carte revient dans ${SRS.REPORT / 60000} min, sans note">Passer ⏭</button></div>
       ${SRS.htmlReste(c)}
-      <p class="groupe">${Hanzi.TYPES[ctx.id[0]]} · ${liste.titre.split(" · ")[0]}${ctx.nouvelle ? ' <span class="pastille">nouvelle</span>' : ""}</p>`;
+      <p class="groupe">${Hanzi.TYPES[ctx.id[0]]} · ${ctx.mots ? "homophones" : liste.titre.split(" · ")[0]}${ctx.nouvelle ? ' <span class="pastille">nouvelle</span>' : ""}</p>`;
   }
 
   function brancherEntete(ctx) {
@@ -649,7 +670,7 @@
       go.remove();
       const q = zone.querySelector(".question");
       if (q) q.remove();
-      zone.querySelector("#suite").innerHTML = htmlMot(ctx.mot, true) + htmlNotes(ctx);
+      zone.querySelector("#suite").innerHTML = htmlReponse(ctx) + htmlNotes(ctx);
       const memo = zone.querySelector(".memo");
       if (memo) memo.remove();
       brancherSons();
@@ -674,9 +695,11 @@
   }
 
   /* Écoute : j'entends le mot, je retrouve le sens */
+  // Homophones : un seul son, la réponse montre chaque mot ; la question dit combien (accord du 25 novembre 2026)
   function ecoute(ctx) {
+    const n = ctx.mots ? ctx.mots.length : 1;
     zone.innerHTML = entete(ctx) + `<section class="carte">
-      <p class="consigne">Écoutez : que veut dire ce mot ?</p>
+      <p class="consigne">${n > 1 ? `Écoutez : ${n} mots du paquet se disent ainsi. Lesquels ?` : "Écoutez : que veut dire ce mot ?"}</p>
       <button class="ecoute" id="ecoute" aria-label="Réécouter">▶</button>
       <button class="principal plein" id="voir">Voir la réponse</button><div id="suite"></div></section>`;
     brancherEntete(ctx);
