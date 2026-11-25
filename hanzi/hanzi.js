@@ -56,6 +56,25 @@ const Hanzi = (() => {
     return (id) => s.has(id);
   }
 
+  // La carte commune d'homophones part du niveau le plus bas des anciennes cartes d'écoute de ses mots
+  // (demande du 25 novembre 2026). Une seule fois : si elle existe déjà (vue, ou archivée), on n'y touche pas.
+  // Si l'un des mots n'avait jamais vu sa carte d'écoute, le plus bas niveau est « pas encore vue » : elle reste nouvelle.
+  // Les anciennes cartes restent dans l'archive ; on ajoute une carte, rien n'est réécrit.
+  const RANG = { nouvelle: 0, apprentissage: 1, revision: 2 };
+  const plusBas = (a, b) => (RANG[a.etat] - RANG[b.etat]) || (a.ivl - b.ivl) || ((a.due || 0) - (b.due || 0));
+  function heriter(etat, paquet) {
+    const archive = etat.archive || {};
+    Object.entries(groupes(paquet)).forEach(([cle, g]) => {
+      const id = "o-" + cle;
+      if (etat.cartes[id] || archive[id]) return;
+      const anciennes = g.mots.filter((m) => paquet.mots[m].son).map((m) => etat.cartes["o-" + m] || archive["o-" + m]);
+      if (!anciennes.length || anciennes.some((c) => !c || c.etat === "nouvelle")) return;
+      const bas = anciennes.slice().sort(plusBas)[0];
+      etat.cartes[id] = Object.assign({}, bas, { herite: true });
+    });
+    return etat;
+  }
+
   // L'état réduit aux cartes des types choisis et des mots non exclus (le quota du jour reste partagé).
   // Les cartes d'un mot exclu gardent leur progression : elles reviennent telles quelles s'il est repris.
   // Une carte d'homophones reste tant que l'un de ses mots n'est pas exclu.
@@ -188,7 +207,7 @@ const Hanzi = (() => {
     return L.join("\n");
   }
 
-  return { TYPES, TONS, ordre, existe, vue, pinyin, ton, noteEcriture, bilan, mots, motsCarte, motsActifs, cartesMot };
+  return { TYPES, TONS, ordre, existe, heriter, vue, pinyin, ton, noteEcriture, bilan, mots, motsCarte, motsActifs, cartesMot };
 })();
 
 if (typeof module !== "undefined") module.exports = Hanzi;

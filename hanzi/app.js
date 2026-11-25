@@ -28,7 +28,7 @@
         const e = Object.assign(SRS.etatVide(), { types: Object.assign({}, TOUS) }, JSON.parse(v));
         // Cartes retirées du paquet (mot retiré, écoute d'un homophone devenue commune) : rangées à part,
         // jamais effacées (une mise à jour ne perd aucune progression)
-        return SRS.ranger(e, EXISTE);
+        return Hanzi.heriter(SRS.ranger(e, EXISTE), P);
       }
     } catch (e) { /* stockage indisponible : on repart d'un état vide */ }
     return Object.assign(SRS.etatVide(), { types: Object.assign({}, TOUS) });
@@ -312,7 +312,7 @@
       const v = JSON.parse(txt);
       if (!v.cartes || !v.journal) throw new Error("format");
       if (confirm("Remplacer la progression actuelle par cette sauvegarde ?")) {
-        E = SRS.ranger(Object.assign(SRS.etatVide(), { types: Object.assign({}, TOUS) }, v), EXISTE); reordonner(); sauver(); accueil();
+        E = Hanzi.heriter(SRS.ranger(Object.assign(SRS.etatVide(), { types: Object.assign({}, TOUS) }, v), EXISTE), P); reordonner(); sauver(); accueil();
       }
     }).catch(() => alert("Ce fichier n'est pas une sauvegarde de la page Sinogrammes."));
   }

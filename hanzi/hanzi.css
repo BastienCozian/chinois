@@ -68,16 +68,26 @@ button.son { min-height: 36px; padding: 0.2rem 0.7rem; font-size: 0.9rem; vertic
 .prononcer h2 { font-size: 1.1rem; margin: 0.8rem 0 0.2rem; padding-top: 0.6rem; border-top: 1px solid var(--rule); }
 .types label { display: inline-block; margin-right: 1rem; font-family: var(--sans); }
 
-/* Indices : origine établie, astuce inventée */
-.indice { margin: 0.35em 0; font-size: 0.92em; text-align: left; }
-.indice b { display: block; font-size: 0.8em; color: var(--accent); }
+/* Indices : origine établie, astuce inventée, « ne pas confondre ». Petits mais lisibles (demande du 25 novembre 2026) :
+   texte sans serif, une étiquette en petites capitales au-dessus, un filet entre deux sections, le piège dans un cadre. */
+.indice { margin: 0; padding: 0.5em 0; font-family: var(--sans); font-size: 0.85rem; line-height: 1.5; text-align: left; }
+.indice + .indice { border-top: 1px solid var(--rule); }
+.indice b { display: block; margin-bottom: 0.15em; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
+.indice .hz { font-size: 1.1em; }
 .indice.astuce b { color: var(--warm); }
+.indice.piege { margin: 0.5em 0 0.2em; padding: 0.5em 0.7em; border-top: 0; border-radius: 6px; background: var(--ko-soft); }
 .indice.piege b { color: var(--ko); }
+.indice.piege + .indice.piege { margin-top: 0.4em; }
 .memo { margin: 0.8em 0; }
+/* « Pour retenir » : séparé du mot par un filet */
+.compos { border-top: 1px solid var(--rule); padding-top: 0.3rem; }
 /* Un bloc par caractère : filet à gauche, espace entre deux caractères d'un même mot */
 .car { border-left: 3px solid var(--accent); padding: 0.1em 0 0.1em 0.7em; margin: 0.6em 0; }
-.car + .car { margin-top: 1.1em; }
+.car + .car { margin-top: 1.4em; }
+.car .compo { padding-bottom: 0.3em; border-bottom: 1px solid var(--rule); }
 .car-num { margin: 0 0 0.2em; font-family: var(--sans); font-size: 0.8rem; color: var(--muted); }
+/* Homophones : un mot sous l'autre, séparés */
+.mot + .mot, .compos + .mot { margin-top: 1.2rem; padding-top: 1rem; border-top: 2px solid var(--rule); }
 
 /* Carte des villes et provinces (réponse d'une carte de ville ou de province) */
 .carte-geo { margin: 0.8rem 0 0; }
