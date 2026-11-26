@@ -206,6 +206,49 @@ const PAQUET = {
     "shi-pierre",
     "tu"
    ]
+  },
+  {
+   "id": "l6",
+   "titre": "Leçon 6 · Mon ami, où es-tu ? (我的朋友在哪里)",
+   "mots": [
+    "wo",
+    "de-possessif",
+    "pengyou",
+    "nali",
+    "zheli"
+   ]
+  },
+  {
+   "id": "l6b",
+   "titre": "Leçon 6 · Le cœur sous trois formes",
+   "mots": [
+    "mang",
+    "wang-oublier",
+    "pa",
+    "gongxi"
+   ]
+  },
+  {
+   "id": "l6c",
+   "titre": "Leçon 6 · Votre nom, s'il vous plaît",
+   "mots": [
+    "nin",
+    "gui",
+    "xing",
+    "guixing",
+    "jiao",
+    "shenme",
+    "mingzi",
+    "ta",
+    "zhang",
+    "wang-nom",
+    "li-nom",
+    "shei",
+    "laoshi",
+    "renshi",
+    "xuesheng",
+    "hai"
+   ]
   }
  ],
  "mots": {
@@ -1551,6 +1594,276 @@ const PAQUET = {
    "son": true,
    "remarque": "Clé n° 32 (墨, 坐). Parfois seulement le son : 肚 dù.",
    "liste": "l5d"
+  },
+  "wo": {
+   "hz": "我",
+   "py": [
+    "wo3"
+   ],
+   "sens": "je, moi",
+   "son": true,
+   "remarque": "",
+   "liste": "l6"
+  },
+  "de-possessif": {
+   "hz": "的",
+   "py": [
+    "de5"
+   ],
+   "sens": "(relie le possesseur à ce qu'il possède)",
+   "son": false,
+   "remarque": "我的朋友 « mon ami ». Avec un proche, on peut l'omettre : 我朋友. Même son que 得 de 跑得快, mais un autre mot.",
+   "liste": "l6"
+  },
+  "pengyou": {
+   "hz": "朋友",
+   "py": [
+    "peng2",
+    "you5"
+   ],
+   "sens": "ami",
+   "son": true,
+   "remarque": "Péngyou en Chine continentale : 友 au ton neutre (péngyǒu à Taïwan).",
+   "liste": "l6",
+   "motAMot": "« ami » + « ami » : deux mots proches, réunis en un."
+  },
+  "nali": {
+   "hz": "哪里",
+   "py": [
+    "na3",
+    "li3"
+   ],
+   "sens": "où",
+   "son": true,
+   "remarque": "On écrit nǎlǐ, on dit nálǐ (deux 3ᵉ tons de suite). En parlant, souvent nǎli. 我的朋友在哪里？« Où est mon ami ? »",
+   "liste": "l6",
+   "motAMot": "« quel » + « endroit »."
+  },
+  "zheli": {
+   "hz": "这里",
+   "py": [
+    "zhe4",
+    "li3"
+   ],
+   "sens": "ici",
+   "son": true,
+   "remarque": "我的朋友在这里 « mon ami est ici ». En parlant, souvent zhèli.",
+   "liste": "l6",
+   "motAMot": "« ce » + « endroit »."
+  },
+  "mang": {
+   "hz": "忙",
+   "py": [
+    "mang2"
+   ],
+   "sens": "occupé",
+   "son": true,
+   "remarque": "Le cœur à gauche, 忄. 忘 wàng « oublier » a les mêmes pièces, le cœur en bas.",
+   "liste": "l6b"
+  },
+  "wang-oublier": {
+   "hz": "忘",
+   "py": [
+    "wang4"
+   ],
+   "sens": "oublier",
+   "son": true,
+   "remarque": "Le cœur en bas, 心. 忙 máng « occupé » a les mêmes pièces, le cœur à gauche.",
+   "liste": "l6b"
+  },
+  "pa": {
+   "hz": "怕",
+   "py": [
+    "pa4"
+   ],
+   "sens": "avoir peur",
+   "son": true,
+   "remarque": "我怕老虎 « j'ai peur des tigres ».",
+   "liste": "l6b"
+  },
+  "gongxi": {
+   "hz": "恭喜",
+   "py": [
+    "gong1",
+    "xi3"
+   ],
+   "sens": "félicitations ; féliciter",
+   "son": false,
+   "remarque": "恭喜！« Félicitations ! » Le cœur de 恭 prend la forme ⺗.",
+   "liste": "l6b",
+   "motAMot": "« respectueusement » + « joie » : féliciter."
+  },
+  "nin": {
+   "hz": "您",
+   "py": [
+    "nin2"
+   ],
+   "sens": "vous (de politesse)",
+   "son": true,
+   "remarque": "Une seule personne, avec respect. Pour « vous » à plusieurs : 你们.",
+   "liste": "l6c"
+  },
+  "gui": {
+   "hz": "贵",
+   "py": [
+    "gui4"
+   ],
+   "sens": "cher ; honorable",
+   "son": true,
+   "remarque": "太贵了 « trop cher ». Dans 您贵姓, il honore l'autre.",
+   "liste": "l6c"
+  },
+  "xing": {
+   "hz": "姓",
+   "py": [
+    "xing4"
+   ],
+   "sens": "nom de famille ; avoir pour nom de famille",
+   "son": true,
+   "remarque": "我姓张 « mon nom de famille est Zhang ».",
+   "liste": "l6c"
+  },
+  "guixing": {
+   "hz": "贵姓",
+   "py": [
+    "gui4",
+    "xing4"
+   ],
+   "sens": "votre nom de famille (poli)",
+   "son": false,
+   "remarque": "您贵姓？— 我姓张。Jamais 贵 dans la réponse : on n'honore pas son propre nom.",
+   "liste": "l6c",
+   "motAMot": "« honorable » + « nom de famille »."
+  },
+  "jiao": {
+   "hz": "叫",
+   "py": [
+    "jiao4"
+   ],
+   "sens": "s'appeler ; appeler",
+   "son": true,
+   "remarque": "Suivi du nom complet ou du prénom : 我叫张京生. 姓 n'est suivi que du nom de famille.",
+   "liste": "l6c"
+  },
+  "shenme": {
+   "hz": "什么",
+   "py": [
+    "shen2",
+    "me5"
+   ],
+   "sens": "quoi ; quel",
+   "son": true,
+   "remarque": "什 se lit shén ici, shí dans 喀什.",
+   "liste": "l6c",
+   "motAMot": "« quoi » : le mot à mot ne dit rien, à retenir en bloc."
+  },
+  "mingzi": {
+   "hz": "名字",
+   "py": [
+    "ming2",
+    "zi5"
+   ],
+   "sens": "nom",
+   "son": true,
+   "remarque": "你叫什么名字？« Comment t'appelles-tu ? » Míngzi en Chine continentale.",
+   "liste": "l6c",
+   "motAMot": "« nom personnel » + « nom de lettré » : en chinois moderne, un seul mot, « nom »."
+  },
+  "ta": {
+   "hz": "他",
+   "py": [
+    "ta1"
+   ],
+   "sens": "il, lui",
+   "son": true,
+   "remarque": "她 « elle » se dit pareil, tā.",
+   "liste": "l6c"
+  },
+  "zhang": {
+   "hz": "张",
+   "py": [
+    "zhang1"
+   ],
+   "sens": "Zhang (nom de famille)",
+   "son": true,
+   "remarque": "张老师 « le professeur Zhang » : le nom d'abord, le titre après.",
+   "liste": "l6c"
+  },
+  "wang-nom": {
+   "hz": "王",
+   "py": [
+    "wang2"
+   ],
+   "sens": "Wang (nom de famille) ; roi",
+   "son": true,
+   "remarque": "Wáng, 2ᵉ ton.",
+   "liste": "l6c"
+  },
+  "li-nom": {
+   "hz": "李",
+   "py": [
+    "li3"
+   ],
+   "sens": "Li (nom de famille) ; prune",
+   "son": true,
+   "remarque": "",
+   "liste": "l6c"
+  },
+  "shei": {
+   "hz": "谁",
+   "py": [
+    "shei2"
+   ],
+   "sens": "qui",
+   "son": true,
+   "remarque": "On entend aussi shuí, la lecture littéraire. 他是谁？« Qui est-ce ? »",
+   "liste": "l6c"
+  },
+  "laoshi": {
+   "hz": "老师",
+   "py": [
+    "lao3",
+    "shi1"
+   ],
+   "sens": "professeur, enseignant",
+   "son": true,
+   "remarque": "On écrit lǎoshī. 张老师 « professeur Zhang ».",
+   "liste": "l6c",
+   "motAMot": "老 n'est ici qu'un préfixe, comme dans 老虎 + « maître »."
+  },
+  "renshi": {
+   "hz": "认识",
+   "py": [
+    "ren4",
+    "shi5"
+   ],
+   "sens": "connaître (quelqu'un)",
+   "son": true,
+   "remarque": "Rènshi en Chine continentale. 你认识他吗？— 认识。« Oui » se dit en reprenant le verbe.",
+   "liste": "l6c",
+   "motAMot": "« reconnaître » + « savoir » : connaître quelqu'un."
+  },
+  "xuesheng": {
+   "hz": "学生",
+   "py": [
+    "xue2",
+    "sheng1"
+   ],
+   "sens": "élève, étudiant",
+   "son": true,
+   "remarque": "En parlant, souvent xuésheng (la méthode l'écrit ainsi).",
+   "liste": "l6c",
+   "motAMot": "« étudier » + « personne qui… » (le 生 de 生日)."
+  },
+  "hai": {
+   "hz": "海",
+   "py": [
+    "hai3"
+   ],
+   "sens": "mer",
+   "son": true,
+   "remarque": "海是上海的海 « hǎi, c'est le hǎi de Shanghai » : la façon de préciser un caractère.",
+   "liste": "l6c"
   }
  },
  "caracteres": {
@@ -2946,7 +3259,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "",
-   "phonetique": ""
+   "phonetique": "",
+   "confusions": [
+    9
+   ]
   },
   "星": {
    "hex": "661F",
@@ -3794,7 +4110,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "",
-   "phonetique": ""
+   "phonetique": "",
+   "confusions": [
+    9
+   ]
   },
   "滨": {
    "hex": "6EE8",
@@ -4136,7 +4455,10 @@ const PAQUET = {
    ],
    "semantique": "",
    "phonetique": "",
-   "cleSens": "un, un trait"
+   "cleSens": "un, un trait",
+   "confusions": [
+    9
+   ]
   },
   "云": {
    "hex": "4E91",
@@ -4283,7 +4605,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "",
-   "phonetique": ""
+   "phonetique": "",
+   "confusions": [
+    9
+   ]
   },
   "海": {
    "hex": "6D77",
@@ -4824,7 +5149,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "",
-   "phonetique": ""
+   "phonetique": "",
+   "confusions": [
+    9
+   ]
   },
   "石": {
    "hex": "77F3",
@@ -4874,6 +5202,644 @@ const PAQUET = {
    "phonetique": "",
    "confusions": [
     8
+   ]
+  },
+  "我": {
+   "hex": "6211",
+   "indice": {
+    "origine": "Écriture ancienne : une arme en forme de trident (identification discutée), empruntée pour le son du pronom « je ».",
+    "astuce": ""
+   },
+   "cle": "戈",
+   "parties": [
+    [
+     "扌",
+     "shǒu",
+     "main (手 sur le côté)"
+    ],
+    [
+     "戈",
+     "gē",
+     "hallebarde, arme"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "的": {
+   "hex": "7684",
+   "indice": {
+    "origine": "白 blanc, clair (le sens) + 勺 sháo (le son) : d'abord « clair », puis emprunté pour la particule.",
+    "astuce": ""
+   },
+   "cle": "白",
+   "parties": [
+    [
+     "白",
+     "bái",
+     "blanc"
+    ],
+    [
+     "勺",
+     "sháo",
+     "cuillère"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "朋": {
+   "hex": "670B",
+   "indice": {
+    "origine": "Écriture ancienne : deux rangées de coquillages enfilés ; la forme s'est déformée en deux 月.",
+    "astuce": "Deux lunes côte à côte : deux amis."
+   },
+   "cle": "月",
+   "parties": [
+    [
+     "月",
+     "yuè",
+     "lune ; aussi la chair (肉)"
+    ],
+    [
+     "月",
+     "yuè",
+     "lune ; aussi la chair (肉)"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "友": {
+   "hex": "53CB",
+   "indice": {
+    "origine": "Deux mains droites 又 ; le Shuowen y voit deux mains qui s'aident.",
+    "astuce": ""
+   },
+   "cle": "又",
+   "parties": [],
+   "semantique": "",
+   "phonetique": "",
+   "cleSens": "main (droite)"
+  },
+  "哪": {
+   "hex": "54EA",
+   "indice": {
+    "origine": "口 bouche + 那 nà « là » ; jusqu'au XXᵉ siècle, on écrivait 那 seul.",
+    "astuce": ""
+   },
+   "cle": "口",
+   "parties": [
+    [
+     "口",
+     "kǒu",
+     "bouche"
+    ],
+    [
+     "那",
+     "nà",
+     "là, cela"
+    ]
+   ],
+   "semantique": "口",
+   "phonetique": "那"
+  },
+  "里": {
+   "hex": "91CC",
+   "indice": {
+    "origine": "田 champ + 土 terre : une mesure de terrain, puis un lieu. Il remplace aussi 裏 « intérieur ».",
+    "astuce": ""
+   },
+   "cle": "里",
+   "parties": [
+    [
+     "田",
+     "tián",
+     "champ"
+    ],
+    [
+     "土",
+     "tǔ",
+     "terre"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": "",
+   "confusions": [
+    8
+   ]
+  },
+  "这": {
+   "hex": "8FD9",
+   "indice": {
+    "origine": "Simplification de 這 : 辶 marcher (le sens) + un composant de son, remplacé par 文.",
+    "astuce": ""
+   },
+   "cle": "辶",
+   "parties": [
+    [
+     "辶",
+     "chuò",
+     "marcher, aller"
+    ],
+    [
+     "文",
+     "wén",
+     "écrit, motif"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "忙": {
+   "hex": "5FD9",
+   "indice": {
+    "origine": "忄 cœur (le sens) + 亡 wáng (le son). Les mêmes pièces qu'« oublier », le cœur à gauche.",
+    "astuce": "Un cœur qui se perd : débordé."
+   },
+   "cle": "忄",
+   "parties": [
+    [
+     "忄",
+     "xīn",
+     "cœur (心 sur le côté)"
+    ],
+    [
+     "亡",
+     "wáng",
+     "perdre ; disparaître"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "忘": {
+   "hex": "5FD8",
+   "indice": {
+    "origine": "心 cœur (le sens) + 亡 wáng (le son). Les mêmes pièces qu'« occupé », le cœur en bas.",
+    "astuce": "Ce qui sort du cœur est oublié."
+   },
+   "cle": "心",
+   "parties": [
+    [
+     "亡",
+     "wáng",
+     "perdre ; disparaître"
+    ],
+    [
+     "心",
+     "xīn",
+     "cœur"
+    ]
+   ],
+   "semantique": "心",
+   "phonetique": "亡"
+  },
+  "怕": {
+   "hex": "6015",
+   "indice": {
+    "origine": "忄 cœur (le sens) + 白 bái (le son).",
+    "astuce": ""
+   },
+   "cle": "忄",
+   "parties": [
+    [
+     "忄",
+     "xīn",
+     "cœur (心 sur le côté)"
+    ],
+    [
+     "白",
+     "bái",
+     "blanc"
+    ]
+   ],
+   "semantique": "忄",
+   "phonetique": "白"
+  },
+  "恭": {
+   "hex": "606D",
+   "indice": {
+    "origine": "共 gòng (le son) + le cœur en bas, sous la forme ⺗ (le sens) : respectueux.",
+    "astuce": ""
+   },
+   "cle": "⺗",
+   "parties": [
+    [
+     "共",
+     "gòng",
+     "ensemble"
+    ],
+    [
+     "⺗",
+     "",
+     "cœur (心 en bas, dans quelques caractères)"
+    ]
+   ],
+   "semantique": "⺗",
+   "phonetique": "共",
+   "confusions": [
+    9
+   ]
+  },
+  "喜": {
+   "hex": "559C",
+   "indice": {
+    "origine": "壴 tambour + 口 bouche : la joie, la fête.",
+    "astuce": ""
+   },
+   "cle": "口",
+   "parties": [
+    [
+     "壴",
+     "zhù",
+     "tambour"
+    ],
+    [
+     "口",
+     "kǒu",
+     "bouche"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "您": {
+   "hex": "60A8",
+   "indice": {
+    "origine": "你 toi + 心 cœur : le « vous » de respect.",
+    "astuce": ""
+   },
+   "cle": "心",
+   "parties": [
+    [
+     "你",
+     "nǐ",
+     "tu"
+    ],
+    [
+     "心",
+     "xīn",
+     "cœur"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "贵": {
+   "hex": "8D35",
+   "indice": {
+    "origine": "Simplification de 貴 : 贝 coquillage, la monnaie (le sens) + un composant de son : « cher ».",
+    "astuce": ""
+   },
+   "cle": "贝",
+   "parties": [
+    [
+     "中",
+     "zhōng",
+     "milieu"
+    ],
+    [
+     "一",
+     "yī",
+     "un, un trait"
+    ],
+    [
+     "贝",
+     "bèi",
+     "coquillage ; la monnaie"
+    ]
+   ],
+   "semantique": "贝",
+   "phonetique": "",
+   "confusions": [
+    0
+   ]
+  },
+  "姓": {
+   "hex": "59D3",
+   "indice": {
+    "origine": "女 femme (le sens) + 生 shēng (le son).",
+    "astuce": ""
+   },
+   "cle": "女",
+   "parties": [
+    [
+     "女",
+     "nǚ",
+     "femme"
+    ],
+    [
+     "生",
+     "shēng",
+     "naître, vivre ; ici pour le son"
+    ]
+   ],
+   "semantique": "女",
+   "phonetique": "生"
+  },
+  "叫": {
+   "hex": "53EB",
+   "indice": {
+    "origine": "口 bouche (le sens) + 丩 jiū (le son) : d'abord « crier ».",
+    "astuce": ""
+   },
+   "cle": "口",
+   "parties": [
+    [
+     "口",
+     "kǒu",
+     "bouche"
+    ],
+    [
+     "丩",
+     "jiū",
+     "jiū (composant de son)"
+    ]
+   ],
+   "semantique": "口",
+   "phonetique": "丩"
+  },
+  "么": {
+   "hex": "4E48",
+   "indice": {
+    "origine": "Simplification de 麼 : on a gardé le bas, 幺 « petit ».",
+    "astuce": ""
+   },
+   "cle": "丿",
+   "parties": [
+    [
+     "丿",
+     "piě",
+     "trait oblique"
+    ],
+    [
+     "厶",
+     "sī",
+     "(forme simple, sans sens ici)"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "名": {
+   "hex": "540D",
+   "indice": {
+    "origine": "夕 soir + 口 bouche : on dit son nom quand on ne se voit pas dans le noir (explication traditionnelle, discutée).",
+    "astuce": ""
+   },
+   "cle": "口",
+   "parties": [
+    [
+     "夕",
+     "xī",
+     "soir"
+    ],
+    [
+     "口",
+     "kǒu",
+     "bouche"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": ""
+  },
+  "字": {
+   "hex": "5B57",
+   "indice": {
+    "origine": "宀 toit (le sens) + 子 zǐ enfant (le son).",
+    "astuce": ""
+   },
+   "cle": "子",
+   "parties": [
+    [
+     "宀",
+     "gài",
+     "toit"
+    ],
+    [
+     "子",
+     "zi",
+     "enfant"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": "",
+   "confusions": [
+    3
+   ]
+  },
+  "他": {
+   "hex": "4ED6",
+   "indice": {
+    "origine": "亻 personne (le sens) + 也 yě (le son).",
+    "astuce": ""
+   },
+   "cle": "亻",
+   "parties": [
+    [
+     "亻",
+     "rén",
+     "personne (人 sur le côté)"
+    ],
+    [
+     "也",
+     "yě",
+     "aussi"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": "",
+   "confusions": [
+    6
+   ]
+  },
+  "张": {
+   "hex": "5F20",
+   "indice": {
+    "origine": "弓 arc (le sens) + 长 cháng (le son) : d'abord « tendre un arc ».",
+    "astuce": ""
+   },
+   "cle": "弓",
+   "parties": [
+    [
+     "弓",
+     "gōng",
+     "arc"
+    ],
+    [
+     "长",
+     "zhǎng",
+     "long"
+    ]
+   ],
+   "semantique": "弓",
+   "phonetique": "长"
+  },
+  "王": {
+   "hex": "738B",
+   "indice": {
+    "origine": "Écriture ancienne : une hache de cérémonie, symbole du pouvoir royal. « Trois traits, le ciel, l'homme et la terre » est une étymologie populaire.",
+    "astuce": ""
+   },
+   "cle": "王",
+   "parties": [
+    [
+     "一",
+     "yī",
+     "un, un trait"
+    ],
+    [
+     "土",
+     "tǔ",
+     "terre"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": "",
+   "confusions": [
+    8
+   ]
+  },
+  "李": {
+   "hex": "674E",
+   "indice": {
+    "origine": "子 (le sens) + 來 (le son), dont le dessin s'est déformé en 木 « arbre ».",
+    "astuce": "Un enfant sous un prunier."
+   },
+   "cle": "木",
+   "parties": [
+    [
+     "木",
+     "mù",
+     "arbre"
+    ],
+    [
+     "子",
+     "zi",
+     "enfant"
+    ]
+   ],
+   "semantique": "木",
+   "phonetique": "子"
+  },
+  "谁": {
+   "hex": "8C01",
+   "indice": {
+    "origine": "讠 parole (le sens) + 隹 zhuī (le son).",
+    "astuce": ""
+   },
+   "cle": "讠",
+   "parties": [
+    [
+     "讠",
+     "yán",
+     "parole (言 sur le côté)"
+    ],
+    [
+     "隹",
+     "zhuī",
+     "oiseau"
+    ]
+   ],
+   "semantique": "讠",
+   "phonetique": "隹"
+  },
+  "师": {
+   "hex": "5E08",
+   "indice": {
+    "origine": "Simplification de 師 : la partie gauche réduite à un trait court et un trait long.",
+    "astuce": ""
+   },
+   "cle": "巾",
+   "parties": [
+    [
+     "刂",
+     "dāo",
+     "couteau (刀 sur le côté)"
+    ],
+    [
+     "帀",
+     "zā",
+     "faire le tour"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": "",
+   "cleSens": "tissu, serviette"
+  },
+  "认": {
+   "hex": "8BA4",
+   "indice": {
+    "origine": "Simplification de 認 : 讠 parole (le sens) + 人 rén (le son, à la place de 忍 rěn).",
+    "astuce": ""
+   },
+   "cle": "讠",
+   "parties": [
+    [
+     "讠",
+     "yán",
+     "parole (言 sur le côté)"
+    ],
+    [
+     "人",
+     "rén",
+     "personne"
+    ]
+   ],
+   "semantique": "讠",
+   "phonetique": "人"
+  },
+  "识": {
+   "hex": "8BC6",
+   "indice": {
+    "origine": "Simplification de 識 : 讠 parole (le sens) + 只, à la place d'un composant de son ancien.",
+    "astuce": ""
+   },
+   "cle": "讠",
+   "parties": [
+    [
+     "讠",
+     "yán",
+     "parole (言 sur le côté)"
+    ],
+    [
+     "只",
+     "zhī",
+     "seulement ; (classificateur des animaux)"
+    ]
+   ],
+   "semantique": "讠",
+   "phonetique": "只"
+  },
+  "学": {
+   "hex": "5B66",
+   "indice": {
+    "origine": "Simplification de 學 : deux mains et des croisillons au-dessus d'un enfant 子 sous un toit ; le haut devient trois petits traits.",
+    "astuce": ""
+   },
+   "cle": "子",
+   "parties": [
+    [
+     "⺍",
+     "",
+     "trois petits traits (le haut de 学)"
+    ],
+    [
+     "冖",
+     "mì",
+     "couvercle"
+    ],
+    [
+     "子",
+     "zi",
+     "enfant"
+    ]
+   ],
+   "semantique": "",
+   "phonetique": "",
+   "confusions": [
+    3
    ]
   }
  },
@@ -4938,6 +5904,11 @@ const PAQUET = {
    "a": "土",
    "b": "士",
    "texte": "土 « terre » (墨, 在) : le trait du bas est le plus long. 士 shì « lettré » (pas encore au cours) : c'est celui du haut."
+  },
+  {
+   "a": "⺗",
+   "b": "小",
+   "texte": "⺗, le cœur en bas (恭, 慕), a quatre traits : un point à gauche, deux à droite. 小 « petit » n'en a que trois : un point de chaque côté."
   }
  ]
 };

@@ -176,6 +176,37 @@ mi-soie | 糸 | mi4 | (clé) la soie | aucun | Clé n° 120. À gauche : 纟 en 
 shi-pierre | 石 | shi2 | pierre | syllabe shi2 | Clé n° 112, à gauche (砚, 码).
 tu | 土 | tu3 | terre | | Clé n° 32 (墨, 坐). Parfois seulement le son : 肚 dù.
 
+## l6 | Leçon 6 · Mon ami, où es-tu ? (我的朋友在哪里)
+wo | 我 | wo3 | je, moi | |
+de-possessif | 的 | de5 | (relie le possesseur à ce qu'il possède) | aucun | 我的朋友 « mon ami ». Avec un proche, on peut l'omettre : 我朋友. Même son que 得 de 跑得快, mais un autre mot.
+pengyou | 朋友 | peng2 you5 | ami | | Péngyou en Chine continentale : 友 au ton neutre (péngyǒu à Taïwan).
+nali | 哪里 | na3 li3 | où | | On écrit nǎlǐ, on dit nálǐ (deux 3ᵉ tons de suite). En parlant, souvent nǎli. 我的朋友在哪里？« Où est mon ami ? »
+zheli | 这里 | zhe4 li3 | ici | | 我的朋友在这里 « mon ami est ici ». En parlant, souvent zhèli.
+
+## l6b | Leçon 6 · Le cœur sous trois formes
+mang | 忙 | mang2 | occupé | | Le cœur à gauche, 忄. 忘 wàng « oublier » a les mêmes pièces, le cœur en bas.
+wang-oublier | 忘 | wang4 | oublier | | Le cœur en bas, 心. 忙 máng « occupé » a les mêmes pièces, le cœur à gauche.
+pa | 怕 | pa4 | avoir peur | | 我怕老虎 « j'ai peur des tigres ».
+gongxi | 恭喜 | gong1 xi3 | félicitations ; féliciter | aucun | 恭喜！« Félicitations ! » Le cœur de 恭 prend la forme ⺗.
+
+## l6c | Leçon 6 · Votre nom, s'il vous plaît
+nin | 您 | nin2 | vous (de politesse) | | Une seule personne, avec respect. Pour « vous » à plusieurs : 你们.
+gui | 贵 | gui4 | cher ; honorable | | 太贵了 « trop cher ». Dans 您贵姓, il honore l'autre.
+xing | 姓 | xing4 | nom de famille ; avoir pour nom de famille | | 我姓张 « mon nom de famille est Zhang ».
+guixing | 贵姓 | gui4 xing4 | votre nom de famille (poli) | aucun | 您贵姓？— 我姓张。Jamais 贵 dans la réponse : on n'honore pas son propre nom.
+jiao | 叫 | jiao4 | s'appeler ; appeler | | Suivi du nom complet ou du prénom : 我叫张京生. 姓 n'est suivi que du nom de famille.
+shenme | 什么 | shen2 me5 | quoi ; quel | | 什 se lit shén ici, shí dans 喀什.
+mingzi | 名字 | ming2 zi5 | nom | | 你叫什么名字？« Comment t'appelles-tu ? » Míngzi en Chine continentale.
+ta | 他 | ta1 | il, lui | | 她 « elle » se dit pareil, tā.
+zhang | 张 | zhang1 | Zhang (nom de famille) | | 张老师 « le professeur Zhang » : le nom d'abord, le titre après.
+wang-nom | 王 | wang2 | Wang (nom de famille) ; roi | | Wáng, 2ᵉ ton.
+li-nom | 李 | li3 | Li (nom de famille) ; prune | syllabe li3 |
+shei | 谁 | shei2 | qui | syllabe shei2 | On entend aussi shuí, la lecture littéraire. 他是谁？« Qui est-ce ? »
+laoshi | 老师 | lao3 shi1 | professeur, enseignant | | On écrit lǎoshī. 张老师 « professeur Zhang ».
+renshi | 认识 | ren4 shi5 | connaître (quelqu'un) | | Rènshi en Chine continentale. 你认识他吗？— 认识。« Oui » se dit en reprenant le verbe.
+xuesheng | 学生 | xue2 sheng1 | élève, étudiant | | En parlant, souvent xuésheng (la méthode l'écrit ainsi).
+hai | 海 | hai3 | mer | | 海是上海的海 « hǎi, c'est le hǎi de Shanghai » : la façon de préciser un caractère.
+
 ## composants
 幺 | petit fil (moitié de 糸)
 ⺮ | bambou (竹 en haut)
@@ -328,6 +359,26 @@ tu | 土 | tu3 | terre | | Clé n° 32 (墨, 坐). Parfois seulement le son : �
 糸 | fil de soie
 自 | soi ; à l'origine, le nez
 走 | marcher
+⺍ | trois petits traits (le haut de 学)
+⺗ | cœur (心 en bas, dans quelques caractères)
+丩 | jiū (composant de son)
+中 | milieu
+也 | aussi
+亡 | perdre ; disparaître
+你 | tu
+共 | ensemble
+刂 | couteau (刀 sur le côté)
+勺 | cuillère
+只 | seulement ; (classificateur des animaux)
+壴 | tambour
+巾 | tissu, serviette
+帀 | faire le tour
+文 | écrit, motif
+贝 | coquillage ; la monnaie
+辶 | marcher, aller
+那 | là, cela
+长 | long
+隹 | oiseau
 
 # Section « confusions » : clés et composants qui se ressemblent (consigne du 25 novembre 2026).
 #   <caractère> | <caractère> | <message : ce qui les distingue à l'œil>
@@ -344,6 +395,7 @@ tu | 土 | tu3 | terre | | Clé n° 32 (墨, 坐). Parfois seulement le son : �
 亻 | 彳 | 亻 « personne » (你, 们) : un trait oblique ; 彳 « pas, marcher » (得) : deux.
 礻 | 衤 | 礻 « autel » (祝, 福) : un seul point en haut ; 衤 « vêtement » (pas encore au cours) a un petit trait de plus, en bas à droite.
 土 | 士 | 土 « terre » (墨, 在) : le trait du bas est le plus long. 士 shì « lettré » (pas encore au cours) : c'est celui du haut.
+⺗ | 小 | ⺗, le cœur en bas (恭, 慕), a quatre traits : un point à gauche, deux à droite. 小 « petit » n'en a que trois : un point de chaque côté.
 
 # Section « contient » : composants que la décomposition de Make Me a Hanzi ne donne pas (elle laisse un ？).
 #   Ne sert qu'à « Ne pas confondre » : le caractère, et tout caractère qui l'a pour partie ou pour clé, reçoit
@@ -571,3 +623,42 @@ tu | 土 | tu3 | terre | | Clé n° 32 (墨, 坐). Parfois seulement le son : �
 糸 | Écriture ancienne : un écheveau de soie. |
 石 | Écriture ancienne : une pierre sonore ; le carré du bas a été ajouté pour l'ornement. |
 土 | Écriture ancienne : une motte de terre sur le sol. |
+
+我 | Écriture ancienne : une arme en forme de trident (identification discutée), empruntée pour le son du pronom « je ». |
+的 | 白 blanc, clair (le sens) + 勺 sháo (le son) : d'abord « clair », puis emprunté pour la particule. |
+朋 | Écriture ancienne : deux rangées de coquillages enfilés ; la forme s'est déformée en deux 月. | Deux lunes côte à côte : deux amis.
+友 | Deux mains droites 又 ; le Shuowen y voit deux mains qui s'aident. |
+朋友 | « ami » + « ami » : deux mots proches, réunis en un. |
+哪 | 口 bouche + 那 nà « là » ; jusqu'au XXᵉ siècle, on écrivait 那 seul. |
+里 | 田 champ + 土 terre : une mesure de terrain, puis un lieu. Il remplace aussi 裏 « intérieur ». |
+哪里 | « quel » + « endroit ». |
+这 | Simplification de 這 : 辶 marcher (le sens) + un composant de son, remplacé par 文. |
+这里 | « ce » + « endroit ». |
+忙 | 忄 cœur (le sens) + 亡 wáng (le son). Les mêmes pièces qu'« oublier », le cœur à gauche. | Un cœur qui se perd : débordé.
+忘 | 心 cœur (le sens) + 亡 wáng (le son). Les mêmes pièces qu'« occupé », le cœur en bas. | Ce qui sort du cœur est oublié.
+怕 | 忄 cœur (le sens) + 白 bái (le son). |
+恭 | 共 gòng (le son) + le cœur en bas, sous la forme ⺗ (le sens) : respectueux. |
+喜 | 壴 tambour + 口 bouche : la joie, la fête. |
+恭喜 | « respectueusement » + « joie » : féliciter. |
+您 | 你 toi + 心 cœur : le « vous » de respect. |
+贵 | Simplification de 貴 : 贝 coquillage, la monnaie (le sens) + un composant de son : « cher ». |
+姓 | 女 femme (le sens) + 生 shēng (le son). |
+贵姓 | « honorable » + « nom de famille ». |
+叫 | 口 bouche (le sens) + 丩 jiū (le son) : d'abord « crier ». |
+么 | Simplification de 麼 : on a gardé le bas, 幺 « petit ». |
+什么 | « quoi » : le mot à mot ne dit rien, à retenir en bloc. |
+名 | 夕 soir + 口 bouche : on dit son nom quand on ne se voit pas dans le noir (explication traditionnelle, discutée). |
+字 | 宀 toit (le sens) + 子 zǐ enfant (le son). |
+名字 | « nom personnel » + « nom de lettré » : en chinois moderne, un seul mot, « nom ». |
+他 | 亻 personne (le sens) + 也 yě (le son). |
+张 | 弓 arc (le sens) + 长 cháng (le son) : d'abord « tendre un arc ». |
+王 | Écriture ancienne : une hache de cérémonie, symbole du pouvoir royal. « Trois traits, le ciel, l'homme et la terre » est une étymologie populaire. |
+李 | 子 (le sens) + 來 (le son), dont le dessin s'est déformé en 木 « arbre ». | Un enfant sous un prunier.
+谁 | 讠 parole (le sens) + 隹 zhuī (le son). |
+师 | Simplification de 師 : la partie gauche réduite à un trait court et un trait long. |
+老师 | 老 n'est ici qu'un préfixe, comme dans 老虎 + « maître ». |
+认 | Simplification de 認 : 讠 parole (le sens) + 人 rén (le son, à la place de 忍 rěn). |
+识 | Simplification de 識 : 讠 parole (le sens) + 只, à la place d'un composant de son ancien. |
+认识 | « reconnaître » + « savoir » : connaître quelqu'un. |
+学 | Simplification de 學 : deux mains et des croisillons au-dessus d'un enfant 子 sous un toit ; le haut devient trois petits traits. |
+学生 | « étudier » + « personne qui… » (le 生 de 生日). |
