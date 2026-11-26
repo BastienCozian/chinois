@@ -49,8 +49,8 @@ def hexa(c: str) -> str:
     return f"{ord(c):X}"
 
 
-def lire_paquet() -> tuple[list[dict], dict, dict, dict, list]:
-    listes, mots, composants, indices, confusions = [], {}, {}, {}, []
+def lire_paquet() -> tuple[list[dict], dict, dict, dict, list, dict]:
+    listes, mots, composants, indices, confusions, contient = [], {}, {}, {}, [], {}
     erreurs, section = [], None
     for n, brute in enumerate((ICI / "paquet.txt").read_text(encoding="utf-8").splitlines(), 1):
         l = brute.strip()
@@ -59,7 +59,7 @@ def lire_paquet() -> tuple[list[dict], dict, dict, dict, list]:
         if l.startswith("## "):
             ident, _, titre = l[3:].partition("|")
             section = ident.strip()
-            if section not in ("composants", "indices", "confusions"):
+            if section not in ("composants", "indices", "confusions", "contient"):
                 listes.append({"id": section, "titre": titre.strip(), "mots": []})
             continue
         champs = [c.strip() for c in l.split("|")]
@@ -80,6 +80,12 @@ def lire_paquet() -> tuple[list[dict], dict, dict, dict, list]:
             else:
                 confusions.append({"a": champs[0], "b": champs[1], "texte": champs[2]})
             continue
+        if section == "contient":
+            if len(champs) != 2 or len(champs[0]) != 1 or not champs[1]:
+                erreurs.append(f"ligne {n} : contient : « caractère | composants séparés par des espaces »")
+            else:
+                contient[champs[0]] = champs[1].split()
+            continue
         if section is None or len(champs) != 6:
             erreurs.append(f"ligne {n} : six champs attendus, ou ligne hors liste")
             continue
@@ -99,7 +105,7 @@ def lire_paquet() -> tuple[list[dict], dict, dict, dict, list]:
                 erreurs.append(f"pas d'indice pour {cle} (section « indices »)")
     if erreurs:
         sys.exit("paquet.txt :\n  " + "\n  ".join(erreurs))
-    return listes, mots, composants, indices, confusions
+    return listes, mots, composants, indices, confusions, contient
 
 
 def homophones(mots: dict) -> dict:
@@ -178,12 +184,15 @@ def caracteres(mots: dict, composants: dict, indices: dict) -> dict:
     return infos
 
 
-def lier_confusions(infos: dict, confusions: list) -> None:
+def lier_confusions(infos: dict, confusions: list, contient: dict) -> None:
     """« Ne pas confondre » : chaque caractère reçoit les numéros des confusions qui le touchent (lui-même,
-    l'une de ses parties ou sa clé)."""
+    l'une de ses parties ou sa clé). La section « contient » de paquet.txt complète une décomposition
+    que Make Me a Hanzi laisse incomplète (页 = ⿱？贝) ; elle vaut aussi pour les caractères qui ont ce
+    composant pour partie ou pour clé (题, clé 页, contient donc 贝)."""
     vues = set()
     for c, i in infos.items():
         presents = {c, i["cle"], *(p[0] for p in i["parties"])}
+        presents |= {x for p in presents for x in contient.get(p, [])}
         ks = [k for k, x in enumerate(confusions) if x["a"] in presents or x["b"] in presents]
         if ks:
             i["confusions"] = ks
@@ -235,12 +244,12 @@ def ecrire(listes: list, mots: dict, infos: dict, indices: dict, groupes: dict, 
 
 
 def main() -> None:
-    listes, mots, composants, indices, confusions = lire_paquet()
+    listes, mots, composants, indices, confusions, contient = lire_paquet()
     if telecharger(HANZI_WRITER, ICI / "hanzi-writer.min.js"):
         print("  Hanzi Writer téléchargé")
     telecharger(LICENCE_DONNEES, ICI / "ARPHICPL.TXT")
     infos = caracteres(mots, composants, indices)
-    lier_confusions(infos, confusions)
+    lier_confusions(infos, confusions, contient)
     sons(mots)
     groupes = homophones(mots)
     ecrire(listes, mots, infos, indices, groupes, confusions)

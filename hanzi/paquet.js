@@ -1848,7 +1848,10 @@ const PAQUET = {
     ]
    ],
    "semantique": "页",
-   "phonetique": "是"
+   "phonetique": "是",
+   "confusions": [
+    0
+   ]
   },
   "吗": {
    "hex": "5417",
@@ -3368,7 +3371,10 @@ const PAQUET = {
    "cle": "页",
    "parties": [],
    "semantique": "",
-   "phonetique": ""
+   "phonetique": "",
+   "confusions": [
+    0
+   ]
   },
   "对": {
    "hex": "5BF9",
@@ -4891,7 +4897,7 @@ const PAQUET = {
   {
    "a": "见",
    "b": "贝",
-   "texte": "见 jiàn « voir » finit par deux jambes : la dernière part à droite et remonte en crochet. 贝 bèi « coquillage » finit par un trait oblique et un point. 贝 est la clé n° 154 : les cauris servaient de monnaie, d'où la clé des mots de l'argent (贵 guì « cher », 财 cái « richesse », 货 huò « marchandise »)."
+   "texte": "见 jiàn « voir » finit par deux jambes : la dernière part à droite et remonte en crochet. 贝 bèi « coquillage » finit par un trait oblique et un point. 贝 est la clé n° 154 : les cauris servaient de monnaie, d'où la clé des mots de l'argent (贵 guì « cher », 财 cái « richesse », 货 huò « marchandise »). Le bas de 页 yè « tête, page » (et donc de 题) est 贝, pas 见 : un trait oblique et un point, sans crochet."
   },
   {
    "a": "尸",
